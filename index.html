@@ -1188,7 +1188,11 @@ gap:8px;
 
 <script>
 const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjZm9ua2dzc2N1Y3Frcm1ncmF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxNDAwMTIsImV4cCI6MjEwMzcxNjAxMn0.qSvVXP0myWZONBV5PKmJ9ciD-nW1UizW4Wl4qAiNzfESUPABASE_URL,
+
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjZm9ua2dzc2N1Y3Frcm1ncmF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxNDAwMTIsImV4cCI6MjEwMzcxNjAxMn0.qSvVXP0myWZONBV5PKmJ9ciD-nW1UizW4Wl4qAiNzfE";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
   SUPABASE_KEY
 );
 
@@ -1246,5 +1250,3 @@ loadRating();
 
 </body>
 </html>
-</body>
-  </html>
