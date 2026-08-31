@@ -3,257 +3,297 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Ball Games — Official</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{box-sizing:border-box}
+
 html{scroll-behavior:smooth}
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f7fb;
-  color:#182033;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f7fb;
+color:#182033;
+line-height:1.6;
 }
 
 body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 15% 5%,#dce8ff,transparent 35%),
-    radial-gradient(circle at 85% 15%,#eee4ff,transparent 30%);
-  pointer-events:none;
-  z-index:-1;
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 15% 5%,#dce8ff,transparent 35%),
+radial-gradient(circle at 85% 15%,#eee4ff,transparent 30%);
+pointer-events:none;
+z-index:-1;
 }
 
 nav{
-  position:sticky;
-  top:0;
-  z-index:5;
-  background:#ffffffee;
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #dbe2ee;
-  padding:14px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 3px 18px #24324a12;
+position:sticky;
+top:0;
+z-index:10;
+background:#ffffffee;
+backdrop-filter:blur(12px);
+border-bottom:1px solid #dbe2ee;
+padding:14px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 3px 18px #24324a12;
 }
 
 .logo{
-  font-size:24px;
-  font-weight:900
+font-size:24px;
+font-weight:900;
 }
 
 .logo span{
-  color:#536dfe
+color:#536dfe;
 }
 
 nav a{
-  color:#35415c;
-  text-decoration:none;
-  margin-left:10px;
-  font-weight:800;
-  padding:9px 13px;
-  border-radius:10px
+color:#35415c;
+text-decoration:none;
+margin-left:7px;
+font-weight:800;
+padding:9px 12px;
+border-radius:10px;
 }
 
 nav a:hover{
-  background:#edf2ff;
-  color:#4057d6
+background:#edf2ff;
+color:#4057d6;
 }
 
 .hero{
-  padding:80px 6% 55px;
-  text-align:center;
-  position:relative
+padding:80px 6% 55px;
+text-align:center;
 }
 
 .hero h1{
-  font-size:clamp(48px,10vw,100px);
-  margin:0;
-  font-weight:1000;
-  letter-spacing:-5px;
-  color:#182033
+font-size:clamp(48px,10vw,100px);
+margin:0;
+font-weight:1000;
+letter-spacing:-5px;
+color:#182033;
 }
 
 .hero p{
-  color:#68738b;
-  font-size:19px
+color:#68738b;
+font-size:19px;
 }
 
 .wipe{
-  display:inline-block;
-  margin:24px 0;
-  padding:16px 25px;
-  border:1px solid #e5b43c;
-  border-radius:18px;
-  background:#fff9e8;
-  box-shadow:0 8px 30px #d4a62a22
+display:inline-block;
+margin:24px 0;
+padding:18px 25px;
+border:1px solid #e5b43c;
+border-radius:18px;
+background:#fff9e8;
+box-shadow:0 8px 30px #d4a62a22;
 }
 
 .wipe b{
-  color:#b47700
+color:#b47700;
 }
 
 .btn{
-  display:inline-block;
-  margin:8px;
-  padding:12px 18px;
-  border-radius:12px;
-  background:#536dfe;
-  color:#fff;
-  text-decoration:none;
-  font-weight:900;
-  box-shadow:0 7px 18px #536dfe33
+display:inline-block;
+margin:8px;
+padding:12px 18px;
+border-radius:12px;
+background:#536dfe;
+color:#fff;
+text-decoration:none;
+font-weight:900;
+box-shadow:0 7px 18px #536dfe33;
+}
+
+.btn:hover{
+transform:translateY(-2px);
 }
 
 section{
-  padding:45px 6%;
-  max-width:1200px;
-  margin:auto;
-  scroll-margin-top:80px
+padding:45px 6%;
+max-width:1200px;
+margin:auto;
+scroll-margin-top:80px;
 }
 
 h2{
-  font-size:32px;
-  margin-bottom:25px
+font-size:32px;
+margin-bottom:25px;
+}
+
+h3{
+font-size:21px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:16px;
 }
 
 .card{
-  background:#fff;
-  border:1px solid #dfe5ef;
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 8px 28px #24324a12
+background:#fff;
+border:1px solid #dfe5ef;
+border-radius:20px;
+padding:22px;
+box-shadow:0 8px 28px #24324a12;
+margin-bottom:16px;
 }
 
 .card h3{
-  margin-top:0
+margin-top:0;
 }
 
 .muted{
-  color:#69748b
+color:#69748b;
 }
 
 .rank{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:15px 0;
-  border-bottom:1px solid #edf0f5
+display:flex;
+align-items:center;
+gap:15px;
+padding:15px 0;
+border-bottom:1px solid #edf0f5;
 }
 
 .rank:last-child{
-  border:0
+border:0;
 }
 
 .place{
-  font-size:25px;
-  width:42px
+font-size:25px;
+width:42px;
 }
 
 .name{
-  font-weight:900;
-  flex:1
+font-weight:900;
+flex:1;
 }
 
 .wins{
-  color:#68738b;
-  font-weight:800
+color:#68738b;
+font-weight:900;
 }
 
 .badge{
-  font-size:13px;
-  background:#eef2ff;
-  color:#4154bd;
-  padding:7px 10px;
-  border-radius:10px
+font-size:13px;
+background:#eef2ff;
+color:#4154bd;
+padding:7px 10px;
+border-radius:10px;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  background:#fff;
-  border:1px solid #dfe5ef;
-  border-radius:18px;
-  overflow:hidden
+width:100%;
+border-collapse:collapse;
+background:#fff;
+border:1px solid #dfe5ef;
+border-radius:18px;
+overflow:hidden;
 }
 
 td,th{
-  text-align:left;
-  padding:13px;
-  border-bottom:1px solid #edf0f5
+text-align:left;
+padding:14px;
+border-bottom:1px solid #edf0f5;
 }
 
 th{
-  color:#69748b;
-  background:#f7f9fc
-}
-
-.pill{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:999px;
-  background:#eef2f8;
-  margin:4px
-}
-
-.danger{
-  color:#b47700
-}
-
-.footer{
-  text-align:center;
-  padding:50px 20px;
-  color:#7c879d
+color:#69748b;
+background:#f7f9fc;
 }
 
 .ability{
-  margin-top:16px
+border-left:5px solid #536dfe;
 }
 
-.ability h3{
-  margin-bottom:8px
+.warning{
+border-left:5px solid #e5b43c;
 }
 
-.telegram{
-  display:inline-block;
-  margin:6px;
-  padding:10px 14px;
-  border-radius:12px;
-  background:#eef2ff;
-  color:#4057d6;
-  text-decoration:none;
-  font-weight:800
+.danger{
+border-left:5px solid #e05252;
+}
+
+.success{
+border-left:5px solid #4caf50;
+}
+
+.pill{
+display:inline-block;
+padding:8px 12px;
+border-radius:999px;
+background:#eef2f8;
+margin:4px;
+}
+
+.flow{
+font-size:20px;
+font-weight:900;
+text-align:center;
+padding:20px;
+background:#fff;
+border-radius:20px;
+border:1px solid #dfe5ef;
+margin:15px 0;
+}
+
+.footer{
+text-align:center;
+padding:50px 20px;
+color:#7c879d;
+}
+
+.small{
+font-size:14px;
+color:#7c879d;
+}
+
+#ratingStatus{
+font-size:14px;
+color:#69748b;
+margin-bottom:12px;
 }
 
 @media(max-width:700px){
-  nav div:last-child{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:flex-end
-  }
 
-  nav a{
-    margin:3px;
-    padding:7px 8px;
-    font-size:13px
-  }
+nav{
+align-items:flex-start;
+gap:10px;
+}
 
-  .hero{
-    padding-top:55px
-  }
+nav div:last-child{
+display:flex;
+flex-wrap:wrap;
+justify-content:flex-end;
+}
+
+nav a{
+margin:3px;
+padding:7px 8px;
+font-size:13px;
+}
+
+.hero{
+padding-top:55px;
+}
+
+.hero h1{
+letter-spacing:-3px;
+}
+
+table{
+font-size:14px;
+}
+
+.rank{
+gap:8px;
+}
 }
 </style>
 </head>
@@ -261,113 +301,86 @@ th{
 <body>
 
 <nav>
-  <div class="logo">🎯 BALL <span>GAMES</span></div>
+<div class="logo">🎯 BALL <span>GAMES</span></div>
 
-  <div>
-    <a href="#rules">📜 Правила</a>
-    <a href="#abilities">⚡ Способки</a>
-    <a href="#rating">🏆 Топ</a>
-    <a href="#wipes">🗓️ Вайпы</a>
-  </div>
+<div>
+<a href="#rules">📜 Правила</a>
+<a href="#games">🎮 Игры</a>
+<a href="#abilities">⚡ Способки</a>
+<a href="#titles">🏅 Титулы</a>
+<a href="#rating">🏆 Топ</a>
+<a href="#wipes">🗓️ Вайпы</a>
+</div>
 </nav>
 
 
 <header class="hero">
 
-  <h1>BALL GAMES</h1>
+<h1>BALL GAMES</h1>
 
-  <p>
-    Каждый сезон — новые возможности.
-    Каждая победа — часть истории.
-  </p>
+<p>
+Каждый сезон — новые возможности.<br>
+Каждая победа — часть истории.
+</p>
 
-  <div class="wipe">
-    🔥 <b>ГЛОБАЛЬНЫЙ ВАЙП — 1 СЕНТЯБРЯ</b><br>
+<div class="wipe">
+🔥 <b>ГЛОБАЛЬНЫЙ ВАЙП — 1 СЕНТЯБРЯ</b>
 
-    <small>
-      🍂 ОСЕННИЙ ВАЙП — 1 СЕНТЯБРЯ<br>
-      ⚡ В день вайпа действует бонус ×2 побед!<br>
-      🏆 Все победы после вайпа начинают считаться заново — с 0.<br>
-      🔥 1 сентября — начало нового сезона Ball Games!
-    </small>
-  </div>
+<br><br>
 
-  <br>
+🍂 ОСЕННИЙ ВАЙП — 1 СЕНТЯБРЯ<br>
+⚡ В день вайпа действует бонус ×2 побед!<br>
+🏆 После вайпа победы начинают считаться заново — с 0.<br>
+🔥 1 сентября — начало нового сезона Ball Games!
+</div>
 
-  <a class="btn" href="#rating">🏆 Смотреть рейтинг</a>
-  <a class="btn" href="#rules">📜 Правила</a>
+<br>
+
+<a class="btn" href="#rating">🏆 Смотреть рейтинг</a>
+<a class="btn" href="#rules">📜 Правила</a>
 
 </header>
 
 
-<!-- ================= РЕЙТИНГ ================= -->
-
-<section id="rating">
-
-  <h2>🏆 Рейтинг игроков</h2>
-
-  <div class="grid" id="ratingGrid">
-
-    <div class="card">
-      <p>⏳ Загружаем рейтинг...</p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= ПРАВИЛА ================= -->
-
 <section id="rules">
 
-<h2>📜 Основные правила</h2>
+<h2>🏆 Главное правило</h2>
+
+<div class="card warning">
+
+<h3>В каждой игре должен выбыть РОВНО 1 игрок.</h3>
+
+<p>
+❌ 0 выбывших — нельзя<br>
+❌ 2+ выбывших — нельзя<br>
+✅ Ровно 1 выбывший — правильно
+</p>
+
+</div>
+
+
+<h2>😎 Создатели Ball Games</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>👀 Гляделки</h3>
-
-<p class="muted">
-Игроки играют в КНБ.
-Победитель становится ведущим.
-Он бросает мяч выбранному игроку.
-Тот, в кого попали, выходит в «Бегущие вышибалы»
-и бросает мяч в ведущего.
-Попал — выбывает ведущий.
-Не попал — выбывает бросавший.
-</p>
-
+<h3>😎 Aves</h3>
+<p>Создатель Ball Games</p>
 </div>
 
-
 <div class="card">
-
-<h3>💥 Вышибалы</h3>
-
-<p class="muted">
-Проводятся столько раз, сколько нужно,
-чтобы осталось 2 игрока.
-Вместо вышибал можно проводить свои игры
-с мячом, но за одну игру должен выбыть
-ровно 1 игрок.
-</p>
-
+<h3>🎮 Стёпа</h3>
+<p>Создатель Ball Games</p>
 </div>
 
+<div class="card">
+<h3>⚡ Rikill</h3>
+<p>Создатель Ball Games</p>
+</div>
 
 <div class="card">
-
-<h3>🎲 Русская рулетка</h3>
-
-<p class="muted">
-Финал для двух игроков.
-Расстояние 5–7 метров.
-Броски по очереди.
-Двигаться для уклонения нельзя.
-Победитель получает +1 победу.
-</p>
-
+<h3>🔥 Артём</h3>
+<p>Создатель Ball Games</p>
 </div>
 
 </div>
@@ -375,11 +388,165 @@ th{
 </section>
 
 
-<!-- ================= СПОСОБНОСТИ ================= -->
+<section id="games">
+
+<h2>🎮 Основные игры</h2>
+
+<div class="card">
+
+<h3>👀 1. ГЛЯДЕЛКИ</h3>
+
+<p>
+1️⃣ Все игроки играют в «Камень, ножницы, бумага».
+</p>
+
+<p>
+2️⃣ Победитель становится ведущим и встаёт в центр.
+</p>
+
+<p>
+3️⃣ Остальные игроки выстраиваются перед ним полумесяцем.
+</p>
+
+<p>
+4️⃣ Ведущий выбирает одного игрока и бросает в него мяч.
+</p>
+
+<p>
+5️⃣ Если ведущий попал — выбранный игрок выходит в «Бегущие вышибалы».
+</p>
+
+<p>
+6️⃣ Этот игрок получает возможность бросить мяч в игрока, который был ведущим.
+</p>
+
+<p>
+7️⃣ Если он попадает — выбывает бывший ведущий.
+</p>
+
+<p>
+8️⃣ Если он не попадает — выбывает сам бросавший.
+</p>
+
+<p><b>🏆 В результате всегда выбывает ровно 1 игрок.</b></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>💥 2. ВЫШИБАЛЫ</h3>
+
+<p>
+Вышибалы проводятся столько раз, сколько необходимо, чтобы осталось 2 игрока.
+</p>
+
+<p>
+🎲 Право первого броска определяется через «Камень, ножницы, бумага».
+</p>
+
+<p>
+После каждого этапа должен выбыть ровно 1 игрок.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🎮 Свои игры</h3>
+
+<p>
+Если не хочется постоянно играть в вышибалы, можно придумать свою игру с мячом.
+</p>
+
+<div class="flow">
+🎯 1 игра → 1 выбывший
+<br><br>
+❌ 0 — нельзя<br>
+❌ 2+ — нельзя<br>
+✅ 1 — можно
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>🎲 3. РУССКАЯ РУЛЕТКА</h3>
+
+<p>Это финальная игра Ball Games.</p>
+
+<p>
+👥 Остаются 2 игрока.
+</p>
+
+<p>
+📏 Расстояние между игроками — 5–7 метров.
+</p>
+
+<p>
+🏐 Игроки по очереди бросают мяч.
+</p>
+
+<p>
+🚫 Двигаться, чтобы увернуться от броска, нельзя.
+</p>
+
+<p>
+🎯 Кто попал в соперника — тот побеждает.
+</p>
+
+<p>
+🏆 Победитель получает +1 победу.
+</p>
+
+<p>
+❌ Обычная Аптечка здесь не работает.
+</p>
+
+</div>
+
+
+<h2>👥 Количество игр</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🔹 4 игрока</h3>
+
+<p>👀 Гляделки: <b>4 → 3</b></p>
+<p>💥 Вышибалы: <b>3 → 2</b></p>
+<p>🎲 Русская рулетка: <b>2 → 1</b></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔹 5 игроков</h3>
+
+<p>👀 Гляделки: <b>5 → 4</b></p>
+<p>💥 Вышибалы: <b>4 → 3</b></p>
+<p>💥 Вышибалы: <b>3 → 2</b></p>
+<p>🎲 Русская рулетка: <b>2 → 1</b></p>
+
+</div>
+
+</div>
+
+<p class="muted">
+При большем количестве игроков добавляются необходимые игры,
+пока не останутся 2 финалиста.
+</p>
+
+</section>
+
 
 <section id="abilities">
 
-<h2>⚡ Способности</h2>
+<h2>⚡ Способности и усиления</h2>
 
 <table>
 
@@ -388,73 +555,49 @@ th{
 <th>Способность</th>
 </tr>
 
-<tr>
-<td>5</td>
-<td>🩹 Аптечка</td>
-</tr>
-
-<tr>
-<td>10</td>
-<td>🗺️ Увеличение территории</td>
-</tr>
-
-<tr>
-<td>15</td>
-<td>🚧 Запретная зона</td>
-</tr>
-
-<tr>
-<td>20</td>
-<td>🔄 Возврат</td>
-</tr>
-
-<tr>
-<td>30</td>
-<td>🪄 Телепорт</td>
-</tr>
-
-<tr>
-<td>40</td>
-<td>🎯 Точный бросок</td>
-</tr>
-
-<tr>
-<td>50</td>
-<td>🎁 Любая личная способность</td>
-</tr>
-
-<tr>
-<td>70</td>
-<td>🔥 Двойной бросок</td>
-</tr>
-
-<tr>
-<td>100</td>
-<td>👑 Прайм</td>
-</tr>
-
-<tr>
-<td>1000</td>
-<td>🌟 Всемогущий</td>
-</tr>
+<tr><td>5</td><td>🩹 Аптечка</td></tr>
+<tr><td>10</td><td>🗺️ Увеличение территории</td></tr>
+<tr><td>15</td><td>🚧 Запретная зона</td></tr>
+<tr><td>20</td><td>🔄 Возврат</td></tr>
+<tr><td>30</td><td>🪄 Телепорт</td></tr>
+<tr><td>40</td><td>🎯 Точный бросок</td></tr>
+<tr><td>50</td><td>🎁 Любая личная способность</td></tr>
+<tr><td>70</td><td>🔥 Двойной бросок</td></tr>
+<tr><td>100</td><td>👑 Прайм</td></tr>
+<tr><td>1000</td><td>🌟 Всемогущий</td></tr>
 
 </table>
 
 
-<div class="grid">
+<br>
 
 
 <div class="card ability">
 
-<h3>🩹 Аптечка — 5 побед</h3>
+<h3>🩹 5 ПОБЕД — АПТЕЧКА</h3>
 
 <p>
-Если в игрока с Аптечкой попали,
-он не выбывает и становится ведущим.
+Если в игрока с Аптечкой попали:
+</p>
+
+<div class="flow">
+🏐 Попадание
+<br>⬇️<br>
+🩹 Аптечка
+<br>⬇️<br>
+🎯 Игрок НЕ выбывает и становится ведущим.
+</div>
+
+<p>
+⚠️ Аптечка работает только 1 раз до Русской рулетки.
 </p>
 
 <p>
-⚠️ Работает только 1 раз до Русской рулетки.
+⚠️ После использования она считается потраченной.
+</p>
+
+<p>
+❌ В Русской рулетке обычная Аптечка не работает.
 </p>
 
 </div>
@@ -462,11 +605,10 @@ th{
 
 <div class="card ability">
 
-<h3>🗺️ Увеличение территории — 10 побед</h3>
+<h3>🗺️ 10 ПОБЕД — УВЕЛИЧЕНИЕ ТЕРРИТОРИИ</h3>
 
 <p>
-Позволяет увеличить игровую территорию
-по правилам Ball Games.
+Игрок получает возможность увеличить игровую территорию по правилам Ball Games.
 </p>
 
 </div>
@@ -474,34 +616,26 @@ th{
 
 <div class="card ability">
 
-<h3>🚧 Запретная зона — 15 побед</h3>
+<h3>🚧 15 ПОБЕД — ЗАПРЕТНАЯ ЗОНА</h3>
 
 <p>
-Специальное место, где ведущему сложнее
-выбить игрока.
+Специальное место, где ведущему сложнее выбить игрока.
 </p>
 
 <p>
-До получения — 1 использование.
-После получения — 15 использований.
-Для ведущего зона доступна бесконечно.
-</p>
-
-</div>
-
-
-<div class="card ability">
-
-<h3>🔄 Возврат — 20 побед</h3>
-
-<p>
-Один раз за игру игрок может оттолкнуть
-летящий в него мяч руками.
+🔹 До получения способности — 1 использование.
 </p>
 
 <p>
-Это именно отталкивание, а не ловля.
-После использования способность потрачена.
+🔹 После получения — 15 использований.
+</p>
+
+<p>
+🔹 Для ведущего зона доступна бесконечно.
+</p>
+
+<p>
+⚠️ Зона не делает игрока полностью неуязвимым.
 </p>
 
 </div>
@@ -509,11 +643,26 @@ th{
 
 <div class="card ability">
 
-<h3>🪄 Телепорт — 30 побед</h3>
+<h3>🔄 20 ПОБЕД — ВОЗВРАТ</h3>
 
 <p>
-Один раз за игру игрок может переместиться
-в заранее определённую точку территории.
+Один раз за игру игрок может оттолкнуть летящий в него мяч руками.
+</p>
+
+<p>
+👐 Это именно ОТТАЛКИВАНИЕ, а не ловля.
+</p>
+
+<div class="flow">
+🏐 Мяч отбит
+<br>⬇️<br>
+❌ Попадание не засчитывается
+<br>⬇️<br>
+🔄 Ведущий перекидывает мяч
+</div>
+
+<p>
+После использования способность считается потраченной.
 </p>
 
 </div>
@@ -521,33 +670,44 @@ th{
 
 <div class="card ability">
 
-<h3>🎯 Точный бросок — 40 побед</h3>
+<h3>🪄 30 ПОБЕД — ТЕЛЕПОРТ</h3>
 
 <p>
-Один раз за игру ведущий может использовать
-способность при спорном попадании.
+Один раз за игру игрок может переместиться в заранее определённую точку игровой территории.
 </p>
 
 <p>
-Если попадание действительно могло произойти,
+⚠️ Телепорт не может отменить уже произошедшее попадание.
+</p>
+
+</div>
+
+
+<div class="card ability">
+
+<h3>🎯 40 ПОБЕД — ТОЧНЫЙ БРОСОК</h3>
+
+<p>
+Один раз за игру ведущий может использовать способность при СПОРНОМ ПОПАДАНИИ.
+</p>
+
+<p>
+Например, ведущий бросил мяч, а игрок говорит:
+«Не попал!»
+</p>
+
+<p>
+Если другие игроки видели момент, но точно не уверены, было касание или нет,
+ведущий может заявить способность.
+</p>
+
+<p>
+🎯 Если другие игроки считают, что попадание действительно могло произойти —
 оно засчитывается.
 </p>
 
-</div>
-
-
-<div class="card ability">
-
-<h3>🎁 Личная способность — 50 побед</h3>
-
 <p>
-Игрок может выбрать или придумать
-свою личную способность.
-</p>
-
-<p>
-Она должна быть сильной и интересной,
-но не должна ломать правила Ball Games.
+❌ Если все точно видели, что мяч не попал — способность использовать нельзя.
 </p>
 
 </div>
@@ -555,19 +715,96 @@ th{
 
 <div class="card ability">
 
-<h3>🔥 Двойной бросок — 70 побед</h3>
+<h3>🎁 50 ПОБЕД — ЛИЧНАЯ СПОСОБНОСТЬ</h3>
 
 <p>
-Это усиление, а не личная способность.
+Игрок может выбрать или придумать свою личную способность.
 </p>
 
 <p>
-В ситуациях, где игроку положен один бросок,
-он может сделать два броска подряд.
+⚠️ Она должна быть сильной и интересной, но НЕ читерной.
+</p>
+
+<h3>✅ Примеры</h3>
+
+<p>
+🧊 Заморозка — заморозить игрока на 15 секунд.
 </p>
 
 <p>
-❌ В финальной игре не работает.
+👐 Ловля мяча — поймать мяч руками, чтобы попадание не засчиталось.
+</p>
+
+<p>
+🩹 Аптечка для Русской рулетки — пережить одно попадание именно в финале.
+</p>
+
+<h3>❌ Запрещено</h3>
+
+<p>
+• Давать огромное количество побед.<br>
+• Автоматически выбивать любого игрока.<br>
+• Делать игрока полностью неуязвимым.<br>
+• Гарантировать победу.<br>
+• Полностью ломать правила Ball Games.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔒 Уникальность личных способностей</h3>
+
+<p>
+Одну личную способность одновременно может использовать только ОДИН игрок.
+</p>
+
+<p>
+Например:
+</p>
+
+<p>
+😎 Aves выбрал «Заморозку».
+</p>
+
+<p>
+Пока Aves её не сменит, другой игрок не может выбрать или использовать «Заморозку».
+</p>
+
+<p>
+После смены способности она снова становится доступной.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔄 Смена личной способности</h3>
+
+<p>
+Это правило относится ТОЛЬКО к личной способности за 50 побед.
+</p>
+
+<div class="flow">
+🏆 50 побед
+<br>⬇️<br>
+➕ Набрал ещё 10 побед
+<br>⬇️<br>
+🔄 Можно сменить способность
+<br>⬇️<br>
+➕ Ещё 10 побед
+<br>⬇️<br>
+🔄 Следующая смена
+</div>
+
+<p>
+Обычных способностей за 5, 10, 15, 20, 30, 40, 70, 100 и 1000 побед это не касается.
+</p>
+
+<p>
+👑 Прайм позволяет иметь 2 способности одновременно.
 </p>
 
 </div>
@@ -575,11 +812,31 @@ th{
 
 <div class="card ability">
 
-<h3>👑 Прайм — 100 побед</h3>
+<h3>🔥 70 ПОБЕД — ДВОЙНОЙ БРОСОК</h3>
 
 <p>
-Прайм позволяет иметь
-2 способности одновременно.
+Это УСИЛЕНИЕ, а не личная способность.
+</p>
+
+<p>
+Игрок получает возможность в ситуациях, где ему положен один бросок,
+сделать два броска подряд.
+</p>
+
+<p>
+🏐 Первый бросок выполняется обычно.
+</p>
+
+<p>
+🏐 Если первый бросок попал — второй бросок уже не нужен.
+</p>
+
+<p>
+❌ В Русской рулетке не работает.
+</p>
+
+<p>
+⚠️ Усиление не гарантирует попадание.
 </p>
 
 </div>
@@ -587,75 +844,235 @@ th{
 
 <div class="card ability">
 
-<h3>🌟 Всемогущий — 1000 побед</h3>
+<h3>👑 100 ПОБЕД — ПРАЙМ</h3>
 
 <p>
-Высший уровень Ball Games.
-Особый статус для игроков,
-достигших 1000 побед.
+Прайм позволяет игроку иметь <b>2 способности одновременно</b>.
 </p>
 
 </div>
+
+
+<div class="card ability">
+
+<h3>🌟 1000 ПОБЕД — ВСЕМОГУЩИЙ</h3>
+
+<p>
+Высший уровень системы способностей Ball Games.
+</p>
 
 </div>
 
 </section>
 
 
-<!-- ================= ТИТУЛЫ ================= -->
+<section id="titles">
+
+<h2>🏅 Титулы</h2>
+
+<p class="muted">
+Чем больше побед — тем престижнее титул.
+На каждом уровне игрок выбирает ОДИН из двух.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>🏆 10 побед</h3>
+<p>🥷 Непобедимый / 🏴‍☠️ Пират</p>
+</div>
+
+<div class="card">
+<h3>🏆 20 побед</h3>
+<p>💎 VIP / ⭐ Один Такой</p>
+</div>
+
+<div class="card">
+<h3>🏆 30 побед</h3>
+<p>🕶️ Инкогнито {_} / 👑 Тёмный Принц</p>
+</div>
+
+<div class="card">
+<h3>🏆 40 побед</h3>
+<p>🦁 Лорд / 🌑 В Тени</p>
+</div>
+
+<div class="card">
+<h3>🏆 50 побед</h3>
+<p>🔥 Легенда / ⚔️ Избранный</p>
+</div>
+
+<div class="card">
+<h3>🏆 70 побед</h3>
+<p>🐉 Dragon / 😈 Князь</p>
+</div>
+
+<div class="card">
+<h3>🏆 100 побед</h3>
+<p>🏆 Мастер Мяча / 🌟 Властелин Игр</p>
+</div>
+
+<div class="card">
+<h3>🏆 200 побед</h3>
+<p>👑 Повелитель Игр / 💀 Бессмертный</p>
+</div>
+
+<div class="card">
+<h3>🏆 500 побед</h3>
+<p>⚡ Верховный Игрок / 🔱 Абсолют</p>
+</div>
+
+<div class="card">
+<h3>🏆 1000 побед</h3>
+<p>🌟 Всемогущий / 👑 Бог Ball Games</p>
+</div>
+
+</div>
+
+<div class="card success">
+<h3>🏅 Титулы сохраняются после вайпа.</h3>
+</div>
+
+</section>
+
 
 <section>
 
-<h2>🏅 Титулы</h2>
+<h2>🔥 Бонусные победы</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🔥 Серии побед</h3>
+<p>3 победы подряд → <b>+1 победа</b></p>
+<p>5 побед подряд → <b>+2 победы</b></p>
+<p>10 побед подряд → <b>+5 побед</b></p>
+</div>
+
+<div class="card">
+<h3>🎯 Победа над более сильным игроком</h3>
+<p>
+Если у соперника больше побед:
+</p>
+<p>
+🏆 Победа → <b>+1 дополнительная победа</b>
+</p>
+</div>
+
+<div class="card">
+<h3>🏆 Сезонные бонусы</h3>
+<p>25 побед за сезон → <b>+2</b></p>
+<p>50 побед → <b>+5</b></p>
+<p>75 побед → <b>+10</b></p>
+</div>
+
+</div>
+
+<p class="muted">
+Бонусные победы учитываются при получении способностей и титулов.
+</p>
+
+</section>
+
+
+<section id="admin">
+
+<h2>🛡️ Администраторы</h2>
 
 <div class="card">
 
 <p>
-На каждом уровне игрок выбирает ОДИН из двух титулов.
+Администраторы — это проверенные игроки, которые следят за порядком.
 </p>
 
-<span class="pill">10 — 🥷 Непобедимый / 🏴‍☠️ Пират</span>
+<p>
+⚠️ Администратор не должен выдавать наказание просто так.
+</p>
 
-<span class="pill">20 — 💎 VIP / ⭐ Один Такой</span>
+<p>
+Любой игрок может подать жалобу на другого игрока.
+</p>
 
-<span class="pill">30 — 🕶️ Инкогнито {_} / 👑 Тёмный Принц</span>
+<p>
+После жалобы проводится голосование.
+</p>
 
-<span class="pill">40 — 🦁 Лорд / 🌑 В Тени</span>
+<p>
+Если за наказание набирается достаточно голосов — оно применяется.
+</p>
 
-<span class="pill">50 — 🔥 Легенда / ⚔️ Избранный</span>
+<h3>❌ Нельзя наказывать игрока просто потому, что:</h3>
 
-<span class="pill">70 — 🐉 Dragon / 👑 Князь</span>
+<p>
+• у него много побед;<br>
+• он занимает первое место;<br>
+• он кому-то просто не нравится.
+</p>
 
-<span class="pill">100 — 🏆 Мастер Мяча / 🌟 Властелин Игр</span>
+<p>
+<b>Должна быть реальная причина.</b>
+</p>
 
-<span class="pill">200 — 👑 Повелитель Игр / 💀 Бессмертный</span>
+</div>
 
-<span class="pill">500 — ⚡ Верховный Игрок / 🔱 Абсолют</span>
 
-<span class="pill">1000 — 🌟 Всемогущий / 👑 Бог Ball Games</span>
+<div class="card warning">
 
-<p class="muted">
-🏅 Титулы сохраняются после вайпа.
+<h3>🔇 Мут</h3>
+
+<p>
+Мут может выдаваться за серьёзные нарушения.
+</p>
+
+<p>
+👊 Драки<br>
+🤬 Серьёзные нарушения из-за матов<br>
+😤 Намеренные провокации<br>
+⚠️ Сильное мешание другим игрокам<br>
+❗ Другие нарушения правил
+</p>
+
+<p>
+🔇 Мут → победы обнуляются.
+</p>
+
+<p>
+При этом игрок может продолжать играть.
+</p>
+
+</div>
+
+
+<div class="card danger">
+
+<h3>🚫 Бан</h3>
+
+<p>
+За серьёзные нарушения может выдаваться бан.
+</p>
+
+<p>
+🚫 Бан → победы обнуляются + игрок исключается из Ball Games на неделю или дольше.
 </p>
 
 </div>
 
 </section>
 
-
-<!-- ================= ВАЙПЫ ================= -->
 
 <section id="wipes">
 
 <h2>🗓️ Вайпы</h2>
 
-<div class="card">
+<div class="card warning">
 
-<h3>🔥 Вайп каждые 3 месяца</h3>
+<h3>🗓️ ВАЙП КАЖДЫЕ 3 МЕСЯЦА</h3>
 
 <p>
 Каждые 3 месяца происходит вайп.
 </p>
+
+<h3>После вайпа:</h3>
 
 <p>
 🏆 Победы → 0<br>
@@ -663,15 +1080,30 @@ th{
 🏅 Титулы → сохраняются
 </p>
 
+</div>
+
+
+<div class="card">
+
 <h3>🔄 После каждого вайпа</h3>
 
 <p>
-Создатели могут внести небольшое изменение
-в правила Ball Games.
+Создатели могут внести небольшое изменение в правила.
 </p>
 
 <p>
-Каждый новый вайп немного меняет Ball Games,
+Например:
+</p>
+
+<p>
+🩹 Вместо Аптечки добавить Тотем.<br>
+🚧 Увеличить Запретную зону с 15 до 20 использований.<br>
+🗺️ Изменить Увеличение территории.<br>
+🎁 Добавить новые личные способности.
+</p>
+
+<p>
+Поэтому каждый новый вайп немного меняет Ball Games,
 но основа игры остаётся прежней.
 </p>
 
@@ -680,108 +1112,62 @@ th{
 </section>
 
 
-<!-- ================= СОЗДАТЕЛИ ================= -->
+<section id="rating">
+<section id="rating">
+  <h2>🏆 Рейтинг игроков</h2>
 
-<section>
+  <div class="grid" id="ratingGrid">
+    <div class="card">
+      <script>
+const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
+const SUPABASE_KEY = sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy;
 
-<h2>😎 Создатели Ball Games</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>😎 Aves</h3>
-<p class="muted">Создатель Ball Games</p>
-</div>
-
-<div class="card">
-<h3>🎮 Стёпа</h3>
-<p class="muted">Создатель Ball Games</p>
-</div>
-
-<div class="card">
-<h3>⚡ Rikill</h3>
-<p class="muted">Создатель Ball Games</p>
-</div>
-
-<div class="card">
-<h3>🔥 Артём</h3>
-<p class="muted">Создатель Ball Games</p>
-</div>
-
-</div>
-
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+      </script>
+    </div>
+  </div>
 </section>
 
-
-<!-- ================= TELEGRAM ================= -->
-
-<section>
-
-<h2>📱 Ball Games в Telegram</h2>
-
-<div class="card">
-
-<a
-class="telegram"
-href="https://t.me/Ball_Games_Official"
-target="_blank">
-📢 Официальный Telegram Ball Games
-</a>
-
-<a
-class="telegram"
-href="https://t.me/SamaraSevaI"
-target="_blank">
-👨‍💻 Telegram разработчика
-</a>
-
-</div>
-
-</section>
-
-
-<!-- ================= ЦЕЛЬ ================= -->
 
 <section>
 
 <h2>🏆 Главная цель Ball Games</h2>
 
+<div class="flow">
+
+🎮 Играй
+<br>⬇️<br>
+🏆 Побеждай
+<br>⬇️<br>
+⚡ Открывай способности
+<br>⬇️<br>
+🏅 Получай титулы
+<br>⬇️<br>
+📈 Поднимайся в рейтинге
+
+</div>
+
+
 <div class="card">
 
-<p>
-🎮 Играй
-</p>
+<h3>⚡ Способности</h3>
 
 <p>
-⬇️
+5 → 10 → 15 → 20 → 30 → 40 → 50 → 70 → 100 → 1000
 </p>
 
-<p>
-🏆 Побеждай
-</p>
+</div>
+
+
+<div class="card">
+
+<h3>🏅 Титулы</h3>
 
 <p>
-⬇️
-</p>
-
-<p>
-⚡ Открывай способности
-</p>
-
-<p>
-⬇️
-</p>
-
-<p>
-🏅 Получай титулы
-</p>
-
-<p>
-⬇️
-</p>
-
-<p>
-📈 Поднимайся в рейтинге
+10 → 20 → 30 → 40 → 50 → 70 → 100 → 200 → 500 → 1000
 </p>
 
 </div>
@@ -791,115 +1177,140 @@ target="_blank">
 
 <footer class="footer">
 
-🎯 BALL GAMES<br>
+<h2>😎 BALL GAMES</h2>
+
+<p>
 Каждый вайп — новые правила.<br>
 Каждая победа — часть истории. 🏆
+</p>
+
+<p class="small">
+© Ball Games
+</p>
 
 </footer>
 
 
-<!-- ================= SUPABASE ================= -->
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-const SUPABASE_URL =
+const supabaseUrl =
 "https://hcfonkgsscucqkrmgrat.supabase.co";
 
-const SUPABASE_KEY =
-"ВСТАВЬ_СЮДА_СВОЙ_SB_PUBLISHABLE_КЛЮЧ";
+const supabaseKey =
+"ВСТАВЬ_СЮДА_СВОЙ_SB_PUBLISHABLE_KEY";
 
 const supabase =
 window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+supabaseUrl,
+supabaseKey
 );
 
 
 async function loadRating(){
 
-  const ratingGrid =
-    document.getElementById("ratingGrid");
+const ratingGrid =
+document.getElementById("ratingGrid");
 
-  const { data, error } =
-    await supabase
-      .from("players")
-      .select("name, wins")
-      .order("wins", {
-        ascending:false
-      });
+const ratingStatus =
+document.getElementById("ratingStatus");
 
 
-  if(error){
-
-    console.error(
-      "Ошибка загрузки рейтинга:",
-      error
-    );
-
-    ratingGrid.innerHTML = `
-      <div class="card">
-        <h3>❌ Ошибка загрузки рейтинга</h3>
-        <p class="muted">
-          ${error.message}
-        </p>
-      </div>
-    `;
-
-    return;
-  }
+const {data,error} =
+await supabase
+.from("players")
+.select("name,wins")
+.order("wins",{ascending:false});
 
 
-  if(!data || data.length === 0){
+if(error){
 
-    ratingGrid.innerHTML = `
-      <div class="card">
-        <p>Пока нет игроков.</p>
-      </div>
-    `;
+console.error(error);
 
-    return;
-  }
+ratingStatus.textContent =
+"❌ Не удалось загрузить рейтинг";
+
+ratingGrid.innerHTML = `
+<div class="card danger">
+<h3>❌ Ошибка загрузки рейтинга</h3>
+<p>
+Проверь подключение Supabase и RLS-политику таблицы players.
+</p>
+</div>
+`;
+
+return;
+}
 
 
-  const medals = [
-    "🥇",
-    "🥈",
-    "🥉"
-  ];
+if(!data || data.length===0){
+
+ratingStatus.textContent =
+"Пока нет игроков";
+
+ratingGrid.innerHTML = `
+<div class="card">
+<h3>🏆 Рейтинг пуст</h3>
+<p>Добавь игроков в таблицу players.</p>
+</div>
+`;
+
+return;
+}
 
 
-  ratingGrid.innerHTML = `
+ratingStatus.textContent =
+"🟢 Рейтинг обновлён из Supabase";
 
-    <div class="card">
 
-      <h3>🏆 Топ Ball Games</h3>
+const medals =
+["🥇","🥈","🥉"];
 
-      ${data.map((player,index)=>`
 
-        <div class="rank">
+ratingGrid.innerHTML = `
 
-          <span class="place">
-            ${
-              medals[index]
-              || (index+1)
-            }
-          </span>
+<div class="card">
 
-          <span class="name">
-            ${player.name}
-          </span>
+<h3>🏆 Топ Ball Games</h3>
 
-          <span class="wins">
-            ${player.wins} побед
-          </span>
+${data.map((player,index)=>`
 
-        </div>
+<div class="rank">
 
-      `).join("")}
+<span class="place">
+${medals[index] || (index+1)+"️⃣"}
+</span>
 
-    </div>
+<span class="name">
+${escapeHtml(player.name)}
+</span>
 
-  `;
+<span class="wins">
+${player.wins ?? 0} 🏆
+</span>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
+}
+
+
+function escapeHtml(text){
+
+return String(text)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
