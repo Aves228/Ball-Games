@@ -869,6 +869,75 @@ Ball Games — соревнование с мячом, придуманное д
 
 
 <section id="rating">
+  <h2>🏆 Рейтинг игроков</h2>
+
+  <div class="grid" id="ratingGrid">
+    <div class="card">
+      <p>⏳ Загружаем рейтинг...</p>
+    </div>
+  </div>
+</section>
+
+<script>
+async function loadRating() {
+  const { data, error } = await supabase
+    .from("players")
+    .select("name, wins")
+    .order("wins", { ascending: false });
+
+  const ratingGrid = document.getElementById("ratingGrid");
+
+  if (error) {
+    console.error("Ошибка загрузки рейтинга:", error);
+
+    ratingGrid.innerHTML = `
+      <div class="card">
+        <h3>❌ Не удалось загрузить рейтинг</h3>
+        <p class="muted">Попробуйте обновить страницу.</p>
+      </div>
+    `;
+
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    ratingGrid.innerHTML = `
+      <div class="card">
+        <p>Пока нет игроков.</p>
+      </div>
+    `;
+
+    return;
+  }
+
+  const medals = ["🥇", "🥈", "🥉"];
+
+  ratingGrid.innerHTML = `
+    <div class="card">
+      <h3>🏆 Топ Ball Games</h3>
+
+      ${data.map((player, index) => `
+        <div class="rank">
+          <span class="place">
+            ${medals[index] || (index + 1) + "️⃣"}
+          </span>
+
+          <span class="name">
+            ${player.name}
+          </span>
+
+          <span class="wins">
+            ${player.wins}
+          </span>
+        </div>
+      `).join("")}
+
+    </div>
+  `;
+}
+
+loadRating();
+  </script>
 
 <h2>🏆 Рейтинг игроков</h2>
 
