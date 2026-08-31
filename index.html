@@ -1243,5 +1243,15 @@ async function loadRating() {
 
 loadRating();
   </script>
+  <script>
+const SUPABASE_URL = 'https://hcfonkgsscucqkrmgrat.supabase.co';
+
+const SUPABASE_KEY = 'ТВОЙ_ANON_КЛЮЧ';
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+  </script>
 </body>
   </html>
