@@ -1184,15 +1184,11 @@ gap:8px;
 </p>
 
 </footer><!-- SUPABASE -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
-const SUPABASE_KEY = "ТВОЙ_SB_PUBLISHABLE_КЛЮЧ";
-
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjZm9ua2dzc2N1Y3Frcm1ncmF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxNDAwMTIsImV4cCI6MjEwMzcxNjAxMn0.qSvVXP0myWZONBV5PKmJ9ciD-nW1UizW4Wl4qAiNzfESUPABASE_URL,
   SUPABASE_KEY
 );
 
@@ -1209,13 +1205,16 @@ async function loadRating() {
 
   if (error) {
     console.error(error);
+
     status.textContent = "❌ Ошибка загрузки рейтинга";
+
     grid.innerHTML = `
       <div class="card danger">
         <h3>❌ Не удалось загрузить рейтинг</h3>
         <p>${error.message}</p>
       </div>
     `;
+
     return;
   }
 
@@ -1227,6 +1226,7 @@ async function loadRating() {
         <p>😢 Игроков пока нет.</p>
       </div>
     `;
+
     return;
   }
 
@@ -1242,5 +1242,9 @@ async function loadRating() {
 }
 
 loadRating();
+</script>
+
+</body>
+</html>
 </body>
   </html>
