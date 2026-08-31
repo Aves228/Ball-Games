@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -1348,5 +1348,29 @@ rel="noopener"
 
 </footer>
 
-</body>
+<script>
+const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
+const SUPABASE_KEY = "ВСТАВЬ_СЮДА_СВОЙ_SB_PUBLISHABLE_КЛЮЧ";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function testRating() {
+  const { data, error } = await supabase
+    .from("players")
+    .select("name, wins")
+    .order("wins", { ascending: false });
+
+  if (error) {
+    console.error("Ошибка загрузки рейтинга:", error);
+    return;
+  }
+
+  console.log("Рейтинг из Supabase:", data);
+}
+
+testRating();
+</script></body>
   </html>
