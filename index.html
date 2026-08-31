@@ -1183,32 +1183,121 @@ gap:8px;
 © Ball Games
 </p>
 
-</footer><!-- SUPABASE -->
+                              </footer><!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+.admin-panel{
+  max-width:600px;
+  margin:20px auto;
+}
+
+.admin-box{
+  background:#fff;
+  border:1px solid #dfe5ef;
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 8px 28px #24324a12;
+}
+
+.admin-input{
+  width:100%;
+  padding:13px;
+  margin:7px 0;
+  border:1px solid #dfe5ef;
+  border-radius:12px;
+  font-size:16px;
+}
+
+.admin-btn{
+  border:0;
+  border-radius:10px;
+  padding:9px 13px;
+  font-weight:900;
+  cursor:pointer;
+  margin-left:5px;
+}
+
+.plus{
+  background:#4caf50;
+  color:white;
+}
+
+.minus{
+  background:#e05252;
+  color:white;
+}
+
+.login{
+  background:#536dfe;
+  color:white;
+  padding:12px 18px;
+  border:0;
+  border-radius:12px;
+  font-weight:900;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+.logout{
+  background:#eef2f8;
+  color:#182033;
+  padding:10px 15px;
+  border:0;
+  border-radius:12px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.admin-status{
+  margin-top:10px;
+  color:#69748b;
+  font-size:14px;
+}
+</style>
 
 <script>
 const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy";
+const SUPABASE_KEY =
+"sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy";
 
 const { createClient } = supabase;
-const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-async function loadRating() {
-  const status = document.getElementById("ratingStatus");
-  const grid = document.getElementById("ratingGrid");
+const db = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-  status.textContent = "⏳ Загружаем рейтинг...";
+
+/* =========================
+   РЕЙТИНГ
+========================= */
+
+async function loadRating(){
+
+  const status =
+    document.getElementById("ratingStatus");
+
+  const grid =
+    document.getElementById("ratingGrid");
+
+  status.textContent =
+    "⏳ Загружаем рейтинг...";
 
   const { data, error } = await db
     .from("players")
     .select("*")
-    .order("wins", { ascending: false });
+    .order("wins", {
+      ascending:false
+    });
 
-  if (error) {
+  if(error){
+
     console.error(error);
 
-    status.textContent = "❌ Ошибка загрузки рейтинга";
+    status.textContent =
+      "❌ Ошибка загрузки рейтинга";
 
     grid.innerHTML = `
       <div class="card danger">
@@ -1220,9 +1309,13 @@ async function loadRating() {
     return;
   }
 
-  status.textContent = `🏆 Игроков: ${data.length}`;
 
-  if (!data.length) {
+  status.textContent =
+    `🏆 Игроков: ${data.length}`;
+
+
+  if(!data.length){
+
     grid.innerHTML = `
       <div class="card">
         <p>😢 Игроков пока нет.</p>
@@ -1232,19 +1325,350 @@ async function loadRating() {
     return;
   }
 
-  grid.innerHTML = data.map((player, index) => `
+
+  grid.innerHTML = data.map((player,index)=>`
+
     <div class="card">
+
       <div class="rank">
-        <div class="place">${index + 1}️⃣</div>
-        <div class="name">${player.name ?? "Без имени"}</div>
-        <div class="wins">🏆 ${player.wins ?? 0}</div>
+
+        <div class="place">
+          ${index + 1}️⃣
+        </div>
+
+        <div class="name">
+          ${escapeHtml(player.name ?? "Без имени")}
+        </div>
+
+        <div class="wins">
+          🏆 ${player.wins ?? 0}
+        </div>
+
+        <div
+          class="admin-controls"
+          id="controls-${player.id}"
+          style="display:none"
+        >
+
+          <button
+            class="admin-btn minus"
+            onclick="changeWins('${player.id}', -1)"
+          >
+            −1
+          </button>
+
+          <button
+            class="admin-btn plus"
+            onclick="changeWins('${player.id}', 1)"
+          >
+            +1
+          </button>
+
+        </div>
+
       </div>
+
     </div>
+
   `).join("");
+
+  updateAdminControls();
 }
 
+
+/* =========================
+   +1 / -1 ПОБЕДА
+========================= */
+
+async function changeWins(id, amount){
+
+  const {
+    data: userData
+  } = await db.auth.getUser();
+
+  if(!userData.user){
+
+    alert("🔐 Сначала войдите как администратор.");
+
+    return;
+  }
+
+
+  const { data: player, error: getError } =
+    await db
+      .from("players")
+      .select("wins")
+      .eq("id", id)
+      .single();
+
+
+  if(getError){
+
+    alert(
+      "❌ Не удалось получить игрока:\n" +
+      getError.message
+    );
+
+    return;
+  }
+
+
+  const currentWins =
+    Number(player.wins) || 0;
+
+
+  const newWins =
+    Math.max(0, currentWins + amount);
+
+
+  const { error } =
+    await db
+      .from("players")
+      .update({
+        wins:newWins
+      })
+      .eq("id", id);
+
+
+  if(error){
+
+    alert(
+      "❌ Не удалось изменить победы:\n" +
+      error.message
+    );
+
+    return;
+  }
+
+
+  await loadRating();
+}
+
+
+/* =========================
+   АВТОРИЗАЦИЯ
+========================= */
+
+async function loginAdmin(){
+
+  const email =
+    document.getElementById("adminEmail").value.trim();
+
+  const password =
+    document.getElementById("adminPassword").value;
+
+
+  if(!email || !password){
+
+    document.getElementById("adminStatus").textContent =
+      "⚠️ Введите email и пароль.";
+
+    return;
+  }
+
+
+  document.getElementById("adminStatus").textContent =
+    "⏳ Входим...";
+
+
+  const { error } =
+    await db.auth.signInWithPassword({
+      email,
+      password
+    });
+
+
+  if(error){
+
+    document.getElementById("adminStatus").textContent =
+      "❌ " + error.message;
+
+    return;
+  }
+
+
+  document.getElementById("adminStatus").textContent =
+    "✅ Вы вошли как администратор.";
+
+  document.getElementById("adminLoginForm").style.display =
+    "none";
+
+  document.getElementById("adminLogged").style.display =
+    "block";
+
+
+  updateAdminControls();
+}
+
+
+/* =========================
+   ВЫХОД
+========================= */
+
+async function logoutAdmin(){
+
+  await db.auth.signOut();
+
+  document.getElementById("adminLoginForm").style.display =
+    "block";
+
+  document.getElementById("adminLogged").style.display =
+    "none";
+
+  document.getElementById("adminStatus").textContent =
+    "Вы вышли из аккаунта.";
+
+  updateAdminControls();
+}
+
+
+/* =========================
+   ПОКАЗ КНОПОК
+========================= */
+
+async function updateAdminControls(){
+
+  const {
+    data
+  } = await db.auth.getUser();
+
+
+  const loggedIn =
+    !!data.user;
+
+
+  document
+    .querySelectorAll(".admin-controls")
+    .forEach(el=>{
+
+      el.style.display =
+        loggedIn ? "block" : "none";
+
+    });
+}
+
+
+/* =========================
+   ЭКРАН АВТОРИЗАЦИИ
+========================= */
+
+async function setupAdmin(){
+
+  const {
+    data
+  } = await db.auth.getUser();
+
+
+  if(data.user){
+
+    document.getElementById("adminLoginForm").style.display =
+      "none";
+
+    document.getElementById("adminLogged").style.display =
+      "block";
+
+  }
+
+
+  updateAdminControls();
+}
+
+
+/* =========================
+   ЗАЩИТА ОТ HTML
+========================= */
+
+function escapeHtml(text){
+
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   ЗАПУСК
+========================= */
+
 loadRating();
+
+setupAdmin();
 </script>
 
+
+<!-- АДМИНКА -->
+
+<section id="adminPanel" class="admin-panel">
+
+  <div class="admin-box">
+
+    <h2>🛡️ Админ Ball Games</h2>
+
+    <div id="adminLoginForm">
+
+      <p>
+        🔐 Войдите, чтобы изменять рейтинг.
+      </p>
+
+      <input
+        id="adminEmail"
+        class="admin-input"
+        type="email"
+        placeholder="Email администратора"
+      >
+
+      <input
+        id="adminPassword"
+        class="admin-input"
+        type="password"
+        placeholder="Пароль"
+      >
+
+      <button
+        class="login"
+        onclick="loginAdmin()"
+      >
+        🔐 Войти
+      </button>
+
+    </div>
+
+
+    <div
+      id="adminLogged"
+      style="display:none"
+    >
+
+      <p>
+        ✅ Вы вошли как администратор.
+      </p>
+
+      <button
+        class="logout"
+        onclick="logoutAdmin()"
+      >
+        🚪 Выйти
+      </button>
+
+      <p class="small">
+        Теперь возле игроков появились кнопки
+        −1 и +1.
+      </p>
+
+    </div>
+
+
+    <div
+      id="adminStatus"
+      class="admin-status"
+    ></div>
+
+  </div>
+
+  </section>
 </body>
 </html>
