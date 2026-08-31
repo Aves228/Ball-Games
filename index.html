@@ -260,6 +260,32 @@ color:#69748b;
 margin-bottom:12px;
 }
 
+.locked-top{
+text-align:center;
+padding:30px 20px;
+}
+
+.locked-top h3{
+font-size:28px;
+color:#b47700;
+}
+
+.countdown{
+font-size:26px;
+font-weight:900;
+margin-top:20px;
+}
+
+.season-total{
+font-size:22px;
+font-weight:900;
+text-align:center;
+padding:20px;
+background:#f7f9fc;
+border-radius:16px;
+margin-top:20px;
+}
+
 @media(max-width:700px){
 
 nav{
@@ -294,6 +320,10 @@ font-size:14px;
 .rank{
 gap:8px;
 }
+
+.countdown{
+font-size:20px;
+}
 }
 </style>
 </head>
@@ -301,16 +331,23 @@ gap:8px;
 <body>
 
 <nav>
-<div class="logo">🎯 BALL <span>GAMES</span></div>
+
+<div class="logo">
+🎯 BALL <span>GAMES</span>
+</div>
 
 <div>
+
 <a href="#rules">📜 Правила</a>
 <a href="#games">🎮 Игры</a>
 <a href="#abilities">⚡ Способки</a>
 <a href="#titles">🏅 Титулы</a>
 <a href="#rating">🏆 Топ</a>
+<a href="#season1">🏆 Итоги сезона</a>
 <a href="#wipes">🗓️ Вайпы</a>
+
 </div>
+
 </nav>
 
 
@@ -324,20 +361,38 @@ gap:8px;
 </p>
 
 <div class="wipe">
+
 🔥 <b>ГЛОБАЛЬНЫЙ ВАЙП — 1 СЕНТЯБРЯ</b>
 
 <br><br>
 
 🍂 ОСЕННИЙ ВАЙП — 1 СЕНТЯБРЯ<br>
-⚡ В день вайпа действует бонус ×2 побед!<br>
-🏆 После вайпа победы начинают считаться заново — с 0.<br>
+
+🔒 До 10:00 игра закрыта.<br>
+
+⚡ После вайпа начинается новый сезон.<br>
+
+🏆 Победы после вайпа считаются заново — с 0.<br>
+
+🏅 Титулы сохраняются.<br>
+
 🔥 1 сентября — начало нового сезона Ball Games!
+
 </div>
 
 <br>
 
-<a class="btn" href="#rating">🏆 Смотреть рейтинг</a>
-<a class="btn" href="#rules">📜 Правила</a>
+<a class="btn" href="#rating">
+🏆 Смотреть новый топ
+</a>
+
+<a class="btn" href="#season1">
+🏆 Итоги сезона
+</a>
+
+<a class="btn" href="#rules">
+📜 Правила
+</a>
 
 </header>
 
@@ -348,7 +403,9 @@ gap:8px;
 
 <div class="card warning">
 
-<h3>В каждой игре должен выбыть РОВНО 1 игрок.</h3>
+<h3>
+В каждой игре должен выбыть РОВНО 1 игрок.
+</h3>
 
 <p>
 ❌ 0 выбывших — нельзя<br>
@@ -396,39 +453,25 @@ gap:8px;
 
 <h3>👀 1. ГЛЯДЕЛКИ</h3>
 
-<p>
-1️⃣ Все игроки играют в «Камень, ножницы, бумага».
-</p>
+<p>1️⃣ Все игроки играют в «Камень, ножницы, бумага».</p>
+
+<p>2️⃣ Победитель становится ведущим и встаёт в центр.</p>
+
+<p>3️⃣ Остальные игроки выстраиваются перед ним полумесяцем.</p>
+
+<p>4️⃣ Ведущий выбирает одного игрока и бросает в него мяч.</p>
+
+<p>5️⃣ Если ведущий попал — выбранный игрок выходит в «Бегущие вышибалы».</p>
+
+<p>6️⃣ Этот игрок получает возможность бросить мяч в игрока, который был ведущим.</p>
+
+<p>7️⃣ Если он попадает — выбывает бывший ведущий.</p>
+
+<p>8️⃣ Если он не попадает — выбывает сам бросавший.</p>
 
 <p>
-2️⃣ Победитель становится ведущим и встаёт в центр.
+<b>🏆 В результате всегда выбывает ровно 1 игрок.</b>
 </p>
-
-<p>
-3️⃣ Остальные игроки выстраиваются перед ним полумесяцем.
-</p>
-
-<p>
-4️⃣ Ведущий выбирает одного игрока и бросает в него мяч.
-</p>
-
-<p>
-5️⃣ Если ведущий попал — выбранный игрок выходит в «Бегущие вышибалы».
-</p>
-
-<p>
-6️⃣ Этот игрок получает возможность бросить мяч в игрока, который был ведущим.
-</p>
-
-<p>
-7️⃣ Если он попадает — выбывает бывший ведущий.
-</p>
-
-<p>
-8️⃣ Если он не попадает — выбывает сам бросавший.
-</p>
-
-<p><b>🏆 В результате всегда выбывает ровно 1 игрок.</b></p>
 
 </div>
 
@@ -457,15 +500,20 @@ gap:8px;
 <h3>🎮 Свои игры</h3>
 
 <p>
-Если не хочется постоянно играть в вышибалы, можно придумать свою игру с мячом.
+Если не хочется постоянно играть в вышибалы,
+можно придумать свою игру с мячом.
 </p>
 
 <div class="flow">
+
 🎯 1 игра → 1 выбывший
+
 <br><br>
+
 ❌ 0 — нельзя<br>
 ❌ 2+ — нельзя<br>
 ✅ 1 — можно
+
 </div>
 
 </div>
@@ -477,33 +525,19 @@ gap:8px;
 
 <p>Это финальная игра Ball Games.</p>
 
-<p>
-👥 Остаются 2 игрока.
-</p>
+<p>👥 Остаются 2 игрока.</p>
 
-<p>
-📏 Расстояние между игроками — 5–7 метров.
-</p>
+<p>📏 Расстояние между игроками — 5–7 метров.</p>
 
-<p>
-🏐 Игроки по очереди бросают мяч.
-</p>
+<p>🏐 Игроки по очереди бросают мяч.</p>
 
-<p>
-🚫 Двигаться, чтобы увернуться от броска, нельзя.
-</p>
+<p>🚫 Двигаться, чтобы увернуться от броска, нельзя.</p>
 
-<p>
-🎯 Кто попал в соперника — тот побеждает.
-</p>
+<p>🎯 Кто попал в соперника — тот побеждает.</p>
 
-<p>
-🏆 Победитель получает +1 победу.
-</p>
+<p>🏆 Победитель получает +1 победу.</p>
 
-<p>
-❌ Обычная Аптечка здесь не работает.
-</p>
+<p>❌ Обычная Аптечка здесь не работает.</p>
 
 </div>
 
@@ -581,11 +615,13 @@ gap:8px;
 </p>
 
 <div class="flow">
+
 🏐 Попадание
 <br>⬇️<br>
 🩹 Аптечка
 <br>⬇️<br>
 🎯 Игрок НЕ выбывает и становится ведущим.
+
 </div>
 
 <p>
@@ -622,17 +658,9 @@ gap:8px;
 Специальное место, где ведущему сложнее выбить игрока.
 </p>
 
-<p>
-🔹 До получения способности — 1 использование.
-</p>
-
-<p>
-🔹 После получения — 15 использований.
-</p>
-
-<p>
-🔹 Для ведущего зона доступна бесконечно.
-</p>
+<p>🔹 До получения способности — 1 использование.</p>
+<p>🔹 После получения — 15 использований.</p>
+<p>🔹 Для ведущего зона доступна бесконечно.</p>
 
 <p>
 ⚠️ Зона не делает игрока полностью неуязвимым.
@@ -654,11 +682,13 @@ gap:8px;
 </p>
 
 <div class="flow">
+
 🏐 Мяч отбит
 <br>⬇️<br>
 ❌ Попадание не засчитывается
 <br>⬇️<br>
 🔄 Ведущий перекидывает мяч
+
 </div>
 
 <p>
@@ -697,8 +727,8 @@ gap:8px;
 </p>
 
 <p>
-Если другие игроки видели момент, но точно не уверены, было касание или нет,
-ведущий может заявить способность.
+Если другие игроки видели момент, но точно не уверены,
+было касание или нет, ведущий может заявить способность.
 </p>
 
 <p>
@@ -707,7 +737,8 @@ gap:8px;
 </p>
 
 <p>
-❌ Если все точно видели, что мяч не попал — способность использовать нельзя.
+❌ Если все точно видели, что мяч не попал —
+способность использовать нельзя.
 </p>
 
 </div>
@@ -727,17 +758,9 @@ gap:8px;
 
 <h3>✅ Примеры</h3>
 
-<p>
-🧊 Заморозка — заморозить игрока на 15 секунд.
-</p>
-
-<p>
-👐 Ловля мяча — поймать мяч руками, чтобы попадание не засчиталось.
-</p>
-
-<p>
-🩹 Аптечка для Русской рулетки — пережить одно попадание именно в финале.
-</p>
+<p>🧊 Заморозка — заморозить игрока на 15 секунд.</p>
+<p>👐 Ловля мяча — поймать мяч руками, чтобы попадание не засчиталось.</p>
+<p>🩹 Аптечка для Русской рулетки — пережить одно попадание именно в финале.</p>
 
 <h3>❌ Запрещено</h3>
 
@@ -788,6 +811,7 @@ gap:8px;
 </p>
 
 <div class="flow">
+
 🏆 50 побед
 <br>⬇️<br>
 ➕ Набрал ещё 10 побед
@@ -797,6 +821,7 @@ gap:8px;
 ➕ Ещё 10 побед
 <br>⬇️<br>
 🔄 Следующая смена
+
 </div>
 
 <p>
@@ -823,21 +848,15 @@ gap:8px;
 сделать два броска подряд.
 </p>
 
-<p>
-🏐 Первый бросок выполняется обычно.
-</p>
+<p>🏐 Первый бросок выполняется обычно.</p>
 
 <p>
 🏐 Если первый бросок попал — второй бросок уже не нужен.
 </p>
 
-<p>
-❌ В Русской рулетке не работает.
-</p>
+<p>❌ В Русской рулетке не работает.</p>
 
-<p>
-⚠️ Усиление не гарантирует попадание.
-</p>
+<p>⚠️ Усиление не гарантирует попадание.</p>
 
 </div>
 
@@ -930,7 +949,9 @@ gap:8px;
 </div>
 
 <div class="card success">
+
 <h3>🏅 Титулы сохраняются после вайпа.</h3>
+
 </div>
 
 </section>
@@ -943,27 +964,39 @@ gap:8px;
 <div class="grid">
 
 <div class="card">
+
 <h3>🔥 Серии побед</h3>
+
 <p>3 победы подряд → <b>+1 победа</b></p>
 <p>5 побед подряд → <b>+2 победы</b></p>
 <p>10 побед подряд → <b>+5 побед</b></p>
+
 </div>
 
+
 <div class="card">
+
 <h3>🎯 Победа над более сильным игроком</h3>
+
 <p>
 Если у соперника больше побед:
 </p>
+
 <p>
 🏆 Победа → <b>+1 дополнительная победа</b>
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>🏆 Сезонные бонусы</h3>
+
 <p>25 побед за сезон → <b>+2</b></p>
 <p>50 побед → <b>+5</b></p>
 <p>75 побед → <b>+10</b></p>
+
 </div>
 
 </div>
@@ -1112,11 +1145,201 @@ gap:8px;
 </section>
 
 
+<!-- =========================
+     ИТОГИ 1 СЕЗОНА
+========================= -->
+
+<section id="season1">
+
+<h2>🏆 Итоги 1 сезона</h2>
+
+<div class="card success">
+
+<h3>🔥 ПЕРВЫЙ СЕЗОН BALL GAMES ЗАВЕРШЁН</h3>
+
+<p>
+Первый сезон завершён.
+Все победы этого сезона теперь становятся частью истории Ball Games.
+</p>
+
+<p>
+🌍 1 сентября в 10:00 — глобальный вайп.
+</p>
+
+</div>
+
+
+<table>
+
+<tr>
+<th>Место</th>
+<th>Игрок</th>
+<th>Победы</th>
+</tr>
+
+<tr>
+<td>🥇 1</td>
+<td><b>Стёпа</b></td>
+<td>🏆 82</td>
+</tr>
+
+<tr>
+<td>🥈 2</td>
+<td><b>Aves</b></td>
+<td>🏆 70</td>
+</tr>
+
+<tr>
+<td>🥉 3</td>
+<td><b>Лёха</b></td>
+<td>🏆 29</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Кирилл</td>
+<td>🏆 22</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Дарина</td>
+<td>🏆 21</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Женя</td>
+<td>🏆 20</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Влад</td>
+<td>🏆 13</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Роза</td>
+<td>🏆 8</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>Лев</td>
+<td>🏆 7</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Макс</td>
+<td>🏆 1</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>Миша</td>
+<td>🏆 0</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>Артём</td>
+<td>🏆 0</td>
+</tr>
+
+</table>
+
+
+<div class="season-total">
+
+🔥 Всего побед за сезон: 273
+
+</div>
+
+
+<div class="card warning">
+
+<h3>🌍 ГЛОБАЛЬНЫЙ ВАЙП</h3>
+
+<p>
+1 сентября в 10:00 игра будет перезапущена.
+</p>
+
+<p>
+🏆 Победы → 0<br>
+⚡ Способности → сбрасываются<br>
+🏅 Титулы → сохраняются
+</p>
+
+<p>
+🚀 После 10:00 начинается новый сезон Ball Games.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     НОВЫЙ ТОП
+========================= -->
+
 <section id="rating">
 
-<h2>🏆 Рейтинг игроков</h2>
+<h2>🏆 НОВЫЙ ТОП</h2>
 
-<p id="ratingStatus">⏳ Загружаем рейтинг...</p>
+
+<div id="ratingLock" class="card warning locked-top">
+
+<h3>🔒 ДО 10:00 ЗАКРЫТ</h3>
+
+<p>
+Новый рейтинг пока закрыт.
+</p>
+
+<div class="flow">
+
+🌍 ГЛОБАЛЬНЫЙ ВАЙП
+<br>⬇️<br>
+⏰ 1 СЕНТЯБРЯ — 10:00
+<br>⬇️<br>
+🚀 НОВЫЙ СЕЗОН
+<br>⬇️<br>
+🏆 НОВЫЙ ТОП
+
+</div>
+
+
+<div class="countdown" id="countdown">
+⏳ Загружаем таймер...
+</div>
+
+</div>
+
+
+<div id="ratingOpen" style="display:none">
+
+<div class="card success">
+
+<h3>🟢 ИГРА ОТКРЫТА</h3>
+
+<p>
+🔥 Глобальный вайп завершён!
+</p>
+
+<p>
+🏆 Новый сезон Ball Games начался.
+</p>
+
+</div>
+
+
+<p id="ratingStatus">
+⏳ Загружаем рейтинг...
+</p>
+
 
 <div class="grid" id="ratingGrid">
 
@@ -1126,8 +1349,12 @@ gap:8px;
 
 </div>
 
+</div>
+
 </section>
-  
+
+
+<section>
 
 <h2>🏆 Главная цель Ball Games</h2>
 
@@ -1183,91 +1410,195 @@ gap:8px;
 © Ball Games
 </p>
 
-                              </footer><!-- SUPABASE -->
+</footer>
+
+
+<!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <style>
+
 .admin-panel{
-  max-width:600px;
-  margin:20px auto;
+max-width:600px;
+margin:20px auto;
 }
 
 .admin-box{
-  background:#fff;
-  border:1px solid #dfe5ef;
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 8px 28px #24324a12;
+background:#fff;
+border:1px solid #dfe5ef;
+border-radius:20px;
+padding:22px;
+box-shadow:0 8px 28px #24324a12;
 }
 
 .admin-input{
-  width:100%;
-  padding:13px;
-  margin:7px 0;
-  border:1px solid #dfe5ef;
-  border-radius:12px;
-  font-size:16px;
+width:100%;
+padding:13px;
+margin:7px 0;
+border:1px solid #dfe5ef;
+border-radius:12px;
+font-size:16px;
 }
 
 .admin-btn{
-  border:0;
-  border-radius:10px;
-  padding:9px 13px;
-  font-weight:900;
-  cursor:pointer;
-  margin-left:5px;
+border:0;
+border-radius:10px;
+padding:9px 13px;
+font-weight:900;
+cursor:pointer;
+margin-left:5px;
 }
 
 .plus{
-  background:#4caf50;
-  color:white;
+background:#4caf50;
+color:white;
 }
 
 .minus{
-  background:#e05252;
-  color:white;
+background:#e05252;
+color:white;
 }
 
 .login{
-  background:#536dfe;
-  color:white;
-  padding:12px 18px;
-  border:0;
-  border-radius:12px;
-  font-weight:900;
-  cursor:pointer;
-  margin-top:8px;
+background:#536dfe;
+color:white;
+padding:12px 18px;
+border:0;
+border-radius:12px;
+font-weight:900;
+cursor:pointer;
+margin-top:8px;
 }
 
 .logout{
-  background:#eef2f8;
-  color:#182033;
-  padding:10px 15px;
-  border:0;
-  border-radius:12px;
-  font-weight:900;
-  cursor:pointer;
+background:#eef2f8;
+color:#182033;
+padding:10px 15px;
+border:0;
+border-radius:12px;
+font-weight:900;
+cursor:pointer;
 }
 
 .admin-status{
-  margin-top:10px;
-  color:#69748b;
-  font-size:14px;
+margin-top:10px;
+color:#69748b;
+font-size:14px;
 }
+
 </style>
 
+
 <script>
-const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
+
+const SUPABASE_URL =
+"https://hcfonkgsscucqkrmgrat.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy";
+"sb_publishable_kCbFsWs4gesVPCd3oqEMcW_pfFlCMHy".replace(
+"Cw",
+"Cw"
+);
 
 const { createClient } = supabase;
 
 const db = createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 );
+
+
+/* =========================
+   ДАТА ГЛОБАЛЬНОГО ВАЙПА
+========================= */
+
+const WIPE_DATE =
+new Date("2026-09-01T10:00:00+04:00");
+
+
+/* =========================
+   ТАЙМЕР ВАЙПА
+========================= */
+
+let ratingLoaded = false;
+
+
+function updateWipeStatus(){
+
+const now = new Date();
+
+const lock =
+document.getElementById("ratingLock");
+
+const open =
+document.getElementById("ratingOpen");
+
+const countdown =
+document.getElementById("countdown");
+
+if(!lock || !open || !countdown)
+return;
+
+
+const difference =
+WIPE_DATE - now;
+
+
+if(difference <= 0){
+
+lock.style.display = "none";
+
+open.style.display = "block";
+
+
+if(!ratingLoaded){
+
+ratingLoaded = true;
+
+loadRating();
+
+}
+
+return;
+
+}
+
+
+lock.style.display = "block";
+
+open.style.display = "none";
+
+
+const totalSeconds =
+Math.floor(difference / 1000);
+
+
+const days =
+Math.floor(totalSeconds / 86400);
+
+
+const hours =
+Math.floor(
+(totalSeconds % 86400) / 3600
+);
+
+
+const minutes =
+Math.floor(
+(totalSeconds % 3600) / 60
+);
+
+
+const seconds =
+totalSeconds % 60;
+
+
+countdown.innerHTML =
+`⏳ До открытия: <b>${days}д ${hours}ч ${minutes}м ${seconds}с</b>`;
+
+}
 
 
 /* =========================
@@ -1276,103 +1607,146 @@ const db = createClient(
 
 async function loadRating(){
 
-  const status =
-    document.getElementById("ratingStatus");
+const status =
+document.getElementById("ratingStatus");
 
-  const grid =
-    document.getElementById("ratingGrid");
-
-  status.textContent =
-    "⏳ Загружаем рейтинг...";
-
-  const { data, error } = await db
-    .from("players")
-    .select("*")
-    .order("wins", {
-      ascending:false
-    });
-
-  if(error){
-
-    console.error(error);
-
-    status.textContent =
-      "❌ Ошибка загрузки рейтинга";
-
-    grid.innerHTML = `
-      <div class="card danger">
-        <h3>❌ Не удалось загрузить рейтинг</h3>
-        <p>${error.message}</p>
-      </div>
-    `;
-
-    return;
-  }
+const grid =
+document.getElementById("ratingGrid");
 
 
-  status.textContent =
-    `🏆 Игроков: ${data.length}`;
+if(!status || !grid)
+return;
 
 
-  if(!data.length){
-
-    grid.innerHTML = `
-      <div class="card">
-        <p>😢 Игроков пока нет.</p>
-      </div>
-    `;
-
-    return;
-  }
+status.textContent =
+"⏳ Загружаем рейтинг...";
 
 
-  grid.innerHTML = data.map((player,index)=>`
+const {
+data,
+error
+} = await db
+.from("players")
+.select("*")
+.order("wins",{
+ascending:false
+});
 
-    <div class="card">
 
-      <div class="rank">
+if(error){
 
-        <div class="place">
-          ${index + 1}️⃣
-        </div>
+console.error(error);
 
-        <div class="name">
-          ${escapeHtml(player.name ?? "Без имени")}
-        </div>
+status.textContent =
+"❌ Ошибка загрузки рейтинга";
 
-        <div class="wins">
-          🏆 ${player.wins ?? 0}
-        </div>
 
-        <div
-          class="admin-controls"
-          id="controls-${player.id}"
-          style="display:none"
-        >
+grid.innerHTML = `
 
-          <button
-            class="admin-btn minus"
-            onclick="changeWins('${player.id}', -1)"
-          >
-            −1
-          </button>
+<div class="card danger">
 
-          <button
-            class="admin-btn plus"
-            onclick="changeWins('${player.id}', 1)"
-          >
-            +1
-          </button>
+<h3>
+❌ Не удалось загрузить рейтинг
+</h3>
 
-        </div>
+<p>
+${escapeHtml(error.message)}
+</p>
 
-      </div>
+</div>
 
-    </div>
+`;
 
-  `).join("");
+return;
 
-  updateAdminControls();
+}
+
+
+status.textContent =
+`🏆 Игроков: ${data.length}`;
+
+
+if(!data.length){
+
+grid.innerHTML = `
+
+<div class="card">
+
+<p>
+😢 Игроков пока нет.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+grid.innerHTML =
+data.map((player,index)=>`
+
+<div class="card">
+
+<div class="rank">
+
+<div class="place">
+
+${index + 1}️⃣
+
+</div>
+
+
+<div class="name">
+
+${escapeHtml(
+player.name ?? "Без имени"
+)}
+
+</div>
+
+
+<div class="wins">
+
+🏆 ${player.wins ?? 0}
+
+</div>
+
+
+<div
+class="admin-controls"
+id="controls-${player.id}"
+style="display:none"
+>
+
+<button
+class="admin-btn minus"
+onclick="changeWins('${player.id}',-1)"
+>
+−1
+</button>
+
+
+<button
+class="admin-btn plus"
+onclick="changeWins('${player.id}',1)"
+>
++1
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+
+updateAdminControls();
+
 }
 
 
@@ -1380,68 +1754,85 @@ async function loadRating(){
    +1 / -1 ПОБЕДА
 ========================= */
 
-async function changeWins(id, amount){
+async function changeWins(
+id,
+amount
+){
 
-  const {
-    data: userData
-  } = await db.auth.getUser();
-
-  if(!userData.user){
-
-    alert("🔐 Сначала войдите как администратор.");
-
-    return;
-  }
+const {
+data:userData
+} =
+await db.auth.getUser();
 
 
-  const { data: player, error: getError } =
-    await db
-      .from("players")
-      .select("wins")
-      .eq("id", id)
-      .single();
+if(!userData.user){
+
+alert(
+"🔐 Сначала войдите как администратор."
+);
+
+return;
+
+}
 
 
-  if(getError){
-
-    alert(
-      "❌ Не удалось получить игрока:\n" +
-      getError.message
-    );
-
-    return;
-  }
-
-
-  const currentWins =
-    Number(player.wins) || 0;
+const {
+data:player,
+error:getError
+} =
+await db
+.from("players")
+.select("wins")
+.eq("id",id)
+.single();
 
 
-  const newWins =
-    Math.max(0, currentWins + amount);
+if(getError){
+
+alert(
+"❌ Не удалось получить игрока:\n"+
+getError.message
+);
+
+return;
+
+}
 
 
-  const { error } =
-    await db
-      .from("players")
-      .update({
-        wins:newWins
-      })
-      .eq("id", id);
+const currentWins =
+Number(player.wins)||0;
 
 
-  if(error){
-
-    alert(
-      "❌ Не удалось изменить победы:\n" +
-      error.message
-    );
-
-    return;
-  }
+const newWins =
+Math.max(
+0,
+currentWins + amount
+);
 
 
-  await loadRating();
+const {error} =
+await db
+.from("players")
+.update({
+wins:newWins
+})
+.eq("id",id);
+
+
+if(error){
+
+alert(
+"❌ Не удалось изменить победы:\n"+
+error.message
+);
+
+return;
+
+}
+
+
+await loadRating();
+
 }
 
 
@@ -1451,53 +1842,78 @@ async function changeWins(id, amount){
 
 async function loginAdmin(){
 
-  const email =
-    document.getElementById("adminEmail").value.trim();
-
-  const password =
-    document.getElementById("adminPassword").value;
-
-
-  if(!email || !password){
-
-    document.getElementById("adminStatus").textContent =
-      "⚠️ Введите email и пароль.";
-
-    return;
-  }
+const email =
+document
+.getElementById("adminEmail")
+.value
+.trim();
 
 
-  document.getElementById("adminStatus").textContent =
-    "⏳ Входим...";
+const password =
+document
+.getElementById("adminPassword")
+.value;
 
 
-  const { error } =
-    await db.auth.signInWithPassword({
-      email,
-      password
-    });
+if(!email || !password){
+
+document
+.getElementById("adminStatus")
+.textContent =
+"⚠️ Введите email и пароль.";
+
+return;
+
+}
 
 
-  if(error){
-
-    document.getElementById("adminStatus").textContent =
-      "❌ " + error.message;
-
-    return;
-  }
+document
+.getElementById("adminStatus")
+.textContent =
+"⏳ Входим...";
 
 
-  document.getElementById("adminStatus").textContent =
-    "✅ Вы вошли как администратор.";
+const {error} =
+await db.auth.signInWithPassword({
 
-  document.getElementById("adminLoginForm").style.display =
-    "none";
+email,
+password
 
-  document.getElementById("adminLogged").style.display =
-    "block";
+});
 
 
-  updateAdminControls();
+if(error){
+
+document
+.getElementById("adminStatus")
+.textContent =
+"❌ "+error.message;
+
+return;
+
+}
+
+
+document
+.getElementById("adminStatus")
+.textContent =
+"✅ Вы вошли как администратор.";
+
+
+document
+.getElementById("adminLoginForm")
+.style.display =
+"none";
+
+
+document
+.getElementById("adminLogged")
+.style.display =
+"block";
+
+
+updateAdminControls();
+
 }
 
 
@@ -1507,70 +1923,92 @@ async function loginAdmin(){
 
 async function logoutAdmin(){
 
-  await db.auth.signOut();
+await db.auth.signOut();
 
-  document.getElementById("adminLoginForm").style.display =
-    "block";
 
-  document.getElementById("adminLogged").style.display =
-    "none";
+document
+.getElementById("adminLoginForm")
+.style.display =
+"block";
 
-  document.getElementById("adminStatus").textContent =
-    "Вы вышли из аккаунта.";
 
-  updateAdminControls();
+document
+.getElementById("adminLogged")
+.style.display =
+"none";
+
+
+document
+.getElementById("adminStatus")
+.textContent =
+"Вы вышли из аккаунта.";
+
+
+updateAdminControls();
+
 }
 
 
 /* =========================
-   ПОКАЗ КНОПОК
+   ПОКАЗ КНОПОК АДМИНА
 ========================= */
 
 async function updateAdminControls(){
 
-  const {
-    data
-  } = await db.auth.getUser();
+const {
+data
+} =
+await db.auth.getUser();
 
 
-  const loggedIn =
-    !!data.user;
+const loggedIn =
+!!data.user;
 
 
-  document
-    .querySelectorAll(".admin-controls")
-    .forEach(el=>{
+document
+.querySelectorAll(".admin-controls")
+.forEach(el=>{
 
-      el.style.display =
-        loggedIn ? "block" : "none";
+el.style.display =
+loggedIn
+? "block"
+: "none";
 
-    });
+});
+
 }
 
 
 /* =========================
-   ЭКРАН АВТОРИЗАЦИИ
+   НАСТРОЙКА АДМИНКИ
 ========================= */
 
 async function setupAdmin(){
 
-  const {
-    data
-  } = await db.auth.getUser();
+const {
+data
+} =
+await db.auth.getUser();
 
 
-  if(data.user){
+if(data.user){
 
-    document.getElementById("adminLoginForm").style.display =
-      "none";
-
-    document.getElementById("adminLogged").style.display =
-      "block";
-
-  }
+document
+.getElementById("adminLoginForm")
+.style.display =
+"none";
 
 
-  updateAdminControls();
+document
+.getElementById("adminLogged")
+.style.display =
+"block";
+
+}
+
+
+updateAdminControls();
+
 }
 
 
@@ -1580,12 +2018,32 @@ async function setupAdmin(){
 
 function escapeHtml(text){
 
-  return String(text)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return String(text)
+
+.replaceAll(
+"&",
+"&amp;"
+)
+
+.replaceAll(
+"<",
+"&lt;"
+)
+
+.replaceAll(
+">",
+"&gt;"
+)
+
+.replaceAll(
+'"',
+"&quot;"
+)
+
+.replaceAll(
+"'",
+"&#039;"
+);
 
 }
 
@@ -1594,81 +2052,106 @@ function escapeHtml(text){
    ЗАПУСК
 ========================= */
 
-loadRating();
+updateWipeStatus();
+
+setInterval(
+updateWipeStatus,
+1000
+);
 
 setupAdmin();
+
 </script>
 
 
 <!-- АДМИНКА -->
 
-<section id="adminPanel" class="admin-panel">
+<section
+id="adminPanel"
+class="admin-panel"
+>
 
-  <div class="admin-box">
+<div class="admin-box">
 
-    <h2>🛡️ Админ Ball Games</h2>
-
-    <div id="adminLoginForm">
-
-      <p>
-        🔐 Войдите, чтобы изменять рейтинг.
-      </p>
-
-      <input
-        id="adminEmail"
-        class="admin-input"
-        type="email"
-        placeholder="Email администратора"
-      >
-
-      <input
-        id="adminPassword"
-        class="admin-input"
-        type="password"
-        placeholder="Пароль"
-      >
-
-      <button
-        class="login"
-        onclick="loginAdmin()"
-      >
-        🔐 Войти
-      </button>
-
-    </div>
+<h2>
+🛡️ Админ Ball Games
+</h2>
 
 
-    <div
-      id="adminLogged"
-      style="display:none"
-    >
+<div id="adminLoginForm">
 
-      <p>
-        ✅ Вы вошли как администратор.
-      </p>
-
-      <button
-        class="logout"
-        onclick="logoutAdmin()"
-      >
-        🚪 Выйти
-      </button>
-
-      <p class="small">
-        Теперь возле игроков появились кнопки
-        −1 и +1.
-      </p>
-
-    </div>
+<p>
+🔐 Войдите, чтобы изменять рейтинг.
+</p>
 
 
-    <div
-      id="adminStatus"
-      class="admin-status"
-    ></div>
+<input
+id="adminEmail"
+class="admin-input"
+type="email"
+placeholder="Email администратора"
+>
 
-  </div>
 
-  </section>
+<input
+id="adminPassword"
+class="admin-input"
+type="password"
+placeholder="Пароль"
+>
+
+
+<button
+class="login"
+onclick="loginAdmin()"
+>
+
+🔐 Войти
+
+</button>
+
+</div>
+
+
+<div
+id="adminLogged"
+style="display:none"
+>
+
+<p>
+✅ Вы вошли как администратор.
+</p>
+
+
+<button
+class="logout"
+onclick="logoutAdmin()"
+>
+
+🚪 Выйти
+
+</button>
+
+
+<p class="small">
+
+Теперь возле игроков появились кнопки
+−1 и +1.
+
+</p>
+
+</div>
+
+
+<p
+id="adminStatus"
+class="admin-status"
+></p>
+
+</div>
+
+</section>
+
+
 </body>
-</html>
+                                  </html>
