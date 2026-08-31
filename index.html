@@ -1188,7 +1188,60 @@ gap:8px;
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  // https://hcfonkgsscucqkrmgrat.supabase.co
-</script>
+const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
+const SUPABASE_KEY = "ТВОЙ_SB_PUBLISHABLE_КЛЮЧ";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function loadRating() {
+  const status = document.getElementById("ratingStatus");
+  const grid = document.getElementById("ratingGrid");
+
+  status.textContent = "⏳ Загружаем рейтинг...";
+
+  const { data, error } = await supabase
+    .from("players")
+    .select("*")
+    .order("wins", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    status.textContent = "❌ Ошибка загрузки рейтинга";
+    grid.innerHTML = `
+      <div class="card danger">
+        <h3>❌ Не удалось загрузить рейтинг</h3>
+        <p>${error.message}</p>
+      </div>
+    `;
+    return;
+  }
+
+  status.textContent = `🏆 Игроков: ${data.length}`;
+
+  if (!data.length) {
+    grid.innerHTML = `
+      <div class="card">
+        <p>😢 Игроков пока нет.</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = data.map((player, index) => `
+    <div class="card">
+      <div class="rank">
+        <div class="place">${index + 1}️⃣</div>
+        <div class="name">${player.name ?? "Без имени"}</div>
+        <div class="wins">🏆 ${player.wins ?? 0}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+loadRating();
+  </script>
 </body>
   </html>
