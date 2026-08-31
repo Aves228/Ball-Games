@@ -1113,28 +1113,6 @@ gap:8px;
 
 
 <section id="rating">
-<section id="rating">
-  <h2>🏆 Рейтинг игроков</h2>
-
-  <div class="grid" id="ratingGrid">
-    <div class="card">
-      <script>
-const SUPABASE_URL = "https://hcfonkgsscucqkrmgrat.supabase.co";
-const SUPABASE_KEY = sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy;
-
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-      </script>
-    </div>
-  </div>
-</section>
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<section id="rating"> const supabaseKey =
-"sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy";
 
 <h2>🏆 Рейтинг игроков</h2>
 
@@ -1335,6 +1313,131 @@ return String(text)
 loadRating();
 
 </script>
+<!-- SUPABASE -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://hcfonkgsscucqkrmgrat.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy";
+
+const supabase =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+async function loadRating(){
+
+const ratingGrid =
+document.getElementById("ratingGrid");
+
+const ratingStatus =
+document.getElementById("ratingStatus");
+
+const { data, error } =
+await supabase
+.from("players")
+.select("name,wins")
+.order("wins", { ascending:false });
+
+
+if(error){
+
+console.error(error);
+
+ratingStatus.textContent =
+"❌ Не удалось загрузить рейтинг";
+
+ratingGrid.innerHTML = `
+<div class="card danger">
+<h3>❌ Ошибка загрузки рейтинга</h3>
+<p>Не удалось загрузить рейтинг из Supabase.</p>
+</div>
+`;
+
+return;
+
+}
+
+
+if(!data || data.length === 0){
+
+ratingStatus.textContent =
+"Пока нет игроков";
+
+ratingGrid.innerHTML = `
+<div class="card">
+<h3>🏆 Рейтинг пуст</h3>
+<p>Добавь игроков в таблицу players.</p>
+</div>
+`;
+
+return;
+
+}
+
+
+ratingStatus.textContent =
+"🟢 Рейтинг обновлён из Supabase";
+
+
+const medals =
+["🥇","🥈","🥉"];
+
+
+ratingGrid.innerHTML = `
+
+<div class="card">
+
+<h3>🏆 Топ Ball Games</h3>
+
+${data.map((player,index) => `
+
+<div class="rank">
+
+<span class="place">
+${medals[index] || (index + 1) + "️⃣"}
+</span>
+
+<span class="name">
+${escapeHtml(player.name)}
+</span>
+
+<span class="wins">
+${player.wins ?? 0} 🏆
+</span>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
+}
+
+
+function escapeHtml(text){
+
+return String(text)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+loadRating();
+
+</script>
 </body>
   </html>
