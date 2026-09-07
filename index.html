@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ball Games</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
 
 <style>
 *{box-sizing:border-box}
@@ -21,7 +23,7 @@ section{padding:45px 6%;max-width:1200px;margin:auto;scroll-margin-top:80px}
 h2{font-size:32px;margin-bottom:25px}h3{font-size:21px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
 .card{background:#fff;border:1px solid #dfe5ef;border-radius:20px;padding:22px;box-shadow:0 8px 28px #24324a12;margin-bottom:16px}.card h3{margin-top:0}
 .muted{color:#69748b}.rank{display:flex;align-items:center;gap:15px;padding:15px 0;border-bottom:1px solid #edf0f5}.rank:last-child{border:0}.place{font-size:25px;width:42px}.name{font-weight:900;flex:1}.wins{color:#68738b;font-weight:900}
-.badge{font-size:13px;background:#eef2ff;color:#4154bd;padding:7px 10px;border-radius:10px}
+.badge{font-size:13px;background:#eef2ff;color:#4154bd;padding:7px 10px;border-radius:10px}.rank-title{font-size:13px;background:#f3f5ff;color:#4154bd;padding:6px 9px;border-radius:10px;font-weight:900}
 table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5ef;border-radius:18px;overflow:hidden}td,th{text-align:left;padding:14px;border-bottom:1px solid #edf0f5}th{color:#69748b;background:#f7f9fc}
 .ability{border-left:5px solid #536dfe}.warning{border-left:5px solid #e5b43c}.danger{border-left:5px solid #e05252}.success{border-left:5px solid #4caf50}
 .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:#eef2f8;margin:4px}
@@ -78,13 +80,67 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 
 <section id="games">
 <h2>🎮 Основные игры</h2>
+
 <div class="card"><h3>👀 1. ГЛЯДЕЛКИ</h3>
-<p>1️⃣ Все игроки играют в «Камень, ножницы, бумага».</p><p>2️⃣ Победитель становится ведущим и встаёт в центр.</p><p>3️⃣ Остальные игроки выстраиваются перед ним полумесяцем.</p><p>4️⃣ Ведущий выбирает одного игрока и бросает в него мяч.</p><p>5️⃣ Если ведущий попал — выбранный игрок выходит в «Бегущие вышибалы».</p><p>6️⃣ Этот игрок получает возможность бросить мяч в игрока, который был ведущим.</p><p>7️⃣ Если он попадает — выбывает бывший ведущий.</p><p>8️⃣ Если он не попадает — выбывает сам бросавший.</p><p><b>🏆 В результате всегда выбывает ровно 1 игрок.</b></p></div>
-<div class="card"><h3>💥 2. ВЫШИБАЛЫ</h3><p>Вышибалы проводятся столько раз, сколько необходимо, чтобы осталось 2 игрока.</p><p>🎲 Право первого броска определяется через «Камень, ножницы, бумага».</p><p>После каждого этапа должен выбыть ровно 1 игрок.</p></div>
-<div class="card"><h3>🎮 Свои игры</h3><p>Если не хочется постоянно играть в вышибалы, можно придумать свою игру с мячом.</p><div class="flow">🎯 1 игра → 1 выбывший<br><br>❌ 0 — нельзя<br>❌ 2+ — нельзя<br>✅ 1 — можно</div></div>
-<div class="card"><h3>🎲 3. РУССКАЯ РУЛЕТКА</h3><p>Это финальная игра Ball Games.</p><p>👥 Остаются 2 игрока.</p><p>📏 Расстояние между игроками — 5–7 метров.</p><p>🏐 Игроки по очереди бросают мяч.</p><p>🚫 Двигаться, чтобы увернуться от броска, нельзя.</p><p>🎯 Кто попал в соперника — тот побеждает.</p><p>🏆 Победитель получает +1 победу.</p><p>❌ Обычная Аптечка здесь не работает.</p></div>
+<p>1️⃣ Все игроки играют в «Камень, ножницы, бумага».</p>
+<p>2️⃣ Победитель становится ведущим.</p>
+<p>3️⃣ Остальные игроки выстраиваются перед ним.</p>
+<p>4️⃣ Ведущий выбирает одного игрока и выполняет игровую попытку с мячом.</p>
+<p>5️⃣ Если ведущий попал — выбранный игрок выходит в «Бегущие вышибалы».</p>
+<p>6️⃣ Этот игрок получает возможность выполнить попытку против бывшего ведущего.</p>
+<p>7️⃣ Если результат успешный — выбывает бывший ведущий.</p>
+<p>8️⃣ Если результат неуспешный — выбывает сам бросавший.</p>
+<p><b>🏆 В результате всегда выбывает ровно 1 игрок.</b></p></div>
+
+<div class="card"><h3>🎯 2. ЦЕЛЬ</h3>
+<p>Игра «Цель» используется только если игроков <b>5 и больше</b>.</p>
+<p>🎯 Игроки по очереди выполняют одну попытку по безопасной обозначенной цели.</p>
+<p>🏆 Игрок с лучшим результатом проходит дальше.</p>
+<p>⚖️ Если результаты одинаковые — проводится «Решающая попытка».</p>
+<p>🔁 При ничьей решающие попытки повторяются, пока результат не определится.</p>
+<p><b>❗ В игре должен определиться ровно 1 выбывший игрок.</b></p></div>
+
+<div class="card"><h3>💥 3. ВЫШИБАЛЫ</h3>
+<p>Вышибалы проводятся столько раз, сколько необходимо, чтобы осталось 2 игрока.</p>
+<p>🎲 Право первого броска определяется через «Камень, ножницы, бумага».</p>
+<p>После каждого этапа должен выбыть ровно 1 игрок.</p></div>
+
+<div class="card"><h3>🎮 Свои игры</h3>
+<p>Если не хочется постоянно играть в вышибалы, можно придумать свою игру с мячом.</p>
+<div class="flow">🎯 1 игра → 1 выбывший<br><br>❌ 0 — нельзя<br>❌ 2+ — нельзя<br>✅ 1 — можно</div></div>
+
+<div class="card">
+  <h3>🎲 3. РУССКАЯ РУЛЕТКА</h3>
+
+  <p>Это финальная игра Ball Games.</p>
+
+  <p>👥 Остаются 2 игрока.</p>
+
+  <p>📏 Расстояние между игроками — 5–7 метров.</p>
+
+  <p>🏐 Игроки по очереди выполняют бросок по безопасной обозначенной цели.</p>
+
+  <p>🚫 Двигаться, чтобы увернуться от броска, нельзя./p>
+
+  <p>🎯 Кто первым успешно попал в цель — тот побеждает.</p>
+
+  <p>🏆 Победитель получает +1 победу.</p>
+
+  <p>❌ Обычная Аптечка здесь не работает.</p>
+</div>
 <h2>👥 Количество игр</h2>
-<div class="grid"><div class="card"><h3>🔹 4 игрока</h3><p>👀 Гляделки: <b>4 → 3</b></p><p>💥 Вышибалы: <b>3 → 2</b></p><p>🎲 Русская рулетка: <b>2 → 1</b></p></div><div class="card"><h3>🔹 5 игроков</h3><p>👀 Гляделки: <b>5 → 4</b></p><p>💥 Вышибалы: <b>4 → 3</b></p><p>💥 Вышибалы: <b>3 → 2</b></p><p>🎲 Русская рулетка: <b>2 → 1</b></p></div></div>
+<div class="grid">
+<div class="card"><h3>🔹 4 игрока</h3>
+<p>👀 Гляделки: <b>4 → 3</b></p>
+<p>💥 Вышибалы: <b>3 → 2</b></p>
+<p>🎲 Русская рулетка: <b>2 → 1</b></p></div>
+
+<div class="card"><h3>🔹 5 игроков</h3>
+<p>👀 Гляделки: <b>5 → 4</b></p>
+<p>🎯 Цель: <b>4 → 3</b></p>
+<p>💥 Вышибалы: <b>3 → 2</b></p>
+<p>🎲 Русская рулетка: <b>2 → 1</b></p></div>
+</div>
 <p class="muted">При большем количестве игроков добавляются необходимые игры, пока не останутся 2 финалиста.</p>
 </section>
 
@@ -206,6 +262,24 @@ const db=createClient(SUPABASE_URL,SUPABASE_KEY);
 const WIPE_DATE=new Date("2026-09-01T10:00:00+04:00");
 let ratingLoaded=false;
 
+const PLAYER_TITLES={
+  "rikill":"⭐ Один Такой",
+  "aves":"🐉 Dragon",
+  "лев":"🥷 Непобедимый",
+  "tabak bishbarmak":"🥷 Непобедимый",
+  "стёпа":"👑 Князь",
+  "лёха":"🕶️ Инкогнито",
+  "женя":"💎 VIP",
+  "роза":"🎮 Игрок",
+  "дарина":"🏴‍☠️ Пиратка",
+  "влад":"🥷 Непобедимый"
+};
+
+function getPlayerTitle(name){
+  const key=String(name||"").trim().toLowerCase();
+  return PLAYER_TITLES[key]||"🎮 Игрок";
+}
+
 function escapeHtml(text){
 return String(text).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
@@ -243,12 +317,14 @@ status.textContent="❌ Ошибка загрузки рейтинга";
 grid.innerHTML=`<div class="card danger"><h3>❌ Не удалось загрузить рейтинг</h3><p>${escapeHtml(error.message)}</p></div>`;
 return;
 }
-status.textContent=`🏆 Игроков: ${data.length}`;
-if(!data.length){grid.innerHTML='<div class="card"><p>😢 Игроков пока нет.</p></div>';return;}
-grid.innerHTML=data.map((player,index)=>`
+const visibleData=data.filter(player=>String(player.name??"").trim().toLowerCase()!=="кирилл");
+status.textContent=`🏆 Игроков: ${visibleData.length}`;
+if(!visibleData.length){grid.innerHTML='<div class="card"><p>😢 Игроков пока нет.</p></div>';return;}
+grid.innerHTML=visibleData.map((player,index)=>`
 <div class="card"><div class="rank">
 <div class="place">${index+1}️⃣</div>
 <div class="name">${escapeHtml(player.name??"Без имени")}</div>
+<div class="rank-title">${escapeHtml(getPlayerTitle(player.name))}</div>
 <div class="wins">🏆 ${player.wins??0}</div>
 <div class="admin-controls" id="controls-${player.id}" style="display:none">
 <button class="admin-btn minus" onclick="changeWins('${player.id}',-1)">−1</button>
@@ -401,4 +477,4 @@ setupAuth();
 </section>
 
 </body>
-   </html>
+</html>
