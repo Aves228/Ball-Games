@@ -472,6 +472,25 @@ updateWipeStatus();
 setInterval(updateWipeStatus,1000);
 setupAdmin();
 setupAuth();
+  // 🌙 Пасхалка от 14 сентября 2026
+function showSeptember14EasterEgg() {
+    const today = new Date();
+    const startDate = new Date(2026, 8, 14);
+
+    if (today >= startDate) {
+        const egg = document.getElementById("easterEgg14");
+
+        if (egg) {
+            egg.innerHTML = `
+                <div class="card" style="margin-top:20px;">
+                    🌙 Когда свет исчезает, некоторые вещи становятся заметнее.
+                </div>
+            `;
+        }
+    }
+}
+
+showSeptember14EasterEgg();
 </script>
 
 <section id="adminPanel" class="admin-panel">
