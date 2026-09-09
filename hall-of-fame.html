@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🏆 Зал славы — Ball Games</title>
+<title>🏛️ Музей Ball Games</title>
 
 <style>
 * {
@@ -18,8 +18,10 @@ html {
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+
     background:
         radial-gradient(circle at top, #182b55 0%, #080d18 45%, #03050a 100%);
+
     color: white;
     min-height: 100vh;
 }
@@ -41,6 +43,7 @@ nav {
 
     background: rgba(3, 6, 15, 0.92);
     border-bottom: 1px solid rgba(0, 170, 255, 0.35);
+
     backdrop-filter: blur(12px);
 }
 
@@ -59,9 +62,12 @@ nav a {
 
 nav a:hover {
     transform: translateY(-2px);
+
     background: rgba(0, 130, 255, 0.25);
     border-color: #00aaff;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.35);
+
+    box-shadow:
+        0 0 15px rgba(0, 170, 255, 0.35);
 }
 
 /* ===== ШАПКА ===== */
@@ -73,6 +79,7 @@ nav a:hover {
 
 .hero h1 {
     margin: 0;
+
     font-size: clamp(42px, 8vw, 78px);
 
     background: linear-gradient(
@@ -85,14 +92,16 @@ nav a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    text-shadow: 0 0 30px rgba(0, 150, 255, 0.25);
+    text-shadow:
+        0 0 30px rgba(0, 150, 255, 0.25);
 }
 
 .hero p {
-    max-width: 750px;
+    max-width: 800px;
     margin: 20px auto 0;
 
     color: #b9c9e8;
+
     font-size: 18px;
     line-height: 1.6;
 }
@@ -106,7 +115,7 @@ nav a:hover {
 
 .section-title {
     text-align: center;
-    margin: 45px 0 25px;
+    margin: 55px 0 25px;
 }
 
 .section-title h2 {
@@ -122,7 +131,10 @@ nav a:hover {
 
 .records {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
     gap: 20px;
 }
 
@@ -155,16 +167,18 @@ nav a:hover {
     content: "";
 
     position: absolute;
+
     left: 0;
     top: 0;
 
     width: 4px;
     height: 100%;
 
-    background: linear-gradient(
-        #00aaff,
-        #ff304f
-    );
+    background:
+        linear-gradient(
+            #00aaff,
+            #ff304f
+        );
 }
 
 .card:hover {
@@ -197,15 +211,19 @@ nav a:hover {
     border-radius: 10px;
 
     background: rgba(0, 150, 255, 0.13);
+
     border: 1px solid rgba(0, 170, 255, 0.25);
 
     color: #5cc8ff;
+
     font-weight: bold;
 }
 
 .card p {
     color: #b7c5dc;
+
     line-height: 1.6;
+
     margin: 0;
 }
 
@@ -225,21 +243,51 @@ nav a:hover {
     border-color: rgba(0, 180, 255, 0.5);
 }
 
+/* ===== ВЕРСИИ ===== */
+
+.version {
+    margin-top: 20px;
+}
+
+.version-badge {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    margin-bottom: 12px;
+
+    border-radius: 10px;
+
+    background: rgba(0, 150, 255, 0.13);
+
+    border: 1px solid rgba(0, 170, 255, 0.25);
+
+    color: #5cc8ff;
+
+    font-weight: bold;
+}
+
 /* ===== ИСТОРИЯ ===== */
 
 .timeline {
+    position: relative;
+
     margin-top: 20px;
+
     padding: 25px;
 
     border-radius: 20px;
 
     background: rgba(7, 13, 27, 0.8);
+
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .timeline-item {
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 22px 0;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
 }
 
 .timeline-item:last-child {
@@ -248,14 +296,54 @@ nav a:hover {
 
 .timeline-date {
     color: #00aaff;
+
+    font-size: 20px;
+
     font-weight: bold;
-    margin-bottom: 6px;
+
+    margin-bottom: 10px;
 }
 
 .timeline-item p {
     color: #b7c5dc;
+
     line-height: 1.6;
-    margin: 0;
+
+    margin: 0 0 10px;
+}
+
+/* ===== ТАБЛИЦА ===== */
+
+.history-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+}
+
+.history-table th,
+.history-table td {
+    padding: 14px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+.history-table th {
+    color: #5cc8ff;
+
+    background: rgba(0, 120, 255, 0.12);
+}
+
+.history-table td {
+    color: #b7c5dc;
 }
 
 /* ===== КНОПКА НАЗАД ===== */
@@ -264,6 +352,7 @@ nav a:hover {
     display: block;
 
     width: fit-content;
+
     margin: 45px auto;
 
     padding: 13px 22px;
@@ -271,22 +360,27 @@ nav a:hover {
     border-radius: 14px;
 
     color: white;
+
     text-decoration: none;
 
-    background: linear-gradient(
-        90deg,
-        #006eff,
-        #008cff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #006eff,
+            #008cff
+        );
 
-    box-shadow: 0 0 20px rgba(0, 120, 255, 0.25);
+    box-shadow:
+        0 0 20px rgba(0, 120, 255, 0.25);
 
     transition: 0.25s;
 }
 
 .back:hover {
     transform: scale(1.04);
-    box-shadow: 0 0 30px rgba(0, 150, 255, 0.45);
+
+    box-shadow:
+        0 0 30px rgba(0, 150, 255, 0.45);
 }
 
 /* ===== FOOTER ===== */
@@ -295,11 +389,13 @@ footer {
     text-align: center;
 
     margin-top: 70px;
+
     padding: 30px 20px;
 
     color: #7183a4;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-top:
+        1px solid rgba(255, 255, 255, 0.07);
 }
 
 footer b {
@@ -335,6 +431,15 @@ footer b {
     .card {
         padding: 22px;
     }
+
+    .history-table {
+        font-size: 14px;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 10px 8px;
+    }
 }
 </style>
 </head>
@@ -344,11 +449,27 @@ footer b {
 <!-- ===== НАВИГАЦИЯ ===== -->
 
 <nav>
-    <a href="index.html">🏠 Главная</a>
-    <a href="index.html#rules">📜 Правила</a>
-    <a href="index.html#games">🎮 Игры</a>
-    <a href="index.html#rating">🏆 Топ</a>
-    <a href="hall-of-fame.html">🏅 Зал славы</a>
+
+    <a href="index.html">
+        🏠 Главная
+    </a>
+
+    <a href="index.html#rules">
+        📜 Правила
+    </a>
+
+    <a href="index.html#games">
+        🎮 Игры
+    </a>
+
+    <a href="index.html#rating">
+        🏆 Топ
+    </a>
+
+    <a href="hall-of-fame.html">
+        🏛️ Музей Ball Games
+    </a>
+
 </nav>
 
 
@@ -356,12 +477,13 @@ footer b {
 
 <header class="hero">
 
-    <h1>🏆 ЗАЛ СЛАВЫ</h1>
+    <h1>🏛️ МУЗЕЙ BALL GAMES</h1>
 
     <p>
-        Здесь хранятся главные достижения и исторические события
-        Ball Games.
-        Не просто цифры — а моменты, которые вошли в историю игры.
+        Здесь хранится история Ball Games —
+        от самой первой Alpha до современной версии.
+        Старые версии, легендарные события,
+        достижения и люди, стоящие у истоков игры.
     </p>
 
 </header>
@@ -370,27 +492,474 @@ footer b {
 <main class="container">
 
 
-<!-- ===== РЕКОРДЫ ===== -->
+<!-- ===== ГЛАВНЫЕ ЭКСПОНАТЫ ===== -->
 
 <section>
 
     <div class="section-title">
-        <h2>🔥 Исторические достижения</h2>
-        <p>Игроки, установившие важные рекорды Ball Games</p>
+
+        <h2>🏛️ Главные экспонаты</h2>
+
+        <p>
+            Самые важные моменты в истории Ball Games
+        </p>
+
     </div>
 
 
     <div class="records">
 
 
-        <!-- СТЁПА -->
+        <!-- ALPHA -->
 
         <article class="card">
 
-            <div class="icon">👑</div>
+            <div class="icon">
+                🟢
+            </div>
 
             <h3>
-                Первый игрок, набравший 50 побед
+                Ball Games Alpha
+            </h3>
+
+            <div class="player">
+                Самое начало
+            </div>
+
+            <p>
+                Самая первая версия игры.
+                Тогда Ball Games ещё не имел названия,
+                а в игре участвовало 5 человек.
+            </p>
+
+        </article>
+
+
+        <!-- 1.0 -->
+
+        <article class="card">
+
+            <div class="icon">
+                🔵
+            </div>
+
+            <h3>
+                Ball Games 1.0
+            </h3>
+
+            <div class="player">
+                Первая оформленная версия
+            </div>
+
+            <p>
+                Версия, в которой появились первые
+                основные игры и первые способности.
+            </p>
+
+        </article>
+
+
+        <!-- 2.0 -->
+
+        <article class="card">
+
+            <div class="icon">
+                🟣
+            </div>
+
+            <h3>
+                Ball Games 2.0
+            </h3>
+
+            <div class="player">
+                Легендарная эпоха
+            </div>
+
+            <p>
+                Версия, на которой прошла почти
+                вся прошлая эпоха Ball Games.
+            </p>
+
+        </article>
+
+
+        <!-- СОВРЕМЕННАЯ -->
+
+        <article class="card featured">
+
+            <div class="icon">
+                🔷
+            </div>
+
+            <h3>
+                Современный Ball Games
+            </h3>
+
+            <p>
+                Современная версия продолжает развивать
+                идеи предыдущих эпох.
+                В ней появились сезоны, глобальные вайпы,
+                рейтинг, новые титулы, способности,
+                пасхалки и Музей Ball Games.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===== ИСТОРИЯ ВЕРСИЙ ===== -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>🕰️ История версий</h2>
+
+        <p>
+            Эволюция Ball Games от первой игры
+            до современной системы
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <!-- ALPHA -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-date">
+                🟢 Ball Games Alpha
+            </div>
+
+            <p>
+                Это была первая версия игры,
+                которая тогда ещё не имела названия.
+            </p>
+
+            <p>
+                👥 В игре участвовало 5 человек.
+                Игроки играли на КМН, а победитель
+                придумывал 5 игр.
+            </p>
+
+            <p>
+                🎮 В каждой игре должен был выбыть
+                ровно 1 игрок.
+            </p>
+
+            <p>
+                🏆 Тот, кто первым проходил все
+                5 игр, получал +1 победу.
+            </p>
+
+            <p>
+                ⚡ Основных игр и системы способностей
+                тогда ещё не существовало.
+            </p>
+
+        </div>
+
+
+        <!-- 1.0 -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-date">
+                🔵 Ball Games 1.0
+            </div>
+
+            <p>
+                Первая версия, которая уже стала
+                похожа на современный Ball Games.
+            </p>
+
+            <p>
+                🎮 Игроки всё ещё могли придумывать
+                свои игры.
+            </p>
+
+            <p>
+                💥 Появились две основные игры:
+                <b>Вышибалы</b> и
+                <b>Русская рулетка</b>.
+            </p>
+
+            <p>
+                🧰 3 победы — аптечка.
+            </p>
+
+            <p>
+                🗺️ 5 побед — увеличение территории.
+            </p>
+
+            <p>
+                🏃 7 побед — специальное испытание
+                с бегом вокруг машины.
+            </p>
+
+            <p>
+                ⚡ 10 побед — любая способность.
+            </p>
+
+        </div>
+
+
+        <!-- 1.1 -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-date">
+                🔷 Ball Games 1.1
+            </div>
+
+            <p>
+                На следующий день после Ball Games 1.0
+                появилось название <b>Ball Games</b>.
+            </p>
+
+            <p>
+                С этого момента игра получила
+                своё нынешнее название.
+            </p>
+
+        </div>
+
+
+        <!-- 2.0 -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-date">
+                🟣 Ball Games 2.0
+            </div>
+
+            <p>
+                Самая легендарная версия Ball Games,
+                на которой проходила почти вся
+                прошлая эпоха.
+            </p>
+
+
+            <p>
+                👀 <b>1. Гляделки</b>
+            </p>
+
+            <p>
+                Игроки играли в КМН.
+                Победитель становился в центр,
+                а остальные образовывали перед ним
+                полумесяц из игроков.
+                После этого выбирался игрок
+                для следующего этапа.
+            </p>
+
+
+            <p>
+                💥 <b>2. Вышибалы</b>
+            </p>
+
+            <p>
+                Игроки играли в КМН,
+                после чего победитель начинал игру.
+                Главным условием было то,
+                что из раунда должен был выбыть
+                один игрок.
+            </p>
+
+
+            <p>
+                🎯 <b>3. Русская рулетка</b>
+            </p>
+
+            <p>
+                Финальная игра Ball Games 2.0
+                с использованием мяча.
+                В ней определялся победитель финала,
+                который получал +1 победу.
+            </p>
+
+
+            <p>
+                ⚡ <b>Способности Ball Games 2.0:</b>
+            </p>
+
+            <p>
+                5 — 🧰 Аптечка<br>
+                10 — ⚡ Уворачивание в русской рулетке<br>
+                15 — ⚡ специальная способность<br>
+                20 — ⭐ любая способность<br>
+                100 — 🔥 Прайм<br>
+                1000 — 👑 Всемогущий
+            </p>
+
+
+            <p>
+                🔄 Способность можно было менять
+                каждые 10 побед.
+                После 50 побед —
+                каждые 5 побед.
+            </p>
+
+
+            <p>
+                🔥 При наличии Прайма игрок
+                выбирал 2 способности.
+            </p>
+
+
+            <p>
+                🏅 <b>Титулы Ball Games 2.0:</b>
+            </p>
+
+            <p>
+                10 — Непобедимый / Пират<br>
+                20 — VIP / Один Такой<br>
+                30 — Инкогнито / Тёмный принц<br>
+                40 — Лорд / В тени<br>
+                50 — Любой
+            </p>
+
+        </div>
+
+
+        <!-- CURRENT -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-date">
+                🔥 Современный Ball Games
+            </div>
+
+            <p>
+                Современная версия продолжает развивать
+                идеи предыдущих эпох.
+            </p>
+
+            <p>
+                🏆 Победы<br>
+                ⚡ Способности<br>
+                🏅 Титулы<br>
+                🗓️ Сезоны<br>
+                🌍 Глобальные вайпы<br>
+                🏆 Рейтинг игроков<br>
+                🌟 Пасхалки
+            </p>
+
+            <p>
+                Ball Games продолжает развиваться,
+                а его история пополняется новыми
+                сезонами и событиями.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===== СРАВНЕНИЕ ВЕРСИЙ ===== -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>📊 Эпохи Ball Games</h2>
+
+        <p>
+            Краткое сравнение основных версий
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <table class="history-table">
+
+            <tr>
+                <th>Версия</th>
+                <th>Главное изменение</th>
+            </tr>
+
+            <tr>
+                <td>🟢 Alpha</td>
+                <td>
+                    Первые игры и система выбывания
+                </td>
+            </tr>
+
+            <tr>
+                <td>🔵 1.0</td>
+                <td>
+                    Первые основные игры и способности
+                </td>
+            </tr>
+
+            <tr>
+                <td>🔷 1.1</td>
+                <td>
+                    Появилось название Ball Games
+                </td>
+            </tr>
+
+            <tr>
+                <td>🟣 2.0</td>
+                <td>
+                    Полноценная система игр,
+                    способностей и титулов
+                </td>
+            </tr>
+
+            <tr>
+                <td>🔥 Современная</td>
+                <td>
+                    Сезоны, вайпы, рейтинг,
+                    пасхалки и дальнейшее развитие
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ===== РЕКОРДЫ ===== -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>🏆 Легендарные достижения</h2>
+
+        <p>
+            Игроки и события, вошедшие в историю
+        </p>
+
+    </div>
+
+
+    <div class="records">
+
+
+        <article class="card">
+
+            <div class="icon">
+                👑
+            </div>
+
+            <h3>
+                Первый игрок с 50 победами
             </h3>
 
             <div class="player">
@@ -405,11 +974,11 @@ footer b {
         </article>
 
 
-        <!-- RIKILL -->
-
         <article class="card">
 
-            <div class="icon">🔥</div>
+            <div class="icon">
+                🔥
+            </div>
 
             <h3>
                 Самая большая серия побед
@@ -427,11 +996,11 @@ footer b {
         </article>
 
 
-        <!-- AVES -->
-
         <article class="card featured">
 
-            <div class="icon">🌐</div>
+            <div class="icon">
+                🌐
+            </div>
 
             <h3>
                 Создатель сайта Ball Games
@@ -442,11 +1011,11 @@ footer b {
             </div>
 
             <p>
-                Aves создал сайт Ball Games и
-                глобально дополнял и развивал проект,
+                Aves создал сайт Ball Games
+                и глобально развивал проект,
                 превращая его в полноценную систему
                 с рейтингами, правилами, сезонами
-                и историей игроков.
+                и историей.
             </p>
 
         </article>
@@ -462,18 +1031,28 @@ footer b {
 <section>
 
     <div class="section-title">
-        <h2>🎮 Создатели Ball Games</h2>
-        <p>Люди, стоящие у истоков проекта</p>
+
+        <h2>👑 Создатели Ball Games</h2>
+
+        <p>
+            Люди, стоящие у истоков игры
+        </p>
+
     </div>
 
 
     <div class="records">
 
+
         <article class="card">
 
-            <div class="icon">🔵</div>
+            <div class="icon">
+                🔵
+            </div>
 
-            <h3>Aves</h3>
+            <h3>
+                Aves
+            </h3>
 
             <p>
                 Один из создателей Ball Games.
@@ -486,9 +1065,13 @@ footer b {
 
         <article class="card">
 
-            <div class="icon">🔴</div>
+            <div class="icon">
+                🔴
+            </div>
 
-            <h3>Стёпа</h3>
+            <h3>
+                Стёпа
+            </h3>
 
             <p>
                 Один из создателей Ball Games
@@ -501,9 +1084,13 @@ footer b {
 
         <article class="card">
 
-            <div class="icon">🟣</div>
+            <div class="icon">
+                🟣
+            </div>
 
-            <h3>Rikill</h3>
+            <h3>
+                Rikill
+            </h3>
 
             <p>
                 Один из создателей Ball Games
@@ -516,9 +1103,13 @@ footer b {
 
         <article class="card">
 
-            <div class="icon">🟢</div>
+            <div class="icon">
+                🟢
+            </div>
 
-            <h3>Артём</h3>
+            <h3>
+                Артём
+            </h3>
 
             <p>
                 Один из создателей Ball Games.
@@ -526,18 +1117,24 @@ footer b {
 
         </article>
 
+
     </div>
 
 </section>
 
 
-<!-- ===== ИСТОРИЯ ===== -->
+<!-- ===== ХРОНОЛОГИЯ ===== -->
 
 <section>
 
     <div class="section-title">
-        <h2>📜 История Ball Games</h2>
-        <p>Важные моменты проекта</p>
+
+        <h2>📜 Хронология</h2>
+
+        <p>
+            Путь Ball Games
+        </p>
+
     </div>
 
 
@@ -546,12 +1143,12 @@ footer b {
         <div class="timeline-item">
 
             <div class="timeline-date">
-                🏆 Рекорды игроков
+                🟢 Начало
             </div>
 
             <p>
-                В Ball Games начали фиксироваться
-                достижения игроков и исторические рекорды.
+                Появилась первая версия —
+                Ball Games Alpha.
             </p>
 
         </div>
@@ -560,13 +1157,12 @@ footer b {
         <div class="timeline-item">
 
             <div class="timeline-date">
-                🌐 Развитие сайта
+                🔵 1.0
             </div>
 
             <p>
-                У Ball Games появился собственный сайт
-                с правилами, рейтингом, сезонами,
-                титулами и другой информацией.
+                Появились первые основные игры
+                и способности.
             </p>
 
         </div>
@@ -575,12 +1171,12 @@ footer b {
         <div class="timeline-item">
 
             <div class="timeline-date">
-                🔥 Рекордная серия
+                🔷 1.1
             </div>
 
             <p>
-                Rikill установил серию из
-                5 побед подряд.
+                Игра получила название
+                Ball Games.
             </p>
 
         </div>
@@ -589,12 +1185,27 @@ footer b {
         <div class="timeline-item">
 
             <div class="timeline-date">
-                👑 50 побед
+                🟣 2.0
             </div>
 
             <p>
-                Стёпа стал первым игроком,
-                достигшим отметки в 50 побед.
+                Началась легендарная эпоха
+                Ball Games 2.0.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-date">
+                🔥 Современная эпоха
+            </div>
+
+            <p>
+                Ball Games продолжает развиваться,
+                появляются новые сезоны,
+                правила, достижения и пасхалки.
             </p>
 
         </div>
@@ -607,21 +1218,27 @@ footer b {
 <!-- ===== НАЗАД ===== -->
 
 <a class="back" href="index.html">
+
     ← Вернуться на главную
+
 </a>
 
 
 </main>
 
 
+<!-- ===== FOOTER ===== -->
+
 <footer>
 
-    <b>Ball Games</b><br>
+    <b>🏛️ Музей Ball Games</b>
 
-    История. Рекорды. Победы.
+    <br>
+
+    История. Версии. Рекорды. Легенды.
 
 </footer>
 
 
 </body>
-</html>
+    </html>
