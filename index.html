@@ -11,54 +11,58 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#182033;line-height:1.6}
-body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 15% 5%,#dce8ff,transparent 35%),radial-gradient(circle at 85% 15%,#eee4ff,transparent 30%);pointer-events:none;z-index:-1}
+body:before:
+    nav{
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    background:#fff;
+    border-bottom:1px solid #dfe5ef;
+    box-shadow:0 3px 18px #24324a12;
+}
+
+nav .logo{
+    font-size:24px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+nav .logo span{
+    color:#536dfe;
+}
+
+nav a{
+    display:inline-block;
+    color:#35415c;
+    text-decoration:none;
+    font-weight:800;
+    font-size:14px;
+    padding:8px 10px;
+    border-radius:10px;
+    margin:3px;
+}
+
+nav a:hover{
+    background:#eef2ff;
+    color:#4057d6;
+}
+
 @media(max-width:700px){
-
-    .main-nav{
-        padding:10px 14px 12px;
-        display:flex;
-        flex-wrap:wrap;
-        gap:10px;
-    }
-
-    .logo{
-        width:100%;
-        font-size:23px;
-    }
-
-    .nav-links{
-        width:100%;
-        display:grid;
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        gap:7px;
-    }
-
-    .main-nav a{
-        width:100%;
-        text-align:center;
-        font-size:13px;
-        padding:8px 5px;
-        border-radius:10px;
-    }
-
-    .hero{
-        padding-top:45px;
-    }
-
-    .hero h1{
-        letter-spacing:-3px;
-    }
-
-    table{
-        font-size:14px;
-    }
-
-    .rank{
+    nav{
+        flex-direction:column;
         gap:8px;
+        padding:12px 10px;
     }
 
-    .countdown{
-        font-size:20px;
+    nav > div:last-child{
+        text-align:center;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:7px 8px;
     }
 }
                                                                                                                                    }
@@ -78,23 +82,21 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 #ratingStatus{font-size:14px;color:#69748b;margin-bottom:12px}.locked-top{text-align:center;padding:30px 20px}.locked-top h3{font-size:28px;color:#b47700}.countdown{font-size:26px;font-weight:900;margin-top:20px}.season-total{font-size:22px;font-weight:900;text-align:center;padding:20px;background:#f7f9fc;border-radius:16px;margin-top:20px}
 .auth-box{max-width:600px;margin:auto}.auth-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.auth-btn{border:0;border-radius:12px;padding:12px 18px;background:#536dfe;color:#fff;font-weight:900;cursor:pointer;margin-top:8px}.auth-status{margin-top:10px;color:#69748b;font-size:14px}
 .admin-panel{max-width:600px;margin:20px auto}.admin-box{background:#fff;border:1px solid #dfe5ef;border-radius:20px;padding:22px;box-shadow:0 8px 28px #24324a12}.admin-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.admin-btn{border:0;border-radius:10px;padding:9px 13px;font-weight:900;cursor:pointer;margin-left:5px}.plus{background:#4caf50;color:white}.minus{background:#e05252;color:white}.login{background:#536dfe;color:white;padding:12px 18px;border:0;border-radius:12px;font-weight:900;cursor:pointer;margin-top:8px}.logout{background:#eef2f8;color:#182033;padding:10px 15px;border:0;border-radius:12px;font-weight:900;cursor:pointer}.admin-status{margin-top:10px;color:#69748b;font-size:14px}
-@media(max-width:700px){nav{align-items:flex-start;gap:10px}nav div:last-child{display:flex;flex-wrap:wrap;justify-content:flex-end}nav a{margin:3px;padding:7px 8px;font-size:13px}.hero{padding-top:55px}.hero h1{letter-spacing:-3px}table{font-size:14px}.rank{gap:8px}.countdown{font-size:20px}}
-</style>
+
 </head>
 
 <body>
 
-<nav class="main-nav">
+<nav>
     <div class="logo">🎯 BALL <span>GAMES</span></div>
 
-    <div class="nav-links">
+    <div>
         <a href="index.html">🏠 Главная</a>
         <a href="rules.html">📖 Правила</a>
         <a href="games.html">🎮 Игры</a>
         <a href="top.html">🏆 Топ</a>
         <a href="wipes.html">🗓️ Вайпы</a>
         <a href="hall-of-fame.html">🏛️ Музей Ball Games</a>
-        <a href="versions.html">📂 Архив версий</a>
     </div>
 </nav>
 
