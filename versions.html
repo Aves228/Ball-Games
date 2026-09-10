@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📂 Архив версий Ball Games</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #050b18, #101b35);
+    color: white;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background: #080d1c;
+    border-bottom: 2px solid #26365f;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #162342;
+    transition: .2s;
+}
+
+nav a:hover {
+    background: #243b70;
+    transform: translateY(-2px);
+}
+
+.hero {
+    text-align: center;
+    padding: 55px 20px 35px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+.hero p {
+    color: #aebbe0;
+    font-size: 17px;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0 35px;
+}
+
+.legend span {
+    padding: 10px 15px;
+    border-radius: 12px;
+    background: #111d38;
+}
+
+.current {
+    text-align: center;
+    padding: 18px;
+    margin-bottom: 35px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #182b50, #10203d);
+    border: 1px solid #38558c;
+}
+
+.current strong {
+    font-size: 22px;
+}
+
+.version {
+    margin-bottom: 15px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #26385f;
+    background: #0d1730;
+}
+
+.version summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 18px 20px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.version summary::-webkit-details-marker {
+    display: none;
+}
+
+.version summary::after {
+    content: "＋";
+    float: right;
+}
+
+.version[open] summary::after {
+    content: "−";
+}
+
+.content {
+    padding: 0 20px 20px;
+    color: #cbd5f0;
+    line-height: 1.6;
+}
+
+.release {
+    border-left: 5px solid #ff3b30;
+}
+
+.beta {
+    border-left: 5px solid #a855f7;
+}
+
+.snapshot {
+    border-left: 5px solid #ffd43b;
+}
+
+.release summary {
+    background: rgba(255, 59, 48, .08);
+}
+
+.beta summary {
+    background: rgba(168, 85, 247, .08);
+}
+
+.snapshot summary {
+    background: rgba(255, 212, 59, .08);
+}
+
+h2 {
+    margin-top: 45px;
+    margin-bottom: 20px;
+}
+
+.note {
+    color: #9eacd0;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7484aa;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">🏠 Главная</a>
+    <a href="rules.html">📖 Правила</a>
+    <a href="games.html">🎮 Игры</a>
+    <a href="top.html">🏆 Топ</a>
+    <a href="wipes.html">🗓️ Вайпы</a>
+    <a href="hall-of-fame.html">🏛️ Музей Ball Games</a>
+    <a href="versions.html">📂 Архив версий</a>
+</nav>
+
+<section class="hero">
+    <h1>📂 Архив версий</h1>
+    <p>История развития Ball Games после версии 3.0</p>
+</section>
+
+<div class="container">
+
+    <div class="legend">
+        <span>🔴 Релиз — X.X</span>
+        <span>🟣 Бета — X.XX</span>
+        <span>🟡 Снапшот — X.XXX</span>
+    </div>
+
+    <div class="current">
+        <div>Текущая версия</div>
+        <strong>Ball Games 3.61 🟣</strong>
+        <div class="note">
+            Бета-версия. Добавляется архив версий Ball Games.
+        </div>
+    </div>
+
+
+    <!-- 3.6 -->
+
+    <h2>Версия 3.6</h2>
+
+    <details class="beta">
+        <summary>3.61 🟣 — Архив версий</summary>
+        <div class="content">
+            Добавляется отдельная страница с историей версий Ball Games.
+        </div>
+    </details>
+
+    <details class="release">
+        <summary>3.6 🔴 — Новый этап Ball Games</summary>
+        <div class="content">
+            Версия 3.6 стала очередным крупным релизом после серии
+            изменений и обновлений проекта.
+        </div>
+    </details>
+
+
+    <!-- 3.5 -->
+
+    <h2>Версия 3.5</h2>
+
+    <details class="beta">
+        <summary>3.51 🟣 — Ball Games Mobile</summary>
+        <div class="content">
+            Появилась идея отдельного мобильного приложения Ball Games.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.511 🟡 — Первые изменения мобильного проекта</summary>
+        <div class="content">
+            Началась проработка структуры мобильной версии Ball Games.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.52 🟣 — Разделение сайта и приложения</summary>
+        <div class="content">
+            Уточнено, что мобильное приложение не должно напрямую
+            использовать рейтинг реального сайта Ball Games.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.521 🟡 — Интерфейс приложения</summary>
+        <div class="content">
+            Началась отдельная работа над интерфейсом мобильного приложения.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.53 🟣 — Обновление интерфейса</summary>
+        <div class="content">
+            Интерфейс мобильного проекта стал более современным.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.531 🟡 — Доработка интерфейса</summary>
+        <div class="content">
+            Продолжилась доработка внешнего вида мобильного проекта.
+        </div>
+    </details>
+
+    <details class="release">
+        <summary>3.5 🔴 — Ball Games выходит за пределы сайта</summary>
+        <div class="content">
+            Ball Games начинает развиваться не только как сайт,
+            но и как отдельный цифровой проект.
+        </div>
+    </details>
+
+
+    <!-- 3.4 -->
+
+    <h2>Версия 3.4</h2>
+
+    <details class="beta">
+        <summary>3.41 🟣 — Новая структура сайта</summary>
+        <div class="content">
+            Навигация сайта получила основные разделы:
+            Правила, Игры, Топ и Вайпы.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.42 🟣 — Музей Ball Games</summary>
+        <div class="content">
+            Создан отдельный раздел с историей Ball Games.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.421 🟡 — Расширение музея</summary>
+        <div class="content">
+            В музей добавлена дополнительная историческая информация.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.43 🟣 — История версий в музее</summary>
+        <div class="content">
+            История развития Ball Games стала отдельной частью музея.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.431 🟡 — Достижения и создатели</summary>
+        <div class="content">
+            В музей добавлены легендарные достижения и информация
+            о создателях Ball Games.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.44 🟣 — Расширение истории</summary>
+        <div class="content">
+            Исторический раздел музея был дополнительно расширен.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.441 🟡 — Финальная доработка музея</summary>
+        <div class="content">
+            Проведена дополнительная доработка исторической части музея.
+        </div>
+    </details>
+
+    <details class="release">
+        <summary>3.4 🔴 — Большое обновление сайта</summary>
+        <div class="content">
+            Сайт получил новую структуру и расширенные исторические разделы.
+        </div>
+    </details>
+
+
+    <!-- 3.3 -->
+
+    <h2>Версия 3.3</h2>
+
+    <details class="beta">
+        <summary>3.31 🟣 — Игра «Цель»</summary>
+        <div class="content">
+            В Ball Games появилась новая игра «Цель».
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.311 🟡 — Доработка «Цели»</summary>
+        <div class="content">
+            Новая игра получила дополнительные изменения и доработки.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.32 🟣 — Расширение набора игр</summary>
+        <div class="content">
+            Список игр Ball Games был расширен.
+        </div>
+    </details>
+
+    <details class="release">
+        <summary>3.3 🔴 — Новые игры</summary>
+        <div class="content">
+            Игровая часть Ball Games получила новые варианты игр.
+        </div>
+    </details>
+
+
+    <!-- 3.2 -->
+
+    <h2>Версия 3.2</h2>
+
+    <details class="beta">
+        <summary>3.21 🟣 — Новая система рейтинга</summary>
+        <div class="content">
+            Появилась система уровней рейтинга:
+            Алмазный, Золотой, Серебряный, Бронзовый,
+            Деревянный и Теневой.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.211 🟡 — Алмазный уровень</summary>
+        <div class="content">
+            Дополнительно проработан верхний уровень рейтинга.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.22 🟣 — Изменения рейтинга</summary>
+        <div class="content">
+            Система рейтинга была дополнительно настроена.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.221 🟡 — Доработка уровней</summary>
+        <div class="content">
+            Уровни рейтинга получили дополнительные изменения.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.23 🟣 — Достижения и рекорды</summary>
+        <div class="content">
+            В Ball Games появилась отдельная идея системы достижений
+            и рекордов игроков.
+        </div>
+    </details>
+
+    <details class="release">
+        <summary>3.2 🔴 — Рейтинг Ball Games</summary>
+        <div class="content">
+            Система рейтинга стала важной частью Ball Games.
+        </div>
+    </details>
+
+
+    <!-- 3.1 -->
+
+    <h2>Версия 3.1</h2>
+
+    <details class="beta">
+        <summary>3.11 🟣 — Сезоны и вайпы</summary>
+        <div class="content">
+            В Ball Games появилась система сезонов и глобальных вайпов.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.111 🟡 — Даты вайпов</summary>
+        <div class="content">
+            Определены даты глобальных вайпов:
+            1 июня, 1 сентября, 1 декабря и 1 марта.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.12 🟣 — Вайп-дни</summary>
+        <div class="content">
+            В день глобального вайпа действует особый бонус к победам.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.121 🟡 — Бонус вайпа</summary>
+        <div class="content">
+            Уточнён бонус за победы в день вайпа.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.122 🟡 — Сброс сезона</summary>
+        <div class="content">
+            После вайпа победы сбрасываются, а титулы сохраняются.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.13 🟣 — Дополнительные изменения сезонов</summary>
+        <div class="content">
+            Сезонная система получила дополнительные настройки.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.14 🟣 — Сохранение титулов</summary>
+        <div class="content">
+            Было уточнено сохранение титулов между сезонами.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.15 🟣 — Пасхалки</summary>
+        <div class="content">
+            В Ball Games начала развиваться система пасхалок.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.151 🟡 — Новые пасхалки</summary>
+        <div class="content">
+            Система пасхалок получила дополнительные элементы.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.16 🟣 — Неактивность игроков</summary>
+        <div class="content">
+            Появилась идея удаления игрока из топа при отсутствии
+            изменений в количестве побед в течение 45 дней.
+        </div>
+    </details>
+
+    <details class="release">
+        <summary>3.1 🔴 — Сезонная система</summary>
+        <div class="content">
+            Сезоны, вайпы и связанные с ними правила стали частью
+            современной системы Ball Games.
+        </div>
+    </details>
+
+
+    <!-- 3.0 -->
+
+    <h2>Версия 3.0</h2>
+
+    <details class="beta">
+        <summary>3.01 🟣 — Новая система титулов</summary>
+        <div class="content">
+            Система титулов получила новые варианты и возможности выбора.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.001 🟡 — Доработка титулов</summary>
+        <div class="content">
+            Проведена дополнительная настройка системы титулов.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.02 🟣 — Способки в рамках матча</summary>
+        <div class="content">
+            Уточнено, что использованная способка не возвращается
+            в следующих играх текущего матча.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.003 🟡 — Доработка способок</summary>
+        <div class="content">
+            Система использования способок была дополнительно уточнена.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.04 🟣 — Аптечка</summary>
+        <div class="content">
+            Аптечка стала общей расходуемой способкой на текущий матч
+            и доступна начиная с 5 побед.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.005 🟡 — Доработка аптечки</summary>
+        <div class="content">
+            Уточнены правила доступности аптечки в рамках матча.
+        </div>
+    </details>
+
+    <details class="beta">
+        <summary>3.06 🟣 — Изменения титулов</summary>
+        <div class="content">
+            Система титулов получила дополнительные изменения.
+        </div>
+    </details>
+
+    <details class="snapshot">
+        <summary>3.007 🟡 — Доработка системы</summary>
+        <div class="content">
+            Проведена дополнительная настройка новой системы Ball Games.
+        </div>
+    </details>
+
+    <details class="release">
+        <summary>3.0 🔴 — Начало современной эпохи</summary>
+        <div class="content">
+            Ball Games перешёл к современной системе развития:
+            рейтинг, титулы, способки, сезоны и развитие сайта.
+        </div>
+    </details>
+
+
+    <h2>🔮 Будущие версии</h2>
+
+    <div class="current">
+        <strong>3.7 🔴 — в будущем</strong>
+        <div class="note">
+            Следующий релиз после 3.6. Изменения будут добавлены
+            после их фактического появления.
+        </div>
+    </div>
+
+    <div class="current">
+        <strong>3.62 🟣 — возможная следующая бета</strong>
+        <div class="note">
+            Будущая версия. Содержимое появится после разработки.
+        </div>
+    </div>
+
+    <div class="current">
+        <strong>3.600 🟡 — будущий снапшот</strong>
+        <div class="note">
+            Снапшоты добавляются только тогда, когда есть конкретное
+            изменение, которое можно описать.
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    🏐 Ball Games — история развития проекта
+</footer>
+
+</body>
+</html>
