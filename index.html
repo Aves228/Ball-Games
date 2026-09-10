@@ -15,25 +15,34 @@ body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle 
 @media(max-width:700px){
 
     .main-nav{
-        align-items:flex-start;
-        padding:10px 12px;
-        gap:8px;
+        padding:10px 14px 12px;
+        display:flex;
         flex-wrap:wrap;
+        gap:10px;
+    }
+
+    .logo{
+        width:100%;
+        font-size:23px;
     }
 
     .nav-links{
-        flex:1 1 100%;
-        justify-content:center;
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:7px;
     }
 
     .main-nav a{
-        margin:2px;
-        padding:7px 8px;
+        width:100%;
+        text-align:center;
         font-size:13px;
+        padding:8px 5px;
+        border-radius:10px;
     }
 
     .hero{
-        padding-top:55px;
+        padding-top:45px;
     }
 
     .hero h1{
@@ -51,6 +60,7 @@ body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle 
     .countdown{
         font-size:20px;
     }
+}
                                                                                                                                    }
 .hero{padding:80px 6% 55px;text-align:center}.hero h1{font-size:clamp(48px,10vw,100px);margin:0;font-weight:1000;letter-spacing:-5px;color:#182033}.hero p{color:#68738b;font-size:19px}
 .wipe{display:inline-block;margin:24px 0;padding:18px 25px;border:1px solid #e5b43c;border-radius:18px;background:#fff9e8;box-shadow:0 8px 30px #d4a62a22}.wipe b{color:#b47700}
