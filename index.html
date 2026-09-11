@@ -92,6 +92,151 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 #ratingStatus{font-size:14px;color:#69748b;margin-bottom:12px}.locked-top{text-align:center;padding:30px 20px}.locked-top h3{font-size:28px;color:#b47700}.countdown{font-size:26px;font-weight:900;margin-top:20px}.season-total{font-size:22px;font-weight:900;text-align:center;padding:20px;background:#f7f9fc;border-radius:16px;margin-top:20px}
 .auth-box{max-width:600px;margin:auto}.auth-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.auth-btn{border:0;border-radius:12px;padding:12px 18px;background:#536dfe;color:#fff;font-weight:900;cursor:pointer;margin-top:8px}.auth-status{margin-top:10px;color:#69748b;font-size:14px}
 .admin-panel{max-width:600px;margin:20px auto}.admin-box{background:#fff;border:1px solid #dfe5ef;border-radius:20px;padding:22px;box-shadow:0 8px 28px #24324a12}.admin-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.admin-btn{border:0;border-radius:10px;padding:9px 13px;font-weight:900;cursor:pointer;margin-left:5px}.plus{background:#4caf50;color:white}.minus{background:#e05252;color:white}.login{background:#536dfe;color:white;padding:12px 18px;border:0;border-radius:12px;font-weight:900;cursor:pointer;margin-top:8px}.logout{background:#eef2f8;color:#182033;padding:10px 15px;border:0;border-radius:12px;font-weight:900;cursor:pointer}.admin-status{margin-top:10px;color:#69748b;font-size:14px}
+/* 📱 МОБИЛЬНАЯ ВЕРСИЯ */
+@media (max-width:700px){
+
+    body{
+        font-size:15px;
+        overflow-x:hidden;
+    }
+
+    nav{
+        padding:12px 10px;
+        gap:10px;
+    }
+
+    nav .logo{
+        font-size:22px;
+    }
+
+    nav > div:last-child{
+        width:100%;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    nav a{
+        font-size:12px;
+        padding:7px 8px;
+        margin:2px;
+    }
+
+    .hero{
+        padding:45px 14px 35px;
+    }
+
+    .hero h1{
+        font-size:clamp(42px,14vw,70px);
+        letter-spacing:-3px;
+        line-height:1;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .wipe{
+        display:block;
+        margin:20px 0;
+        padding:16px;
+        font-size:14px;
+        border-radius:16px;
+    }
+
+    .btn{
+        display:block;
+        width:100%;
+        margin:8px 0;
+        text-align:center;
+        padding:13px 12px;
+    }
+
+    section{
+        padding:30px 12px;
+        width:100%;
+    }
+
+    h2{
+        font-size:26px;
+        line-height:1.2;
+    }
+
+    h3{
+        font-size:19px;
+        line-height:1.3;
+    }
+
+    .card{
+        padding:17px;
+        border-radius:17px;
+        margin-bottom:12px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+    .flow{
+        font-size:16px;
+        padding:16px 10px;
+    }
+
+    /* Таблицы не ломают ширину страницы */
+    table{
+        display:block;
+        width:100%;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    td,th{
+        padding:11px 9px;
+        font-size:14px;
+    }
+
+    .rank{
+        flex-wrap:wrap;
+        gap:8px;
+    }
+
+    .place{
+        width:35px;
+        font-size:21px;
+    }
+
+    .name{
+        min-width:100px;
+    }
+
+    .rank-title{
+        font-size:11px;
+    }
+
+    .wins{
+        font-size:14px;
+    }
+
+    .season-total{
+        font-size:18px;
+        padding:16px;
+    }
+
+    .auth-box,
+    .admin-panel{
+        width:100%;
+    }
+
+    .auth-input,
+    .admin-input{
+        font-size:16px;
+    }
+
+    .footer{
+        padding:35px 15px;
+    }
+    }
 </style>
 </head>
 
