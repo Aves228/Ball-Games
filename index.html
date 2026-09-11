@@ -8,31 +8,20 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
 
 <style>
-
-        
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#182033;line-height:1.6}
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f7fb;
-  color: #182033;
-  line-height: 1.6;
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 15% 5%,#dce8ff,transparent 35%),
+        radial-gradient(circle at 85% 15%,#eee4ff,transparent 30%);
+    pointer-events:none;
+    z-index:-1;
 }
-
-body:before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 15% 5%, #dce8ff, transparent 35%),
-    radial-gradient(circle at 85% 15%, #eee4ff, transparent 30%);
-  pointer-events: none;
-  z-index: -1;
-}
-
 
 nav{
     padding:16px 6%;
@@ -86,7 +75,7 @@ nav a:hover{
         font-size:13px;
         padding:7px 8px;
     }
-                                                                                                                       }
+}
 .hero{padding:80px 6% 55px;text-align:center}.hero h1{font-size:clamp(48px,10vw,100px);margin:0;font-weight:1000;letter-spacing:-5px;color:#182033}.hero p{color:#68738b;font-size:19px}
 .wipe{display:inline-block;margin:24px 0;padding:18px 25px;border:1px solid #e5b43c;border-radius:18px;background:#fff9e8;box-shadow:0 8px 30px #d4a62a22}.wipe b{color:#b47700}
 .btn{display:inline-block;margin:8px;padding:12px 18px;border-radius:12px;background:#536dfe;color:#fff;text-decoration:none;font-weight:900;box-shadow:0 7px 18px #536dfe33}.btn:hover{transform:translateY(-2px)}
@@ -103,7 +92,7 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 #ratingStatus{font-size:14px;color:#69748b;margin-bottom:12px}.locked-top{text-align:center;padding:30px 20px}.locked-top h3{font-size:28px;color:#b47700}.countdown{font-size:26px;font-weight:900;margin-top:20px}.season-total{font-size:22px;font-weight:900;text-align:center;padding:20px;background:#f7f9fc;border-radius:16px;margin-top:20px}
 .auth-box{max-width:600px;margin:auto}.auth-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.auth-btn{border:0;border-radius:12px;padding:12px 18px;background:#536dfe;color:#fff;font-weight:900;cursor:pointer;margin-top:8px}.auth-status{margin-top:10px;color:#69748b;font-size:14px}
 .admin-panel{max-width:600px;margin:20px auto}.admin-box{background:#fff;border:1px solid #dfe5ef;border-radius:20px;padding:22px;box-shadow:0 8px 28px #24324a12}.admin-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.admin-btn{border:0;border-radius:10px;padding:9px 13px;font-weight:900;cursor:pointer;margin-left:5px}.plus{background:#4caf50;color:white}.minus{background:#e05252;color:white}.login{background:#536dfe;color:white;padding:12px 18px;border:0;border-radius:12px;font-weight:900;cursor:pointer;margin-top:8px}.logout{background:#eef2f8;color:#182033;padding:10px 15px;border:0;border-radius:12px;font-weight:900;cursor:pointer}.admin-status{margin-top:10px;color:#69748b;font-size:14px}
-
+</style>
 </head>
 
 <body>
@@ -336,6 +325,24 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 
 <footer class="footer"><h2>😎 BALL GAMES</h2><p>Каждый вайп — новые правила.<br>Каждая победа — часть истории. 🏆</p><p class="small">© Ball Games</p></footer>
 
+<section id="adminPanel" class="admin-panel">
+<div class="admin-box">
+<h2>🛡️ Админ Ball Games</h2>
+<div id="adminLoginForm">
+<p>🔐 Войдите, чтобы изменять рейтинг.</p>
+<input id="adminEmail" class="admin-input" type="email" placeholder="Email администратора">
+<input id="adminPassword" class="admin-input" type="password" placeholder="Пароль">
+<button class="login" onclick="loginAdmin()">🔐 Войти</button>
+</div>
+<div id="adminLogged" style="display:none">
+<p>✅ Вы вошли как администратор.</p>
+<button class="logout" onclick="logoutAdmin()">🚪 Выйти</button>
+<p class="small">Теперь возле игроков появились кнопки −1 и +1.</p>
+</div>
+<p id="adminStatus" class="admin-status"></p>
+</div>
+</section>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -561,24 +568,6 @@ function showSeptember14EasterEgg() {
 
 showSeptember14EasterEgg();
 </script>
-
-<section id="adminPanel" class="admin-panel">
-<div class="admin-box">
-<h2>🛡️ Админ Ball Games</h2>
-<div id="adminLoginForm">
-<p>🔐 Войдите, чтобы изменять рейтинг.</p>
-<input id="adminEmail" class="admin-input" type="email" placeholder="Email администратора">
-<input id="adminPassword" class="admin-input" type="password" placeholder="Пароль">
-<button class="login" onclick="loginAdmin()">🔐 Войти</button>
-</div>
-<div id="adminLogged" style="display:none">
-<p>✅ Вы вошли как администратор.</p>
-<button class="logout" onclick="logoutAdmin()">🚪 Выйти</button>
-<p class="small">Теперь возле игроков появились кнопки −1 и +1.</p>
-</div>
-<p id="adminStatus" class="admin-status"></p>
-</div>
-</section>
 
 </body>
 </html>
