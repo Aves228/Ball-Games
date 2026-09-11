@@ -8,22 +8,31 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#182033;line-height:1.6}
 
         
 
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-        radial-gradient(circle at 15% 5%,#dce8ff,transparent 35%),
-        radial-gradient(circle at 85% 15%,#eee4ff,transparent 30%);
-    pointer-events:none;
-    z-index:-1;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #182033;
+  line-height: 1.6;
 }
+
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 5%, #dce8ff, transparent 35%),
+    radial-gradient(circle at 85% 15%, #eee4ff, transparent 30%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 
 nav{
     padding:16px 6%;
