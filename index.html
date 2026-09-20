@@ -40,9 +40,7 @@ nav .logo{
     white-space:nowrap;
 }
 
-nav .logo span{
-    color:#536dfe;
-}
+nav .logo span{color:#536dfe}
 
 nav a{
     display:inline-block;
@@ -67,33 +65,358 @@ nav a:hover{
         padding:12px 10px;
     }
 
-    nav > div:last-child{
-        text-align:center;
-    }
+    nav > div:last-child{text-align:center}
 
     nav a{
         font-size:13px;
         padding:7px 8px;
     }
 }
-.hero{padding:80px 6% 55px;text-align:center}.hero h1{font-size:clamp(48px,10vw,100px);margin:0;font-weight:1000;letter-spacing:-5px;color:#182033}.hero p{color:#68738b;font-size:19px}
-.wipe{display:inline-block;margin:24px 0;padding:18px 25px;border:1px solid #e5b43c;border-radius:18px;background:#fff9e8;box-shadow:0 8px 30px #d4a62a22}.wipe b{color:#b47700}
-.btn{display:inline-block;margin:8px;padding:12px 18px;border-radius:12px;background:#536dfe;color:#fff;text-decoration:none;font-weight:900;box-shadow:0 7px 18px #536dfe33}.btn:hover{transform:translateY(-2px)}
-section{padding:45px 6%;max-width:1200px;margin:auto;scroll-margin-top:80px}
-h2{font-size:32px;margin-bottom:25px}h3{font-size:21px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.card{background:#fff;border:1px solid #dfe5ef;border-radius:20px;padding:22px;box-shadow:0 8px 28px #24324a12;margin-bottom:16px}.card h3{margin-top:0}
-.muted{color:#69748b}.rank{display:flex;align-items:center;gap:15px;padding:15px 0;border-bottom:1px solid #edf0f5}.rank:last-child{border:0}.place{font-size:25px;width:42px}.name{font-weight:900;flex:1}.wins{color:#68738b;font-weight:900}
-.badge{font-size:13px;background:#eef2ff;color:#4154bd;padding:7px 10px;border-radius:10px}.rank-title{font-size:13px;background:#f3f5ff;color:#4154bd;padding:6px 9px;border-radius:10px;font-weight:900}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5ef;border-radius:18px;overflow:hidden}td,th{text-align:left;padding:14px;border-bottom:1px solid #edf0f5}th{color:#69748b;background:#f7f9fc}
-.ability{border-left:5px solid #536dfe}.warning{border-left:5px solid #e5b43c}.danger{border-left:5px solid #e05252}.success{border-left:5px solid #4caf50}
-.pill{display:inline-block;padding:8px 12px;border-radius:999px;background:#eef2f8;margin:4px}
-.flow{font-size:20px;font-weight:900;text-align:center;padding:20px;background:#fff;border-radius:20px;border:1px solid #dfe5ef;margin:15px 0}
-.footer{text-align:center;padding:50px 20px;color:#7c879d}.small{font-size:14px;color:#7c879d}
-#ratingStatus{font-size:14px;color:#69748b;margin-bottom:12px}.locked-top{text-align:center;padding:30px 20px}.locked-top h3{font-size:28px;color:#b47700}.countdown{font-size:26px;font-weight:900;margin-top:20px}.season-total{font-size:22px;font-weight:900;text-align:center;padding:20px;background:#f7f9fc;border-radius:16px;margin-top:20px}
-.auth-box{max-width:600px;margin:auto}.auth-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.auth-btn{border:0;border-radius:12px;padding:12px 18px;background:#536dfe;color:#fff;font-weight:900;cursor:pointer;margin-top:8px}.auth-status{margin-top:10px;color:#69748b;font-size:14px}
-.admin-panel{max-width:600px;margin:20px auto}.admin-box{background:#fff;border:1px solid #dfe5ef;border-radius:20px;padding:22px;box-shadow:0 8px 28px #24324a12}.admin-input{width:100%;padding:13px;margin:7px 0;border:1px solid #dfe5ef;border-radius:12px;font-size:16px}.admin-btn{border:0;border-radius:10px;padding:9px 13px;font-weight:900;cursor:pointer;margin-left:5px}.plus{background:#4caf50;color:white}.minus{background:#e05252;color:white}.login{background:#536dfe;color:white;padding:12px 18px;border:0;border-radius:12px;font-weight:900;cursor:pointer;margin-top:8px}.logout{background:#eef2f8;color:#182033;padding:10px 15px;border:0;border-radius:12px;font-weight:900;cursor:pointer}.admin-status{margin-top:10px;color:#69748b;font-size:14px}
+
+.hero{
+    padding:80px 6% 55px;
+    text-align:center
+}
+
+.hero h1{
+    font-size:clamp(48px,10vw,100px);
+    margin:0;
+    font-weight:1000;
+    letter-spacing:-5px;
+    color:#182033
+}
+
+.hero p{
+    color:#68738b;
+    font-size:19px
+}
+
+.wipe{
+    display:inline-block;
+    margin:24px 0;
+    padding:18px 25px;
+    border:1px solid #e5b43c;
+    border-radius:18px;
+    background:#fff9e8;
+    box-shadow:0 8px 30px #d4a62a22
+}
+
+.wipe b{color:#b47700}
+
+.btn{
+    display:inline-block;
+    margin:8px;
+    padding:12px 18px;
+    border-radius:12px;
+    background:#536dfe;
+    color:#fff;
+    text-decoration:none;
+    font-weight:900;
+    box-shadow:0 7px 18px #536dfe33
+}
+
+.btn:hover{transform:translateY(-2px)}
+
+section{
+    padding:45px 6%;
+    max-width:1200px;
+    margin:auto;
+    scroll-margin-top:80px
+}
+
+h2{
+    font-size:32px;
+    margin-bottom:25px
+}
+
+h3{font-size:21px}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:16px
+}
+
+.card{
+    background:#fff;
+    border:1px solid #dfe5ef;
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 8px 28px #24324a12;
+    margin-bottom:16px
+}
+
+.card h3{margin-top:0}
+
+.muted{color:#69748b}
+
+.rank{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid #edf0f5
+}
+
+.rank:last-child{border:0}
+
+.place{
+    font-size:25px;
+    width:42px
+}
+
+.name{
+    font-weight:900;
+    flex:1
+}
+
+.wins{
+    color:#68738b;
+    font-weight:900
+}
+
+.badge{
+    font-size:13px;
+    background:#eef2ff;
+    color:#4154bd;
+    padding:7px 10px;
+    border-radius:10px
+}
+
+.rank-title{
+    font-size:13px;
+    background:#f3f5ff;
+    color:#4154bd;
+    padding:6px 9px;
+    border-radius:10px;
+    font-weight:900
+}
+
+.warning-count{
+    font-size:12px;
+    background:#fff9e8;
+    color:#b47700;
+    border:1px solid #f0d27a;
+    padding:6px 9px;
+    border-radius:10px;
+    font-weight:900;
+    white-space:nowrap
+}
+
+.punishment-badge{
+    font-size:12px;
+    background:#fff0f0;
+    color:#c53d3d;
+    border:1px solid #f0bcbc;
+    padding:6px 9px;
+    border-radius:10px;
+    font-weight:900;
+    white-space:nowrap
+}
+
+.admin-controls{
+    display:none;
+    width:100%;
+    margin-top:8px;
+}
+
+.admin-btn{
+    border:0;
+    border-radius:10px;
+    padding:9px 13px;
+    font-weight:900;
+    cursor:pointer;
+    margin-left:5px
+}
+
+.plus{
+    background:#4caf50;
+    color:white
+}
+
+.minus{
+    background:#e05252;
+    color:white
+}
+
+.warn-btn{
+    background:#e5b43c;
+    color:white
+}
+
+.punish-btn{
+    background:#7d5cff;
+    color:white
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border:1px solid #dfe5ef;
+    border-radius:18px;
+    overflow:hidden
+}
+
+td,th{
+    text-align:left;
+    padding:14px;
+    border-bottom:1px solid #edf0f5
+}
+
+th{
+    color:#69748b;
+    background:#f7f9fc
+}
+
+.ability{border-left:5px solid #536dfe}
+.warning{border-left:5px solid #e5b43c}
+.danger{border-left:5px solid #e05252}
+.success{border-left:5px solid #4caf50}
+
+.pill{
+    display:inline-block;
+    padding:8px 12px;
+    border-radius:999px;
+    background:#eef2f8;
+    margin:4px
+}
+
+.flow{
+    font-size:20px;
+    font-weight:900;
+    text-align:center;
+    padding:20px;
+    background:#fff;
+    border-radius:20px;
+    border:1px solid #dfe5ef;
+    margin:15px 0
+}
+
+.footer{
+    text-align:center;
+    padding:50px 20px;
+    color:#7c879d
+}
+
+.small{
+    font-size:14px;
+    color:#7c879d
+}
+
+#ratingStatus{
+    font-size:14px;
+    color:#69748b;
+    margin-bottom:12px
+}
+
+.locked-top{
+    text-align:center;
+    padding:30px 20px
+}
+
+.locked-top h3{
+    font-size:28px;
+    color:#b47700
+}
+
+.countdown{
+    font-size:26px;
+    font-weight:900;
+    margin-top:20px
+}
+
+.season-total{
+    font-size:22px;
+    font-weight:900;
+    text-align:center;
+    padding:20px;
+    background:#f7f9fc;
+    border-radius:16px;
+    margin-top:20px
+}
+
+.auth-box{
+    max-width:600px;
+    margin:auto
+}
+
+.auth-input{
+    width:100%;
+    padding:13px;
+    margin:7px 0;
+    border:1px solid #dfe5ef;
+    border-radius:12px;
+    font-size:16px
+}
+
+.auth-btn{
+    border:0;
+    border-radius:12px;
+    padding:12px 18px;
+    background:#536dfe;
+    color:#fff;
+    font-weight:900;
+    cursor:pointer;
+    margin-top:8px
+}
+
+.auth-status{
+    margin-top:10px;
+    color:#69748b;
+    font-size:14px
+}
+
+.admin-panel{
+    max-width:600px;
+    margin:20px auto
+}
+
+.admin-box{
+    background:#fff;
+    border:1px solid #dfe5ef;
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 8px 28px #24324a12
+}
+
+.admin-input{
+    width:100%;
+    padding:13px;
+    margin:7px 0;
+    border:1px solid #dfe5ef;
+    border-radius:12px;
+    font-size:16px
+}
+
+.login{
+    background:#536dfe;
+    color:white;
+    padding:12px 18px;
+    border:0;
+    border-radius:12px;
+    font-weight:900;
+    cursor:pointer;
+    margin-top:8px
+}
+
+.logout{
+    background:#eef2f8;
+    color:#182033;
+    padding:10px 15px;
+    border:0;
+    border-radius:12px;
+    font-weight:900
+}
+
+.admin-status{
+    margin-top:10px;
+    color:#69748b;
+    font-size:14px
+}
+
 /* 📱 МОБИЛЬНАЯ ВЕРСИЯ */
-@media (max-width:500px){
+@media(max-width:500px){
 
     body{
         font-size:15px;
@@ -183,7 +506,6 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
         padding:16px 10px;
     }
 
-    /* Таблицы не ломают ширину страницы */
     table{
         display:block;
         width:100%;
@@ -218,6 +540,21 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
         font-size:14px;
     }
 
+    .warning-count,
+    .punishment-badge{
+        font-size:11px;
+    }
+
+    .admin-controls{
+        display:none;
+    }
+
+    .admin-btn{
+        padding:8px 10px;
+        margin-left:2px;
+        margin-top:4px;
+    }
+
     .season-total{
         font-size:18px;
         padding:16px;
@@ -236,7 +573,7 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
     .footer{
         padding:35px 15px;
     }
-    }
+}
 </style>
 </head>
 
@@ -258,6 +595,7 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 <header class="hero">
 <h1>BALL GAMES</h1>
 <p>Каждый сезон — новые возможности.<br>Каждая победа — часть истории.</p>
+
 <div class="wipe">
 🔥 <b>ГЛОБАЛЬНЫЙ ВАЙП — СОСТОЯЛСЯ!</b><br><br>
 🍂 ОСЕННИЙ СЕЗОН УЖЕ НАЧАЛСЯ!<br>
@@ -270,17 +608,27 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 
 🎮 Приятной игры в Ball Games!
 </div>
+
 <a class="btn" href="#rating">🏆 Смотреть новый топ</a>
 <a class="btn" href="#season1">🏆 Итоги сезона</a>
 <a class="btn" href="#rules">📜 Правила</a>
 <a class="btn" href="hall-of-fame.html">🏛️ Музей Ball Games</a>
 <a class="btn" href="versions.html">📜 Архив версий</a>
-    <a class="btn" href="#channel">🎬 Каналы </a>
+<a class="btn" href="#channel">🎬 Каналы</a>
 </header>
+
 <section id="rules">
 <h2>🏆 Главное правило</h2>
-<div class="card warning"><h3>В каждой игре должен выбыть РОВНО 1 игрок.</h3><p>❌ 0 выбывших — нельзя<br>❌ 2+ выбывших — нельзя<br>✅ Ровно 1 выбывший — правильно</p></div>
+
+<div class="card warning">
+<h3>В каждой игре должен выбыть РОВНО 1 игрок.</h3>
+<p>❌ 0 выбывших — нельзя<br>
+❌ 2+ выбывших — нельзя<br>
+✅ Ровно 1 выбывший — правильно</p>
+</div>
+
 <h2>😎 Создатели Ball Games</h2>
+
 <div class="grid">
 <div class="card"><h3>😎 Aves</h3><p>Создатель Ball Games</p></div>
 <div class="card"><h3>🎮 Стёпа</h3><p>Создатель Ball Games</p></div>
@@ -292,7 +640,8 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 <section id="games">
 <h2>🎮 Основные игры</h2>
 
-<div class="card"><h3>👀 1. ГЛЯДЕЛКИ</h3>
+<div class="card">
+<h3>👀 1. ГЛЯДЕЛКИ</h3>
 <p>1️⃣ Все игроки играют в «Камень, ножницы, бумага».</p>
 <p>2️⃣ Победитель становится ведущим.</p>
 <p>3️⃣ Остальные игроки выстраиваются перед ним.</p>
@@ -301,77 +650,221 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 <p>6️⃣ Этот игрок получает возможность выполнить попытку против бывшего ведущего.</p>
 <p>7️⃣ Если результат успешный — выбывает бывший ведущий.</p>
 <p>8️⃣ Если результат неуспешный — выбывает сам бросавший.</p>
-<p><b>🏆 В результате всегда выбывает ровно 1 игрок.</b></p></div>
-
-
-
-<div class="card"><h3>💥 3. ВЫШИБАЛЫ</h3>
-<p>Вышибалы проводятся столько раз, сколько необходимо, чтобы осталось 2 игрока.</p>
-<p>🎲 Право первого броска определяется через «Камень, ножницы, бумага».</p>
-<p>После каждого этапа должен выбыть ровно 1 игрок.</p></div>
-
-<div class="card"><h3>🎮 Свои игры</h3>
-<p>Если не хочется постоянно играть в вышибалы, можно придумать свою игру с мячом.</p>
-<div class="flow">🎯 1 игра → 1 выбывший<br><br>❌ 0 — нельзя<br>❌ 2+ — нельзя<br>✅ 1 — можно</div></div>
+<p><b>🏆 В результате всегда выбывает ровно 1 игрок.</b></p>
+</div>
 
 <div class="card">
-  <h3>🎲 3. РУССКАЯ РУЛЕТКА</h3>
-
-  <p>Это финальная игра Ball Games.</p>
-
-  <p>👥 Остаются 2 игрока.</p>
-
-  <p>📏 Расстояние между игроками — 5–7 метров.</p>
-
-  <p>🏐 Игроки по очереди выполняют бросок по безопасной обозначенной цели.</p>
-
-  <p>🚫 Двигаться, чтобы увернуться от броска, нельзя.</p>
-
-  <p>🎯 Кто первым успешно попал в цель — тот побеждает.</p>
-
-  <p>🏆 Победитель получает +1 победу.</p>
-
-  <p>❌ Обычная Аптечка здесь не работает.</p>
+<h3>💥 3. ВЫШИБАЛЫ</h3>
+<p>Вышибалы проводятся столько раз, сколько необходимо, чтобы осталось 2 игрока.</p>
+<p>🎲 Право первого броска определяется через «Камень, ножницы, бумага».</p>
+<p>После каждого этапа должен выбыть ровно 1 игрок.</p>
 </div>
+
+<div class="card">
+<h3>🎮 Свои игры</h3>
+<p>Если не хочется постоянно играть в вышибалы, можно придумать свою игру с мячом.</p>
+<div class="flow">
+🎯 1 игра → 1 выбывший<br><br>
+❌ 0 — нельзя<br>
+❌ 2+ — нельзя<br>
+✅ 1 — можно
+</div>
+</div>
+
+<div class="card">
+<h3>🎲 3. РУССКАЯ РУЛЕТКА</h3>
+
+<p>Это финальная игра Ball Games.</p>
+<p>👥 Остаются 2 игрока.</p>
+<p>📏 Расстояние между игроками — 5–7 метров.</p>
+<p>🏐 Игроки по очереди выполняют бросок по безопасной обозначенной цели.</p>
+<p>🚫 Двигаться, чтобы увернуться от броска, нельзя.</p>
+<p>🎯 Кто первым успешно попал в цель — тот побеждает.</p>
+<p>🏆 Победитель получает +1 победу.</p>
+<p>❌ Обычная Аптечка здесь не работает.</p>
+</div>
+
 <h2>👥 Количество игр</h2>
+
 <div class="grid">
-<div class="card"><h3>🔹 4 игрока</h3>
+
+<div class="card">
+<h3>🔹 4 игрока</h3>
 <p>👀 Гляделки: <b>4 → 3</b></p>
 <p>💥 Вышибалы: <b>3 → 2</b></p>
-<p>🎲 Русская рулетка: <b>2 → 1</b></p></div>
+<p>🎲 Русская рулетка: <b>2 → 1</b></p>
+</div>
 
-<div class="card"><h3>🔹 5 игроков</h3>
+<div class="card">
+<h3>🔹 5 игроков</h3>
 <p>👀 Гляделки: <b>5 → 4</b></p>
 <p>🎯 Цель: <b>4 → 3</b></p>
 <p>💥 Вышибалы: <b>3 → 2</b></p>
-<p>🎲 Русская рулетка: <b>2 → 1</b></p></div>
+<p>🎲 Русская рулетка: <b>2 → 1</b></p>
 </div>
-  <div id="easterEgg14"></div>
-<p class="muted">При большем количестве игроков добавляются необходимые игры, пока не останутся 2 финалиста.</p>
+
+</div>
+
+<div id="easterEgg14"></div>
+
+<p class="muted">
+При большем количестве игроков добавляются необходимые игры, пока не останутся 2 финалиста.
+</p>
 </section>
 
 <section id="abilities">
-<h2>⚡ Способности и усиления</h2>
-<table><tr><th>Победы</th><th>Способность</th></tr>
-<tr><td>5</td><td>🩹 Аптечка</td></tr><tr><td>10</td><td>🗺️ Увеличение территории</td></tr><tr><td>15</td><td>🚧 Запретная зона</td></tr><tr><td>20</td><td>🔄 Возврат</td></tr><tr><td>30</td><td>🪄 Телепорт</td></tr><tr><td>40</td><td>🎯 Точный бросок</td></tr><tr><td>50</td><td>🎁 Любая личная способность</td></tr><tr><td>70</td><td>🔥 Двойной бросок</td></tr><tr><td>100</td><td>👑 Прайм</td></tr><tr><td>1000</td><td>🌟 Всемогущий</td></tr></table><br>
 
-<div class="card ability"><h3>🩹 5 ПОБЕД — АПТЕЧКА</h3><p>Если в игрока с Аптечкой попали:</p><div class="flow">🏐 Попадание<br>⬇️<br>🩹 Аптечка<br>⬇️<br>🎯 Игрок НЕ выбывает и становится ведущим.</div><p>⚠️ Аптечка работает только 1 раз до Русской рулетки.</p><p>⚠️ После использования она считается потраченной.</p><p>❌ В Русской рулетке обычная Аптечка не работает.</p></div>
-<div class="card ability"><h3>🗺️ 10 ПОБЕД — УВЕЛИЧЕНИЕ ТЕРРИТОРИИ</h3><p>Игрок получает возможность увеличить игровую территорию по правилам Ball Games.</p></div>
-<div class="card ability"><h3>🚧 15 ПОБЕД — ЗАПРЕТНАЯ ЗОНА</h3><p>Специальное место, где ведущему сложнее выбить игрока.</p><p>🔹 До получения способности — 1 использование.</p><p>🔹 После получения — 15 использований.</p><p>🔹 Для ведущего зона доступна бесконечно.</p><p>⚠️ Зона не делает игрока полностью неуязвимым.</p></div>
-<div class="card ability"><h3>🔄 20 ПОБЕД — ВОЗВРАТ</h3><p>Один раз за игру игрок может оттолкнуть летящий в него мяч руками.</p><p>👐 Это именно ОТТАЛКИВАНИЕ, а не ловля.</p><div class="flow">🏐 Мяч отбит<br>⬇️<br>❌ Попадание не засчитывается<br>⬇️<br>🔄 Ведущий перекидывает мяч</div><p>После использования способность считается потраченной.</p></div>
-<div class="card ability"><h3>🪄 30 ПОБЕД — ТЕЛЕПОРТ</h3><p>Один раз за игру игрок может переместиться в заранее определённую точку игровой территории.</p><p>⚠️ Телепорт не может отменить уже произошедшее попадание.</p></div>
-<div class="card ability"><h3>🎯 40 ПОБЕД — ТОЧНЫЙ БРОСОК</h3><p>Один раз за игру ведущий может использовать способность при СПОРНОМ ПОПАДАНИИ.</p><p>Например, ведущий бросил мяч, а игрок говорит: «Не попал!»</p><p>Если другие игроки видели момент, но точно не уверены, было касание или нет, ведущий может заявить способность.</p><p>🎯 Если другие игроки считают, что попадание действительно могло произойти — оно засчитывается.</p><p>❌ Если все точно видели, что мяч не попал — способность использовать нельзя.</p></div>
-<div class="card ability"><h3>🎁 50 ПОБЕД — ЛИЧНАЯ СПОСОБНОСТЬ</h3><p>Игрок может выбрать или придумать свою личную способность.</p><p>⚠️ Она должна быть сильной и интересной, но НЕ читерной.</p><h3>✅ Примеры</h3><p>🧊 Заморозка — заморозить игрока на 15 секунд.</p><p>👐 Ловля мяча — поймать мяч руками, чтобы попадание не засчиталось.</p><p>🩹 Аптечка для Русской рулетки — пережить одно попадание именно в финале.</p><h3>❌ Запрещено</h3><p>• Давать огромное количество побед.<br>• Автоматически выбивать любого игрока.<br>• Делать игрока полностью неуязвимым.<br>• Гарантировать победу.<br>• Полностью ломать правила Ball Games.</p></div>
-<div class="card"><h3>🔒 Уникальность личных способностей</h3><p>Одну личную способность одновременно может использовать только ОДИН игрок.</p><p>Например:</p><p>😎 Aves выбрал «Заморозку».</p><p>Пока Aves её не сменит, другой игрок не может выбрать или использовать «Заморозку».</p><p>После смены способности она снова становится доступной.</p></div>
-<div class="card"><h3>🔄 Смена личной способности</h3><p>Это правило относится ТОЛЬКО к личной способности за 50 побед.</p><div class="flow">🏆 50 побед<br>⬇️<br>➕ Набрал ещё 10 побед<br>⬇️<br>🔄 Можно сменить способность<br>⬇️<br>➕ Ещё 10 побед<br>⬇️<br>🔄 Следующая смена</div><p>Обычных способностей за 5, 10, 15, 20, 30, 40, 70, 100 и 1000 побед это не касается.</p><p>👑 Прайм позволяет иметь 2 способности одновременно.</p></div>
-<div class="card ability"><h3>🔥 70 ПОБЕД — ДВОЙНОЙ БРОСОК</h3><p>Это УСИЛЕНИЕ, а не личная способность.</p><p>Игрок получает возможность в ситуациях, где ему положен один бросок, сделать два броска подряд.</p><p>🏐 Первый бросок выполняется обычно.</p><p>🏐 Если первый бросок попал — второй бросок уже не нужен.</p><p>❌ В Русской рулетке не работает.</p><p>⚠️ Усиление не гарантирует попадание.</p></div>
-<div class="card ability"><h3>👑 100 ПОБЕД — ПРАЙМ</h3><p>Прайм позволяет игроку иметь <b>2 способности одновременно</b>.</p></div>
-<div class="card ability"><h3>🌟 1000 ПОБЕД — ВСЕМОГУЩИЙ</h3><p>Высший уровень системы способностей Ball Games – ТЫ МОЖЕШЬ ИЗМЕНИТЬ ЛЮБОЕ ПРАВИЛО BALL GAMES.</p></div>
+<h2>⚡ Способности и усиления</h2>
+
+<table>
+<tr><th>Победы</th><th>Способность</th></tr>
+<tr><td>5</td><td>🩹 Аптечка</td></tr>
+<tr><td>10</td><td>🗺️ Увеличение территории</td></tr>
+<tr><td>15</td><td>🚧 Запретная зона</td></tr>
+<tr><td>20</td><td>🔄 Возврат</td></tr>
+<tr><td>30</td><td>🪄 Телепорт</td></tr>
+<tr><td>40</td><td>🎯 Точный бросок</td></tr>
+<tr><td>50</td><td>🎁 Любая личная способность</td></tr>
+<tr><td>70</td><td>🔥 Двойной бросок</td></tr>
+<tr><td>100</td><td>👑 Прайм</td></tr>
+<tr><td>1000</td><td>🌟 Всемогущий</td></tr>
+</table>
+
+<br>
+
+<div class="card ability">
+<h3>🩹 5 ПОБЕД — АПТЕЧКА</h3>
+<p>Если в игрока с Аптечкой попали:</p>
+<div class="flow">
+🏐 Попадание<br>
+⬇️<br>
+🩹 Аптечка<br>
+⬇️<br>
+🎯 Игрок НЕ выбывает и становится ведущим.
+</div>
+<p>⚠️ Аптечка работает только 1 раз до Русской рулетки.</p>
+<p>⚠️ После использования она считается потраченной.</p>
+<p>❌ В Русской рулетке обычная Аптечка не работает.</p>
+</div>
+
+<div class="card ability">
+<h3>🗺️ 10 ПОБЕД — УВЕЛИЧЕНИЕ ТЕРРИТОРИИ</h3>
+<p>Игрок получает возможность увеличить игровую территорию по правилам Ball Games.</p>
+</div>
+
+<div class="card ability">
+<h3>🚧 15 ПОБЕД — ЗАПРЕТНАЯ ЗОНА</h3>
+<p>Специальное место, где ведущему сложнее выбить игрока.</p>
+<p>🔹 До получения способности — 1 использование.</p>
+<p>🔹 После получения — 15 использований.</p>
+<p>🔹 Для ведущего зона доступна бесконечно.</p>
+<p>⚠️ Зона не делает игрока полностью неуязвимым.</p>
+</div>
+
+<div class="card ability">
+<h3>🔄 20 ПОБЕД — ВОЗВРАТ</h3>
+<p>Один раз за игру игрок может оттолкнуть летящий в него мяч руками.</p>
+<p>👐 Это именно ОТТАЛКИВАНИЕ, а не ловля.</p>
+<div class="flow">
+🏐 Мяч отбит<br>
+⬇️<br>
+❌ Попадание не засчитывается<br>
+⬇️<br>
+🔄 Ведущий перекидывает мяч
+</div>
+<p>После использования способность считается потраченной.</p>
+</div>
+
+<div class="card ability">
+<h3>🪄 30 ПОБЕД — ТЕЛЕПОРТ</h3>
+<p>Один раз за игру игрок может переместиться в заранее определённую точку игровой территории.</p>
+<p>⚠️ Телепорт не может отменить уже произошедшее попадание.</p>
+</div>
+
+<div class="card ability">
+<h3>🎯 40 ПОБЕД — ТОЧНЫЙ БРОСОК</h3>
+<p>Один раз за игру ведущий может использовать способность при СПОРНОМ ПОПАДАНИИ.</p>
+<p>Например, ведущий бросил мяч, а игрок говорит: «Не попал!»</p>
+<p>Если другие игроки видели момент, но точно не уверены, было касание или нет, ведущий может заявить способность.</p>
+<p>🎯 Если другие игроки считают, что попадание действительно могло произойти — оно засчитывается.</p>
+<p>❌ Если все точно видели, что мяч не попал — способность использовать нельзя.</p>
+</div>
+
+<div class="card ability">
+<h3>🎁 50 ПОБЕД — ЛИЧНАЯ СПОСОБНОСТЬ</h3>
+<p>Игрок может выбрать или придумать свою личную способность.</p>
+<p>⚠️ Она должна быть сильной и интересной, но НЕ читерной.</p>
+<h3>✅ Примеры</h3>
+<p>🧊 Заморозка — заморозить игрока на 15 секунд.</p>
+<p>👐 Ловля мяча — поймать мяч руками, чтобы попадание не засчиталось.</p>
+<p>🩹 Аптечка для Русской рулетки — пережить одно попадание именно в финале.</p>
+<h3>❌ Запрещено</h3>
+<p>
+• Давать огромное количество побед.<br>
+• Автоматически выбивать любого игрока.<br>
+• Делать игрока полностью неуязвимым.<br>
+• Гарантировать победу.<br>
+• Полностью ломать правила Ball Games.
+</p>
+</div>
+
+<div class="card">
+<h3>🔒 Уникальность личных способностей</h3>
+<p>Одну личную способность одновременно может использовать только ОДИН игрок.</p>
+<p>Например:</p>
+<p>😎 Aves выбрал «Заморозку».</p>
+<p>Пока Aves её не сменит, другой игрок не может выбрать или использовать «Заморозку».</p>
+<p>После смены способности она снова становится доступной.</p>
+</div>
+
+<div class="card">
+<h3>🔄 Смена личной способности</h3>
+<p>Это правило относится ТОЛЬКО к личной способности за 50 побед.</p>
+<div class="flow">
+🏆 50 побед<br>
+⬇️<br>
+➕ Набрал ещё 10 побед<br>
+⬇️<br>
+🔄 Можно сменить способность<br>
+⬇️<br>
+➕ Ещё 10 побед<br>
+⬇️<br>
+🔄 Следующая смена
+</div>
+<p>Обычных способностей за 5, 10, 15, 20, 30, 40, 70, 100 и 1000 побед это не касается.</p>
+<p>👑 Прайм позволяет иметь 2 способности одновременно.</p>
+</div>
+
+<div class="card ability">
+<h3>🔥 70 ПОБЕД — ДВОЙНОЙ БРОСОК</h3>
+<p>Это УСИЛЕНИЕ, а не личная способность.</p>
+<p>Игрок получает возможность в ситуациях, где ему положен один бросок, сделать два броска подряд.</p>
+<p>🏐 Первый бросок выполняется обычно.</p>
+<p>🏐 Если первый бросок попал — второй бросок уже не нужен.</p>
+<p>❌ В Русской рулетке не работает.</p>
+<p>⚠️ Усиление не гарантирует попадание.</p>
+</div>
+
+<div class="card ability">
+<h3>👑 100 ПОБЕД — ПРАЙМ</h3>
+<p>Прайм позволяет игроку иметь <b>2 способности одновременно</b>.</p>
+</div>
+
+<div class="card ability">
+<h3>🌟 1000 ПОБЕД — ВСЕМОГУЩИЙ</h3>
+<p>Высший уровень системы способностей Ball Games – ТЫ МОЖЕШЬ ИЗМЕНИТЬ ЛЮБОЕ ПРАВИЛО BALL GAMES.</p>
+</div>
+
 </section>
 
 <section id="titles">
-<h2>🏅 Титулы</h2><p class="muted">Чем больше побед — тем престижнее титул. На каждом уровне игрок выбирает ОДИН из двух.</p>
+<h2>🏅 Титулы</h2>
+<p class="muted">
+Чем больше побед — тем престижнее титул. На каждом уровне игрок выбирает ОДИН из двух.
+</p>
+
 <div class="grid">
+
 <div class="card"><h3>🏆 10 побед</h3><p>🥷 Непобедимый / 🏴‍☠️ Пират</p></div>
 <div class="card"><h3>🏆 20 побед</h3><p>💎 VIP / ⭐ Один Такой</p></div>
 <div class="card"><h3>🏆 30 побед</h3><p>🕶️ Инкогнито {_} / 👑 Тёмный Принц</p></div>
@@ -382,10 +875,16 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 <div class="card"><h3>🏆 200 побед</h3><p>👑 Повелитель Игр / 💀 Бессмертный</p></div>
 <div class="card"><h3>🏆 500 побед</h3><p>⚡ Верховный Игрок / 🔱 Абсолют</p></div>
 <div class="card"><h3>🏆 1000 побед</h3><p>🌟 Всемогущий / 👑 Бог Ball Games</p></div>
+
 </div>
-<div class="card success"><h3>🏅 Титулы сохраняются после вайпа.</h3></div>
+
+<div class="card success">
+<h3>🏅 Титулы сохраняются после вайпа.</h3>
+</div>
 </section>
-    <section id="birthday">
+
+<section id="birthday">
+
 <h2>🎂 Бонусы на день рождения</h2>
 
 <div class="card">
@@ -414,29 +913,41 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 
 <div class="card warning">
 <h3>🏆 3. Подарочный титул</h3>
-<p>Именинник получает возможность <b>навсегда выбрать любой титул, который открывается до 30 побед</b>, независимо от своего текущего количества побед.</p>
+<p>
+Именинник получает возможность <b>навсегда выбрать любой титул,
+который открывается до 30 побед</b>, независимо от своего текущего количества побед.
+</p>
 
 <p>🎁 Например, игрок ещё не набрал 30 побед, но в день рождения может выбрать любой титул из уровней:</p>
 
-<p>🏆 10 побед<br>
+<p>
+🏆 10 побед<br>
 🏆 20 побед<br>
-🏆 30 побед</p>
+🏆 30 побед
+</p>
 
 <p>♻️ Выбранный подарочный титул сохраняется после дня рождения и после вайпов.</p>
-
 <p>🔄 В дальнейшем игрок может изменить этот титул на другой доступный ему титул.</p>
 </div>
+
 <div class="card success">
 <h3>🔥 4. Двойные победы</h3>
 
 <p>🎂 В день рождения игрок получает <b>×2 победы</b>.</p>
 
-<p>🏆 Если именинник выигрывает игру, ему засчитываются <b>2 победы вместо 1</b>.</p>
+<p>
+🏆 Если именинник выигрывает игру, ему засчитываются
+<b>2 победы вместо 1</b>.
+</p>
 
-<p>⚠️ <b>×2 действует только для самого именинника.</b> У всех остальных игроков победы начисляются обычно — по 1 за победу.</p>
+<p>
+⚠️ <b>×2 действует только для самого именинника.</b>
+У всех остальных игроков победы начисляются обычно — по 1 за победу.
+</p>
 
 <p>📅 После окончания дня рождения множитель автоматически отключается.</p>
 </div>
+
 </div>
 
 <div class="card">
@@ -451,19 +962,22 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 
 <div class="card success">
 <h3>🌟 Правило для всех игроков</h3>
-<p>Бонусы на день рождения доступны <b>каждому игроку Ball Games один раз в год — в его день рождения</b>.</p>
+<p>
+Бонусы на день рождения доступны <b>каждому игроку Ball Games
+один раз в год — в его день рождения</b>.
+</p>
 </div>
 
-    </section>
+</section>
 
 <section>
+
 <h2>🔥 Бонусные победы</h2>
 
 <div class="grid">
 
 <div class="card">
 <h3>🔥 Серии побед</h3>
-
 <p>3 победы подряд → <b>+1 победа</b></p>
 <p>5 побед подряд → <b>+3 победы</b></p>
 <p>10 побед подряд → <b>+5 побед</b></p>
@@ -471,7 +985,6 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 
 <div class="card">
 <h3>🏆 Сезонные бонусы</h3>
-
 <p>25 побед за сезон → <b>+2</b></p>
 <p>50 побед → <b>+5</b></p>
 <p>75 побед → <b>+10</b></p>
@@ -484,108 +997,471 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dfe5
 </p>
 
 </section>
-<section id="admin"><h2>🛡️ Администраторы</h2>
-<div class="card"><p>Администраторы — это проверенные игроки, которые следят за порядком.</p><p>⚠️ Администратор не должен выдавать наказание просто так.</p><p>Любой игрок может подать жалобу на другого игрока.</p><p>После жалобы проводится голосование.</p><p>Если за наказание набирается достаточно голосов — оно применяется.</p><h3>❌ Нельзя наказывать игрока просто потому, что:</h3><p>• у него много побед;<br>• он занимает первое место;<br>• он кому-то просто не нравится.</p><p><b>Должна быть реальная причина.</b></p></div>
-<div class="card warning"><h3>🔇 Мут</h3><p>Мут может выдаваться за серьёзные нарушения.</p><p>👊 Драки<br>🤬 Серьёзные нарушения из-за матов<br>😤 Намеренные провокации<br>⚠️ Сильное мешание другим игрокам<br>❗ Другие нарушения правил</p><p>🔇 Мут → победы обнуляются.</p><p>При этом игрок может продолжать играть.</p></div>
-  <div class="card warning">
-  <h3>⏸️ Тайм-аут</h3>
-  <p>Тайм-аут — это временное исключение игрока из Ball Games.</p>
-  <p>⏳ Игрок не может участвовать в играх <b>1 неделю или дольше</b>, в зависимости от нарушения.</p>
-  <p>🏆 Победы игрока <b>сохраняются</b>.</p>
-  <p>✅ После окончания тайм-аута игрок снова может участвовать в Ball Games.</p>
-  </div>
-<div class="card danger"><h3>🚫 Бан</h3><p>За серьёзные нарушения может выдаваться бан.</p><p>🚫 Бан → победы обнуляются + игрок исключается из Ball Games на неделю или дольше.</p></div>
+
+<section id="admin">
+
+<h2>🛡️ Администраторы</h2>
+
+<div class="card">
+<p>Администраторы — это проверенные игроки, которые следят за порядком.</p>
+<p>⚠️ Администратор не должен выдавать наказание просто так.</p>
+<p>Любой игрок может подать жалобу на другого игрока.</p>
+<p>После жалобы проводится голосование.</p>
+<p>Если за наказание набирается достаточно голосов — оно применяется.</p>
+
+<h3>❌ Нельзя наказывать игрока просто потому, что:</h3>
+
+<p>
+• у него много побед;<br>
+• он занимает первое место;<br>
+• он кому-то просто не нравится.
+</p>
+
+<p><b>Должна быть реальная причина.</b></p>
+</div>
+
+<div class="card warning">
+<h3>⚠️ Система предупреждений</h3>
+
+<p>Игрок может получать предупреждения за нарушения правил.</p>
+
+<div class="flow">
+⚠️ 1 предупреждение → предупреждение<br>
+⬇️<br>
+⚠️ 2 предупреждения → последнее предупреждение<br>
+⬇️<br>
+🚨 3 предупреждения → наказание
+</div>
+
+<p>
+После достижения 3 предупреждений администратор выбирает наказание:
+</p>
+
+<p>
+🔇 Мут<br>
+⏸️ Тайм-аут<br>
+🚫 Бан
+</p>
+
+<p>
+После применения наказания количество предупреждений автоматически становится <b>0</b>.
+</p>
+</div>
+
+<div class="card warning">
+<h3>🔇 Мут</h3>
+
+<p>Мут может выдаваться за серьёзные нарушения.</p>
+
+<p>
+👊 Драки<br>
+🤬 Серьёзные нарушения из-за матов<br>
+😤 Намеренные провокации<br>
+⚠️ Сильное мешание другим игрокам<br>
+❗ Другие нарушения правил
+</p>
+
+<p><b>🔇 Мут → победы обнуляются.</b></p>
+<p>При этом игрок может продолжать играть.</p>
+</div>
+
+<div class="card warning">
+
+<h3>⏸️ Тайм-аут</h3>
+
+<p>Тайм-аут — это временное исключение игрока из Ball Games.</p>
+
+<p>
+⏳ При выдаче тайм-аута администратор указывает,
+на сколько дней игрок исключается.
+</p>
+
+<p>🏆 Победы игрока <b>сохраняются</b>.</p>
+
+<p>
+✅ После окончания тайм-аута игрок снова может участвовать в Ball Games.
+</p>
+
+</div>
+
+<div class="card danger">
+
+<h3>🚫 Бан</h3>
+
+<p>За серьёзные нарушения может выдаваться бан.</p>
+
+<p>
+🚫 При выдаче бана администратор указывает,
+на сколько дней игрок исключается.
+</p>
+
+<p>
+🏆 Победы при бане <b>обнуляются</b>.
+</p>
+
+</div>
+
 </section>
 
-<section id="wipes"><h2>🗓️ Вайпы</h2>
-<div class="card warning"><h3>🗓️ ВАЙП КАЖДЫЕ 3 МЕСЯЦА</h3><p>Каждые 3 месяца происходит вайп.</p><h3>После вайпа:</h3><p>🏆 Победы → 0<br>⚡ Способности → сбрасываются<br>🏅 Титулы → сохраняются</p></div>
-<div class="card"><h3>🔄 После каждого вайпа</h3><p>Создатели могут внести небольшое изменение в правила.</p><p>Например:</p><p>🩹 Вместо Аптечки добавить Тотем.<br>🚧 Увеличить Запретную зону с 15 до 20 использований.<br>🗺️ Изменить Увеличение территории.<br>🎁 Добавить новые способности.</p><p>Поэтому каждый новый вайп немного меняет Ball Games, но основа игры остаётся прежней.</p></div>
+<section id="wipes">
+
+<h2>🗓️ Вайпы</h2>
+
+<div class="card warning">
+<h3>🗓️ ВАЙП КАЖДЫЕ 3 МЕСЯЦА</h3>
+
+<p>Каждые 3 месяца происходит вайп.</p>
+
+<h3>После вайпа:</h3>
+
+<p>
+🏆 Победы → 0<br>
+⚡ Способности → сбрасываются<br>
+🏅 Титулы → сохраняются
+</p>
+</div>
+
+<div class="card">
+
+<h3>🔄 После каждого вайпа</h3>
+
+<p>Создатели могут внести небольшое изменение в правила.</p>
+
+<p>Например:</p>
+
+<p>
+🩹 Вместо Аптечки добавить Тотем.<br>
+🚧 Увеличить Запретную зону с 15 до 20 использований.<br>
+🗺️ Изменить Увеличение территории.<br>
+🎁 Добавить новые способности.
+</p>
+
+<p>
+Поэтому каждый новый вайп немного меняет Ball Games,
+но основа игры остаётся прежней.
+</p>
+
+</div>
+
 </section>
 
-<section id="season1"><h2>🏆 Итоги 1 сезона</h2>
-<div class="card success"><h3>🔥 ПЕРВЫЙ СЕЗОН BALL GAMES ЗАВЕРШЁН</h3><p>Первый сезон завершён.<br>Все победы этого сезона теперь становятся частью истории Ball Games.</p><p>🌍 1 сентября в 10:00 — глобальный вайп.</p></div>
-<table><tr><th>Место</th><th>Игрок</th><th>Победы</th></tr>
-<tr><td>🥇 1</td><td><b>Стёпа</b></td><td>🏆 82</td></tr><tr><td>🥈 2</td><td><b>Aves</b></td><td>🏆 70</td></tr><tr><td>🥉 3</td><td><b>Лёха</b></td><td>🏆 29</td></tr><tr><td>4</td><td>Кирилл</td><td>🏆 22</td></tr><tr><td>5</td><td>Дарина</td><td>🏆 21</td></tr><tr><td>6</td><td>Женя</td><td>🏆 20</td></tr><tr><td>7</td><td>Влад</td><td>🏆 13</td></tr><tr><td>8</td><td>Роза</td><td>🏆 8</td></tr><tr><td>9</td><td>Лев</td><td>🏆 7</td></tr><tr><td>10</td><td>Макс</td><td>🏆 1</td></tr><tr><td>11</td><td>Миша</td><td>🏆 0</td></tr><tr><td>11</td><td>Артём</td><td>🏆 0</td></tr></table>
-<div class="season-total">🔥 Всего побед за сезон: 273</div>
-<div class="card warning"><h3>🌍 ГЛОБАЛЬНЫЙ ВАЙП</h3><p>1 сентября в 10:00 игра была перезапущена.</p><p>🏆 Победы → 0<br>⚡ Способности → сбрасываются<br>🏅 Титулы → сохраняются</p>
-  <p style="opacity:0.7; font-size:13px;">
+<section id="season1">
+
+<h2>🏆 Итоги 1 сезона</h2>
+
+<div class="card success">
+<h3>🔥 ПЕРВЫЙ СЕЗОН BALL GAMES ЗАВЕРШЁН</h3>
+
+<p>
+Первый сезон завершён.<br>
+Все победы этого сезона теперь становятся частью истории Ball Games.
+</p>
+
+<p>🌍 1 сентября в 10:00 — глобальный вайп.</p>
+</div>
+
+<table>
+<tr><th>Место</th><th>Игрок</th><th>Победы</th></tr>
+<tr><td>🥇 1</td><td><b>Стёпа</b></td><td>🏆 82</td></tr>
+<tr><td>🥈 2</td><td><b>Aves</b></td><td>🏆 70</td></tr>
+<tr><td>🥉 3</td><td><b>Лёха</b></td><td>🏆 29</td></tr>
+<tr><td>4</td><td>Кирилл</td><td>🏆 22</td></tr>
+<tr><td>5</td><td>Дарина</td><td>🏆 21</td></tr>
+<tr><td>6</td><td>Женя</td><td>🏆 20</td></tr>
+<tr><td>7</td><td>Влад</td><td>🏆 13</td></tr>
+<tr><td>8</td><td>Роза</td><td>🏆 8</td></tr>
+<tr><td>9</td><td>Лев</td><td>🏆 7</td></tr>
+<tr><td>10</td><td>Макс</td><td>🏆 1</td></tr>
+<tr><td>11</td><td>Миша</td><td>🏆 0</td></tr>
+<tr><td>11</td><td>Артём</td><td>🏆 0</td></tr>
+</table>
+
+<div class="season-total">
+🔥 Всего побед за сезон: 273
+</div>
+
+<div class="card warning">
+
+<h3>🌍 ГЛОБАЛЬНЫЙ ВАЙП</h3>
+
+<p>1 сентября в 10:00 игра была перезапущена.</p>
+
+<p>
+🏆 Победы → 0<br>
+⚡ Способности → сбрасываются<br>
+🏅 Титулы → сохраняются
+</p>
+
+<p style="opacity:0.7;font-size:13px;">
 🍂 Иногда осень оставляет после себя число: 31.
-  </p><p>🚀 В 10:00 начялся новый сезон Ball Games.</p></div>
+</p>
+
+<p>🚀 В 10:00 начялся новый сезон Ball Games.</p>
+
+</div>
+
 </section>
 
-<section id="rating"><h2>🏆 НОВЫЙ ТОП</h2>
-<div id="ratingLock" class="card warning locked-top"><h3>🔒 ДО 10:00 ЗАКРЫТ</h3><p>Новый рейтинг пока закрыт.</p><div class="flow">🌍 ГЛОБАЛЬНЫЙ ВАЙП<br>⬇️<br>⏰ 1 СЕНТЯБРЯ — 10:00<br>⬇️<br>🚀 НОВЫЙ СЕЗОН<br>⬇️<br>🏆 НОВЫЙ ТОП</div><div class="countdown" id="countdown">⏳ Загружаем таймер...</div></div>
-<div id="ratingOpen" style="display:none"><div class="card success"><h3>🟢 ИГРА ОТКРЫТА</h3><p>🔥 Глобальный вайп завершён!</p><p>🏆 Новый сезон Ball Games начался.</p></div><p id="ratingStatus">⏳ Загружаем рейтинг...</p><div class="grid" id="ratingGrid"><div class="card"><p>⏳ Загружаем рейтинг...</p></div></div></div>
+<section id="rating">
+
+<h2>🏆 НОВЫЙ ТОП</h2>
+
+<div id="ratingLock" class="card warning locked-top">
+
+<h3>🔒 ДО 10:00 ЗАКРЫТ</h3>
+
+<p>Новый рейтинг пока закрыт.</p>
+
+<div class="flow">
+🌍 ГЛОБАЛЬНЫЙ ВАЙП<br>
+⬇️<br>
+⏰ 1 СЕНТЯБРЯ — 10:00<br>
+⬇️<br>
+🚀 НОВЫЙ СЕЗОН<br>
+⬇️<br>
+🏆 НОВЫЙ ТОП
+</div>
+
+<div class="countdown" id="countdown">
+⏳ Загружаем таймер...
+</div>
+
+</div>
+
+<div id="ratingOpen" style="display:none">
+
+<div class="card success">
+<h3>🟢 ИГРА ОТКРЫТА</h3>
+<p>🔥 Глобальный вайп завершён!</p>
+<p>🏆 Новый сезон Ball Games начался.</p>
+</div>
+
+<p id="ratingStatus">⏳ Загружаем рейтинг...</p>
+
+<div class="grid" id="ratingGrid">
+<div class="card">
+<p>⏳ Загружаем рейтинг...</p>
+</div>
+</div>
+
+</div>
+
 </section>
 
-<!-- НОВОЕ: РЕГИСТРАЦИЯ С НИКОМ -->
 <section id="auth">
+
 <h2>👤 Регистрация и вход</h2>
+
 <div class="card auth-box">
+
 <div id="authLogged" style="display:none">
+
 <h3>✅ Вы вошли</h3>
-<p>Ваш ник: <b id="currentNick"></b></p>
-<p class="muted">Ваш аккаунт привязан к этому нику.</p>
-<button class="logout" onclick="logoutUser()">🚪 Выйти</button>
+
+<p>
+Ваш ник: <b id="currentNick"></b>
+</p>
+
+<p class="muted">
+Ваш аккаунт привязан к этому нику.
+</p>
+
+<button class="logout" onclick="logoutUser()">
+🚪 Выйти
+</button>
+
 </div>
 
 <div id="authForms">
-<h3>📝 Создать аккаунт</h3>
-<input id="regNick" class="auth-input" type="text" maxlength="24" placeholder="Ваш ник (например Aves)">
-<input id="regEmail" class="auth-input" type="email" placeholder="Email">
-<input id="regPassword" class="auth-input" type="password" minlength="6" placeholder="Пароль (минимум 6 символов)">
-<button class="auth-btn" onclick="registerUser()">📝 Зарегистрироваться</button>
 
-<h3 style="margin-top:28px">🔐 Уже есть аккаунт?</h3>
-<input id="loginEmail" class="auth-input" type="email" placeholder="Email">
-<input id="loginPassword" class="auth-input" type="password" placeholder="Пароль">
-<button class="auth-btn" onclick="loginUser()">🔐 Войти</button>
+<h3>📝 Создать аккаунт</h3>
+
+<input id="regNick"
+class="auth-input"
+type="text"
+maxlength="24"
+placeholder="Ваш ник (например Aves)">
+
+<input id="regEmail"
+class="auth-input"
+type="email"
+placeholder="Email">
+
+<input id="regPassword"
+class="auth-input"
+type="password"
+minlength="6"
+placeholder="Пароль (минимум 6 символов)">
+
+<button class="auth-btn" onclick="registerUser()">
+📝 Зарегистрироваться
+</button>
+
+<h3 style="margin-top:28px">
+🔐 Уже есть аккаунт?
+</h3>
+
+<input id="loginEmail"
+class="auth-input"
+type="email"
+placeholder="Email">
+
+<input id="loginPassword"
+class="auth-input"
+type="password"
+placeholder="Пароль">
+
+<button class="auth-btn" onclick="loginUser()">
+🔐 Войти
+</button>
 
 <p id="authStatus" class="auth-status"></p>
+
 </div>
 </div>
+
 </section>
 
-<section><h2>🏆 Главная цель Ball Games</h2><div class="flow">🎮 Играй<br>⬇️<br>🏆 Побеждай<br>⬇️<br>⚡ Открывай способности<br>⬇️<br>🏅 Получай титулы<br>⬇️<br>📈 Поднимайся в рейтинге</div><div class="card"><h3>⚡ Способности</h3><p>5 → 10 → 15 → 20 → 30 → 40 → 50 → 70 → 100 → 1000</p></div><div class="card"><h3>🏅 Титулы</h3><p>10 → 20 → 30 → 40 → 50 → 70 → 100 → 200 → 500 → 1000</p></div></section>
+<section>
+
+<h2>🏆 Главная цель Ball Games</h2>
+
+<div class="flow">
+🎮 Играй<br>
+⬇️<br>
+🏆 Побеждай<br>
+⬇️<br>
+⚡ Открывай способности<br>
+⬇️<br>
+🏅 Получай титулы<br>
+⬇️<br>
+📈 Поднимайся в рейтинге
+</div>
+
+<div class="card">
+<h3>⚡ Способности</h3>
+<p>5 → 10 → 15 → 20 → 30 → 40 → 50 → 70 → 100 → 1000</p>
+</div>
+
+<div class="card">
+<h3>🏅 Титулы</h3>
+<p>10 → 20 → 30 → 40 → 50 → 70 → 100 → 200 → 500 → 1000</p>
+</div>
+
+</section>
 
 <section id="channel">
+
 <h2>📢 Официальные каналы</h2>
+
 <div class="grid">
-<div class="card"><h3>📢 Ball Games</h3><p>Официальный Telegram-канал Ball Games.</p><a class="btn" href="https://t.me/Ball_Games_Official" target="_blank" rel="noopener">📱 Открыть Telegram</a></div>
-<div class="card"><h3>😎 It's Aves</h3><p>Telegram-канал It's Aves.</p><a class="btn" href="https://t.me/SamaraSevaI" target="_blank" rel="noopener">📱 Открыть Telegram</a></div>
-<div class="card"><h3>▶️ It's AVES</h3><p>YouTube-канал It's AVES.</p><a class="btn" href="https://youtube.com/@itsaveschannel?si=R7wlvglpYnvAElZZ" target="_blank" rel="noopener">▶️ Открыть YouTube</a></div>
+
+<div class="card">
+<h3>📢 Ball Games</h3>
+<p>Официальный Telegram-канал Ball Games.</p>
+<a class="btn" href="https://t.me/Ball_Games_Official" target="_blank" rel="noopener">
+📱 Открыть Telegram
+</a>
 </div>
+
+<div class="card">
+<h3>😎 It's Aves</h3>
+<p>Telegram-канал It's Aves.</p>
+<a class="btn" href="https://t.me/SamaraSevaI" target="_blank" rel="noopener">
+📱 Открыть Telegram
+</a>
+</div>
+
+<div class="card">
+<h3>▶️ It's AVES</h3>
+<p>YouTube-канал It's AVES.</p>
+<a class="btn" href="https://youtube.com/@itsaveschannel?si=R7wlvglpYnvAElZZ" target="_blank" rel="noopener">
+▶️ Открыть YouTube
+</a>
+</div>
+
+</div>
+
 </section>
 
-<footer class="footer"><h2>😎 BALL GAMES</h2><p>Каждый вайп — новые правила.<br>Каждая победа — часть истории. 🏆</p><p class="small">© Ball Games</p></footer>
+<footer class="footer">
+
+<h2>😎 BALL GAMES</h2>
+
+<p>
+Каждый вайп — новые правила.<br>
+Каждая победа — часть истории. 🏆
+</p>
+
+<p class="small">© Ball Games</p>
+
+</footer>
 
 <section id="adminPanel" class="admin-panel">
+
 <div class="admin-box">
+
 <h2>🛡️ Админ Ball Games</h2>
+
 <div id="adminLoginForm">
+
 <p>🔐 Войдите, чтобы изменять рейтинг.</p>
-<input id="adminEmail" class="admin-input" type="email" placeholder="Email администратора">
-<input id="adminPassword" class="admin-input" type="password" placeholder="Пароль">
-<button class="login" onclick="loginAdmin()">🔐 Войти</button>
+
+<input
+id="adminEmail"
+class="admin-input"
+type="email"
+placeholder="Email администратора">
+
+<input
+id="adminPassword"
+class="admin-input"
+type="password"
+placeholder="Пароль">
+
+<button class="login" onclick="loginAdmin()">
+🔐 Войти
+</button>
+
 </div>
+
 <div id="adminLogged" style="display:none">
+
 <p>✅ Вы вошли как администратор.</p>
-<button class="logout" onclick="logoutAdmin()">🚪 Выйти</button>
-<p class="small">Теперь возле игроков появились кнопки −1 и +1.</p>
+
+<button class="logout" onclick="logoutAdmin()">
+🚪 Выйти
+</button>
+
+<p class="small">
+Теперь возле игроков появились кнопки управления.
+</p>
+
 </div>
+
 <p id="adminStatus" class="admin-status"></p>
+
 </div>
+
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 const SUPABASE_URL="https://hcfonkgsscucqkrmgrat.supabase.co";
+
 const SUPABASE_KEY="sb_publishable_kCbFsWs4gesVPCd3oqEMCw_pfFlCMHy";
+
 const {createClient}=supabase;
-const db=createClient(SUPABASE_URL,SUPABASE_KEY);
+
+const db=createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 const WIPE_DATE=new Date("2026-09-01T10:00:00+04:00");
+
 let ratingLoaded=false;
 
 const PLAYER_TITLES={
@@ -602,198 +1478,1019 @@ const PLAYER_TITLES={
 };
 
 function getPlayerTitle(name){
-  const key=String(name||"").trim().toLowerCase();
-  return PLAYER_TITLES[key]||"🎮 Игрок";
+
+    const key=String(name||"")
+        .trim()
+        .toLowerCase();
+
+    return PLAYER_TITLES[key]||"🎮 Игрок";
 }
 
 function escapeHtml(text){
-return String(text).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+
+    return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 }
+
+/* =========================
+   СРОК НАКАЗАНИЯ
+========================= */
+
+function formatPunishment(player){
+
+    const punishment=player.punishment;
+
+    if(!punishment){
+        return "";
+    }
+
+    if(punishment==="mute"){
+        return "🔇 Мут";
+    }
+
+    if(punishment==="ban"){
+        if(!player.punishment_until){
+            return "🚫 Бан";
+        }
+
+        const date=new Date(player.punishment_until);
+
+        return "🚫 Бан до "+date.toLocaleDateString("ru-RU");
+    }
+
+    if(punishment==="timeout"){
+        if(!player.punishment_until){
+            return "⏸️ Тайм-аут";
+        }
+
+        const date=new Date(player.punishment_until);
+
+        return "⏸️ Тайм-аут до "+date.toLocaleDateString("ru-RU");
+    }
+
+    return "";
+}
+
+
+/* =========================
+   АВТОМАТИЧЕСКОЕ ОКОНЧАНИЕ
+   НАКАЗАНИЯ
+========================= */
+
+async function checkPunishment(player){
+
+    if(!player.punishment){
+        return player;
+    }
+
+    if(!player.punishment_until){
+        return player;
+    }
+
+    const until=new Date(player.punishment_until);
+
+    if(until<=new Date()){
+
+        await db
+            .from("players")
+            .update({
+                punishment:null,
+                punishment_until:null
+            })
+            .eq("id",player.id);
+
+        player.punishment=null;
+        player.punishment_until=null;
+    }
+
+    return player;
+}
+
+
+/* =========================
+   ТАЙМЕР ВАЙПА
+========================= */
 
 function updateWipeStatus(){
-const now=new Date();
-const lock=document.getElementById("ratingLock");
-const open=document.getElementById("ratingOpen");
-const countdown=document.getElementById("countdown");
-if(!lock||!open||!countdown)return;
-const difference=WIPE_DATE-now;
-if(difference<=0){
-lock.style.display="none";open.style.display="block";
-if(!ratingLoaded){ratingLoaded=true;loadRating();}
-return;
+
+    const now=new Date();
+
+    const lock=document.getElementById("ratingLock");
+    const open=document.getElementById("ratingOpen");
+    const countdown=document.getElementById("countdown");
+
+    if(!lock||!open||!countdown)return;
+
+    const difference=WIPE_DATE-now;
+
+    if(difference<=0){
+
+        lock.style.display="none";
+        open.style.display="block";
+
+        if(!ratingLoaded){
+
+            ratingLoaded=true;
+
+            loadRating();
+        }
+
+        return;
+    }
+
+    lock.style.display="block";
+    open.style.display="none";
+
+    const totalSeconds=Math.floor(difference/1000);
+
+    const days=Math.floor(totalSeconds/86400);
+
+    const hours=Math.floor(
+        (totalSeconds%86400)/3600
+    );
+
+    const minutes=Math.floor(
+        (totalSeconds%3600)/60
+    );
+
+    const seconds=totalSeconds%60;
+
+    countdown.innerHTML=
+        `⏳ До открытия: <b>${days}д ${hours}ч ${minutes}м ${seconds}с</b>`;
 }
-lock.style.display="block";open.style.display="none";
-const totalSeconds=Math.floor(difference/1000);
-const days=Math.floor(totalSeconds/86400);
-const hours=Math.floor((totalSeconds%86400)/3600);
-const minutes=Math.floor((totalSeconds%3600)/60);
-const seconds=totalSeconds%60;
-countdown.innerHTML=`⏳ До открытия: <b>${days}д ${hours}ч ${minutes}м ${seconds}с</b>`;
-}
+
+
+/* =========================
+   РЕЙТИНГ
+========================= */
 
 async function loadRating(){
-const status=document.getElementById("ratingStatus");
-const grid=document.getElementById("ratingGrid");
-if(!status||!grid)return;
-status.textContent="⏳ Загружаем рейтинг...";
-const {data,error}=await db.from("players").select("*").order("wins",{ascending:false});
-if(error){
-console.error(error);
-status.textContent="❌ Ошибка загрузки рейтинга";
-grid.innerHTML=`<div class="card danger"><h3>❌ Не удалось загрузить рейтинг</h3><p>${escapeHtml(error.message)}</p></div>`;
-return;
-}
-const visibleData=data.filter(player=>String(player.name??"").trim().toLowerCase()!=="кирилл");
-status.textContent=`🏆 Игроков: ${visibleData.length}`;
-if(!visibleData.length){grid.innerHTML='<div class="card"><p>😢 Игроков пока нет.</p></div>';return;}
-grid.innerHTML=visibleData.map((player,index)=>`
-<div class="card"><div class="rank">
-<div class="place">${index+1}️⃣</div>
-<div class="name">${escapeHtml(player.name??"Без имени")}</div>
-<div class="rank-title">${escapeHtml(getPlayerTitle(player.name))}</div>
-<div class="wins">🏆 ${player.wins??0}</div>
-<div class="admin-controls" id="controls-${player.id}" style="display:none">
-<button class="admin-btn minus" onclick="changeWins('${player.id}',-1)">−1</button>
-<button class="admin-btn plus" onclick="changeWins('${player.id}',1)">+1</button>
+
+    const status=document.getElementById("ratingStatus");
+    const grid=document.getElementById("ratingGrid");
+
+    if(!status||!grid)return;
+
+    status.textContent="⏳ Загружаем рейтинг...";
+
+    const {
+        data,
+        error
+    }=await db
+        .from("players")
+        .select("*")
+        .order("wins",{ascending:false});
+
+    if(error){
+
+        console.error(error);
+
+        status.textContent=
+            "❌ Ошибка загрузки рейтинга";
+
+        grid.innerHTML=`
+        <div class="card danger">
+            <h3>❌ Не удалось загрузить рейтинг</h3>
+            <p>${escapeHtml(error.message)}</p>
+        </div>`;
+
+        return;
+    }
+
+    const visibleData=data.filter(
+        player=>
+        String(player.name??"")
+        .trim()
+        .toLowerCase()!=="кирилл"
+    );
+
+    for(const player of visibleData){
+
+        await checkPunishment(player);
+    }
+
+    status.textContent=
+        `🏆 Игроков: ${visibleData.length}`;
+
+    if(!visibleData.length){
+
+        grid.innerHTML=
+            '<div class="card"><p>😢 Игроков пока нет.</p></div>';
+
+        return;
+    }
+
+    grid.innerHTML=visibleData.map(
+        (player,index)=>{
+
+            const warnings=
+                Number(player.warnings)||0;
+
+            const punishment=
+                formatPunishment(player);
+
+            return `
+
+<div class="card">
+
+<div class="rank">
+
+<div class="place">
+${index+1}️⃣
 </div>
-</div></div>`).join("");
-updateAdminControls();
+
+<div class="name">
+${escapeHtml(player.name??"Без имени")}
+</div>
+
+<div class="rank-title">
+${escapeHtml(getPlayerTitle(player.name))}
+</div>
+
+<div class="wins">
+🏆 ${player.wins??0}
+</div>
+
+<div class="warning-count">
+⚠️ ${warnings}/3
+</div>
+
+${punishment
+?
+`<div class="punishment-badge">
+${escapeHtml(punishment)}
+</div>`
+:""
 }
+
+<div
+class="admin-controls"
+id="controls-${player.id}"
+style="display:none"
+>
+
+<button
+class="admin-btn minus"
+onclick="changeWins('${player.id}',-1)"
+>
+−1
+</button>
+
+<button
+class="admin-btn plus"
+onclick="changeWins('${player.id}',1)"
+>
++1
+</button>
+
+<button
+class="admin-btn warn-btn"
+onclick="addWarning('${player.id}')"
+>
+⚠️ +1
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+`;
+        }
+    ).join("");
+
+    updateAdminControls();
+}
+
+
+/* =========================
+   ИЗМЕНЕНИЕ ПОБЕД
+========================= */
 
 async function changeWins(id,amount){
-const {data:userData}=await db.auth.getUser();
-if(!userData.user){alert("🔐 Сначала войдите как администратор.");return;}
-const {data:player,error:getError}=await db.from("players").select("wins").eq("id",id).single();
-if(getError){alert("❌ Не удалось получить игрока:\n"+getError.message);return;}
-const currentWins=Number(player.wins)||0;
-const newWins=Math.max(0,currentWins+amount);
-const {error}=await db.from("players").update({wins:newWins}).eq("id",id);
-if(error){alert("❌ Не удалось изменить победы:\n"+error.message);return;}
-await loadRating();
+
+    const {data:userData}=
+        await db.auth.getUser();
+
+    if(!userData.user){
+
+        alert(
+            "🔐 Сначала войдите как администратор."
+        );
+
+        return;
+    }
+
+    const {
+        data:player,
+        error:getError
+    }=await db
+        .from("players")
+        .select("wins")
+        .eq("id",id)
+        .single();
+
+    if(getError){
+
+        alert(
+            "❌ Не удалось получить игрока:\n"+
+            getError.message
+        );
+
+        return;
+    }
+
+    const currentWins=
+        Number(player.wins)||0;
+
+    const newWins=
+        Math.max(0,currentWins+amount);
+
+    const {error}=await db
+        .from("players")
+        .update({
+            wins:newWins
+        })
+        .eq("id",id);
+
+    if(error){
+
+        alert(
+            "❌ Не удалось изменить победы:\n"+
+            error.message
+        );
+
+        return;
+    }
+
+    await loadRating();
 }
+
+
+/* =========================
+   ДОБАВЛЕНИЕ ПРЕДУПРЕЖДЕНИЯ
+========================= */
+
+async function addWarning(id){
+
+    const {data:userData}=
+        await db.auth.getUser();
+
+    if(!userData.user){
+
+        alert(
+            "🔐 Сначала войдите как администратор."
+        );
+
+        return;
+    }
+
+    const {
+        data:player,
+        error
+    }=await db
+        .from("players")
+        .select("name,wins,warnings")
+        .eq("id",id)
+        .single();
+
+    if(error){
+
+        alert(
+            "❌ Не удалось получить игрока:\n"+
+            error.message
+        );
+
+        return;
+    }
+
+    const currentWarnings=
+        Number(player.warnings)||0;
+
+    const newWarnings=
+        Math.min(3,currentWarnings+1);
+
+    /* Если ещё не 3 предупреждения */
+
+    if(newWarnings<3){
+
+        const {error:updateError}=
+            await db
+                .from("players")
+                .update({
+                    warnings:newWarnings
+                })
+                .eq("id",id);
+
+        if(updateError){
+
+            alert(
+                "❌ Не удалось выдать предупреждение:\n"+
+                updateError.message
+            );
+
+            return;
+        }
+
+        alert(
+            `⚠️ Игрок ${player.name} получил предупреждение.\n\n`+
+            `Теперь: ${newWarnings}/3`
+        );
+
+        await loadRating();
+
+        return;
+    }
+
+
+    /* =========================
+       ТРЕТЬЕ ПРЕДУПРЕЖДЕНИЕ
+    ========================= */
+
+    const punishment=prompt(
+`🚨 У игрока ${player.name} 3/3 предупреждения.
+
+Выберите наказание:
+
+1 — 🔇 Мут
+2 — ⏸️ Тайм-аут
+3 — 🚫 Бан
+
+Введите 1, 2 или 3:`
+    );
+
+    if(!punishment){
+
+        alert(
+            "⚠️ Наказание не выбрано. Оставлено 3/3 предупреждения."
+        );
+
+        return;
+    }
+
+
+    /* =========================
+       МУТ
+    ========================= */
+
+    if(punishment==="1"){
+
+        const {error:updateError}=
+            await db
+                .from("players")
+                .update({
+                    warnings:0,
+                    wins:0,
+                    punishment:"mute",
+                    punishment_until:null
+                })
+                .eq("id",id);
+
+        if(updateError){
+
+            alert(
+                "❌ Ошибка выдачи мута:\n"+
+                updateError.message
+            );
+
+            return;
+        }
+
+        alert(
+            `🔇 Мут выдан игроку ${player.name}.\n\n`+
+            `🏆 Победы обнулены.`
+        );
+
+        await loadRating();
+
+        return;
+    }
+
+
+    /* =========================
+       ТАЙМ-АУТ
+    ========================= */
+
+    if(punishment==="2"){
+
+        let days=prompt(
+            `⏸️ Тайм-аут для ${player.name}.\n\n`+
+            `На сколько дней выдать тайм-аут?\n`+
+            `Например: 7`
+        );
+
+        if(days===null){
+
+            alert(
+                "⚠️ Тайм-аут отменён. Предупреждения остаются 3/3."
+            );
+
+            return;
+        }
+
+        days=parseInt(days);
+
+        if(!Number.isFinite(days)||days<=0){
+
+            alert(
+                "❌ Нужно указать положительное количество дней."
+            );
+
+            return;
+        }
+
+        const until=
+            new Date(
+                Date.now()+days*24*60*60*1000
+            ).toISOString();
+
+        const {error:updateError}=
+            await db
+                .from("players")
+                .update({
+                    warnings:0,
+                    punishment:"timeout",
+                    punishment_until:until
+                })
+                .eq("id",id);
+
+        if(updateError){
+
+            alert(
+                "❌ Ошибка выдачи тайм-аута:\n"+
+                updateError.message
+            );
+
+            return;
+        }
+
+        alert(
+            `⏸️ Тайм-аут выдан игроку ${player.name}.\n\n`+
+            `⏳ Срок: ${days} дн.\n`+
+            `🏆 Победы сохранены.`
+        );
+
+        await loadRating();
+
+        return;
+    }
+
+
+    /* =========================
+       БАН
+    ========================= */
+
+    if(punishment==="3"){
+
+        let days=prompt(
+            `🚫 Бан для ${player.name}.\n\n`+
+            `На сколько дней выдать бан?\n`+
+            `Например: 7`
+        );
+
+        if(days===null){
+
+            alert(
+                "⚠️ Бан отменён. Предупреждения остаются 3/3."
+            );
+
+            return;
+        }
+
+        days=parseInt(days);
+
+        if(!Number.isFinite(days)||days<=0){
+
+            alert(
+                "❌ Нужно указать положительное количество дней."
+            );
+
+            return;
+        }
+
+        const until=
+            new Date(
+                Date.now()+days*24*60*60*1000
+            ).toISOString();
+
+        const {error:updateError}=
+            await db
+                .from("players")
+                .update({
+                    warnings:0,
+                    wins:0,
+                    punishment:"ban",
+                    punishment_until:until
+                })
+                .eq("id",id);
+
+        if(updateError){
+
+            alert(
+                "❌ Ошибка выдачи бана:\n"+
+                updateError.message
+            );
+
+            return;
+        }
+
+        alert(
+            `🚫 Бан выдан игроку ${player.name}.\n\n`+
+            `⏳ Срок: ${days} дн.\n`+
+            `🏆 Победы обнулены.`
+        );
+
+        await loadRating();
+
+        return;
+    }
+
+
+    alert(
+        "❌ Неверный выбор. Предупреждение остаётся 3/3."
+    );
+}
+
+
+/* =========================
+   РЕГИСТРАЦИЯ
+========================= */
 
 async function registerUser(){
-const nick=document.getElementById("regNick").value.trim();
-const email=document.getElementById("regEmail").value.trim();
-const password=document.getElementById("regPassword").value;
-const status=document.getElementById("authStatus");
 
-if(!nick||!email||!password){status.textContent="⚠️ Заполните ник, email и пароль.";return;}
-if(nick.length<2){status.textContent="⚠️ Ник должен содержать минимум 2 символа.";return;}
-if(password.length<6){status.textContent="⚠️ Пароль должен содержать минимум 6 символов.";return;}
+    const nick=
+        document.getElementById("regNick")
+        .value.trim();
 
-status.textContent="⏳ Создаём аккаунт...";
+    const email=
+        document.getElementById("regEmail")
+        .value.trim();
 
-const {data,error}=await db.auth.signUp({
-email,
-password,
-options:{data:{nickname:nick}}
-});
+    const password=
+        document.getElementById("regPassword")
+        .value;
 
-if(error){status.textContent="❌ "+error.message;return;}
-if(!data.user){status.textContent="❌ Не удалось создать пользователя.";return;}
+    const status=
+        document.getElementById("authStatus");
 
-const {error:playerError}=await db.from("players").insert({
-id:data.user.id,
-name:nick,
-wins:0
-});
+    if(!nick||!email||!password){
 
-if(playerError){
-console.error(playerError);
-status.textContent="⚠️ Аккаунт создан, но игрок не добавился в рейтинг. Проверьте RLS таблицы players.";
-return;
+        status.textContent=
+            "⚠️ Заполните ник, email и пароль.";
+
+        return;
+    }
+
+    if(nick.length<2){
+
+        status.textContent=
+            "⚠️ Ник должен содержать минимум 2 символа.";
+
+        return;
+    }
+
+    if(password.length<6){
+
+        status.textContent=
+            "⚠️ Пароль должен содержать минимум 6 символов.";
+
+        return;
+    }
+
+    status.textContent=
+        "⏳ Создаём аккаунт...";
+
+    const {
+        data,
+        error
+    }=await db.auth.signUp({
+        email,
+        password,
+        options:{
+            data:{
+                nickname:nick
+            }
+        }
+    });
+
+    if(error){
+
+        status.textContent=
+            "❌ "+error.message;
+
+        return;
+    }
+
+    if(!data.user){
+
+        status.textContent=
+            "❌ Не удалось создать пользователя.";
+
+        return;
+    }
+
+    const {
+        error:playerError
+    }=await db
+        .from("players")
+        .insert({
+            id:data.user.id,
+            name:nick,
+            wins:0,
+            warnings:0,
+            punishment:null,
+            punishment_until:null
+        });
+
+    if(playerError){
+
+        console.error(playerError);
+
+        status.textContent=
+            "⚠️ Аккаунт создан, но игрок не добавился в рейтинг. Проверьте RLS таблицы players.";
+
+        return;
+    }
+
+    status.textContent=
+        data.session
+        ?"✅ Регистрация завершена! Вы добавлены в Top с 0 побед."
+        :"✅ Регистрация завершена! Если включено подтверждение email, подтвердите почту, затем войдите.";
+
+    if(data.session){
+
+        showLoggedUser(data.user);
+    }
 }
 
-status.textContent=data.session
-?"✅ Регистрация завершена! Вы добавлены в Top с 0 побед."
-:"✅ Регистрация завершена! Если включено подтверждение email, подтвердите почту, затем войдите.";
 
-if(data.session)showLoggedUser(data.user);
-}
+/* =========================
+   ВХОД ПОЛЬЗОВАТЕЛЯ
+========================= */
 
 async function loginUser(){
-const email=document.getElementById("loginEmail").value.trim();
-const password=document.getElementById("loginPassword").value;
-const status=document.getElementById("authStatus");
-if(!email||!password){status.textContent="⚠️ Введите email и пароль.";return;}
-status.textContent="⏳ Входим...";
-const {data,error}=await db.auth.signInWithPassword({email,password});
-if(error){status.textContent="❌ "+error.message;return;}
-status.textContent="✅ Вы вошли.";
-showLoggedUser(data.user);
+
+    const email=
+        document.getElementById("loginEmail")
+        .value.trim();
+
+    const password=
+        document.getElementById("loginPassword")
+        .value;
+
+    const status=
+        document.getElementById("authStatus");
+
+    if(!email||!password){
+
+        status.textContent=
+            "⚠️ Введите email и пароль.";
+
+        return;
+    }
+
+    status.textContent="⏳ Входим...";
+
+    const {
+        data,
+        error
+    }=await db.auth.signInWithPassword({
+        email,
+        password
+    });
+
+    if(error){
+
+        status.textContent=
+            "❌ "+error.message;
+
+        return;
+    }
+
+    status.textContent="✅ Вы вошли.";
+
+    showLoggedUser(data.user);
 }
+
+
+/* =========================
+   ПОКАЗ ПОЛЬЗОВАТЕЛЯ
+========================= */
 
 function showLoggedUser(user){
-const nick=user?.user_metadata?.nickname||"Без имени";
-document.getElementById("currentNick").textContent=nick;
-document.getElementById("authForms").style.display="none";
-document.getElementById("authLogged").style.display="block";
+
+    const nick=
+        user?.user_metadata?.nickname||
+        "Без имени";
+
+    document.getElementById("currentNick")
+        .textContent=nick;
+
+    document.getElementById("authForms")
+        .style.display="none";
+
+    document.getElementById("authLogged")
+        .style.display="block";
 }
+
+
+/* =========================
+   ВЫХОД
+========================= */
 
 async function logoutUser(){
-await db.auth.signOut();
-document.getElementById("authForms").style.display="block";
-document.getElementById("authLogged").style.display="none";
-document.getElementById("authStatus").textContent="Вы вышли из аккаунта.";
+
+    await db.auth.signOut();
+
+    document.getElementById("authForms")
+        .style.display="block";
+
+    document.getElementById("authLogged")
+        .style.display="none";
+
+    document.getElementById("authStatus")
+        .textContent=
+        "Вы вышли из аккаунта.";
+
+    updateAdminControls();
 }
+
+
+/* =========================
+   ПРОВЕРКА АВТОРИЗАЦИИ
+========================= */
 
 async function setupAuth(){
-const {data}=await db.auth.getUser();
-if(data.user)showLoggedUser(data.user);
+
+    const {data}=await db.auth.getUser();
+
+    if(data.user){
+
+        showLoggedUser(data.user);
+    }
 }
+
+
+/* =========================
+   АДМИН ВХОД
+========================= */
 
 async function loginAdmin(){
-const email=document.getElementById("adminEmail").value.trim();
-const password=document.getElementById("adminPassword").value;
-if(!email||!password){document.getElementById("adminStatus").textContent="⚠️ Введите email и пароль.";return;}
-document.getElementById("adminStatus").textContent="⏳ Входим...";
-const {error}=await db.auth.signInWithPassword({email,password});
-if(error){document.getElementById("adminStatus").textContent="❌ "+error.message;return;}
-document.getElementById("adminStatus").textContent="✅ Вы вошли как администратор.";
-document.getElementById("adminLoginForm").style.display="none";
-document.getElementById("adminLogged").style.display="block";
-updateAdminControls();
+
+    const email=
+        document.getElementById("adminEmail")
+        .value.trim();
+
+    const password=
+        document.getElementById("adminPassword")
+        .value;
+
+    const status=
+        document.getElementById("adminStatus");
+
+    if(!email||!password){
+
+        status.textContent=
+            "⚠️ Введите email и пароль.";
+
+        return;
+    }
+
+    status.textContent="⏳ Входим...";
+
+    const {
+        error
+    }=await db.auth.signInWithPassword({
+        email,
+        password
+    });
+
+    if(error){
+
+        status.textContent=
+            "❌ "+error.message;
+
+        return;
+    }
+
+    status.textContent=
+        "✅ Вы вошли как администратор.";
+
+    document.getElementById("adminLoginForm")
+        .style.display="none";
+
+    document.getElementById("adminLogged")
+        .style.display="block";
+
+    updateAdminControls();
 }
+
+
+/* =========================
+   ВЫХОД АДМИНА
+========================= */
 
 async function logoutAdmin(){
-await db.auth.signOut();
-document.getElementById("adminLoginForm").style.display="block";
-document.getElementById("adminLogged").style.display="none";
-document.getElementById("adminStatus").textContent="Вы вышли из аккаунта.";
-updateAdminControls();
+
+    await db.auth.signOut();
+
+    document.getElementById("adminLoginForm")
+        .style.display="block";
+
+    document.getElementById("adminLogged")
+        .style.display="none";
+
+    document.getElementById("adminStatus")
+        .textContent=
+        "Вы вышли из аккаунта.";
+
+    updateAdminControls();
 }
+
+
+/* =========================
+   АДМИН КНОПКИ
+========================= */
 
 async function updateAdminControls(){
-const {data}=await db.auth.getUser();
-document.querySelectorAll(".admin-controls").forEach(el=>{el.style.display=data.user?"block":"none";});
+
+    const {data}=await db.auth.getUser();
+
+    document
+        .querySelectorAll(".admin-controls")
+        .forEach(el=>{
+
+            el.style.display=
+                data.user?"block":"none";
+        });
 }
+
+
+/* =========================
+   НАСТРОЙКА АДМИНА
+========================= */
 
 async function setupAdmin(){
-const {data}=await db.auth.getUser();
-if(data.user){
-document.getElementById("adminLoginForm").style.display="none";
-document.getElementById("adminLogged").style.display="block";
+
+    const {data}=await db.auth.getUser();
+
+    if(data.user){
+
+        document.getElementById("adminLoginForm")
+            .style.display="none";
+
+        document.getElementById("adminLogged")
+            .style.display="block";
+    }
+
+    updateAdminControls();
 }
-updateAdminControls();
-}
+
+
+/* =========================
+   ЗАПУСК
+========================= */
 
 updateWipeStatus();
-setInterval(updateWipeStatus,1000);
+
+setInterval(
+    updateWipeStatus,
+    1000
+);
+
 setupAdmin();
 setupAuth();
-  // 🌙 Пасхалка от 14 сентября 2026
-function showSeptember14EasterEgg() {
-    const today = new Date();
-    const startDate = new Date(2026, 8, 14);
 
-    if (today >= startDate) {
-        const egg = document.getElementById("easterEgg14");
 
-        if (egg) {
-            egg.innerHTML = `
-                <div class="card" style="margin-top:20px;">
-                    🌙 Когда свет исчезает, некоторые вещи становятся заметнее.
+/* 🌙 Пасхалка от 14 сентября 2026 */
+
+function showSeptember14EasterEgg(){
+
+    const today=new Date();
+
+    const startDate=
+        new Date(2026,8,14);
+
+    if(today>=startDate){
+
+        const egg=
+            document.getElementById("easterEgg14");
+
+        if(egg){
+
+            egg.innerHTML=`
+                <div
+                class="card"
+                style="margin-top:20px;"
+                >
+                    🌙 Когда свет исчезает,
+                    некоторые вещи становятся заметнее.
                 </div>
             `;
         }
@@ -801,7 +2498,8 @@ function showSeptember14EasterEgg() {
 }
 
 showSeptember14EasterEgg();
+
 </script>
 
 </body>
-</html>
+    </html>
