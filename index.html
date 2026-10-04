@@ -574,6 +574,54 @@ th{
         padding:35px 15px;
     }
 }
+/* 👑 Уникальный титул */
+.title-request-box{max-width:760px;margin:auto}
+.title-price{font-size:30px;font-weight:1000;color:#4057d6}
+.title-request-box label{display:block;font-weight:800;margin:14px 0 6px}
+.title-request-box input,.title-request-box textarea{
+    width:100%;padding:13px;border:1px solid #dfe5ef;border-radius:12px;
+    font-size:16px;font-family:inherit;background:#fff;color:#182033
+}
+.title-request-box textarea{min-height:100px;resize:vertical}
+.title-request-box input:focus,.title-request-box textarea:focus{
+    outline:3px solid #536dfe33;border-color:#536dfe
+}
+.title-request-btn{
+    border:0;border-radius:12px;padding:13px 18px;background:#536dfe;
+    color:#fff;font-weight:900;font-size:16px;cursor:pointer;margin-top:12px
+}
+.title-request-btn:disabled{opacity:.5;cursor:not-allowed}
+.title-request-result{display:none;margin-top:18px;white-space:pre-wrap;overflow-wrap:anywhere}
+
+
+
+/* 👤 Карточки игроков */
+.player-profile-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border:0;border-radius:11px;padding:10px 14px;margin-top:12px;
+    background:#eef2ff;color:#4057b8;font-weight:900;cursor:pointer
+}
+.player-profile-btn:hover{background:#e1e8ff}
+.profile-modal{
+    position:fixed;inset:0;z-index:9999;display:none;align-items:center;
+    justify-content:center;padding:18px;background:#10182899
+}
+.profile-modal.open{display:flex}
+.profile-dialog{
+    width:min(100%,520px);max-height:85vh;overflow:auto;background:#fff;
+    border-radius:22px;padding:24px;box-shadow:0 20px 70px #0003;position:relative
+}
+.profile-close{
+    position:absolute;right:14px;top:14px;border:0;border-radius:50%;
+    width:38px;height:38px;background:#eef2f8;font-size:22px;cursor:pointer
+}
+.profile-heading{padding-right:42px;margin-bottom:18px}
+.profile-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.profile-stat{background:#f6f8fc;border:1px solid #e7ebf3;border-radius:14px;padding:14px}
+.profile-stat b{display:block;font-size:22px;margin-top:5px;color:#27345b}
+.profile-note{font-size:13px;color:#6b7280;margin-top:14px}
+@media(max-width:520px){.profile-dialog{padding:18px}.profile-stat-grid{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 
@@ -588,6 +636,7 @@ th{
         <a href=#games>🎮 Игры</a>
         <a href=#rating>🏆 Топ</a>
         <a href=#wipes>🗓️ Вайпы</a>
+        <a href="#paidTitles">👑 Услуги</a>
         <a href="hall-of-fame.html">🏛️ Музей Ball Games</a>
     </div>
 </nav>
@@ -1207,7 +1256,7 @@ th{
 
 <h2>🏆 НОВЫЙ ТОП</h2>
 
-<div id="ratingLock" class="card warning locked-top">
+<div id="ratingLock" class="card warning locked-top" style="display:none">
 
 <h3>🔒 ДО 10:00 ЗАКРЫТ</h3>
 
@@ -1229,7 +1278,7 @@ th{
 
 </div>
 
-<div id="ratingOpen" style="display:none">
+<div id="ratingOpen">
 
 <div class="card success">
 <h3>🟢 ИГРА ОТКРЫТА</h3>
@@ -1247,6 +1296,43 @@ th{
 
 </div>
 
+</section>
+
+<section id="paidTitles">
+<h2>👑 Платные услуги</h2>
+
+<div class="card title-request-box">
+    <div class="card ability">
+        <h3>✨ Уникальный титул на заказ</h3>
+        <p>Придумай собственный титул, которого нет в стандартном списке Ball Games.</p>
+        <p class="title-price">30 ₽</p>
+        <p>После одобрения заявки титул добавляется в профиль игрока.</p>
+        <p>🔄 Сменить купленный уникальный титул в дальнейшем можно бесплатно.</p>
+    </div>
+
+    <div class="card warning">
+        <b>ℹ️ Как это работает</b>
+        <p>Отправь заявку с ником и желаемым названием. Администрация проверит, подходит ли титул правилам Ball Games.</p>
+        <p>Форма только составляет текст заявки: она не принимает оплату и не выдаёт титул автоматически. Способ оплаты и порядок покупки должны быть отдельно согласованы с администрацией и законным представителем организатора.</p>
+    </div>
+
+    <form id="customTitleForm">
+        <label for="customTitleNick">Твой ник в Ball Games</label>
+        <input id="customTitleNick" name="nickname" type="text" maxlength="24" required autocomplete="nickname" placeholder="Например, Aves">
+
+        <label for="customTitleName">Желаемый титул</label>
+        <input id="customTitleName" name="title" type="text" maxlength="30" required placeholder="Например, Труба">
+
+        <label for="customTitleReason">Комментарий (необязательно)</label>
+        <textarea id="customTitleReason" name="comment" maxlength="300" placeholder="Напиши, если нужно что-то уточнить"></textarea>
+
+        <button class="title-request-btn" type="submit">📝 Сформировать заявку</button>
+    </form>
+
+    <div id="customTitleResult" class="card success title-request-result" role="status" aria-live="polite"></div>
+    <button id="copyCustomTitleRequest" class="title-request-btn" type="button" style="display:none">📋 Скопировать заявку и открыть Telegram</button>
+    <p class="muted">После нажатия заявка скопируется, а Telegram откроет чат поддержки. Вставь текст в чат и отправь его.</p>
+</div>
 </section>
 
 <section id="auth">
@@ -1464,6 +1550,7 @@ const db=createClient(
 const WIPE_DATE=new Date("2026-09-01T10:00:00+04:00");
 
 let ratingLoaded=false;
+let currentRatingPlayers=[];
 
 const PLAYER_TITLES={
   "rikill":"⭐ Один Такой",
@@ -1577,51 +1664,14 @@ async function checkPunishment(player){
 ========================= */
 
 function updateWipeStatus(){
-
-    const now=new Date();
-
     const lock=document.getElementById("ratingLock");
     const open=document.getElementById("ratingOpen");
-    const countdown=document.getElementById("countdown");
-
-    if(!lock||!open||!countdown)return;
-
-    const difference=WIPE_DATE-now;
-
-    if(difference<=0){
-
-        lock.style.display="none";
-        open.style.display="block";
-
-        if(!ratingLoaded){
-
-            ratingLoaded=true;
-
-            loadRating();
-        }
-
-        return;
+    if(lock) lock.style.display="none";
+    if(open) open.style.display="block";
+    if(!ratingLoaded){
+        ratingLoaded=true;
+        loadRating();
     }
-
-    lock.style.display="block";
-    open.style.display="none";
-
-    const totalSeconds=Math.floor(difference/1000);
-
-    const days=Math.floor(totalSeconds/86400);
-
-    const hours=Math.floor(
-        (totalSeconds%86400)/3600
-    );
-
-    const minutes=Math.floor(
-        (totalSeconds%3600)/60
-    );
-
-    const seconds=totalSeconds%60;
-
-    countdown.innerHTML=
-        `⏳ До открытия: <b>${days}д ${hours}ч ${minutes}м ${seconds}с</b>`;
 }
 
 
@@ -1673,6 +1723,8 @@ async function loadRating(){
 
         await checkPunishment(player);
     }
+
+    currentRatingPlayers=visibleData;
 
     status.textContent=
         `🏆 Игроков: ${visibleData.length}`;
@@ -1727,6 +1779,10 @@ ${escapeHtml(punishment)}
 </div>`
 :""
 }
+
+<button class="player-profile-btn" type="button" onclick="openPlayerProfile(${index})">
+👤 Открыть карточку игрока
+</button>
 
 <div
 class="admin-controls"
@@ -2454,6 +2510,101 @@ async function setupAdmin(){
 }
 
 
+
+
+/* =========================
+   КАРТОЧКИ ИГРОКОВ
+========================= */
+function openPlayerProfile(index){
+    const player=currentRatingPlayers[index];
+    const modal=document.getElementById("playerProfileModal");
+    const content=document.getElementById("playerProfileContent");
+    if(!player||!modal||!content)return;
+
+    const place=index+1;
+    const wins=Number(player.wins)||0;
+    const warnings=Number(player.warnings)||0;
+    const punishment=formatPunishment(player);
+    const milestones=[5,10,15,20,30,40,50,70,100,1000].filter(value=>wins>=value);
+    const milestonesText=milestones.length?milestones.map(value=>`<span class="pill">🏅 ${value} побед</span>`).join(""):'<span class="muted">Пока нет открытых рубежей</span>';
+
+    content.innerHTML=`
+      <div class="profile-heading">
+        <div class="muted">👤 Карточка игрока · место ${place}</div>
+        <h2 id="profileName">${escapeHtml(player.name||"Без имени")}</h2>
+        <span class="rank-title">${escapeHtml(getPlayerTitle(player.name))}</span>
+      </div>
+      <div class="profile-stat-grid">
+        <div class="profile-stat">🏆 Победы<b>${wins}</b></div>
+        <div class="profile-stat">📍 Место в топе<b>${place}</b></div>
+        <div class="profile-stat">⚠️ Предупреждения<b>${warnings}/3</b></div>
+        <div class="profile-stat">🛡️ Статус<b>${punishment?escapeHtml(punishment):"Без наказаний"}</b></div>
+      </div>
+      <h3 style="margin-top:20px">🎯 Достигнутые рубежи</h3>
+      <div>${milestonesText}</div>
+      <p class="profile-note">Показаны данные рейтинга текущего сезона. Рубежи отражают количество побед и не означают, что расходуемая способность сейчас есть у игрока.</p>
+    `;
+    modal.classList.add("open");
+    document.body.style.overflow="hidden";
+}
+
+function closePlayerProfile(){
+    const modal=document.getElementById("playerProfileModal");
+    if(modal)modal.classList.remove("open");
+    document.body.style.overflow="";
+}
+
+document.addEventListener("keydown",function(event){
+    if(event.key==="Escape")closePlayerProfile();
+});
+
+
+
+
+/* =========================
+   ЗАЯВКА НА УНИКАЛЬНЫЙ ТИТУЛ
+   Форма не принимает оплату и не меняет профиль автоматически.
+========================= */
+let customTitleRequestText = "";
+const customTitleForm = document.getElementById("customTitleForm");
+if(customTitleForm){
+  customTitleForm.addEventListener("submit",function(event){
+    event.preventDefault();
+    const nickname=document.getElementById("customTitleNick").value.trim();
+    const title=document.getElementById("customTitleName").value.trim();
+    const comment=document.getElementById("customTitleReason").value.trim();
+    if(!nickname||!title){alert("Заполни ник и желаемый титул.");return;}
+    customTitleRequestText=[
+      "ЗАЯВКА НА УНИКАЛЬНЫЙ ТИТУЛ — BALL GAMES",
+      "Игрок: "+nickname,
+      "Желаемый титул: "+title,
+      "Стоимость: 30 ₽",
+      "Смена титула после покупки: бесплатно",
+      comment?"Комментарий: "+comment:"",
+      "Заявка ожидает проверки администрацией. Оплата не произведена."
+    ].filter(Boolean).join("\n");
+    const result=document.getElementById("customTitleResult");
+    result.textContent=customTitleRequestText;
+    result.style.display="block";
+    document.getElementById("copyCustomTitleRequest").style.display="inline-block";
+  });
+}
+
+const copyCustomTitleButton=document.getElementById("copyCustomTitleRequest");
+if(copyCustomTitleButton){
+  copyCustomTitleButton.addEventListener("click",async function(){
+    if(!customTitleRequestText)return;
+    window.open("https://t.me/Official_Podderzka_Its_Aves_bot?start=_tgr_74uZbhsyYWRi","_blank","noopener");
+    try{
+      await navigator.clipboard.writeText(customTitleRequestText);
+      copyCustomTitleButton.textContent="✅ Скопировано! Вставь заявку в Telegram";
+    }catch(error){
+      const result=document.getElementById("customTitleResult");
+      result.textContent=customTitleRequestText+"\n\nНе удалось скопировать автоматически — выдели текст и скопируй вручную, затем отправь его в открывшемся чате Telegram.";
+    }
+  });
+}
+
 /* =========================
    ЗАПУСК
 ========================= */
@@ -2501,6 +2652,14 @@ function showSeptember14EasterEgg(){
 showSeptember14EasterEgg();
 
 </script>
+
+
+<div id="playerProfileModal" class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profileName" onclick="if(event.target===this)closePlayerProfile()">
+  <div class="profile-dialog">
+    <button class="profile-close" type="button" aria-label="Закрыть карточку" onclick="closePlayerProfile()">×</button>
+    <div id="playerProfileContent"></div>
+  </div>
+</div>
 
 </body>
     </html>
