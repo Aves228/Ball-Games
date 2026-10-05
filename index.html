@@ -2591,18 +2591,45 @@ if(customTitleForm){
 }
 
 const copyCustomTitleButton=document.getElementById("copyCustomTitleRequest");
+
 if(copyCustomTitleButton){
+
   copyCustomTitleButton.addEventListener("click",async function(){
+
     if(!customTitleRequestText)return;
-    window.open("https://t.me/Official_Podderzka_Its_Aves_bot?start=_tgr_74uZbhsyYWRi","_blank","noopener");
+
     try{
-      await navigator.clipboard.writeText(customTitleRequestText);
-      copyCustomTitleButton.textContent="✅ Скопировано! Вставь заявку в Telegram";
+
+      await navigator.clipboard.writeText(
+        customTitleRequestText
+      );
+
+      copyCustomTitleButton.textContent=
+        "✅ Заявка скопирована! Открываем Telegram...";
+
+      setTimeout(function(){
+
+        window.location.href=
+          "https://t.me/Official_Podderzka_Its_Aves_bot?start=_tgr_74uZbhsyYWRi";
+
+      },300);
+
     }catch(error){
-      const result=document.getElementById("customTitleResult");
-      result.textContent=customTitleRequestText+"\n\nНе удалось скопировать автоматически — выдели текст и скопируй вручную, затем отправь его в открывшемся чате Telegram.";
+
+      const result=
+        document.getElementById("customTitleResult");
+
+      result.textContent=
+        customTitleRequestText+
+        "\n\n⚠️ Автоматическое копирование не сработало. Выдели текст заявки, скопируй его вручную и отправь в открывшемся Telegram.";
+
+      window.location.href=
+        "https://t.me/Official_Podderzka_Its_Aves_bot?start=_tgr_74uZbhsyYWRi";
     }
+
   });
+
+
 }
 
 /* =========================
