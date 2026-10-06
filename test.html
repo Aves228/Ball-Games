@@ -2087,1057 +2087,9 @@ const WIPE_DATE=new Date("2026-09-01T10:00:00+04:00");
 let ratingLoaded=false;
 let currentRatingPlayers=[];
 
-const PLAYER_TITLES={
-  "rikill":"⭐ Один Такой",
-  "aves":"🐉 Dragon",
-  "лев":"🥷 Непобедимый",
-  "tabak bishbarmak":"💎 VIP",
-  "стёпа":"👑 Князь",
-  "лёха":"🕶️ Инкогнито",
-  "женя":"💎 VIP",
-  "роза":"🏴‍☠️ Пиратка",
-  "дарина":"🏴‍☠️ Пиратка",
-  "влад":"🥷 Непобедимый"
-};
+                            
 
-function getPlayerTitle(name){
-
-    const key=String(name||"")
-        .trim()
-        .toLowerCase();
-
-    return PLAYER_TITLES[key]||"🎮 Игрок";
-}
-
-function escapeHtml(text){
-
-    return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-}
-
-function formatPunishment(player){
-
-    const punishment=player.punishment;
-
-    if(!punishment){
-        return "";
-    }
-
-    if(punishment==="mute"){
-        return "🔇 Мут";
-    }
-
-    if(punishment==="ban"){
-        if(!player.punishment_until){
-            return "🚫 Бан";
-        }
-
-        const date=new Date(player.punishment_until);
-
-        return "🚫 Бан до "+date.toLocaleDateString("ru-RU");
-    }
-
-    if(punishment==="timeout"){
-        if(!player.punishment_until){
-            return "⏸️ Тайм-аут";
-        }
-
-        const date=new Date(player.punishment_until);
-
-        return "⏸️ Тайм-аут до "+date.toLocaleDateString("ru-RU");
-    }
-
-    return "";
-}
-
-async function checkPunishment(player){
-
-    if(!player.punishment){
-        return player;
-    }
-
-    if(!player.punishment_until){
-        return player;
-    }
-
-    const until=new Date(player.punishment_until);
-
-    if(until<=new Date()){
-
-        await db
-            .from("players")
-            .update({
-                punishment:null,
-                punishment_until:null
-            })
-            .eq("id",player.id);
-
-        player.punishment=null;
-        player.punishment_until=null;
-    }
-
-    return player;
-}
-
-function updateWipeStatus(){
-
-    const lock=document.getElementById("ratingLock");
-    const open=document.getElementById("ratingOpen");
-
-    if(lock)lock.style.display="none";
-    if(open)open.style.display="block";
-
-    if(!ratingLoaded){
-
-        ratingLoaded=true;
-        loadRating();
-
-    }
-}
-
-async function loadRating(){
-
-    const status=document.getElementById("ratingStatus");
-    const grid=document.getElementById("ratingGrid");
-
-    if(!status||!grid)return;
-
-    status.textContent="⏳ Загружаем рейтинг...";
-
-    const {
-        data,
-        error
-    }=await db
-        .from("players")
-        .select("*")
-        .order("wins",{ascending:false});
-
-    if(error){
-
-        console.error(error);
-
-        status.textContent="❌ Ошибка загрузки рейтинга";
-
-        grid.innerHTML=`
-        <div class="card danger">
-            <h3>❌ Не удалось загрузить рейтинг</h3>
-            <p>${escapeHtml(error.message)}</p>
-        </div>`;
-
-        return;
-    }
-
-    const visibleData=data.filter(
-        player=>
-        String(player.name??"")
-        .trim()
-        .toLowerCase()!=="кирилл"
-    );
-
-    for(const player of visibleData){
-        await checkPunishment(player);
-    }
-
-    currentRatingPlayers=visibleData;
-
-    status.textContent=`🏆 Игроков: ${visibleData.length}`;
-
-    if(!visibleData.length){
-
-        grid.innerHTML=
-            '<div class="card"><p>😢 Игроков пока нет.</p></div>';
-
-        return;
-    }
-
-    grid.innerHTML=visibleData.map(
-        (player,index)=>{
-
-            const warnings=Number(player.warnings)||0;
-            const punishment=formatPunishment(player);
-
-            return `
-
-<div class="card">
-
-<div class="rank">
-
-<div class="place">
-${index+1}️⃣
-</div>
-
-<div class="name">
-${escapeHtml(player.name??"Без имени")}
-</div>
-
-<div class="rank-title">
-${escapeHtml(getPlayerTitle(player.name))}
-</div>
-
-<div class="wins">
-🏆 ${player.wins??0}
-</div>
-
-<div class="warning-count">
-⚠️ ${warnings}/3
-</div>
-
-${punishment
-?
-`<div class="punishment-badge">
-${escapeHtml(punishment)}
-</div>`
-:""
-}
-
-<button
-class="player-profile-btn"
-type="button"
-onclick="openPlayerProfile(${index})">
-👤 Открыть карточку игрока
-</button>
-
-<div
-class="admin-controls"
-id="controls-${player.id}"
-style="display:none">
-
-<button
-class="admin-btn minus"
-onclick="changeWins('${player.id}',-1)">
-−1
-</button>
-
-<button
-class="admin-btn plus"
-onclick="changeWins('${player.id}',1)">
-+1
-</button>
-
-<button
-class="admin-btn warn-btn"
-onclick="addWarning('${player.id}')">
-⚠️ +1
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-`;
-        }
-    ).join("");
-
-    updateAdminControls();
-}
-
-async function changeWins(id,amount){
-
-    const {data:userData}=
-        await db.auth.getUser();
-
-    if(!userData.user){
-
-        alert("🔐 Сначала войдите как администратор.");
-
-        return;
-    }
-
-    const {
-        data:player,
-        error:getError
-    }=await db
-        .from("players")
-        .select("wins")
-        .eq("id",id)
-        .single();
-
-    if(getError){
-
-        alert(
-            "❌ Не удалось получить игрока:\n"+
-            getError.message
-        );
-
-        return;
-    }
-
-    const currentWins=Number(player.wins)||0;
-    const newWins=Math.max(0,currentWins+amount);
-
-    const {error}=await db
-        .from("players")
-        .update({
-            wins:newWins
-        })
-        .eq("id",id);
-
-    if(error){
-
-        alert(
-            "❌ Не удалось изменить победы:\n"+
-            error.message
-        );
-
-        return;
-    }
-
-    await loadRating();
-}
-
-async function addWarning(id){
-
-    const {data:userData}=
-        await db.auth.getUser();
-
-    if(!userData.user){
-
-        alert("🔐 Сначала войдите как администратор.");
-
-        return;
-    }
-
-    const {
-        data:player,
-        error
-    }=await db
-        .from("players")
-        .select("name,wins,warnings")
-        .eq("id",id)
-        .single();
-
-    if(error){
-
-        alert(
-            "❌ Не удалось получить игрока:\n"+
-            error.message
-        );
-
-        return;
-    }
-
-    const currentWarnings=Number(player.warnings)||0;
-    const newWarnings=Math.min(3,currentWarnings+1);
-
-    if(newWarnings<3){
-
-        const {error:updateError}=
-            await db
-                .from("players")
-                .update({
-                    warnings:newWarnings
-                })
-                .eq("id",id);
-
-        if(updateError){
-
-            alert(
-                "❌ Не удалось выдать предупреждение:\n"+
-                updateError.message
-            );
-
-            return;
-        }
-
-        alert(
-            `⚠️ Игрок ${player.name} получил предупреждение.\n\n`+
-            `Теперь: ${newWarnings}/3`
-        );
-
-        await loadRating();
-
-        return;
-    }
-
-    const punishment=prompt(
-`🚨 У игрока ${player.name} 3/3 предупреждения.
-
-Выберите наказание:
-
-1 — 🔇 Мут
-2 — ⏸️ Тайм-аут
-3 — 🚫 Бан
-
-Введите 1, 2 или 3:`
-    );
-
-    if(!punishment){
-
-        alert(
-            "⚠️ Наказание не выбрано. Оставлено 3/3 предупреждения."
-        );
-
-        return;
-    }
-
-    if(punishment==="1"){
-
-    const {error:updateError}=
-        await db
-            .from("players")
-            .update({
-                warnings:0,
-                wins:0,
-                punishment:null,
-                punishment_until:null
-            })
-            .eq("id",id);
-
-    if(updateError){
-        alert(
-            "❌ Ошибка применения мута:\n"+
-            updateError.message
-        );
-        return;
-    }
-
-    alert(
-        `🔇 Мут применён к игроку ${player.name}.\n\n`+
-        `🏆 Победы обнулены.`
-    );
-
-    await loadRating();
-    return;
-    }
-
-    if(punishment==="2"){
-
-        let days=prompt(
-            `⏸️ Тайм-аут для ${player.name}.\n\n`+
-            `На сколько дней выдать тайм-аут?\n`+
-            `Например: 7`
-        );
-
-        if(days===null){
-
-            alert(
-                "⚠️ Тайм-аут отменён. Предупреждения остаются 3/3."
-            );
-
-            return;
-        }
-
-        days=parseInt(days);
-
-        if(!Number.isFinite(days)||days<=0){
-
-            alert(
-                "❌ Нужно указать положительное количество дней."
-            );
-
-            return;
-        }
-
-        const until=
-            new Date(
-                Date.now()+days*24*60*60*1000
-            ).toISOString();
-
-        const {error:updateError}=
-            await db
-                .from("players")
-                .update({
-                    warnings:0,
-                    punishment:"timeout",
-                    punishment_until:until
-                })
-                .eq("id",id);
-
-        if(updateError){
-
-            alert(
-                "❌ Ошибка выдачи тайм-аута:\n"+
-                updateError.message
-            );
-
-            return;
-        }
-
-        alert(
-            `⏸️ Тайм-аут выдан игроку ${player.name}.\n\n`+
-            `⏳ Срок: ${days} дн.\n`+
-            `🏆 Победы сохранены.`
-        );
-
-        await loadRating();
-
-        return;
-    }
-
-    if(punishment==="3"){
-
-        let days=prompt(
-            `🚫 Бан для ${player.name}.\n\n`+
-            `На сколько дней выдать бан?\n`+
-            `Например: 7`
-        );
-
-        if(days===null){
-
-            alert(
-                "⚠️ Бан отменён. Предупреждения остаются 3/3."
-            );
-
-            return;
-        }
-
-        days=parseInt(days);
-
-        if(!Number.isFinite(days)||days<=0){
-
-            alert(
-                "❌ Нужно указать положительное количество дней."
-            );
-
-            return;
-        }
-
-        const until=
-            new Date(
-                Date.now()+days*24*60*60*1000
-            ).toISOString();
-
-        const {error:updateError}=
-            await db
-                .from("players")
-                .update({
-                    warnings:0,
-                    wins:0,
-                    punishment:"ban",
-                    punishment_until:until
-                })
-                .eq("id",id);
-
-        if(updateError){
-
-            alert(
-                "❌ Ошибка выдачи бана:\n"+
-                updateError.message
-            );
-
-            return;
-        }
-
-        alert(
-            `🚫 Бан выдан игроку ${player.name}.\n\n`+
-            `⏳ Срок: ${days} дн.\n`+
-            `🏆 Победы обнулены.`
-        );
-
-        await loadRating();
-
-        return;
-    }
-
-    alert(
-        "❌ Неверный выбор. Предупреждение остаётся 3/3."
-    );
-}
-
-async function registerUser(){
-
-    const nick=
-        document.getElementById("regNick").value.trim();
-
-    const email=
-        document.getElementById("regEmail").value.trim();
-
-    const password=
-        document.getElementById("regPassword").value;
-
-    const status=
-        document.getElementById("authStatus");
-
-    if(!nick||!email||!password){
-
-        status.textContent=
-            "⚠️ Заполните ник, email и пароль.";
-
-        return;
-    }
-
-    if(nick.length<2){
-
-        status.textContent=
-            "⚠️ Ник должен содержать минимум 2 символа.";
-
-        return;
-    }
-
-    if(password.length<6){
-
-        status.textContent=
-            "⚠️ Пароль должен содержать минимум 6 символов.";
-
-        return;
-    }
-
-    status.textContent="⏳ Создаём аккаунт...";
-
-    const {
-        data,
-        error
-    }=await db.auth.signUp({
-        email,
-        password,
-        options:{
-            data:{
-                nickname:nick
-            }
-        }
-    });
-
-    if(error){
-
-        status.textContent="❌ "+error.message;
-
-        return;
-    }
-
-    if(!data.user){
-
-        status.textContent=
-            "❌ Не удалось создать пользователя.";
-
-        return;
-    }
-
-    const {
-        error:playerError
-    }=await db
-        .from("players")
-        .insert({
-            id:data.user.id,
-            name:nick,
-            wins:0,
-            warnings:0,
-            punishment:null,
-            punishment_until:null
-        });
-
-    if(playerError){
-
-        console.error(playerError);
-
-        status.textContent=
-            "⚠️ Аккаунт создан, но игрок не добавился в рейтинг.";
-
-        return;
-    }
-
-    status.textContent=
-        data.session
-        ?"✅ Регистрация завершена! Вы добавлены в Top с 0 побед."
-        :"✅ Регистрация завершена! Если включено подтверждение email, подтвердите почту, затем войдите.";
-
-    if(data.session){
-        showLoggedUser(data.user);
-    }
-}
-
-async function loginUser(){
-
-    const email=
-        document.getElementById("loginEmail").value.trim();
-
-    const password=
-        document.getElementById("loginPassword").value;
-
-    const status=
-        document.getElementById("authStatus");
-
-    if(!email||!password){
-
-        status.textContent=
-            "⚠️ Введите email и пароль.";
-
-        return;
-    }
-
-    status.textContent="⏳ Входим...";
-
-    const {
-        data,
-        error
-    }=await db.auth.signInWithPassword({
-        email,
-        password
-    });
-
-    if(error){
-
-        status.textContent="❌ "+error.message;
-
-        return;
-    }
-
-    status.textContent="✅ Вы вошли.";
-
-    showLoggedUser(data.user);
-}
-
-function showLoggedUser(user){
-
-    const nick=
-        user?.user_metadata?.nickname||
-        "Без имени";
-
-    document.getElementById("currentNick")
-        .textContent=nick;
-
-    document.getElementById("authForms")
-        .style.display="none";
-
-    document.getElementById("authLogged")
-        .style.display="block";
-}
-
-async function logoutUser(){
-
-    await db.auth.signOut();
-
-    document.getElementById("authForms")
-        .style.display="block";
-
-    document.getElementById("authLogged")
-        .style.display="none";
-
-    document.getElementById("authStatus")
-        .textContent=
-        "Вы вышли из аккаунта.";
-
-    updateAdminControls();
-}
-
-async function setupAuth(){
-
-    const {data}=await db.auth.getUser();
-
-    if(data.user){
-        showLoggedUser(data.user);
-    }
-}
-
-async function loginAdmin(){
-
-    const email=
-        document.getElementById("adminEmail").value.trim();
-
-    const password=
-        document.getElementById("adminPassword").value;
-
-    const status=
-        document.getElementById("adminStatus");
-
-    if(!email||!password){
-
-        status.textContent=
-            "⚠️ Введите email и пароль.";
-
-        return;
-    }
-
-    status.textContent="⏳ Входим...";
-
-    const {error}=await db.auth.signInWithPassword({
-        email,
-        password
-    });
-
-    if(error){
-
-        status.textContent="❌ "+error.message;
-
-        return;
-    }
-
-    status.textContent=
-        "✅ Вы вошли как администратор.";
-
-    document.getElementById("adminLoginForm")
-        .style.display="none";
-
-    document.getElementById("adminLogged")
-        .style.display="block";
-
-    updateAdminControls();
-}
-
-async function logoutAdmin(){
-
-    await db.auth.signOut();
-
-    document.getElementById("adminLoginForm")
-        .style.display="block";
-
-    document.getElementById("adminLogged")
-        .style.display="none";
-
-    document.getElementById("adminStatus")
-        .textContent=
-        "Вы вышли из аккаунта.";
-
-    updateAdminControls();
-}
-
-async function updateAdminControls(){
-
-    const {data}=await db.auth.getUser();
-
-    document
-        .querySelectorAll(".admin-controls")
-        .forEach(el=>{
-
-            el.style.display=
-                data.user?"block":"none";
-
-        });
-}
-
-async function setupAdmin(){
-
-    const {data}=await db.auth.getUser();
-
-    if(data.user){
-
-        document.getElementById("adminLoginForm")
-            .style.display="none";
-
-        document.getElementById("adminLogged")
-            .style.display="block";
-    }
-
-    updateAdminControls();
-}
-
-function openPlayerProfile(index){
-
-    const player=currentRatingPlayers[index];
-
-    const modal=
-        document.getElementById("playerProfileModal");
-
-    const content=
-        document.getElementById("playerProfileContent");
-
-    if(!player||!modal||!content)return;
-
-    const place=index+1;
-    const wins=Number(player.wins)||0;
-    const warnings=Number(player.warnings)||0;
-    const punishment=formatPunishment(player);
-
-    const milestones=
-        [5,10,15,20,30,40,50,70,100,1000]
-        .filter(value=>wins>=value);
-
-    const milestonesText=
-        milestones.length
-        ?
-        milestones
-        .map(value=>`
-            <span class="pill">
-                🏅 ${value} побед
-            </span>
-        `)
-        .join("")
-        :
-        '<span class="muted">Пока нет открытых рубежей</span>';
-
-    content.innerHTML=`
-
-      <div class="profile-heading">
-
-        <div class="muted">
-            👤 Карточка игрока · место ${place}
-        </div>
-
-        <h2 id="profileName">
-            ${escapeHtml(player.name||"Без имени")}
-        </h2>
-
-        <span class="rank-title">
-            ${escapeHtml(getPlayerTitle(player.name))}
-        </span>
-
-      </div>
-
-      <div class="profile-stat-grid">
-
-        <div class="profile-stat">
-            🏆 Победы
-            <b>${wins}</b>
-        </div>
-
-        <div class="profile-stat">
-            📍 Место в топе
-            <b>${place}</b>
-        </div>
-
-        <div class="profile-stat">
-            ⚠️ Предупреждения
-            <b>${warnings}/3</b>
-        </div>
-
-        <div class="profile-stat">
-            🛡️ Статус
-            <b>
-                ${
-                    punishment
-                    ?
-                    escapeHtml(punishment)
-                    :
-                    "Без наказаний"
-                }
-            </b>
-        </div>
-
-      </div>
-
-      <h3 style="margin-top:20px">
-        🎯 Достигнутые рубежи
-      </h3>
-
-      <div>
-        ${milestonesText}
-      </div>
-
-      <p class="profile-note">
-        Показаны данные рейтинга текущего сезона.
-        Рубежи отражают количество побед.
-      </p>
-
-    `;
-
-    modal.classList.add("open");
-    document.body.style.overflow="hidden";
-}
-
-function closePlayerProfile(){
-
-    const modal=
-        document.getElementById("playerProfileModal");
-
-    if(modal)modal.classList.remove("open");
-
-    document.body.style.overflow="";
-}
-
-document.addEventListener("keydown",function(event){
-
-    if(event.key==="Escape"){
-        closePlayerProfile();
-    }
-
-});
-
-let customTitleRequestText="";
-
-const customTitleForm=
-    document.getElementById("customTitleForm");
-
-if(customTitleForm){
-
-    customTitleForm.addEventListener(
-        "submit",
-        function(event){
-
-            event.preventDefault();
-
-            const nickname=
-                document
-                .getElementById("customTitleNick")
-                .value.trim();
-
-            const title=
-                document
-                .getElementById("customTitleName")
-                .value.trim();
-
-            const comment=
-                document
-                .getElementById("customTitleReason")
-                .value.trim();
-
-            if(!nickname||!title){
-
-                alert(
-                    "Заполни ник и желаемый титул."
-                );
-
-                return;
-            }
-
-            customTitleRequestText=[
-                "ЗАЯВКА НА УНИКАЛЬНЫЙ ТИТУЛ — BALL GAMES TEST",
-                "Игрок: "+nickname,
-                "Желаемый титул: "+title,
-                "Стоимость: 30 ₽",
-                "Смена титула после покупки: бесплатно",
-                comment
-                    ?"Комментарий: "+comment
-                    :"",
-                "Заявка ожидает проверки администрацией. Оплата не произведена."
-            ]
-            .filter(Boolean)
-            .join("\n");
-
-            const result=
-                document.getElementById(
-                    "customTitleResult"
-                );
-
-            result.textContent=
-                customTitleRequestText;
-
-            result.style.display="block";
-
-            document.getElementById(
-                "copyCustomTitleRequest"
-            ).style.display="inline-block";
-        }
-    );
-}
-
-const copyCustomTitleButton=
-    document.getElementById(
-        "copyCustomTitleRequest"
-    );
-
-if(copyCustomTitleButton){
-
-    copyCustomTitleButton.addEventListener(
-        "click",
-        async function(){
-
-            if(!customTitleRequestText)return;
-
-            try{
-
-                await navigator.clipboard.writeText(
-                    customTitleRequestText
-                );
-
-                copyCustomTitleButton.textContent=
-                    "✅ Скопировано! Вставь заявку в Telegram";
-
-                window.open(
-                    "https://t.me/Official_Podderzka_Its_Aves_bot?start=_tgr_74uZbhsyYWRi",
-                    "_blank",
-                    "noopener"
-                );
-
-            }catch(error){
-
-                const result=
-                    document.getElementById(
+getElementById(
                         "customTitleResult"
                     );
 
@@ -3172,59 +2124,1746 @@ function showSeptember14EasterEgg(){
     const startDate=
         new Date(2026,8,14);
 
-    if(today>=startDate){
+    <script>
 
-        const egg=
-            document.getElementById(
-                "easterEgg14"
-            );
+const PLAYER_TITLES={
+"rikill":"⭐ Один Такой",
+"aves":"🐉 Dragon",
+"лев":"🥷 Непобедимый",
+"tabak bishbarmak":"💎 VIP",
+"стёпа":"👑 Князь",
+"лёха":"🕶️ Инкогнито",
+"женя":"💎 VIP",
+"роза":"🏴‍☠️ Пиратка",
+"дарина":"🏴‍☠️ Пиратка",
+"влад":"🥷 Непобедимый"
+};
 
-        if(egg){
+function getPlayerTitle(name){
 
-            egg.innerHTML=`
+const key=String(name||"")
+    .trim()
+    .toLowerCase();
 
-                <div
-                class="card"
-                style="margin-top:20px;"
-                >
+return PLAYER_TITLES[key]||"🎮 Игрок";
 
-                    🌙 Когда свет исчезает,
-                    некоторые вещи становятся заметнее.
+}
 
-                </div>
+function escapeHtml(text){
 
-            `;
+return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+function formatPunishment(player){
+
+const punishment=player.punishment;
+
+if(!punishment){
+    return "";
+}
+
+if(punishment==="mute"){
+    return "🔇 Мут";
+}
+
+if(punishment==="ban"){
+
+    if(!player.punishment_until){
+        return "🚫 Бан";
+    }
+
+    const date=new Date(player.punishment_until);
+
+    return "🚫 Бан до "+date.toLocaleDateString("ru-RU");
+
+}
+
+if(punishment==="timeout"){
+
+    if(!player.punishment_until){
+        return "⏸️ Тайм-аут";
+    }
+
+    const date=new Date(player.punishment_until);
+
+    return "⏸️ Тайм-аут до "+date.toLocaleDateString("ru-RU");
+
+}
+
+return "";
+
+}
+
+async function checkPunishment(player){
+
+if(!player.punishment){
+    return player;
+}
+
+if(!player.punishment_until){
+    return player;
+}
+
+const until=new Date(player.punishment_until);
+
+if(until<=new Date()){
+
+    await db
+        .from("players")
+        .update({
+            punishment:null,
+            punishment_until:null
+        })
+        .eq("id",player.id);
+
+    player.punishment=null;
+    player.punishment_until=null;
+
+}
+
+return player;
+
+}
+
+function updateWipeStatus(){
+
+const lock=document.getElementById("ratingLock");
+const open=document.getElementById("ratingOpen");
+
+if(lock)lock.style.display="none";
+if(open)open.style.display="block";
+
+if(!ratingLoaded){
+
+    ratingLoaded=true;
+    loadRating();
+
+}
+
+}
+
+async function loadRating(){
+
+const status=document.getElementById("ratingStatus");
+const grid=document.getElementById("ratingGrid");
+
+if(!status||!grid)return;
+
+status.textContent="⏳ Загружаем рейтинг...";
+
+const {
+    data,
+    error
+}=await db
+    .from("players")
+    .select("*")
+    .order("wins",{ascending:false});
+
+if(error){
+
+    console.error(error);
+
+    status.textContent="❌ Ошибка загрузки рейтинга";
+
+    grid.innerHTML=`
+    <div class="card danger">
+        <h3>❌ Не удалось загрузить рейтинг</h3>
+        <p>${escapeHtml(error.message)}</p>
+    </div>`;
+
+    return;
+
+}
+
+const visibleData=data.filter(
+    player=>
+    String(player.name??"")
+    .trim()
+    .toLowerCase()!=="кирилл"
+);
+
+for(const player of visibleData){
+    await checkPunishment(player);
+}
+
+currentRatingPlayers=visibleData;
+
+status.textContent=`🏆 Игроков: ${visibleData.length}`;
+
+if(!visibleData.length){
+
+    grid.innerHTML=
+        '<div class="card"><p>😢 Игроков пока нет.</p></div>';
+
+    return;
+
+}
+
+grid.innerHTML=visibleData.map(
+    (player,index)=>{
+
+        const warnings=Number(player.warnings)||0;
+        const punishment=formatPunishment(player);
+
+        return `
+
+<div class="card">
+
+    <div class="rank">
+
+        <div class="place">
+            ${index+1}️⃣
+        </div>
+
+        <div class="name">
+            ${escapeHtml(player.name??"Без имени")}
+        </div>
+
+        <div class="rank-title">
+            ${escapeHtml(getPlayerTitle(player.name))}
+        </div>
+
+        <div class="wins">
+            🏆 ${player.wins??0}
+        </div>
+
+        <div class="warning-count">
+            ⚠️ ${warnings}/3
+        </div>
+
+        ${
+            punishment
+            ?
+            `<div class="punishment-badge">
+                ${escapeHtml(punishment)}
+            </div>`
+            :
+            ""
+        }
+
+        <button
+            class="player-profile-btn"
+            type="button"
+            onclick="openPlayerProfile(${index})">
+            👤 Открыть карточку игрока
+        </button>
+
+        <div
+            class="admin-controls"
+            id="controls-${player.id}"
+            style="display:none">
+
+            <button
+                class="admin-btn minus"
+                onclick="changeWins('${player.id}',-1)">
+                −1
+            </button>
+
+            <button
+                class="admin-btn plus"
+                onclick="changeWins('${player.id}',1)">
+                +1
+            </button>
+
+            <button
+                class="admin-btn warn-btn"
+                onclick="addWarning('${player.id}')">
+                ⚠️ +1
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+`;
+
+    }
+).join("");
+
+updateAdminControls();
+
+}
+
+async function changeWins(id,amount){
+
+const {data:userData}=
+    await db.auth.getUser();
+
+if(!userData.user){
+
+    alert("🔐 Сначала войдите как администратор.");
+
+    return;
+
+}
+
+const {
+    data:player,
+    error:getError
+}=await db
+    .from("players")
+    .select("wins")
+    .eq("id",id)
+    .single();
+
+if(getError){
+
+    alert(
+        "❌ Не удалось получить игрока:\n"+
+        getError.message
+    );
+
+    return;
+
+}
+
+const currentWins=Number(player.wins)||0;
+const newWins=Math.max(0,currentWins+amount);
+
+const {error}=await db
+    .from("players")
+    .update({
+        wins:newWins
+    })
+    .eq("id",id);
+
+if(error){
+
+    alert(
+        "❌ Не удалось изменить победы:\n"+
+        error.message
+    );
+
+    return;
+
+}
+
+await loadRating();
+
+}
+
+async function addWarning(id){
+
+const {data:userData}=
+    await db.auth.getUser();
+
+if(!userData.user){
+
+    alert("🔐 Сначала войдите как администратор.");
+
+    return;
+
+}
+
+const {
+    data:player,
+    error
+}=await db
+    .from("players")
+    .select("name,wins,warnings")
+    .eq("id",id)
+    .single();
+
+if(error){
+
+    alert(
+        "❌ Не удалось получить игрока:\n"+
+        error.message
+    );
+
+    return;
+
+}
+
+const currentWarnings=Number(player.warnings)||0;
+const newWarnings=Math.min(3,currentWarnings+1);
+
+if(newWarnings<3){
+
+    const {error:updateError}=
+        await db
+            .from("players")
+            .update({
+                warnings:newWarnings
+            })
+            .eq("id",id);
+
+    if(updateError){
+
+        alert(
+            "❌ Не удалось выдать предупреждение:\n"+
+            updateError.message
+        );
+
+        return;
+
+    }
+
+    alert(
+        `⚠️ Игрок ${player.name} получил предупреждение.\n\n`+
+        `Теперь: ${newWarnings}/3`
+    );
+
+    await loadRating();
+
+    return;
+
+}
+
+const punishment=prompt(
+
+`🚨 У игрока ${player.name} 3/3 предупреждения.
+
+Выберите наказание:
+
+1 — 🔇 Мут
+2 — ⏸️ Тайм-аут
+3 — 🚫 Бан
+
+Введите 1, 2 или 3:`
+
+);
+
+if(!punishment){
+
+    alert(
+        "⚠️ Наказание не выбрано. Оставлено 3/3 предупреждений."
+    );
+
+    return;
+
+}
+
+if(punishment==="1"){
+
+const {error:updateError}=
+    await db
+        .from("players")
+        .update({
+            warnings:0,
+            wins:0,
+            punishment:null,
+            punishment_until:null
+        })
+        .eq("id",id);
+
+if(updateError){
+
+    alert(
+        "❌ Ошибка применения мута:\n"+
+        updateError.message
+    );
+
+    return;
+
+}
+
+alert(
+    `🔇 Мут применён к игроку ${player.name}.\n\n`+
+    `🏆 Победы обнулены.`
+);
+
+await loadRating();
+
+return;
+
+}
+
+if(punishment==="2"){
+
+    let days=prompt(
+        `⏸️ Тайм-аут для ${player.name}.\n\n`+
+        `На сколько дней выдать тайм-аут?\n`+
+        `Например: 7`
+    );
+
+    if(days===null){
+
+        alert(
+            "⚠️ Тайм-аут отменён. Предупреждения остаются 3/3."
+        );
+
+        return;
+
+    }
+
+    days=parseInt(days);
+
+    if(!Number.isFinite(days)||days<=0){
+
+        alert(
+            "❌ Нужно указать положительное количество дней."
+        );
+
+        return;
+
+    }
+
+    const until=
+        new Date(
+            Date.now()+days*24*60*60*1000
+        ).toISOString();
+
+    const {error:updateError}=
+        await db
+            .from("players")
+            .update({
+                warnings:0,
+                punishment:"timeout",
+                punishment_until:until
+            })
+            .eq("id",id);
+
+    if(updateError){
+
+        alert(
+            "❌ Ошибка выдачи тайм-аута:\n"+
+            updateError.message
+        );
+
+        return;
+
+    }
+
+    alert(
+        `⏸️ Тайм-аут выдан игроку ${player.name}.\n\n`+
+        `⏳ Срок: ${days} дн.\n`+
+        `🏆 Победы сохранены.`
+    );
+
+    await loadRating();
+
+    return;
+
+}
+
+if(punishment==="3"){
+
+    let days=prompt(
+        `🚫 Бан для ${player.name}.\n\n`+
+        `На сколько дней выдать бан?\n`+
+        `Например: 7`
+    );
+
+    if(days===null){
+
+        alert(
+            "⚠️ Бан отменён. Предупреждения остаются 3/3."
+        );
+
+        return;
+
+    }
+
+    days=parseInt(days);
+
+    if(!Number.isFinite(days)||days<=0){
+
+        alert(
+            "❌ Нужно указать положительное количество дней."
+        );
+
+        return;
+
+    }
+
+    const until=
+        new Date(
+            Date.now()+days*24*60*60*1000
+        ).toISOString();
+
+    const {error:updateError}=
+        await db
+            .from("players")
+            .update({
+                warnings:0,
+                wins:0,
+                punishment:"ban",
+                punishment_until:until
+            })
+            .eq("id",id);
+
+    if(updateError){
+
+        alert(
+            "❌ Ошибка выдачи бана:\n"+
+            updateError.message
+        );
+
+        return;
+
+    }
+
+    alert(
+        `🚫 Бан выдан игроку ${player.name}.\n\n`+
+        `⏳ Срок: ${days} дн.\n`+
+        `🏆 Победы обнулены.`
+    );
+
+    await loadRating();
+
+    return;
+
+}
+
+alert(
+    "❌ Неверный выбор. Предупреждение остаётся 3/3."
+);
+
+}
+
+async function registerUser(){
+
+const nick=
+    document.getElementById("regNick").value.trim();
+
+const email=
+    document.getElementById("regEmail").value.trim();
+
+const password=
+    document.getElementById("regPassword").value;
+
+const status=
+    document.getElementById("authStatus");
+
+if(!nick||!email||!password){
+
+    status.textContent=
+        "⚠️ Заполните ник, email и пароль.";
+
+    return;
+
+}
+
+if(nick.length<2){
+
+    status.textContent=
+        "⚠️ Ник должен содержать минимум 2 символа.";
+
+    return;
+
+}
+
+if(password.length<6){
+
+    status.textContent=
+        "⚠️ Пароль должен содержать минимум 6 символов.";
+
+    return;
+
+}
+
+status.textContent="⏳ Создаём аккаунт...";
+
+const {
+    data,
+    error
+}=await db.auth.signUp({
+    email,
+    password,
+    options:{
+        data:{
+            nickname:nick
         }
     }
+});
+
+if(error){
+
+    status.textContent="❌ "+error.message;
+
+    return;
+
+}
+
+if(!data.user){
+
+    status.textContent=
+        "❌ Не удалось создать пользователя.";
+
+    return;
+
+}
+
+const {
+    error:playerError
+}=await db
+    .from("players")
+    .insert({
+        id:data.user.id,
+        name:nick,
+        wins:0,
+        warnings:0,
+        punishment:null,
+        punishment_until:null
+    });
+
+if(playerError){
+
+    console.error(playerError);
+
+    status.textContent=
+        "⚠️ Аккаунт создан, но игрок не добавился в рейтинг.";
+
+    return;
+
+}
+
+status.textContent=
+    data.session
+    ?
+    "✅ Регистрация завершена! Вы добавлены в Top с 0 побед."
+    :
+    "✅ Регистрация завершена! Если включено подтверждение email, подтвердите почту, затем войдите.";
+
+if(data.session){
+    showLoggedUser(data.user);
+}
+
+}
+
+async function loginUser(){
+
+const email=
+    document.getElementById("loginEmail").value.trim();
+
+const password=
+    document.getElementById("loginPassword").value;
+
+const status=
+    document.getElementById("authStatus");
+
+if(!email||!password){
+
+    status.textContent=
+        "⚠️ Введите email и пароль.";
+
+    return;
+
+}
+
+status.textContent="⏳ Входим...";
+
+const {
+    data,
+    error
+}=await db.auth.signInWithPassword({
+    email,
+    password
+});
+
+if(error){
+
+    status.textContent="❌ "+error.message;
+
+    return;
+
+}
+
+status.textContent="✅ Вы вошли.";
+
+showLoggedUser(data.user);
+
+}
+
+function showLoggedUser(user){
+
+const nick=
+    user?.user_metadata?.nickname||
+    "Без имени";
+
+document.getElementById("currentNick")
+    .textContent=nick;
+
+document.getElementById("authForms")
+    .style.display="none";
+
+document.getElementById("authLogged")
+    .style.display="block";
+
+}
+
+async function logoutUser(){
+
+await db.auth.signOut();
+
+document.getElementById("authForms")
+    .style.display="block";
+
+document.getElementById("authLogged")
+    .style.display="none";
+
+document.getElementById("authStatus")
+    .textContent=
+    "Вы вышли из аккаунта.";
+
+updateAdminControls();
+
+}
+
+async function setupAuth(){
+
+const {data}=await db.auth.getUser();
+
+if(data.user){
+    showLoggedUser(data.user);
+}
+
+}
+
+async function loginAdmin(){
+
+const email=
+    document.getElementById("adminEmail").value.trim();
+
+const password=
+    document.getElementById("adminPassword").value;
+
+const status=
+    document.getElementById("adminStatus");
+
+if(!email||!password){
+
+    status.textContent=
+        "⚠️ Введите email и пароль.";
+
+    return;
+
+}
+
+status.textContent="⏳ Входим...";
+
+const {error}=await db.auth.signInWithPassword({
+    email,
+    password
+});
+
+if(error){
+
+    status.textContent="❌ "+error.message;
+
+    return;
+
+}
+
+status.textContent=
+    "✅ Вы вошли как администратор.";
+
+document.getElementById("adminLoginForm")
+    .style.display="none";
+
+document.getElementById("adminLogged")
+    .style.display="block";
+
+updateAdminControls();
+
+}
+
+async function logoutAdmin(){
+
+await db.auth.signOut();
+
+document.getElementById("adminLoginForm")
+    .style.display="block";
+
+document.getElementById("adminLogged")
+    .style.display="none";
+
+document.getElementById("adminStatus")
+    .textContent=
+        "Вы вышли из аккаунта.";
+
+updateAdminControls();
+
+}
+
+
+/* =====================================================
+   ДОСТИЖЕНИЯ
+===================================================== */
+
+async function getPlayerAchievements(playerId){
+
+const {
+    data,
+    error
+}=await db
+    .from("player_achievements")
+    .select(`
+        achievement_id,
+        obtained_at,
+        achievements(
+            id,
+            name,
+            description,
+            emoji,
+            secret
+        )
+    `)
+    .eq("player_id",playerId)
+    .order("obtained_at",{ascending:true});
+
+if(error){
+
+    console.error(
+        "Ошибка загрузки достижений:",
+        error
+    );
+
+    return [];
+
+}
+
+return data||[];
+
+}
+
+
+async function getAllAchievements(){
+
+const {
+    data,
+    error
+}=await db
+    .from("achievements")
+    .select("*")
+    .order("id",{ascending:true});
+
+if(error){
+
+    console.error(
+        "Ошибка загрузки списка достижений:",
+        error
+    );
+
+    return [];
+
+}
+
+return data||[];
+
+}
+
+
+/*
+ * Сейчас используется та же авторизация,
+ * что и в существующей админ-панели.
+ *
+ * ВАЖНО:
+ * для реальной защиты операций выдачи/удаления
+ * достижений нужно также настроить RLS в Supabase.
+ */
+
+async function isAdmin(){
+
+const {data}=await db.auth.getUser();
+
+return !!data.user;
+
+}
+
+
+async function giveAchievement(playerId,achievementId){
+
+const admin=await isAdmin();
+
+if(!admin){
+
+    alert("🔐 Недостаточно прав.");
+
+    return;
+
+}
+
+const {
+    error
+}=await db
+    .from("player_achievements")
+    .insert({
+        player_id:playerId,
+        achievement_id:achievementId
+    });
+
+if(error){
+
+    if(error.code==="23505"){
+
+        alert(
+            "ℹ️ У игрока уже есть это достижение."
+        );
+
+    }else{
+
+        alert(
+            "❌ Не удалось выдать достижение:\n"+
+            error.message
+        );
+
+    }
+
+    return;
+
+}
+
+alert("🏅 Достижение выдано!");
+
+}
+
+
+async function removeAchievement(playerId,achievementId){
+
+const admin=await isAdmin();
+
+if(!admin){
+
+    alert("🔐 Недостаточно прав.");
+
+    return;
+
+}
+
+const {
+    error
+}=await db
+    .from("player_achievements")
+    .delete()
+    .eq("player_id",playerId)
+    .eq("achievement_id",achievementId);
+
+if(error){
+
+    alert(
+        "❌ Не удалось забрать достижение:\n"+
+        error.message
+    );
+
+    return;
+
+}
+
+alert("🗑️ Достижение забрано!");
+
+}
+
+
+/* =====================================================
+   ПРОФИЛЬ ИГРОКА
+===================================================== */
+
+async function openPlayerProfile(index){
+
+const player=currentRatingPlayers[index];
+
+const modal=
+    document.getElementById("playerProfileModal");
+
+const content=
+    document.getElementById("playerProfileContent");
+
+if(!player||!modal||!content)return;
+
+
+/* Сначала открываем окно */
+
+content.innerHTML=`
+
+<div class="profile-heading">
+
+    <div class="muted">
+        👤 Карточка игрока
+    </div>
+
+    <h2 id="profileName">
+        ${escapeHtml(player.name||"Без имени")}
+    </h2>
+
+    <span class="rank-title">
+        ${escapeHtml(getPlayerTitle(player.name))}
+    </span>
+
+</div>
+
+<div style="text-align:center;padding:20px">
+    ⏳ Загружаем карточку...
+</div>
+
+`;
+
+modal.classList.add("open");
+
+document.body.style.overflow="hidden";
+
+
+const place=index+1;
+
+const wins=Number(player.wins)||0;
+
+const warnings=
+    Number(player.warnings)||0;
+
+const punishment=
+    formatPunishment(player);
+
+
+const milestones=
+    [5,10,15,20,30,40,50,70,100,1000]
+    .filter(value=>wins>=value);
+
+
+const milestonesText=
+    milestones.length
+    ?
+    milestones
+        .map(value=>`
+
+            <span class="pill">
+                🏅 ${value} побед
+            </span>
+
+        `)
+        .join("")
+    :
+    '<span class="muted">Пока нет открытых рубежей</span>';
+
+
+/* Загружаем достижения */
+
+const achievements=
+    await getPlayerAchievements(player.id);
+
+const allAchievements=
+    await getAllAchievements();
+
+
+const earnedIds=
+    new Set(
+        achievements.map(
+            item=>item.achievement_id
+        )
+    );
+
+
+/* Полученные достижения */
+
+const visibleAchievements=
+    achievements
+        .filter(item=>item.achievements)
+        .map(item=>{
+
+            const achievement=
+                item.achievements;
+
+            return `
+
+<div class="achievement-card">
+
+    <div class="achievement-top">
+
+        <div class="achievement-emoji">
+            ${escapeHtml(
+                achievement.emoji||"🏅"
+            )}
+        </div>
+
+        <div>
+
+            <div class="achievement-name">
+                ${escapeHtml(
+                    achievement.name
+                )}
+            </div>
+
+            <div class="achievement-description">
+                ${escapeHtml(
+                    achievement.description
+                )}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="achievement-admin">
+
+        <button
+            class="achievement-remove"
+            onclick="
+                removeAchievement(
+                    '${player.id}',
+                    ${achievement.id}
+                ).then(
+                    ()=>openPlayerProfile(${index})
+                )
+            "
+        >
+            ➖ Забрать
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+        })
+        .join("");
+
+
+/* Секретные достижения,
+   которые ещё не получены */
+
+const hiddenSecretCount=
+    allAchievements.filter(
+        achievement=>
+            achievement.secret &&
+            !earnedIds.has(achievement.id)
+    ).length;
+
+
+/* Обычные достижения,
+   которые ещё не получены */
+
+const notEarned=
+    allAchievements.filter(
+        achievement=>
+            !earnedIds.has(achievement.id) &&
+            !achievement.secret
+    );
+
+
+/* Кнопки выдачи */
+
+const adminAddButtons=
+    notEarned
+        .map(achievement=>`
+
+<button
+    class="achievement-add"
+    onclick="
+        giveAchievement(
+            '${player.id}',
+            ${achievement.id}
+        ).then(
+            ()=>openPlayerProfile(${index})
+        )
+    "
+>
+    ➕
+    ${escapeHtml(
+        achievement.emoji||"🏅"
+    )}
+    ${escapeHtml(
+        achievement.name
+    )}
+</button>
+
+`)
+        .join("");
+
+
+const achievementsBlock=
+    achievements.length
+    ?
+    `
+
+<div class="achievement-count">
+    🏅 Получено: ${achievements.length}
+</div>
+
+<div class="achievements-list">
+    ${visibleAchievements}
+</div>
+
+`
+    :
+    `
+
+<div class="muted">
+    У игрока пока нет достижений.
+</div>
+
+`;
+
+
+const secretText=
+    hiddenSecretCount>0
+    ?
+    `
+
+<div
+    class="achievement-card achievement-secret"
+    style="margin-top:10px"
+>
+    🔒 Секретных достижений скрыто:
+    ${hiddenSecretCount}
+</div>
+
+`
+    :
+    "";
+
+
+/* Заполняем профиль */
+
+content.innerHTML=`
+
+<div class="profile-heading">
+
+    <div class="muted">
+        👤 Карточка игрока · место ${place}
+    </div>
+
+    <h2 id="profileName">
+        ${escapeHtml(
+            player.name||"Без имени"
+        )}
+    </h2>
+
+    <span class="rank-title">
+        ${escapeHtml(
+            getPlayerTitle(player.name)
+        )}
+    </span>
+
+</div>
+
+
+<div class="profile-stat-grid">
+
+    <div class="profile-stat">
+
+        🏆 Победы
+
+        <b>
+            ${wins}
+        </b>
+
+    </div>
+
+
+    <div class="profile-stat">
+
+        📍 Место в топе
+
+        <b>
+            ${place}
+        </b>
+
+    </div>
+
+
+    <div class="profile-stat">
+
+        ⚠️ Предупреждения
+
+        <b>
+            ${warnings}/3
+        </b>
+
+    </div>
+
+
+    <div class="profile-stat">
+
+        🛡️ Статус
+
+        <b>
+            ${
+                punishment
+                ?
+                escapeHtml(punishment)
+                :
+                "Без наказаний"
+            }
+        </b>
+
+    </div>
+
+</div>
+
+
+<h3 style="margin-top:20px">
+
+    🎯 Достигнутые рубежи
+
+</h3>
+
+
+<div>
+
+    ${milestonesText}
+
+</div>
+
+
+<h3 style="margin-top:20px">
+
+    🏅 Достижения
+
+</h3>
+
+
+${achievementsBlock}
+
+
+${secretText}
+
+
+<div
+    style="
+        margin-top:18px;
+        display:flex;
+        flex-direction:column;
+        gap:7px;
+    "
+>
+
+    <div
+        class="muted"
+        style="font-weight:900"
+    >
+        🛠️ Управление достижениями
+    </div>
+
+    ${
+        adminAddButtons
+        ?
+        adminAddButtons
+        :
+        `
+        <div class="muted">
+            Все обычные достижения уже получены.
+        </div>
+        `
+    }
+
+</div>
+
+
+<p class="profile-note">
+
+    🏅 Достижения сохраняются между вайпами.
+
+    <br>
+
+    🎯 Рубежи отражают количество побед
+    текущего сезона.
+
+</p>
+
+`;
+
+}
+
+
+/* =====================================================
+   ЗАКРЫТИЕ ПРОФИЛЯ
+===================================================== */
+
+function closePlayerProfile(){
+
+const modal=
+    document.getElementById(
+        "playerProfileModal"
+    );
+
+if(modal)
+    modal.classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key==="Escape"){
+            closePlayerProfile();
+        }
+
+    }
+);
+
+
+/* =====================================================
+   АДМИН-КОНТРОЛЫ
+===================================================== */
+
+async function updateAdminControls(){
+
+const {data}=await db.auth.getUser();
+
+document
+    .querySelectorAll(".admin-controls")
+    .forEach(el=>{
+
+        el.style.display=
+            data.user
+            ?
+            "block"
+            :
+            "none";
+
+    });
+
+}
+
+
+async function setupAdmin(){
+
+const {data}=await db.auth.getUser();
+
+if(data.user){
+
+    document.getElementById(
+        "adminLoginForm"
+    ).style.display="none";
+
+    document.getElementById(
+        "adminLogged"
+    ).style.display="block";
+
+}
+
+updateAdminControls();
+
+}
+
+
+/* =====================================================
+   УНИКАЛЬНЫЙ ТИТУЛ
+===================================================== */
+
+let customTitleRequestText="";
+
+const customTitleForm=
+document.getElementById("customTitleForm");
+
+if(customTitleForm){
+
+customTitleForm.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        const nickname=
+            document
+            .getElementById("customTitleNick")
+            .value.trim();
+
+        const title=
+            document
+            .getElementById("customTitleName")
+            .value.trim();
+
+        const comment=
+            document
+            .getElementById("customTitleReason")
+            .value.trim();
+
+        if(!nickname||!title){
+
+            alert(
+                "Заполни ник и желаемый титул."
+            );
+
+            return;
+
+        }
+
+        customTitleRequestText=[
+
+            "ЗАЯВКА НА УНИКАЛЬНЫЙ ТИТУЛ — BALL GAMES TEST",
+
+            "Игрок: "+nickname,
+
+            "Желаемый титул: "+title,
+
+            "Стоимость: 30 ₽",
+
+            "Смена титула после покупки: бесплатно",
+
+            comment
+                ?
+                "Комментарий: "+comment
+                :
+                "",
+
+            "Заявка ожидает проверки администрацией. Оплата не произведена."
+
+        ]
+        .filter(Boolean)
+        .join("\n");
+
+
+        const result=
+            document.getElementById(
+                "customTitleResult"
+            );
+
+        result.textContent=
+            customTitleRequestText;
+
+        result.style.display="block";
+
+        document.getElementById(
+            "copyCustomTitleRequest"
+        ).style.display="inline-block";
+
+    }
+);
+
+}
+
+
+const copyCustomTitleButton=
+document.getElementById(
+    "copyCustomTitleRequest"
+);
+
+if(copyCustomTitleButton){
+
+copyCustomTitleButton.addEventListener(
+    "click",
+    async function(){
+
+        if(!customTitleRequestText)return;
+
+        try{
+
+            await navigator.clipboard.writeText(
+                customTitleRequestText
+            );
+
+            copyCustomTitleButton.textContent=
+                "✅ Скопировано! Вставь заявку в Telegram";
+
+            window.open(
+                "https://t.me/Official_Podderzka_Its_Aves_bot?start=_tgr_74uZbhsyYWRi",
+                "_blank",
+                "noopener"
+            );
+
+        }catch(error){
+
+            const result=
+                document.getElementById(
+                    "customTitleResult"
+                );
+
+            result.textContent=
+                customTitleRequestText+
+                "\n\nНе удалось скопировать автоматически — выдели текст и скопируй вручную.";
+
+            window.open(
+                "https://t.me/Official_Podderzka_Its_Aves_bot?start=_tgr_74uZbhsyYWRi",
+                "_blank",
+                "noopener"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ЗАПУСК
+===================================================== */
+
+updateWipeStatus();
+
+setInterval(
+    updateWipeStatus,
+    1000
+);
+
+setupAdmin();
+
+setupAuth();
+
+
+/* =====================================================
+   ПАСХАЛКА 14 СЕНТЯБРЯ
+===================================================== */
+
+function showSeptember14EasterEgg(){
+
+const today=new Date();
+
+const startDate=
+    new Date(2026,8,14);
+
+if(today>=startDate){
+
+    const egg=
+        document.getElementById(
+            "easterEgg14"
+        );
+
+    if(egg){
+
+        egg.innerHTML=`
+
+            <div
+                class="card"
+                style="margin-top:20px;"
+            >
+
+                🌙 Когда свет исчезает,
+                некоторые вещи становятся заметнее.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
 }
 
 showSeptember14EasterEgg();
 
 </script>
 
+
 <div
-id="playerProfileModal"
-class="profile-modal"
-role="dialog"
-aria-modal="true"
-aria-labelledby="profileName"
-onclick="if(event.target===this)closePlayerProfile()">
+    id="playerProfileModal"
+    class="profile-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="profileName"
+    onclick="if(event.target===this)closePlayerProfile()"
+>
 
-<div class="profile-dialog">
+    <div class="profile-dialog">
 
-<button
-class="profile-close"
-type="button"
-aria-label="Закрыть карточку"
-onclick="closePlayerProfile()">
-×
-</button>
+        <button
+            class="profile-close"
+            type="button"
+            aria-label="Закрыть карточку"
+            onclick="closePlayerProfile()"
+        >
+            ×
+        </button>
 
-<div id="playerProfileContent"></div>
+        <div id="playerProfileContent"></div>
 
-</div>
+    </div>
 
 </div>
 
 </body>
-                                </html>
+</html>
