@@ -2448,35 +2448,32 @@ async function addWarning(id){
 
     if(punishment==="1"){
 
-        const {error:updateError}=
-            await db
-                .from("players")
-                .update({
-                    warnings:0,
-                    wins:0,
-                    punishment:"mute",
-                    punishment_until:null
-                })
-                .eq("id",id);
+    const {error:updateError}=
+        await db
+            .from("players")
+            .update({
+                warnings:0,
+                wins:0,
+                punishment:null,
+                punishment_until:null
+            })
+            .eq("id",id);
 
-        if(updateError){
-
-            alert(
-                "❌ Ошибка выдачи мута:\n"+
-                updateError.message
-            );
-
-            return;
-        }
-
+    if(updateError){
         alert(
-            `🔇 Мут выдан игроку ${player.name}.\n\n`+
-            `🏆 Победы обнулены.`
+            "❌ Ошибка применения мута:\n"+
+            updateError.message
         );
-
-        await loadRating();
-
         return;
+    }
+
+    alert(
+        `🔇 Мут применён к игроку ${player.name}.\n\n`+
+        `🏆 Победы обнулены.`
+    );
+
+    await loadRating();
+    return;
     }
 
     if(punishment==="2"){
