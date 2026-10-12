@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ball Games Nev Snapshot</title>
+<title>Ball Games Test</title>
 <link rel="icon" type="image/png" sizes="512x512" href="/logo.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
 
@@ -577,6 +577,97 @@ margin-top:14px
 
 /* ДОСТИЖЕНИЯ */
 
+/* ===== КРАСИВЫЕ ИТОГИ ПРОШЛОГО СЕЗОНА ===== */
+.season-results-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  padding:18px;
+  background:linear-gradient(135deg,#ffffff 0%,#f5f8ff 100%);
+  border:1px solid #e5eaf5;
+  box-shadow:0 12px 35px rgba(30,50,90,.08);
+}
+.season-results-card::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:5px;
+  background:linear-gradient(90deg,#ffd166,#8ec5ff,#b8a1ff);
+}
+.season-results-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+.season-results-title h3{margin:0}
+.season-badge{
+  padding:7px 11px;
+  border-radius:999px;
+  background:#eef3ff;
+  font-size:12px;
+  font-weight:800;
+}
+.season-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0 7px;
+}
+.season-table th{
+  padding:7px 10px;
+  color:#7a8499;
+  font-size:12px;
+  text-align:left;
+}
+.season-table td{
+  padding:11px 10px;
+  background:#fff;
+  border-top:1px solid #edf0f6;
+  border-bottom:1px solid #edf0f6;
+}
+.season-table td:first-child{
+  border-left:1px solid #edf0f6;
+  border-radius:13px 0 0 13px;
+  width:55px;
+  font-weight:800;
+}
+.season-table td:last-child{
+  border-right:1px solid #edf0f6;
+  border-radius:0 13px 13px 0;
+  font-weight:800;
+}
+.season-place{font-weight:900}
+.season-place.gold{color:#c58b00}
+.season-place.silver{color:#718096}
+.season-place.bronze{color:#a9683a}
+.season-total{
+  margin-top:15px;
+  padding:13px 15px;
+  border-radius:15px;
+  background:#f1f7ff;
+  border:1px solid #dceaff;
+  font-weight:800;
+}
+.achievement-create-form{
+  display:grid;
+  gap:10px;
+  margin-top:14px;
+  padding:14px;
+  border-radius:16px;
+  background:#f8faff;
+  border:1px solid #e5ebf7;
+}
+.achievement-create-form input,.achievement-create-form textarea{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #dfe5ef;
+  border-radius:10px;
+  font:inherit;
+  background:#fff;
+}
+.achievement-create-form textarea{min-height:70px;resize:vertical}
+
 .achievements-list{
 display:grid;
 gap:10px;
@@ -833,6 +924,7 @@ grid-template-columns:1fr 1fr
 <a href="#rating">🏆 Топ</a>
 <a href="#wipes">🗓️ Вайпы</a>
 <a href="#paidTitles">👑 Услуги</a>
+<a href="#achievements">🏅 Достижения</a>
 <a href="#changes">📝 Изменения</a>
 <a href="hall-of-fame.html">🏛️ Музей Ball Games</a>
 <a href="#remakes">🔄 Правила Ремейков</a>
@@ -959,9 +1051,11 @@ grid-template-columns:1fr 1fr
 
 </div>
 
+
+
 <div class="card">
 
-<h3>💥 3. ВЫШИБАЛЫ</h3>
+<h3>💥 2. ВЫШИБАЛЫ</h3>
 
 <p>
 Вышибалы проводятся столько раз, сколько необходимо,
@@ -1035,7 +1129,7 @@ grid-template-columns:1fr 1fr
 <h3>🔹 5 игроков</h3>
 
 <p>👀 Гляделки: <b>5 → 4</b></p>
-<p>💥 Вышибалы: <b>4 → 3 → 2</b></p>
+<p>💥 Вышибалы: <b>3 → 2</b></p>
 <p>🎲 Русская рулетка: <b>2 → 1</b></p>
 
 </div>
@@ -1204,8 +1298,8 @@ Ball Games Original.
 🎯 Игрок НЕ выбывает и становится ведущим.
 </div>
 
-<p>⚠️ Аптечка работает только 1 раз до Русской рулетки.</p>
-<p>⚠️ После использования она считается потраченной.</p>
+<p>🩹 Аптечка открывается после достижения 5 побед.</p>
+<p>⚠️ Это общая игровая способность/ресурс матча: её использование определяется правилами конкретной игры.</p>
 <p>❌ В Русской рулетке обычная Аптечка не работает.</p>
 
 </div>
@@ -1228,8 +1322,7 @@ Ball Games Original.
 <p>Специальное место, где ведущему сложнее выбить игрока.</p>
 
 <p>
-🔹 До получения способности — 1 использование.<br>
-🔹 После получения — 15 использований.<br>
+🔹 После открытия способности — 15 использований.<br>
 🔹 Для ведущего зона доступна бесконечно.
 </p>
 
@@ -1499,6 +1592,49 @@ Ball Games Original.
 
 <div class="card success">
 <h3>🏅 Титулы сохраняются после вайпа.</h3>
+</div>
+
+</section>
+
+<section id="achievements">
+
+<h2>🏅 Достижения Ball Games</h2>
+<p class="muted">Все достижения разделены по сложности.</p>
+
+<h3>🟢 Лёгкие достижения</h3>
+<div class="grid">
+  <div class="card"><h3>🎮 Новичок Ball Games</h3><p>Впервые сыграть в BG.</p></div>
+  <div class="card"><h3>🏃 Последний бегущий</h3><p>Победить после этапа Вышибал.</p></div>
+  <div class="card"><h3>🥇 Первая победа</h3><p>Одержать первую победу.</p></div>
+  <div class="card"><h3>🩹 Спасение</h3><p>Впервые использовать Аптечку.</p></div>
+  <div class="card"><h3>🤝 Скорая помощь</h3><p>Передать Аптечку другому игроку.</p></div>
+</div>
+
+<h3>🔵 Средние достижения</h3>
+<div class="grid">
+  <div class="card"><h3>🔥 Первые 10</h3><p>Одержать 10 побед.</p></div>
+  <div class="card"><h3>🔥 На серии</h3><p>Одержать 3 победы подряд.</p></div>
+  <div class="card"><h3>⚡ Разогнался</h3><p>Одержать 5 побед подряд.</p></div>
+  <div class="card"><h3>🚫 Опасная зона</h3><p>Впервые использовать Запретную зону.</p></div>
+  <div class="card"><h3>🔄 Новый сезон</h3><p>Сыграть первую игру после вайпа.</p></div>
+  <div class="card"><h3>🔙 Возвращение</h3><p>Впервые использовать Возврат.</p></div>
+  <div class="card"><h3>👑 Ветеран</h3><p>Одержать 25 побед.</p></div>
+</div>
+
+<h3>🟣 Сложные достижения</h3>
+<div class="grid">
+  <div class="card"><h3>🏆 Непобедимый</h3><p>Одержать 10 побед подряд.</p></div>
+  <div class="card"><h3>🌀 Прыжок в пространстве</h3><p>Впервые использовать Телепорт.</p></div>
+  <div class="card"><h3>💎 Полтинник</h3><p>Одержать 50 побед.</p></div>
+  <div class="card"><h3>👑 Доминирование</h3><p>Одержать 15 побед подряд.</p></div>
+  <div class="card"><h3>🎯 Точный бросок</h3><p>Впервые использовать Точный бросок.</p></div>
+</div>
+
+<h3>🔴 Очень сложные достижения</h3>
+<div class="grid">
+  <div class="card"><h3>💀 Без шансов</h3><p>Одержать 20 побед подряд.</p></div>
+  <div class="card"><h3>🌟 Легендарная серия</h3><p>Одержать 30 побед подряд.</p></div>
+  <div class="card"><h3>🎲 Без шанса</h3><p>Потратить Аптечку и остальные доступные способности в первой игре, пройти ещё 3 раунда и победить в русской рулетке.</p></div>
 </div>
 
 </section>
@@ -1842,7 +1978,13 @@ Ball Games Original.
 
 </div>
 
-<table>
+<div class="season-results-card">
+<div class="season-results-title">
+<h3>🏆 Результаты первого сезона</h3>
+<span class="season-badge">273 победы</span>
+</div>
+
+<table class="season-table">
 
 <tr>
 <th>Место</th>
@@ -1861,9 +2003,10 @@ Ball Games Original.
 <tr><td>9</td><td>Лев</td><td>🏆 7</td></tr>
 <tr><td>10</td><td>Макс</td><td>🏆 1</td></tr>
 <tr><td>11</td><td>Миша</td><td>🏆 0</td></tr>
-<tr><td>11</td><td>Артём</td><td>🏆 0</td></tr>
+<tr><td class="season-place">11</td><td>Артём</td><td>🏆 0</td></tr>
 
 </table>
+</div>
 
 <div class="season-total">
 🔥 Всего побед за сезон: 273
@@ -1906,7 +2049,7 @@ style="display:none">
 <div class="flow">
 🌍 ГЛОБАЛЬНЫЙ ВАЙП<br>
 ⬇️<br>
-⏰ 1 СЕНТЯБРЯ — 10:00<br>
+⏰ 1 ДЕКАБРЯ — 10:00<br>
 ⬇️<br>
 🚀 НОВЫЙ СЕЗОН<br>
 ⬇️<br>
@@ -2048,9 +2191,63 @@ style="display:none">
 
 </button>
 
-<p class="muted">
-После нажатия заявка скопируется, а Telegram откроет чат поддержки.
+<p id="customTitleCopyStatus" class="muted" aria-live="polite">
+После нажатия текст заявки будет скопирован в буфер обмена, а Telegram откроет официальный чат.
 Вставь текст в чат и отправь его.
+</p>
+
+</div>
+
+</section>
+
+
+<section id="changes">
+
+<h2>📝 Изменения Ball Games Test</h2>
+
+<div class="card change-item">
+
+<h3>🟡 3.02S — Текущая Snapshot-версия</h3>
+
+<p>
+В тестовую версию добавлены и дорабатываются новые возможности сайта и Ball Games.
+</p>
+
+<p>
+🪪 Карточки игроков<br>
+🔄 Система ремейков и правила для ремейков<br>
+🏅 Тестирование достижений<br>
+👑 Платные услуги и заявки на уникальные титулы<br>
+🛡️ Обновлённая система наказаний<br>
+🧪 Тестирование новых функций перед переносом на официальный сайт
+</p>
+
+<p class="small">
+S означает версию сайта Ball Games Test. Такие версии соответствуют версиям Ball Games, но имеют окончание S.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>📦 Ранее выпущенные версии</h3>
+
+<p>
+Предыдущие изменения сохраняются в истории проекта и могут быть перенесены в архив версий.
+</p>
+
+<p>
+🔵 Alpha 3.001S — введено правило, что версии сайта и исправления багов публикуются в Telegram-канале BG Changelog. Версии сайта называются так же, как версии Ball Games, но с окончанием S.
+</p>
+
+</div>
+
+<div class="card warning">
+
+<h3>📢 BG Changelog</h3>
+
+<p>
+Исправления багов сайта, технические изменения и обновления тестовой версии публикуются в отдельном канале BG Changelog.
 </p>
 
 </div>
@@ -2262,7 +2459,7 @@ rel="noopener">
 
 <div id="adminLoginForm">
 
-<p>🔐 Войдите, чтобы изменять рейтинг.</p>
+<p>🔐 Войдите под администраторским аккаунтом, чтобы изменять рейтинг.</p>
 
 <input
 id="adminEmail"
@@ -2292,6 +2489,9 @@ placeholder="Пароль">
 
 <p class="small">
 Теперь возле игроков появились кнопки управления.
+</p>
+<p class="small muted">
+Доступ к изменению данных дополнительно должен ограничиваться правилами доступа Supabase (RLS).
 </p>
 
 </div>
@@ -2337,10 +2537,12 @@ SUPABASE_URL,
 SUPABASE_KEY
 );
 
-const WIPE_DATE=new Date("2026-09-01T10:00:00+04:00");
+const WIPE_DATE=new Date("2026-12-01T10:00:00+04:00");
+const WIPE_COUNTDOWN_START=24*60*60*1000; // таймер появляется только за сутки до вайпа
 
 let ratingLoaded=false;
 let currentRatingPlayers=[];
+let countdownTimer=null;
 
 
 /* =========================
@@ -2393,21 +2595,24 @@ return String(value??"")
 
 function formatPunishment(player){
 
-if(!player)return"";
+if(!player || !player.punishment) return "";
 
-if(player.punishment){
+const value=String(player.punishment).toLowerCase();
 
-const value=String(player.punishment)
-.toLowerCase();
+// Мут только обнуляет победы и никогда не показывает подпись под игроком.
+if(value==="mute") return "";
 
-if(value==="mute")return"🔇 Мут";
-if(value==="timeout")return"⏸️ Тайм-аут";
-if(value==="ban")return"🚫 Бан";
-
-return String(player.punishment);
+// Тайм-аут и бан показываются только до указанного срока.
+if(value==="timeout" || value==="ban"){
+  if(!player.punishment_until) return "";
+  const until=new Date(player.punishment_until);
+  if(Number.isNaN(until.getTime()) || until.getTime()<=Date.now()) return "";
+  const daysLeft=Math.max(1,Math.ceil((until.getTime()-Date.now())/(24*60*60*1000)));
+  const label=value==="timeout" ? "⏸️ Тайм-аут" : "🚫 Бан";
+  return `${label} до ${daysLeft} дн.`;
 }
 
-return"";
+return "";
 
 }
 
@@ -2433,28 +2638,65 @@ const open=document.getElementById("ratingOpen");
 if(!lock||!open)return;
 
 const now=new Date();
+const diff=WIPE_DATE-now;
 
-if(now<WIPE_DATE){
-
-lock.style.display="block";
-open.style.display="none";
-
-updateCountdown();
-
-}else{
+// До суток перед вайпом рейтинг полностью открыт.
+if(diff>WIPE_COUNTDOWN_START){
 
 lock.style.display="none";
 open.style.display="block";
 
+if(countdownTimer){
+clearInterval(countdownTimer);
+countdownTimer=null;
+}
+
 if(!ratingLoaded){
 
+loadRating()
+.then(()=>{
 ratingLoaded=true;
-
-loadRating().catch(error=>{
+})
+.catch(error=>{
+ratingLoaded=false;
 console.error("Ошибка loadRating:",error);
 });
 
 }
+
+return;
+
+}
+
+// Последние 24 часа перед вайпом: рейтинг закрывается и появляется таймер.
+if(diff>0){
+
+lock.style.display="block";
+open.style.display="none";
+updateCountdown();
+return;
+
+}
+
+// После вайпа рейтинг снова открыт.
+lock.style.display="none";
+open.style.display="block";
+
+if(countdownTimer){
+clearInterval(countdownTimer);
+countdownTimer=null;
+}
+
+if(!ratingLoaded){
+
+loadRating()
+.then(()=>{
+ratingLoaded=true;
+})
+.catch(error=>{
+ratingLoaded=false;
+console.error("Ошибка loadRating:",error);
+});
 
 }
 
@@ -2476,6 +2718,11 @@ if(diff<=0){
 
 countdown.textContent="🚀 Новый сезон открыт!";
 
+if(countdownTimer){
+clearInterval(countdownTimer);
+countdownTimer=null;
+}
+
 updateWipeStatus();
 
 return;
@@ -2496,7 +2743,11 @@ countdown.textContent=
 
 tick();
 
-setInterval(tick,1000);
+if(countdownTimer){
+clearInterval(countdownTimer);
+}
+
+countdownTimer=setInterval(tick,1000);
 
 }
 
@@ -2634,6 +2885,7 @@ id="controls-${player.id}"
 style="display:none">
 
 <button
+type="button"
 class="admin-btn minus"
 onclick="changeWins('${player.id}',-1)">
 
@@ -2642,6 +2894,7 @@ onclick="changeWins('${player.id}',-1)">
 </button>
 
 <button
+type="button"
 class="admin-btn plus"
 onclick="changeWins('${player.id}',1)">
 
@@ -2650,6 +2903,7 @@ onclick="changeWins('${player.id}',1)">
 </button>
 
 <button
+type="button"
 class="admin-btn warn-btn"
 onclick="addWarning('${player.id}')">
 
@@ -2696,6 +2950,7 @@ error?.message||
 </p>
 
 <button
+type="button"
 class="admin-btn plus"
 onclick="loadRating()"
 style="margin-top:10px">
@@ -2764,63 +3019,80 @@ await loadRating();
 
 async function addWarning(playerId){
 
-const {data,error}=await db
+const {data:player,error}=await db
 .from("players")
-.select("warnings")
+.select("warnings,wins,punishment,punishment_until")
 .eq("id",playerId)
 .single();
 
 if(error){
-
-alert(
-"❌ Ошибка загрузки предупреждений:\n"+
-error.message
-);
-
-return;
-
+  alert("❌ Ошибка загрузки игрока:\n"+error.message);
+  return;
 }
 
-const current=Number(data?.warnings)||0;
+const current=Number(player?.warnings)||0;
 const next=Math.min(3,current+1);
 
-const result=await db
-.from("players")
-.update({
-warnings:next
-})
-.eq("id",playerId);
-
-if(result.error){
-
-alert(
-"❌ Не удалось добавить предупреждение:\n"+
-result.error.message
-);
-
-return;
-
+if(next<3){
+  const result=await db.from("players").update({warnings:next}).eq("id",playerId);
+  if(result.error){
+    alert("❌ Не удалось добавить предупреждение:\n"+result.error.message);
+    return;
+  }
+  alert(`⚠️ Предупреждение добавлено.\nСейчас: ${next}/3`);
+  await loadRating();
+  return;
 }
 
-if(next>=3){
-
-alert(
-"🚨 У игрока 3 предупреждения.\n"+
-"Необходимо выбрать наказание."
-);
-
-}else{
-
-alert(
-`⚠️ Предупреждение добавлено.\nСейчас: ${next}/3`
-);
-
+const savedWarning=await db.from("players").update({warnings:3}).eq("id",playerId);
+if(savedWarning.error){
+  alert("❌ Не удалось сохранить предупреждения:\n"+savedWarning.error.message);
+  return;
 }
 
+const choice=prompt(
+"🚨 У игрока 3 предупреждения. Выбери наказание:\n1 — Мут (обнулить победы без подписи)\n2 — Тайм-аут (срок в днях)\n3 — Бан (обнулить победы и выбрать срок в днях)\n\nВведи 1, 2 или 3."
+);
+const kinds={"1":"mute","2":"timeout","3":"ban"};
+const punishment=kinds[String(choice||"").trim()];
+if(!punishment){
+  alert("⚠️ Наказание не выбрано. Предупреждения остались 3/3 — нажми ⚠️ +1 ещё раз, чтобы выбрать наказание.");
+  await loadRating();
+  return;
+}
+
+const updates={warnings:0,punishment:null,punishment_until:null};
+if(punishment==="mute"){
+  updates.wins=0;
+  updates.punishment="mute";
+}else if(punishment==="timeout" || punishment==="ban"){
+  const rawDays=prompt(punishment==="timeout" ? "На сколько дней выдать тайм-аут? Например, 7." : "На сколько дней выдать бан? Например, 7.");
+  if(rawDays===null || !String(rawDays).trim()){
+    alert("⚠️ Срок не указан. Наказание не выдано; предупреждения остались 3/3. Нажми ⚠️ +1 ещё раз, чтобы повторить.");
+    await loadRating();
+    return;
+  }
+  const days=Number(rawDays);
+  if(!Number.isInteger(days) || days<1 || days>3650){
+    alert("❌ Укажи целое число дней от 1 до 3650.");
+    await loadRating();
+    return;
+  }
+  updates.punishment=punishment;
+  updates.punishment_until=new Date(Date.now()+days*24*60*60*1000).toISOString();
+  if(punishment==="ban") updates.wins=0;
+}
+
+const applied=await db.from("players").update(updates).eq("id",playerId);
+if(applied.error){
+  alert("❌ Не удалось применить наказание:\n"+applied.error.message+"\n\nПроверь, что в public.players существует столбец punishment_until и что RLS разрешает администратору обновлять строку игрока.");
+  await loadRating();
+  return;
+}
+
+alert("✅ Наказание применено.");
 await loadRating();
-
 }
-
 
 /* =========================
    АВТОРИЗАЦИЯ ПОЛЬЗОВАТЕЛЯ
@@ -2829,6 +3101,12 @@ await loadRating();
 async function registerUser(){
 
 const nick=document.getElementById("regNick")?.value.trim();
+
+if(nick && (nick.length<2 || /[<>]/.test(nick))){
+const status=document.getElementById("authStatus");
+if(status)status.textContent="⚠️ Некорректный ник.";
+return;
+}
 const email=document.getElementById("regEmail")?.value.trim();
 const password=document.getElementById("regPassword")?.value;
 
@@ -2884,13 +3162,22 @@ const playerResult=await db
 
 if(!playerResult.data){
 
-await db
+const insertResult=await db
 .from("players")
 .insert({
 name:nick,
 wins:0,
 warnings:0
 });
+
+if(insertResult.error){
+
+console.error(
+"Ошибка создания игрока:",
+insertResult.error
+);
+
+}
 
 }
 
@@ -3023,24 +3310,18 @@ await updateAdminControls();
 }
 
 
-async function updateAdminControls(){
+async function updateAdminControls() {
+  const admin = await isAdmin();
 
-const {data}=await db.auth.getUser();
+  for (const player of currentRatingPlayers) {
+    const controls = document.getElementById(
+      `controls-${player.id}`
+    );
 
-const isLogged=!!data?.user;
-
-for(const player of currentRatingPlayers){
-
-const controls=
-document.getElementById(
-`controls-${player.id}`
-);
-
-if(controls){
-
-controls.style.display=
-isLogged?"block":"none";
-
+    if (controls) {
+      controls.style.display = admin ? "block" : "none";
+    }
+  }
 }
 
 }
@@ -3052,7 +3333,7 @@ async function setupAdmin(){
 
 const {data}=await db.auth.getUser();
 
-const logged=!!data?.user;
+const logged = !!data?.user && await isAdmin();
 
 const loginForm=
 document.getElementById("adminLoginForm");
@@ -3136,14 +3417,75 @@ return data||[];
 }
 
 
-async function isAdmin(){
+async function isAdmin() {
+  const { data: { user }, error: userError } =
+    await db.auth.getUser();
 
-const {data}=await db.auth.getUser();
+  if (userError || !user) {
+    return false;
+  }
 
-return !!data?.user;
+  const { data, error } = await db
+    .from("admins")
+    .select("user_id")
+    .eq("user_id", user.id)
+    .maybeSingle();
 
+  if (error) {
+    console.error("Ошибка проверки администратора:", error);
+    return false;
+  }
+
+  return !!data;
 }
 
+
+async function createAchievement(){
+
+const admin=await isAdmin();
+if(!admin){
+alert("🔐 Недостаточно прав. Войдите как администратор.");
+return;
+}
+
+const name=document.getElementById("newAchievementName")?.value.trim();
+const description=document.getElementById("newAchievementDescription")?.value.trim();
+const emoji=document.getElementById("newAchievementEmoji")?.value.trim()||"🏅";
+const secret=!!document.getElementById("newAchievementSecret")?.checked;
+const status=document.getElementById("achievementCreateStatus");
+
+if(!name){
+if(status)status.textContent="❌ Укажите название достижения.";
+return;
+}
+if(!description){
+if(status)status.textContent="❌ Укажите описание достижения.";
+return;
+}
+
+if(status)status.textContent="⏳ Создаём...";
+
+const {data,error}=await db
+.from("achievements")
+.insert({name,description,emoji,secret})
+.select("*")
+.single();
+
+if(error){
+console.error("Ошибка создания достижения:",error);
+const details=[error.message,error.details,error.hint].filter(Boolean).join(" | ");
+if(status)status.textContent="❌ " + (details||"Не удалось создать достижение.") + " Проверь SQL-политику RLS и вход администратора.";
+return;
+}
+
+if(status)status.textContent="✅ Достижение создано!";
+document.getElementById("newAchievementName").value="";
+document.getElementById("newAchievementDescription").value="";
+document.getElementById("newAchievementEmoji").value="🏅";
+document.getElementById("newAchievementSecret").checked=false;
+
+await renderPlayerProfile(currentRatingPlayers.find(p=>String(p.id)===String(window.__achievementProfilePlayerId))||currentRatingPlayers[0]);
+}
 
 async function giveAchievement(playerId,achievementId){
 
@@ -3274,6 +3616,8 @@ await renderPlayerProfile(player);
 
 
 async function renderPlayerProfile(player){
+
+window.__achievementProfilePlayerId=player?.id||null;
 
 const modal=
 document.getElementById("playerProfileModal");
@@ -3505,6 +3849,18 @@ adminPanel.innerHTML=`
 Администратор может вручную выдать или забрать достижение.
 </p>
 
+<div class="achievement-create-form">
+<h4 style="margin:0">➕ Создать достижение</h4>
+<input id="newAchievementName" maxlength="80" placeholder="Название достижения">
+<textarea id="newAchievementDescription" maxlength="300" placeholder="Описание достижения"></textarea>
+<input id="newAchievementEmoji" maxlength="8" value="🏅" placeholder="Эмодзи">
+<label style="display:flex;align-items:center;gap:8px;font-size:14px">
+<input id="newAchievementSecret" type="checkbox" style="width:auto"> 🔒 Секретное достижение
+</label>
+<button class="achievement-add" type="button" onclick="createAchievement()">Создать достижение</button>
+<p id="achievementCreateStatus" class="small" style="margin:0"></p>
+</div>
+
 <div style="display:grid;gap:8px;margin-top:12px">
 
 ${all.map(achievement=>{
@@ -3716,33 +4072,92 @@ copyCustomTitleRequest.addEventListener(
 "click",
 async()=>{
 
+const telegramWindow=window.open(
+"https://t.me/Ball_Games_Official",
+"_blank",
+"noopener,noreferrer"
+);
+
+let copied=false;
+
 try{
+
+if(navigator.clipboard&&
+window.isSecureContext){
 
 await navigator.clipboard.writeText(
 customTitleRequest
 );
 
+copied=true;
+
+}
+
 }catch(error){
+
+console.warn(
+"Clipboard API недоступен:",
+error
+);
+
+}
+
+if(!copied){
+
+try{
 
 const textarea=
 document.createElement("textarea");
 
 textarea.value=customTitleRequest;
+textarea.setAttribute("readonly","");
+textarea.style.position="fixed";
+textarea.style.left="-9999px";
+textarea.style.top="0";
 
 document.body.appendChild(textarea);
 
+textarea.focus();
 textarea.select();
 
+copied=
 document.execCommand("copy");
 
 textarea.remove();
 
+}catch(error){
+
+console.warn(
+"Резервное копирование не удалось:",
+error
+);
+
 }
 
-window.open(
-"https://t.me/Ball_Games_Official",
-"_blank"
+}
+
+const copyStatus=
+document.getElementById(
+"customTitleCopyStatus"
 );
+
+if(copyStatus){
+
+copyStatus.textContent=
+copied
+?
+"✅ Заявка скопирована. Telegram уже открыт — вставь текст в чат поддержки."
+:
+"⚠️ Telegram открыт, но браузер не разрешил автоматическое копирование. Скопируй заявку вручную из блока выше.";
+
+}
+
+if(!telegramWindow){
+
+window.location.href=
+"https://t.me/Ball_Games_Official";
+
+}
 
 }
 );
@@ -3763,6 +4178,30 @@ easterEgg14.innerHTML="";
 
 }
 
+
+/* =========================
+   КЛАВИША ENTER
+========================= */
+
+document.addEventListener("keydown",event=>{
+
+if(event.key!=="Enter")return;
+
+const target=event.target;
+
+if(target?.id==="adminPassword"){
+loginAdmin();
+}
+
+if(target?.id==="loginPassword"){
+loginUser();
+}
+
+if(target?.id==="regPassword"){
+registerUser();
+}
+
+});
 
 /* =========================
    ЗАПУСК
@@ -3813,7 +4252,13 @@ error
 
 init();
 
+// Периодически обновляем рейтинг, чтобы истёкшие тайм-ауты и баны
+// автоматически исчезали даже без перезагрузки страницы.
+setInterval(()=>{
+  if(document.visibilityState==="visible") loadRating();
+},60*1000);
+
 </script>
 
 </body>
-    </html>
+   </html>
