@@ -1484,7 +1484,7 @@ Ball Games Original.
 
 <h3>🔥 70 ПОБЕД — ДВОЙНОЙ БРОСОК</h3>
 
-<p>Это УСИЛЕНИЕ, а не  способность.</p>
+<p>Это УСИЛЕНИЕ, а не личная способность.</p>
 
 <p>
 Игрок получает возможность в ситуациях, где ему положен
@@ -1528,13 +1528,8 @@ Ball Games Original.
 </section>
 
 <section id="titles">
-<section id="titles">
 
 <h2>🏅 Титулы</h2>
-
-<!-- ТИТУЛЫ ЗА ПОБЕДЫ -->
-
-<h3>🏆 Титулы за победы</h3>
 
 <p class="muted">
 Чем больше побед — тем престижнее титул.
@@ -1594,71 +1589,6 @@ Ball Games Original.
 </div>
 
 </div>
-
-<!-- ТИТУЛЫ ЗА ДОСТИЖЕНИЯ -->
-
-<h3>🎖️ Титулы за достижения</h3>
-
-<p class="muted">
-Особые титулы, которые выдаются за заслуги
-и значительный вклад в развитие Ball Games.
-</p>
-
-<!-- РАЗДЕЛ 1: РЕМЕЙКИ -->
-
-<h4>🏗️ 1. Ремейки</h4>
-
-<p class="muted">
-Титулы за создание и развитие ремейков Ball Games.
-Уровень зависит от масштаба изменений и новых механик.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>🔨 I. Начинающий ремейкер</h3>
-<p>
-Небольшие изменения оригинала: например,
-добавление одной способности или нескольких титулов.
-</p>
-</div>
-
-<div class="card">
-<h3>⚙️ II. Разработчик ремейка</h3>
-<p>
-Несколько новых элементов: например,
-способности, титулы и достижения.
-</p>
-</div>
-
-<div class="card">
-<h3>👑 III. Создатель ремейка</h3>
-<p>
-Добавление собственных способностей,
-новой игры и, возможно, системы титулов.
-</p>
-</div>
-
-<div class="card">
-<h3>🏆 IV. Архитектор ремейка</h3>
-<p>
-Масштабная переработка титулов, способностей,
-игр, правил вайпов и игровых механик.
-</p>
-</div>
-
-<div class="card">
-<h3>🔥 V. Creator BG</h3>
-<p>
-Ремейк с огромным количеством собственных игр,
-способностей и механик, который уже практически
-стал самостоятельной игрой.
-</p>
-</div>
-
-</div>
-
-<!-- В БУДУЩЕМ ЗДЕСЬ МОЖНО ДОБАВЛЯТЬ НОВЫЕ РАЗДЕЛЫ -->
 
 <div class="card success">
 <h3>🏅 Титулы сохраняются после вайпа.</h3>
@@ -3361,11 +3291,19 @@ return;
 
 }
 
-if(status){
-status.textContent="✅ Вход выполнен.";
-}
-
 await setupAdmin();
+
+const adminAccess = await checkAdminAccess();
+
+if(status){
+  if(adminAccess.isAdmin){
+    status.textContent="✅ Вы вошли как администратор.";
+  }else if(adminAccess.error){
+    status.textContent="⚠️ Вход выполнен, но проверить права администратора не удалось: "+adminAccess.error;
+  }else{
+    status.textContent="⚠️ Вход выполнен, но этот аккаунт не найден в таблице admins. Проверь user_id в Supabase.";
+  }
+}
 
 }
 
@@ -3426,82 +3364,103 @@ await updateAdminControls();
 ========================= */
 
 async function getPlayerAchievements(playerId){
+  window.__achievementErrors = window.__achievementErrors || {};
+  window.__achievementErrors.player = null;
 
-const {data,error}=await db
-.from("player_achievements")
-.select(`
-achievement_id,
-obtained_at,
-achievements(
-id,
-name,
-description,
-emoji,
-secret
-)
-`)
-.eq("player_id",playerId)
-.order("obtained_at",{ascending:true});
+  const {data: links, error: linksError} = await db
+    .from("player_achievements")
+    .select("achievement_id, obtained_at")
+    .eq("player_id", playerId)
+    .order("obtained_at", {ascending:true});
 
-if(error){
+  if(linksError){
+    window.__achievementErrors.player = linksError.message || "Не удалось прочитать player_achievements.";
+    console.error("Ошибка загрузки связей достижений игрока:", linksError);
+    return [];
+  }
 
-console.error(
-"Ошибка загрузки достижений:",
-error
-);
+  if(!links || !links.length) return [];
 
-return[];
+  const ids = [...new Set(links.map(item => item.achievement_id).filter(id => id != null))];
+  if(!ids.length) return [];
 
-}
+  const {data: achievements, error: achievementsError} = await db
+    .from("achievements")
+    .select("id, name, description, emoji, secret")
+    .in("id", ids);
 
-return data||[];
+  if(achievementsError){
+    window.__achievementErrors.player = achievementsError.message || "Не удалось прочитать таблицу achievements.";
+    console.error("Ошибка загрузки данных достижений:", achievementsError);
+    return [];
+  }
 
+  const byId = new Map((achievements || []).map(item => [String(item.id), item]));
+  return links.map(item => ({
+    ...item,
+    achievements: byId.get(String(item.achievement_id)) || null
+  }));
 }
 
 
 async function getAllAchievements(){
+  window.__achievementErrors = window.__achievementErrors || {};
+  window.__achievementErrors.all = null;
 
-const {data,error}=await db
-.from("achievements")
-.select("*")
-.order("id",{ascending:true});
+  const {data, error} = await db
+    .from("achievements")
+    .select("id, name, description, emoji, secret")
+    .order("id", {ascending:true});
 
-if(error){
-
-console.error(
-"Ошибка загрузки списка достижений:",
-error
-);
-
-return[];
-
-}
-
-return data||[];
-
-}
-
-
-async function isAdmin() {
-  const { data: { user }, error: userError } =
-    await db.auth.getUser();
-
-  if (userError || !user) {
-    return false;
+  if(error){
+    window.__achievementErrors.all = error.message || "Не удалось загрузить список достижений.";
+    console.error("Ошибка загрузки списка достижений:", error);
+    return [];
   }
 
-  const { data, error } = await db
+  return data || [];
+}
+
+
+async function checkAdminAccess() {
+  const { data, error: userError } = await db.auth.getUser();
+  const user = data?.user;
+
+  if (userError || !user) {
+    const message = userError?.message || "Пользователь не авторизован.";
+    console.error("Ошибка получения пользователя для проверки администратора:", userError || message);
+    return { isAdmin: false, error: message, userId: null };
+  }
+
+  const { data: adminRow, error } = await db
     .from("admins")
     .select("user_id")
     .eq("user_id", user.id)
     .maybeSingle();
 
   if (error) {
-    console.error("Ошибка проверки администратора:", error);
-    return false;
+    console.error("Ошибка проверки администратора в таблице admins:", {
+      userId: user.id,
+      code: error.code,
+      message: error.message,
+      details: error.details,
+      hint: error.hint
+    });
+    return { isAdmin: false, error: error.message, userId: user.id };
   }
 
-  return !!data;
+  console.log("Результат проверки администратора:", {
+    userId: user.id,
+    adminRow,
+    isAdmin: !!adminRow
+  });
+
+  return { isAdmin: !!adminRow, error: null, userId: user.id };
+}
+
+async function isAdmin() {
+  const result = await checkAdminAccess();
+  return result.isAdmin;
 }
 
 
@@ -3785,30 +3744,21 @@ earned.map(item=>Number(item.achievement_id))
 if(!list)return;
 
 if(!earned.length){
-
-list.innerHTML=`
-
-<div class="achievement-card">
-
-<div class="achievement-top">
-
-<div class="achievement-emoji">
-🏅
-</div>
-
-<div class="achievement-name">
-Пока нет достижений
-</div>
-
-</div>
-
-<div class="achievement-description">
-Этот игрок ещё не получил ни одного достижения.
-</div>
-
-</div>
-
-`;
+  const loadError = window.__achievementErrors?.player;
+  list.innerHTML = loadError ? `
+    <div class="achievement-card">
+      <div class="achievement-name">⚠️ Не удалось загрузить достижения</div>
+      <div class="achievement-description">${escapeHtml(loadError)}. Проверь доступ SELECT (RLS) к таблицам player_achievements и achievements.</div>
+    </div>
+  ` : `
+    <div class="achievement-card">
+      <div class="achievement-top">
+        <div class="achievement-emoji">🏅</div>
+        <div class="achievement-name">Пока нет достижений</div>
+      </div>
+      <div class="achievement-description">Этот игрок ещё не получил ни одного достижения.</div>
+    </div>
+  `;
 
 }else{
 
@@ -3908,11 +3858,46 @@ adminPanel.innerHTML=`
 
 <div class="card">
 
-<h3>🛡️ Управление достижениями</h3>
+<h3>⚙️ Настройки достижений для админов</h3>
 
 <p class="small">
-Администратор может вручную выдать или забрать достижение.
+Выбери достижение из списка и нажми «ВЫБРАТЬ», чтобы выдать его игроку.
 </p>
+${window.__achievementErrors?.all ? `<p class="small">⚠️ Не удалось загрузить список достижений: ${escapeHtml(window.__achievementErrors.all)}. Проверь SELECT-политику RLS таблицы achievements.</p>` : ""}
+
+<div class="achievement-create-form">
+
+<label for="adminAchievementSelect-${escapeHtml(player.id)}" style="font-weight:900">
+🏅 Достижение
+</label>
+
+<select id="adminAchievementSelect-${escapeHtml(player.id)}"
+style="width:100%;padding:12px;border:1px solid #dfe5ef;border-radius:10px;background:#fff;font:inherit">
+
+<option value="">— Выбери достижение —</option>
+
+${all.map(achievement=>`
+<option value="${escapeHtml(achievement.id)}">
+${escapeHtml(achievement.emoji||"🏅")} ${escapeHtml(achievement.name)}
+</option>
+`).join("")}
+
+</select>
+
+<button class="achievement-add" type="button"
+onclick="giveSelectedAchievement('${escapeHtml(player.id)}')"
+${all.length ? "" : "disabled"}>
+ВЫБРАТЬ
+
+</button>
+
+<p class="small" style="margin:0">
+${all.length
+? "Выбранное достижение будет выдано этому игроку."
+: "Список пуст: в таблице achievements пока нет достижений. Добавь их в базу данных или создай ниже."}
+</p>
+
+</div>
 
 <div class="achievement-create-form">
 <h4 style="margin:0">➕ Создать достижение</h4>
@@ -3926,79 +3911,25 @@ adminPanel.innerHTML=`
 <p id="achievementCreateStatus" class="small" style="margin:0"></p>
 </div>
 
+<h4>📋 Достижения игрока</h4>
+
 <div style="display:grid;gap:8px;margin-top:12px">
 
-${all.map(achievement=>{
-
-const has=earnedIds.has(
-Number(achievement.id)
-);
-
-return`
-
-<div
-style="
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-padding:10px;
-background:#f6f8fc;
-border-radius:12px;
-">
-
-<div style="flex:1">
-
-<b>
-${escapeHtml(achievement.emoji||"🏅")}
-${escapeHtml(achievement.name)}
-</b>
-
-<div class="small">
-${achievement.secret?"🔒 Секретное":"🏅 Обычное"}
-</div>
-
-</div>
-
-${
-has
-?
-`
-<button
-class="achievement-remove"
-onclick="
-removeAchievement(
-'${player.id}',
-${achievement.id}
-)
-">
-
-Забрать
-
-</button>
-`
-:
-`
-<button
-class="achievement-add"
-onclick="
-giveAchievement(
-'${player.id}',
-${achievement.id}
-)
-">
-
-Выдать
-
-</button>
-`
-}
-
-</div>
-
-`;
-
-}).join("")}
+${earned.length ? earned.map(item=>{
+  const achievement=item.achievements;
+  if(!achievement) return "";
+  return `
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;background:#f6f8fc;border-radius:12px">
+    <div style="flex:1">
+      <b>${escapeHtml(achievement.emoji||"🏅")} ${escapeHtml(achievement.name)}</b>
+      <div class="small">Уже выдано</div>
+    </div>
+    <button class="achievement-remove" type="button"
+      onclick="removeAchievement('${escapeHtml(player.id)}',${Number(achievement.id)})">
+      Забрать
+    </button>
+  </div>`;
+}).join("") : `<p class="small">У игрока пока нет выданных достижений.</p>`}
 
 </div>
 
@@ -4006,8 +3937,30 @@ ${achievement.id}
 
 `;
 
+}else if(adminPanel){
+
+const catalogueError = window.__achievementErrors?.all;
+adminPanel.innerHTML=`
+<div class="card">
+<h3>⚙️ Настройки достижений для админов</h3>
+<p class="small">Админские права не подтверждены. Проверь, что аккаунт есть в таблице admins (поле user_id должно совпадать с ID пользователя Supabase).</p>
+${catalogueError ? `<p class="small">⚠️ Не удалось загрузить список достижений: ${escapeHtml(catalogueError)}. Проверь SELECT-политику RLS таблицы achievements.</p>` : ""}
+</div>
+`;
+
 }
 
+
+}
+
+async function giveSelectedAchievement(playerId){
+  const select=document.getElementById(`adminAchievementSelect-${playerId}`);
+  const achievementId=select?.value;
+  if(!achievementId){
+    alert("🏅 Сначала выбери достижение из списка.");
+    return;
+  }
+  await giveAchievement(playerId, achievementId);
 }
 
 
