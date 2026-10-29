@@ -1174,7 +1174,7 @@ body.halloween-day .easter-collect-banner{
 <a href="#wipes">🗓️ Вайпы</a>
 <a href="#paidTitles">👑 Услуги</a>
 <a href="#achievements">🏅 Достижения</a>
-<a href="#halloween" id="navHalloween" style="display:none">🎃 Halloween</a>
+<a href="#halloween" id="navHalloween" style="display:none">🎃 Halloween Week</a>
 <a href="hall-of-fame.html">🏛️ Музей Ball Games</a>
 <a href="versions.html">📜 Архив версий</a>
 <a href="test.html" rel="noopener">⚠️ Тестовый сайт</a>
@@ -1207,7 +1207,7 @@ body.halloween-day .easter-collect-banner{
   <a class="btn" href="hall-of-fame.html">🏛️ Музей Ball Games</a>
   <a class="btn" href="versions.html">📜 Архив версий</a>
   <a class="btn" href="#channel">🎬 Каналы</a>
-  <a class="btn" href="#halloween" id="btnHalloween" style="display:none">🎃 Halloween Day</a>
+  <a class="btn" href="#halloween" id="btnHalloween" style="display:none">🎃 Halloween Week</a>
 </header>
 
 <section id="rules">
@@ -1690,38 +1690,49 @@ Ball Games Original.
 
 <!-- ========== HALLOWEEN DAY SECTION (31 Oct) ========== -->
 <section id="halloween" style="display:none">
-  <h2>🎃 HALLOWEEN DAY — BALL GAMES</h2>
+  <h2>🎃 HALLOWEEN WEEK — BALL GAMES</h2>
   <div class="card halloween-hero-card">
-    <span class="halloween-day-badge">🎃 ТОЛЬКО 31 ОКТЯБРЯ</span>
-    <h3 style="margin-top:8px;color:#ff8c42">Правила, которые действуют только в этот день</h3>
-    <p>Всё остальное в Ball Games работает как обычно. Эти правила — только на Halloween Day.</p>
+    <span class="halloween-day-badge">🎃 HALLOWEEN WEEK</span>
+    <h3 style="margin-top:8px;color:#ff8c42">Halloween Week &amp; Halloween Day</h3>
+    <p>
+      <b>Halloween Week</b> — особая неделя Ball Games в конце октября.<br>
+      <b>Halloween Day 1</b> — <b>31 октября</b> (победы ×3).<br>
+      <b>Halloween Day 2</b> — <b>1 ноября</b> (победы ×2).
+    </p>
+    <p class="muted" style="margin-top:10px">
+      Everything else in Ball Games works as usual. Special rules below apply only during Halloween Week / Halloween Day as stated.
+    </p>
   </div>
 
   <div class="card halloween-ability">
-    <h3>🔥 1. Множитель побед</h3>
+    <h3>🔥 1. Множитель побед (Halloween Day 1 и 2)</h3>
+    <p style="text-align:center;font-weight:800;margin-top:8px">🎃 Halloween Day 1 — 31 октября</p>
     <div class="halloween-multiplier">×3</div>
-    <p style="text-align:center;font-weight:800;margin-top:8px">
-      В Хэллоуинский день все победы начисляются <b>×3</b>.
-    </p>
     <p class="muted" style="text-align:center">
       Победил → получаешь 3 победы вместо 1.
+    </p>
+    <p style="text-align:center;font-weight:800;margin-top:16px">👻 Halloween Day 2 — 1 ноября</p>
+    <div class="halloween-multiplier">×2</div>
+    <p class="muted" style="text-align:center">
+      Победил → получаешь 2 победы вместо 1.<br>
+      ⚠️ В остальные дни множитель <b>не действует</b> (обычные ×1).
     </p>
   </div>
 
   <div class="card halloween-ability">
     <h3>🎱 2. Проклятый мяч</h3>
     <p>
-      Можно купить, <b>списав 9 побед</b> (победы сгорают навсегда).
+      Можно купить, <b>списав 15 побед</b> (победы сгорают навсегда).
     </p>
     <p>
-      ⏰ Способность действует <b>только в этот день</b>.<br>
-      🎯 Можно использовать <b>один раз</b> за весь день.
+      ⏰ Способность действует в течение <b>Halloween Week</b>.<br>
+      🎯 Можно использовать <b>один раз за матч</b>.
     </p>
     <div class="flow">
       🎱 Объявляешь бросок «Проклятым»<br>
       ⬇️<br>
       ✅ Попал → соперник на следующий бросок получает ограничение<br>
-      ❌ Не попал → способность сгорает
+      ❌ Не попал → способность сгорает (на этот матч)
     </div>
     <h4>Ограничения на следующий бросок соперника (одно на выбор объявившего):</h4>
     <p>
@@ -1734,10 +1745,13 @@ Ball Games Original.
   </div>
 
   <div class="card halloween-ability">
-    <h3>👑 3. Хэллоуинские титулы (временные)</h3>
+    <h3>👑 3. Хэллоуинские титулы</h3>
     <p>
-      Титулы действуют только несколько дней после Хэллоуина и потом исчезают.
-      Можно носить <b>только один</b> временный титул.
+      Титулы <b>не временные</b>: если ты их получил — они остаются <b>навсегда</b>.
+      В любой момент можно сменить обычный титул на хэллоуинский (и обратно).
+    </p>
+    <p class="muted">
+      Условия получения действуют только в Halloween Week / Halloween Day.
     </p>
     <table class="halloween-titles-table">
       <tr>
@@ -1745,20 +1759,18 @@ Ball Games Original.
         <th>Титул</th>
       </tr>
       <tr>
-        <td>Набрать <b>6 побед</b> за день</td>
+        <td>Набрать <b>6 побед за один календарный день</b><br>
+          <span style="font-size:12px;opacity:.8">Победы вчера не суммируются с сегодня. Нужно ровно 6+ в один день.</span>
+        </td>
         <td>🎃 <b>Джек</b></td>
       </tr>
       <tr>
-        <td>Набрать <b>3 победы</b></td>
+        <td>Набрать <b>5 побед за всю Halloween Week</b></td>
         <td>👻 Призрак Арены</td>
       </tr>
       <tr>
-        <td>Набрать <b>5 побед</b></td>
+        <td>Набрать <b>7 побед за всю Halloween Week</b></td>
         <td>🦇 Повелитель Ночи</td>
-      </tr>
-      <tr>
-        <td>Победить в Русской рулетке</td>
-        <td>☠️ Последний Выживший</td>
       </tr>
       <tr>
         <td>Использовать Проклятый мяч и после этого победить</td>
@@ -1770,7 +1782,7 @@ Ball Games Original.
   <div class="card halloween-ability">
     <h3>👻 4. Косметика</h3>
     <p>
-      Запретная зона на этот день называется
+      Запретная зона на Halloween Week / Halloween Day называется
       <b>«Призрачная зона»</b> — просто новое название и оформление.
     </p>
     <p class="muted">Правила зоны не меняются, только атмосфера.</p>
@@ -1779,9 +1791,11 @@ Ball Games Original.
   <div class="card success">
     <h3>📌 Важно</h3>
     <p>
-      • Эти правила действуют <b>только 31 октября</b>.<br>
-      • 1 ноября всё возвращается к обычным правилам.<br>
-      • Временные титулы могут остаться ещё несколько дней, затем исчезнут.
+      • <b>Halloween Week</b> — особая атмосфера и события в конце октября.<br>
+      • <b>×3 победы</b> — Halloween Day 1 (<b>31 октября</b>), <b>×2 победы</b> — Halloween Day 2 (<b>1 ноября</b>).<br>
+      • Проклятый мяч: <b>15 побед</b>, действует всю <b>Halloween Week</b>, <b>1 раз за матч</b>.<br>
+      • Хэллоуинские титулы после получения остаются <b>навсегда</b>.<br>
+      • После Halloween Day 2 (со 2 ноября) сайт возвращается к обычному виду; полученные титулы сохраняются.
     </p>
   </div>
 </section>
@@ -2435,16 +2449,26 @@ function isHalloweenDay(){
   return year === 2026 && month === 10 && day === 31;
 }
 
+function getHalloweenDayIndex(){
+  // 0 = до 31 октября (ничего не пишем), 1 = 31 окт (x3), 2 = 1 ноя (x2), 3 = со 2 ноября (множителя нет)
+  const { year, month, day } = getMoscowDateParts();
+  if(year === 2026 && month === 10 && day === 31) return 1;
+  if(year === 2026 && month === 11 && day === 1) return 2;
+  if(year === 2026 && month === 11 && day >= 2) return 3;
+  return 0;
+}
+
 function getHalloweenPhase(){
   // Returns phase string for progressive reveals in Oct 2026
   const { year, month, day } = getMoscowDateParts();
+  if(year === 2026 && month === 11) return "reveal"; // Halloween Day 2 и дальше
   if(year !== 2026 || month !== 10) return "none";
   if(day < 27) return "early";      // before 27: letters visible, soft teaser
   if(day === 27) return "hide-n";   // hide letter Н
   if(day === 28) return "detail";   // subtle site change
   if(day === 29) return "collect";  // collect ХЭЛЛОУИН + last hint
   if(day === 30) return "tomorrow"; // "Завтра всё изменится…"
-  if(day === 31) return "reveal";   // full Halloween Day
+  if(day === 31) return "reveal";   // Halloween Day 1
   return "none";
 }
 
@@ -2539,9 +2563,9 @@ function applyHalloweenTheme(){
       announceCard.classList.add("halloween-hero-card");
       announceCard.innerHTML = `
 🔥 <b>ЗАВТРА ВСЁ ИЗМЕНИТСЯ…</b><br><br>
-🎃 31 октября — особый день Ball Games.<br>
-Готовься. Правила на один день станут другими.<br><br>
-🌙 Завтра откроется Halloween Day.
+🎃 31 октября — <b>Halloween Day 1</b>: победы <b>×3</b>.<br>
+1 ноября — <b>Halloween Day 2</b>: победы <b>×2</b>.<br><br>
+🌙 Завтра откроется Halloween Day 1.
       `;
     }
     if(collectBanner){
@@ -2551,7 +2575,15 @@ function applyHalloweenTheme(){
     }
   }
   else if(phase === "reveal"){
-    // Full Halloween Day
+    // Halloween Day 1 / Day 2
+    const dayIdx = getHalloweenDayIndex();
+    const dayInfo = dayIdx === 1
+      ? "<b>СЕГОДНЯ — HALLOWEEN DAY 1!</b><br><br>🔥 Победы ×3 <b>только сегодня</b><br>"
+      : dayIdx === 2
+      ? "<b>СЕГОДНЯ — HALLOWEEN DAY 2!</b><br><br>🔥 Победы ×2 <b>только сегодня</b><br>"
+      : dayIdx === 3
+      ? "<b>HALLOWEEN DAY ЗАКОНЧИЛСЯ</b><br><br>Множителя побед нет<br>"
+      : "";
     document.body.classList.add("halloween-day");
     if(halloweenSection) halloweenSection.style.display = "block";
     if(navHalloween) navHalloween.style.display = "inline-block";
@@ -2560,13 +2592,12 @@ function applyHalloweenTheme(){
     if(announceCard){
       announceCard.classList.add("halloween-hero-card");
       announceCard.innerHTML = `
-<span class="announce-label">🎃 HALLOWEEN DAY</span><br>
-<b>СЕГОДНЯ — ХЭЛЛОУИН В BALL GAMES!</b><br><br>
-🔥 Победы ×3<br>
-🎱 Проклятый мяч<br>
-👑 Временные титулы<br>
+<span class="announce-label">🎃 HALLOWEEN WEEK</span><br>
+${dayInfo}<br>
+🎱 Проклятый мяч (15 побед, 1 раз за матч)<br>
+👑 Хэллоуинские титулы навсегда<br>
 👻 Призрачная зона<br><br>
-Читай правила ниже — они действуют только сегодня.
+Halloween Week is here. Read the rules below.
       `;
     }
     // Rename Forbidden Zone → Ghost Zone
