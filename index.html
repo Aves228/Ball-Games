@@ -2430,34 +2430,22 @@ let countdownTimer=null;
 ========================= */
 
 function getMoscowDateParts(){
-  // Use Europe/Moscow so calendar day matches RU players
+  // Сайт считает дни по самарскому времени (Europe/Samara, UTC+4),
+  // новый день для Halloween наступает в 00:15 по Самаре.
+  const DAY_START_OFFSET_MIN = 15;
+  const shifted = new Date(Date.now() - DAY_START_OFFSET_MIN * 60 * 1000);
   const formatter = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Europe/Moscow",
+    timeZone: "Europe/Samara",
     year: "numeric",
     month: "2-digit",
     day: "2-digit"
   });
-  const parts = formatter.formatToParts(new Date());
+  const parts = formatter.formatToParts(shifted);
   const y = Number(parts.find(p => p.type === "year").value);
   const m = Number(parts.find(p => p.type === "month").value);
   const d = Number(parts.find(p => p.type === "day").value);
   return { year: y, month: m, day: d };
 }
-
-function isHalloweenDay(){
-  const { year, month, day } = getMoscowDateParts();
-  return year === 2026 && month === 10 && day === 31;
-}
-
-function getHalloweenDayIndex(){
-  // 0 = до 31 октября (ничего не пишем), 1 = 31 окт (x3), 2 = 1 ноя (x2), 3 = со 2 ноября (множителя нет)
-  const { year, month, day } = getMoscowDateParts();
-  if(year === 2026 && month === 10 && day === 31) return 1;
-  if(year === 2026 && month === 11 && day === 1) return 2;
-  if(year === 2026 && month === 11 && day >= 2) return 3;
-  return 0;
-}
-
 function getHalloweenPhase(){
   // Returns phase string for progressive reveals in Oct 2026
   const { year, month, day } = getMoscowDateParts();
