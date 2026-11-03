@@ -1425,6 +1425,7 @@ Ball Games Original.
   <tr><td>70</td><td>🔥 Двойной бросок</td></tr>
   <tr><td>100</td><td>👑 Прайм</td></tr>
   <tr><td>1000</td><td>🌟 Всемогущий</td></tr>
+  <tr id="cursedBallRow" style="display:none"><td>HW D&amp;W</td><td>🎱 Cursed Ball (Проклятый мяч)</td></tr>
   </table>
   <br>
   <div class="card ability">
@@ -1593,6 +1594,28 @@ Ball Games Original.
 ТЫ МОЖЕШЬ ИЗМЕНИТЬ ЛЮБОЕ ПРАВИЛО BALL GAMES.
   </p>
   </div>
+  <div class="card ability" id="cursedBallLegacy" style="display:none">
+  <h3>🎱 Cursed Ball (Проклятый мяч)</h3>
+  <p>
+Те, кто получил способность <b>Cursed Ball (Проклятый мяч)</b> в Halloween Day &amp; Week,
+сохраняют её <b>до 30 ноября включительно</b>. С <b>1 декабря</b> она перестаёт действовать.
+  </p>
+  <h4>Правила:</h4>
+  <p>
+• Можно использовать <b>один раз за матч</b>.<br>
+• После <b>попадания</b> игрок с Проклятым мячом должен <b>выбрать и сказать проклятье</b>.<br>
+• Соперник получает <b>одно выбранное ограничение</b> на следующий бросок.<br>
+• ❌ В Русской рулетке использовать нельзя.<br>
+• Купить мяч уже нельзя — он остался только у тех, кто получил его в Halloween Day &amp; Week.
+  </p>
+  <h4>Проклятья на выбор (с 7 по 30 ноября):</h4>
+  <p>
+• 🖐️ <b>Рука:</b> любая одна рука<br>
+• 🚶 <b>Догонять пешком:</b> можно ускоряться шагом<br>
+• 🧎 <b>С колена:</b> можно со всей ноги<br>
+• 🎯 <b>Прицел:</b> не более 7 секунд
+  </p>
+  </div>
 </section>
 
 <section id="titles">
@@ -1688,114 +1711,129 @@ Ball Games Original.
 </p>
 </section>
 
-<!-- ========== HALLOWEEN DAY SECTION (31 Oct) ========== -->
+<!-- ========== HALLOWEEN DAY & WEEK SECTION (31 Oct – 6 Nov) ========== -->
 <section id="halloween" style="display:none">
-  <h2>🎃 HALLOWEEN WEEK — BALL GAMES</h2>
+  <h2>🎃 HALLOWEEN DAY &amp; HALLOWEEN WEEK — BALL GAMES</h2>
   <div class="card halloween-hero-card">
     <span class="halloween-day-badge">🎃 HALLOWEEN WEEK</span>
-    <h3 style="margin-top:8px;color:#ff8c42">Halloween Week &amp; Halloween Day</h3>
+    <h3 style="margin-top:8px;color:#ff8c42">Halloween Day &amp; Halloween Week</h3>
     <p>
-      <b>Halloween Week</b> — особая неделя Ball Games в конце октября.<br>
-      <b>Halloween Day 1</b> — <b>31 октября</b> (победы ×3).<br>
-      <b>Halloween Day 2</b> — <b>1 ноября</b> (победы ×2).
+      Специальное хэллоуинское событие Ball Games — с <b>31 октября</b> по <b>6 ноября</b> включительно.<br>
+      <b>Halloween Day 1</b> — 31 октября (победы ×3).<br>
+      <b>Halloween Day 2</b> — 1 ноября (победы ×2).
     </p>
     <p class="muted" style="margin-top:10px">
-      Everything else in Ball Games works as usual. Special rules below apply only during Halloween Week / Halloween Day as stated.
+      Всё остальное в Ball Games работает как обычно. Особые правила ниже действуют только в указанные даты.
     </p>
   </div>
 
   <div class="card halloween-ability">
-    <h3>🔥 1. Множитель побед (Halloween Day 1 и 2)</h3>
-    <p style="text-align:center;font-weight:800;margin-top:8px">🎃 Halloween Day 1 — 31 октября</p>
-    <div class="halloween-multiplier">×3</div>
-    <p class="muted" style="text-align:center">
-      Победил → получаешь 3 победы вместо 1.
-    </p>
-    <p style="text-align:center;font-weight:800;margin-top:16px">👻 Halloween Day 2 — 1 ноября</p>
-    <div class="halloween-multiplier">×2</div>
-    <p class="muted" style="text-align:center">
-      Победил → получаешь 2 победы вместо 1.<br>
-      ⚠️ В остальные дни множитель <b>не действует</b> (обычные ×1).
-    </p>
+    <h3>📅 1. Halloween Day</h3>
+    <table class="halloween-titles-table">
+      <tr><th>Дата</th><th>День</th><th>Множитель побед</th></tr>
+      <tr><td>31 октября</td><td>Halloween Day 1</td><td><b>×3</b></td></tr>
+      <tr><td>1 ноября</td><td>Halloween Day 2</td><td><b>×2</b></td></tr>
+    </table>
   </div>
 
   <div class="card halloween-ability">
-    <h3>🎱 2. Проклятый мяч</h3>
+    <h3>🕸️ 2. Halloween Week</h3>
+    <p>Halloween Week продолжается с <b>31 октября</b> по <b>6 ноября</b>.</p>
+    <table class="halloween-titles-table">
+      <tr><th>Дата</th><th>Множитель побед</th></tr>
+      <tr><td>31 октября</td><td><b>×3</b></td></tr>
+      <tr><td>1 ноября</td><td><b>×2</b></td></tr>
+      <tr><td>2 ноября</td><td>×1</td></tr>
+      <tr><td>3 ноября</td><td>×1</td></tr>
+      <tr><td>4 ноября</td><td>×1</td></tr>
+      <tr><td>5 ноября</td><td>×1</td></tr>
+      <tr><td>6 ноября</td><td>×1</td></tr>
+    </table>
+  </div>
+
+  <div class="card halloween-ability">
+    <h3>🎱 3. Проклятый мяч (Cursed Ball)</h3>
     <p>
-      Можно купить, <b>списав 15 побед</b> (победы сгорают навсегда).
+      <b>Стоимость: 15 побед.</b> Покупка навсегда списывает 15 побед с баланса игрока.
     </p>
+    <h4>Правила использования:</h4>
     <p>
-      ⏰ Способность действует в течение <b>Halloween Week</b>.<br>
-      🎯 Можно использовать <b>один раз за матч</b>.
+      • Можно использовать <b>один раз за матч</b>.<br>
+      • После <b>попадания</b> игрок с Проклятым мячом должен <b>выбрать и сказать проклятье</b>.<br>
+      • Соперник получает <b>одно выбранное ограничение</b> на следующий бросок.<br>
+      • ❌ В Русской рулетке использовать нельзя.<br>
+      • Купить мяч можно <b>только во время Halloween Week</b>.
     </p>
     <div class="flow">
-      🎱 Объявляешь бросок «Проклятым»<br>
+      🎱 Бросаешь Проклятым мячом<br>
       ⬇️<br>
-      ✅ Попал → соперник на следующий бросок получает ограничение<br>
-      ❌ Не попал → способность сгорает (на этот матч)
+      ✅ Попал → выбираешь и говоришь проклятье → соперник на следующий бросок получает это ограничение
     </div>
-    <h4>Ограничения на следующий бросок соперника (одно на выбор объявившего):</h4>
-    <p>
-      • бросок только одной рукой<br>
-      • без разбега<br>
-      • с колена<br>
-      • не больше 3 секунд на прицел
+    <h4>🔥 Полная сила — до 6 ноября<br>🌙 Ослабленная версия — с 7 по 30 ноября</h4>
+    <table class="halloween-titles-table">
+      <tr><th>№</th><th>Ограничение</th><th>До 6 ноября</th><th>С 7 по 30 ноября</th></tr>
+      <tr><td>1</td><td>🖐️ Рука</td><td>Только левая рука</td><td>Любая одна рука</td></tr>
+      <tr><td>2</td><td>🚶 Догонять пешком</td><td>Только пешком</td><td>Можно ускоряться шагом</td></tr>
+      <tr><td>3</td><td>🧎 С колена</td><td>Только с колена</td><td>Можно со всей ноги</td></tr>
+      <tr><td>4</td><td>🎯 Прицел</td><td>Не более 3 секунд</td><td>Не более 7 секунд</td></tr>
+    </table>
+    <p style="margin-top:12px">
+      ⚠️ <b>Важно:</b> игроки, получившие Проклятый мяч во время Halloween Week, сохраняют его
+      <b>до 30 ноября включительно</b>. С <b>1 декабря</b> он перестаёт действовать.
     </p>
-    <p>❌ Не работает в Русской рулетке.</p>
   </div>
 
   <div class="card halloween-ability">
-    <h3>👑 3. Хэллоуинские титулы</h3>
+    <h3>👑 4. Хэллоуинские титулы</h3>
     <p>
-      Титулы <b>не временные</b>: если ты их получил — они остаются <b>навсегда</b>.
-      В любой момент можно сменить обычный титул на хэллоуинский (и обратно).
-    </p>
-    <p class="muted">
-      Условия получения действуют только в Halloween Week / Halloween Day.
+      Все специальные титулы <b>постоянные</b>. Их можно переключать с обычными титулами.
     </p>
     <table class="halloween-titles-table">
       <tr>
-        <th>Условие</th>
         <th>Титул</th>
+        <th>Условие получения</th>
       </tr>
       <tr>
-        <td>Набрать <b>6 побед за один календарный день</b><br>
-          <span style="font-size:12px;opacity:.8">Победы вчера не суммируются с сегодня. Нужно ровно 6+ в один день.</span>
+        <td>🎃 <b>Jack</b></td>
+        <td>Получить <b>6 или больше побед за один календарный день</b><br>
+          <span style="font-size:12px;opacity:.8">Условия дневного титула Jack не переносятся между днями.</span>
         </td>
-        <td>🎃 <b>Джек</b></td>
       </tr>
       <tr>
-        <td>Набрать <b>5 побед за всю Halloween Week</b></td>
-        <td>👻 Призрак Арены</td>
+        <td>👻 <b>Arena Ghost</b></td>
+        <td>Получить <b>5 побед за Halloween Week</b></td>
       </tr>
       <tr>
-        <td>Набрать <b>7 побед за всю Halloween Week</b></td>
-        <td>🦇 Повелитель Ночи</td>
+        <td>🌙 <b>Lord of Night</b></td>
+        <td>Получить <b>7 побед за Halloween Week</b></td>
       </tr>
       <tr>
-        <td>Использовать Проклятый мяч и после этого победить</td>
-        <td>🕸️ Паук</td>
+        <td>🕷️ <b>Spider</b></td>
+        <td>Использовать Проклятый мяч, а затем победить</td>
       </tr>
     </table>
   </div>
 
   <div class="card halloween-ability">
-    <h3>👻 4. Косметика</h3>
+    <h3>👻 5. Ghost Zone</h3>
     <p>
-      Запретная зона на Halloween Week / Halloween Day называется
-      <b>«Призрачная зона»</b> — просто новое название и оформление.
+      Ghost Zone — хэллоуинское название и визуальное оформление способности «Запретная зона».
     </p>
-    <p class="muted">Правила зоны не меняются, только атмосфера.</p>
+    <p>
+      • Меняется название и оформление.<br>
+      • Основные правила способности остаются прежними.<br>
+      • Это не отдельная новая способность.
+    </p>
   </div>
 
   <div class="card success">
     <h3>📌 Важно</h3>
     <p>
-      • <b>Halloween Week</b> — особая атмосфера и события в конце октября.<br>
-      • <b>×3 победы</b> — Halloween Day 1 (<b>31 октября</b>), <b>×2 победы</b> — Halloween Day 2 (<b>1 ноября</b>).<br>
-      • Проклятый мяч: <b>15 побед</b>, действует всю <b>Halloween Week</b>, <b>1 раз за матч</b>.<br>
-      • Хэллоуинские титулы после получения остаются <b>навсегда</b>.<br>
-      • После Halloween Day 2 (со 2 ноября) сайт возвращается к обычному виду; полученные титулы сохраняются.
+      • <b>Halloween Week</b> — с 31 октября по 6 ноября включительно.<br>
+      • <b>×3 победы</b> — 31 октября, <b>×2 победы</b> — 1 ноября, со 2 по 6 ноября — обычные ×1.<br>
+      • Проклятый мяч: <b>15 побед</b>, покупка только во время Halloween Week, <b>1 раз за матч</b>.<br>
+      • Мяч, купленный в Halloween Week, сохраняется до <b>30 ноября</b> (с 7 ноября — ослабленная версия), с 1 декабря не действует.<br>
+      • Хэллоуинские титулы после получения остаются <b>навсегда</b>.
     </p>
   </div>
 </section>
@@ -2447,18 +2485,25 @@ function getMoscowDateParts(){
   return { year: y, month: m, day: d };
 }
 function getHalloweenDayIndex(){
-  // 0 = до 31 октября (ничего не пишем), 1 = 31 окт (x3), 2 = 1 ноя (x2), 3 = со 2 ноября (множителя нет)
+  // 0 = до 31 октября, 1 = 31 окт (x3), 2 = 1 ноя (x2), 3 = 2–6 ноября (x1, Halloween Week продолжается), 4 = с 7 ноября (неделя закончилась)
   const { year, month, day } = getMoscowDateParts();
   if(year === 2026 && month === 10 && day === 31) return 1;
   if(year === 2026 && month === 11 && day === 1) return 2;
-  if(year === 2026 && month === 11 && day >= 2) return 3;
+  if(year === 2026 && month === 11 && day >= 2 && day <= 6) return 3;
+  if(year === 2026 && month === 11 && day >= 7) return 4;
   return 0;
 }
+
+// Halloween Day & Week заканчивается 7 ноября 2026 в 01:00 по Самаре (UTC+4) = 6 ноября 21:00 UTC
+const HALLOWEEN_END_MS = Date.UTC(2026, 10, 6, 21, 0, 0);
 
 function getHalloweenPhase(){
   // Returns phase string for progressive reveals in Oct 2026
   const { year, month, day } = getMoscowDateParts();
-  if(year === 2026 && month === 11) return "reveal"; // Halloween Day 2 и дальше
+  if(year === 2026 && month === 11){
+    if(Date.now() < HALLOWEEN_END_MS) return "reveal"; // Halloween Day 2 и Halloween Week до 7 ноября 01:00
+    return day <= 30 ? "after" : "none";               // после: обычный сайт + карточка Cursed Ball до 30 ноября
+  }
   if(year !== 2026 || month !== 10) return "none";
   if(day < 27) return "early";      // before 27: letters visible, soft teaser
   if(day === 27) return "hide-n";   // hide letter Н
@@ -2486,6 +2531,10 @@ function applyHalloweenTheme(){
   if(navHalloween) navHalloween.style.display = "none";
   if(btnHalloween) btnHalloween.style.display = "none";
   document.body.classList.remove("halloween-day");
+  const legacyCardReset = document.getElementById("cursedBallLegacy");
+  if(legacyCardReset) legacyCardReset.style.display = "none";
+  const cursedRow = document.getElementById("cursedBallRow");
+  if(cursedRow) cursedRow.style.display = "none";
 
   // Restore zone names by default
   const zoneName = document.getElementById("forbiddenZoneName");
@@ -2579,9 +2628,10 @@ function applyHalloweenTheme(){
       : dayIdx === 2
       ? "<b>СЕГОДНЯ — HALLOWEEN DAY 2!</b><br><br>🔥 Победы ×2 <b>только сегодня</b><br>"
       : dayIdx === 3
-      ? "<b>HALLOWEEN DAY ЗАКОНЧИЛСЯ</b><br><br>Множителя побед нет<br>"
+      ? "<b>HALLOWEEN WEEK продолжается до 6 ноября</b><br><br>Halloween Day закончился — победы ×1<br>"
       : "";
     document.body.classList.add("halloween-day");
+    if(cursedRow) cursedRow.style.display = "";
     if(halloweenSection) halloweenSection.style.display = "block";
     if(navHalloween) navHalloween.style.display = "inline-block";
     if(btnHalloween) btnHalloween.style.display = "inline-block";
@@ -2591,23 +2641,29 @@ function applyHalloweenTheme(){
       announceCard.innerHTML = `
 <span class="announce-label">🎃 HALLOWEEN WEEK</span><br>
 ${dayInfo}<br>
-🎱 Проклятый мяч (15 побед, 1 раз за матч)<br>
+🎱 Проклятый мяч (15 побед, 1 раз за матч, покупка только в Halloween Week)<br>
 👑 Хэллоуинские титулы навсегда<br>
-👻 Призрачная зона<br><br>
-Halloween Week is here. Read the rules below.
+👻 Ghost Zone<br><br>
+Halloween Week: 31 октября – 6 ноября. Правила — ниже.
       `;
     }
     // Rename Forbidden Zone → Ghost Zone
-    if(zoneName) zoneName.textContent = "👻 Призрачная зона";
-    if(zoneTitle) zoneTitle.textContent = "👻 15 ПОБЕД — ПРИЗРАЧНАЯ ЗОНА";
-    if(zoneDesc) zoneDesc.textContent = "Специальное место (в Хэллоуин — Призрачная зона), где ведущему сложнее выбить игрока.";
+    if(zoneName) zoneName.textContent = "👻 Ghost Zone";
+    if(zoneTitle) zoneTitle.textContent = "👻 15 ПОБЕД — GHOST ZONE";
+    if(zoneDesc) zoneDesc.textContent = "Специальное место (в Хэллоуин — Ghost Zone), где ведущему сложнее выбить игрока.";
     // Achievement text that mentions zone
     document.querySelectorAll(".card").forEach(card => {
       if(card.textContent.includes("Впервые использовать Запретную зону")){
         const p = card.querySelector("p");
-        if(p) p.textContent = "Впервые использовать Призрачную зону.";
+        if(p) p.textContent = "Впервые использовать Ghost Zone.";
       }
     });
+  }
+  else if(phase === "after"){
+    // с 7 по 30 ноября: всё про Halloween убрано, сайт обычный; только карточка Cursed Ball в способностях
+    const legacyCard = document.getElementById("cursedBallLegacy");
+    if(legacyCard) legacyCard.style.display = "block";
+    if(cursedRow) cursedRow.style.display = "";
   }
 }
 
