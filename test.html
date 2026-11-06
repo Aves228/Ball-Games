@@ -2,7 +2,7 @@
 <head>  
 <meta charset="utf-8">  
 <meta name="viewport" content="width=device-width,initial-scale=1">  
-<title>Ball Games Test</title>
+<title>Ball Games — Официальный сайт</title>
 <meta name="description" content="Ball Games — игры с мячом, рейтинг, способности, титулы и сезоны. Официальные правила и топ игроков.">
 <meta name="theme-color" content="#536dfe">
 <link rel="icon" type="image/png" sizes="512x512" href="/logo.png">
@@ -1037,27 +1037,6 @@ grid-template-columns:1fr 1fr
 .remake-chips{display:flex;flex-wrap:wrap;gap:10px}
 .remake-chips span{padding:10px 16px;border-radius:999px;background:#536dfe14;border:1px solid #536dfe33;font-weight:600;font-size:.95em}
 @media(max-width:600px){.remake-link-card{padding:20px}.remake-link-btn{width:100%;text-align:center}}
-.ic-scheme{margin:14px 0;padding:20px 14px;border-radius:18px;background:linear-gradient(135deg,#f3f5ff,#fff);border:1px solid #536dfe33}
-.ic-title{text-align:center;font-weight:800;margin-bottom:14px}
-.ic-line{display:flex;justify-content:center;gap:clamp(2px,1vw,6px)}
-.ic-line b,.ic-legend b{display:flex;align-items:center;justify-content:center;aspect-ratio:1;border-radius:50%;font-weight:800;color:#fff;flex:none}
-.ic-line b{width:clamp(18px,5.6vw,36px);font-size:clamp(.7em,3.4vw,1.15em)}
-.ic-s{background:#4caf50}
-.ic-r{background:#e05252}
-.ic-p{background:#e5b43c;box-shadow:0 0 0 4px #e5b43c55,0 0 14px #e5b43c88;transform:scale(1.2)}
-.ic-bars{display:flex;justify-content:center;gap:clamp(2px,1vw,6px);margin-top:10px}
-.ic-bar{height:5px;border-radius:5px}
-.ic-bar-s{flex:7 1 0;background:#4caf50}
-.ic-bar-r{flex:3 1 0;background:#e05252}
-.ic-bars{max-width:calc(15*clamp(18px,5.6vw,36px) + 14*clamp(2px,1vw,6px));margin-left:auto;margin-right:auto}
-.ic-legend{display:flex;flex-direction:column;gap:10px;margin-top:18px;padding-top:14px;border-top:1px dashed #536dfe44;font-size:.95em}
-.ic-legend div{display:flex;align-items:center;gap:12px}
-.ic-legend b{width:30px;font-size:1em}
-.ic-legend u{text-decoration:none;font-weight:800}
-.ic-leader{display:flex;flex-direction:column;align-items:center;margin-bottom:8px}
-.ic-leader-badge{padding:8px 18px;border-radius:999px;background:linear-gradient(135deg,#536dfe,#7d5cff);color:#fff;font-weight:800;box-shadow:0 6px 16px #536dfe44}
-.ic-throw{display:flex;flex-direction:column;align-items:center;line-height:1.1;margin-top:4px;color:#e5b43c;font-weight:800;font-size:1.3em}
-.ic-throw span{font-size:.9em}
 
 /* === Закреплённая шапка === */
 html{scroll-padding-top:84px}
@@ -1082,14 +1061,206 @@ nav a{white-space:nowrap;flex:none}
 .nav-hint{display:block}
 html{scroll-padding-top:120px}
 }
+/* ===== Схемы способностей — адаптивные под Android и ПК ===== */
+.ic-scheme{
+  margin:14px 0;
+  padding:16px 12px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#eef1ff,#fff 60%,#fff7e6);
+  border:1px solid #536dfe33;
+  --c:clamp(30px,10vw,42px);
+  overflow:hidden;
+}
+.ic-title{
+  text-align:center;
+  font-weight:800;
+  font-size:1.05em;
+  margin-bottom:12px;
+  line-height:1.3;
+}
+.ic-case{
+  margin-bottom:12px;
+  padding:12px 10px;
+  border-radius:14px;
+  background:#fff;
+  border:2px solid #e3e7f5;
+  box-shadow:0 4px 12px #1a244410;
+  overflow:hidden;
+}
+.ic-yes{border-color:#4caf5088}
+.ic-nope{border-color:#e0525288}
+.ic-case-title{
+  text-align:center;
+  font-weight:800;
+  margin-bottom:10px;
+  font-size:.95em;
+  line-height:1.3;
+}
+.ic-scheme .flow{
+  font-size:15px !important;
+  line-height:1.55 !important;
+  padding:8px 4px !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  word-break:break-word;
+  text-align:center;
+}
+.ic-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:6px 8px;
+  padding:8px 0;
+}
+.ic-row b,
+.ic-grid b{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:var(--c);
+  height:var(--c);
+  min-width:var(--c);
+  border-radius:50%;
+  background:#fff;
+  border:3px solid #c3cadb;
+  font-size:calc(var(--c)*.48);
+  line-height:1;
+  box-sizing:border-box;
+  flex:none;
+}
+.ic-arrow{
+  color:#7d5cff;
+  font-weight:900;
+  font-size:1.15em;
+  flex:none;
+  line-height:1;
+  padding:0 2px;
+}
+.ic-label{
+  width:100%;
+  text-align:center;
+  font-size:.78em;
+  font-weight:800;
+  margin-top:8px;
+  padding-top:8px;
+  border-top:2px dashed #4caf50;
+  color:#2e7d32;
+  line-height:1.35;
+}
+.ic-label.no{
+  border-color:#e05252;
+  color:#c0392b;
+}
+.ic-grid{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  max-width:100%;
+}
+.ic-down{
+  text-align:center;
+  font-size:.9em;
+  line-height:1.25;
+  color:#7d5cff;
+  font-weight:800;
+  width:100%;
+  padding:3px 0;
+}
+.ic-o{border-color:#c3cadb!important;background:#f4f6fa!important}
+.ic-g{border-color:#4caf50!important;background:#e8f6e9!important}
+.ic-x{border-color:#536dfe!important;background:#e9edff!important;box-shadow:0 0 0 3px #536dfe22}
+.ic-t{border-color:#e5b43c!important;background:#fff6dc!important;box-shadow:0 0 0 3px #e5b43c33}
+.ic-l{border-color:#7d5cff!important;background:#f0eaff!important;box-shadow:0 0 0 3px #7d5cff22}
+.ic-ring{border-color:#4caf50!important;box-shadow:0 0 0 3px #4caf5044}
+.ic-note{
+  width:100%;
+  text-align:center;
+  font-size:.76em;
+  font-weight:800;
+  padding-top:8px;
+  margin-top:6px;
+  border-top:2px dashed;
+  line-height:1.35;
+  white-space:normal;
+  word-break:break-word;
+}
+.ic-note-yes{color:#2e7d32;border-color:#4caf50}
+.ic-note-no{color:#c0392b;border-color:#e05252}
+.ic-reason{text-align:center;font-size:.88em;margin:8px 0 0;line-height:1.4}
+.ic-legend-title{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px dashed #536dfe44;
+  font-weight:800;
+  font-size:.95em;
+}
+.ic-legend{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:10px;
+  font-size:.9em;
+}
+.ic-legend div{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  line-height:1.35;
+}
+.ic-legend b{
+  flex:none;
+  width:34px;
+  height:34px;
+  min-width:34px;
+  font-size:1.05em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid #c3cadb;
+  box-sizing:border-box;
+}
+.ic-scroll{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:8px;
+  margin:0 -2px;
+  scrollbar-width:thin;
+}
+.ic-scroll .ic-grid,
+.ic-scroll .ic-row{
+  flex-wrap:nowrap;
+  min-width:max-content;
+  padding:4px 6px;
+}
+@media(max-width:500px){
+  .ic-scheme{
+    padding:12px 8px;
+    --c:clamp(28px,12vw,38px);
+    border-radius:14px;
+  }
+  .ic-case{padding:10px 6px}
+  .ic-case-title{font-size:.9em}
+  .ic-scheme .flow{font-size:14px !important}
+  .ic-legend{font-size:.85em}
+  .ic-legend b{width:30px;height:30px;min-width:30px;font-size:.95em}
+  .ic-note{font-size:.72em}
+}
 </style>  </head>  <body>  <nav>  
-<div class="logo">🎯 <span> BALL GAMES TEST </span></div>
+<div class="logo">🎯 <span> BALL GAMES </span></div>
 <p class="nav-hint"><span class="nav-arrow nav-arrow-l">👈</span> Листайте меню влево и вправо, чтобы выбрать раздел <span class="nav-arrow nav-arrow-r">👉</span></p>  <div>  
 <a href="index.html">🏠 Главная</a>  
 <a href="#rules">📖 Правила</a>  
 <a href="#games">🎮 Игры</a>
 <a href="#abilities">⚡ Способности</a>
 <a href="#titles">🏅 Титулы</a>
+<a href="#clans">⚔️ Кланы</a>
 <a href="#admin">🛡️ Админы</a>  
 <a href="#rating">🏆 Топ</a>  
 <a href="#wipes">🗓️ Вайпы</a>  
@@ -1100,7 +1271,7 @@ html{scroll-padding-top:120px}
 <a href="https://ball-games-wine.vercel.app/" target="_blank" rel="noopener">⚠️ Тестовый сайт</a>
 <a href="#remakes">🔄 Правила Ремейков</a>  
 </div>  
-</nav>  <header class="hero">  <h1>BALL GAMES Test </h1>  
+</nav>  <header class="hero">  <h1>BALL GAMES </h1>  
   <div class="announce-card">  
 🔥 <b>ГЛОБАЛЬНЫЙ ВАЙП — СОСТОЯЛСЯ!</b><br><br>  
 🍂 ОСЕННИЙ СЕЗОН УЖЕ НАЧАЛСЯ!<br>  
@@ -1184,47 +1355,162 @@ html{scroll-padding-top:120px}
 <tr><td>50</td><td>🎁 Любая личная способность</td></tr>  
 <tr><td>70</td><td>🔥 Двойной бросок</td></tr>  
 <tr><td>100</td><td>👑 Прайм</td></tr>  
-<tr><td>1000</td><td>🌟 Всемогущий</td></tr>  </table>  <br>  <div class="card ability">  <h3>🩹 5 ПОБЕД — АПТЕЧКА</h3>
-<h4>🛡️ Для игрока</h4>
-<p>Если в игрока с Аптечкой попали<span class="easter-letter">Э</span>:</p>
-<div class="flow">
-🏐 Попадание<br>
-⬇️<br>
-🩹 Аптечка<br>
-⬇️<br>
-🎯 Игрок НЕ выбывает и становится ведущим.
+<tr><td>1000</td><td>🌟 Всемогущий</td></tr>  </table>  <br>  <div class="card ability">
+  <h3>🩹 5 ПОБЕД — АПТЕЧКА</h3>
+  <p>Аптечка спасает от выбывания один раз. Работает по-разному для игрока и для ведущего.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🩹 Схема Аптечки</div>
+
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">🛡️ Для игрока — попали</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        🏐 Попадание<br>
+        ⬇️<br>
+        🩹 Аптечка срабатывает<br>
+        ⬇️<br>
+        ✅ Игрок <b>НЕ выбывает</b> и становится ведущим
+      </div>
+    </div>
+
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">🎯 Для ведущего — промах</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        🏐 Промах<br>
+        ⬇️<br>
+        🩹 Аптечка срабатывает<br>
+        ⬇️<br>
+        🔁 Ведущий <b>НЕ выбывает</b> и может перебросить 1 раз
+      </div>
+    </div>
+
+    <div class="ic-legend-title">📖 Важно</div>
+    <div class="ic-legend">
+      <div><b class="ic-g">🩹</b><span>Открывается после <b>5 побед</b></span></div>
+      <div><b class="ic-x">❌</b><span>В Русской рулетке обычная Аптечка <b>не работает</b></span></div>
+    </div>
+  </div>
+
+  <p>⚠️ Это общая игровая способность/ресурс матча: её использование определяется правилами конкретной игры.</p>
 </div>
-<h4>🎯 Для ведущего</h4>
-<p>Если ведущий с Аптечкой промахнулся:</p>
-<div class="flow">
-🏐 Промах<br>
-⬇️<br>
-🩹 Аптечка<br>
-⬇️<br>
-🔁 Ведущий НЕ выбывает и может перебросить 1 раз.
+
+<div class="card ability">
+  <h3>🗺️ 10 ПОБЕД — УВЕЛИЧЕНИЕ ТЕРРИТОРИИ</h3>
+  <p>Игрок получает возможность увеличить игровую территорию по правилам Ball Games.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🗺️ Схема Увеличения территории</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✅ Что происходит</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        🗺️ Игрок активирует способность<br>
+        ⬇️<br>
+        📐 Игровая территория становится больше<br>
+        ⬇️<br>
+        🏃 Больше пространства для манёвра
+      </div>
+    </div>
+    <div class="ic-legend-title">📖 Условные обозначения</div>
+    <div class="ic-legend">
+      <div><b class="ic-g">🗺️</b><span><strong>Увеличение</strong> — расширяет границы площадки</span></div>
+      <div><b class="ic-o">📐</b><span>Точные размеры и правила определяются администраторами на месте</span></div>
+    </div>
+  </div>
 </div>
-<p>🩹 Аптечка открывается после достижения 5 побед.</p>
-<p>⚠️ Это общая игровая способность/ресурс матча: её использование определяется правилами конкретной игры.</p>
-<p>❌ В Русской рулетке обычная Аптечка не работает.</p>
-</div>  <div class="card ability">  <h3>🗺️ 10 ПОБЕД — УВЕЛИЧЕНИЕ ТЕРРИТОРИИ</h3>  <p>  
-Игрок получает возможность увеличить игровую территорию  
-по правилам Ball Games.  
-</p>  </div>  <div class="card ability">  <h3>🚧 15 ПОБЕД — ЗАПРЕТНАЯ ЗОНА</h3>  <p>Специальное место, где ведущему сложнее выбить игрока.</p>  <p>  
-🔹 После открытия способности — 15 использований.<br>  
-🔹 Для ведущего зона доступна бесконечно.  
-</p>  <p>⚠️ Зона не делает игрока полностью неуязвимым.</p>  </div>  <div class="card ability">  <h3>🔄 20 ПОБЕД — ВОЗВРАТ</h3>  <p>  
-Один раз за игру игрок может оттолкнуть летящий в него  
-мяч руками.  
-</p>  <p>👐 Это именно ОТТАЛКИВАНИЕ, а не ловля.</p>  <div class="flow">  
-🏐 Мяч отбит<br>  
-⬇️<br>  
-❌ Попадание не засчитывается<br>  
-⬇️<br>  
-🔄 Ведущий перекидывает мяч  
-</div>  <p>После использования способность считается потраченной.</p>  </div>  <div class="card ability">  <h3>🪄 30 ПОБЕД — ТЕЛЕПОРТ</h3>  <p>  
-Один раз за игру игрок может переместиться  
-в заранее определённую точку игровой территории.  
-</p>  <p>⚠️ Телепорт не может отменить уже произошедшее попадание.</p>  </div>  <div class="card ability">
+
+<div class="card ability">
+  <h3>🚧 15 ПОБЕД — ЗАПРЕТНАЯ ЗОНА</h3>
+  <p>Специальное место, где ведущему сложнее выбить игрока.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🚧 Схема Запретной зоны</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">🛡️ Защита игрока</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        🏃 Игрок заходит в Запретную зону<br>
+        ⬇️<br>
+        🚧 Ведущему сложнее попасть<br>
+        ⬇️<br>
+        🛡️ Игрок получает преимущество, но не полную неуязвимость
+      </div>
+    </div>
+    <div class="ic-legend-title">📖 Правила использования</div>
+    <div class="ic-legend">
+      <div><b class="ic-g">🔹</b><span>После открытия — <b>15 использований</b> для игрока</span></div>
+      <div><b class="ic-l">👑</b><span>Для ведущего зона доступна <b>бесконечно</b></span></div>
+      <div><b class="ic-x">⚠️</b><span>Зона <b>не делает</b> игрока полностью неуязвимым</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="card ability">
+  <h3>🔄 20 ПОБЕД — ВОЗВРАТ</h3>
+  <p>Один раз за игру игрок может оттолкнуть летящий в него мяч руками. Это именно <b>отталкивание</b>, а не ловля.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🔄 Схема Возврата</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✅ Успешный возврат</div>
+      <div class="ic-row">
+        <b class="ic-l">👑</b>
+        <span class="ic-arrow">🏐⬇</span>
+        <b class="ic-x">👐</b>
+        <span class="ic-arrow">↗</span>
+        <b class="ic-o">🏐</b>
+      </div>
+      <div class="ic-label">Мяч отбит — попадание не засчитывается</div>
+    </div>
+    <div class="ic-case">
+      <div class="ic-case-title">🔄 Что дальше</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        🏐 Мяч отбит руками<br>
+        ⬇️<br>
+        ❌ Попадание не засчитывается<br>
+        ⬇️<br>
+        🔄 Ведущий перекидывает мяч
+      </div>
+    </div>
+    <div class="ic-legend-title">📖 Важно</div>
+    <div class="ic-legend">
+      <div><b class="ic-x">👐</b><span>Именно <strong>отталкивание</strong>, а не ловля</span></div>
+      <div><b class="ic-o">1×</b><span>Можно использовать <b>1 раз за игру</b></span></div>
+    </div>
+  </div>
+  <p>После использования способность считается потраченной.</p>
+</div>
+
+<div class="card ability">
+  <h3>🪄 30 ПОБЕД — ТЕЛЕПОРТ</h3>
+  <p>Один раз за игру игрок может переместиться в заранее определённую точку игровой территории.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🪄 Схема Телепорта</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✅ Как работает</div>
+      <div class="ic-row">
+        <b class="ic-o">🏃</b>
+        <span class="ic-arrow">✦✦</span>
+        <b class="ic-g">📍</b>
+      </div>
+      <div class="ic-label">Игрок мгновенно перемещается в точку телепорта</div>
+    </div>
+    <div class="ic-case">
+      <div class="ic-case-title">🔄 По шагам</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        📍 Точка телепорта заранее определена<br>
+        ⬇️<br>
+        🪄 Игрок активирует способность<br>
+        ⬇️<br>
+        ✨ Мгновенно перемещается в эту точку
+      </div>
+    </div>
+    <div class="ic-legend-title">📖 Важно</div>
+    <div class="ic-legend">
+      <div><b class="ic-x">⚠️</b><span>Телепорт <b>не отменяет</b> уже произошедшее попадание</span></div>
+      <div><b class="ic-o">1×</b><span>Можно использовать <b>1 раз за игру</b></span></div>
+    </div>
+  </div>
+</div>  <div class="card ability">
 <h3>🥷 35 ПОБЕД — ПЕРЕХВАТ</h3>
 <p>Во время «Гляделок», когда ведущий бросает мяч выбранному игроку, обладатель способности может перехватить мяч у другого игрока, если тот не находится рядом с выбранной целью.</p>
 <div class="flow">
@@ -1237,81 +1523,237 @@ html{scroll-padding-top:120px}
 <p><b>Схема:</b></p>
 <div class="ic-scheme">
   <div class="ic-title">🥷 Схема перехвата</div>
-  <div class="ic-leader">
-    <div class="ic-leader-badge">👑 Ведущий</div>
-    <div class="ic-throw"><span>🏐</span>⬇</div>
+
+  <div class="ic-case ic-yes">
+    <div class="ic-case-title">✅ Перехват возможен</div>
+    <div class="ic-row">
+      <b class="ic-l">👑</b>
+      <span class="ic-arrow">🏐⬇</span>
+      <b class="ic-g">🙂</b>
+      <b class="ic-x">🥷</b>
+      <b class="ic-t ic-ring">🎯</b>
+    </div>
+    <div class="ic-label">🥷 стоит рядом с целью — перехват разрешён</div>
   </div>
-  <div class="ic-line">
-    <b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-r">₽</b><b class="ic-p">%</b><b class="ic-r">₽</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b><b class="ic-s">*</b>
+
+  <div class="ic-case ic-nope">
+    <div class="ic-case-title">❌ Перехват невозможен</div>
+    <div class="ic-row">
+      <b class="ic-l">👑</b>
+      <span class="ic-arrow">🏐⬇</span>
+      <b class="ic-x">🥷</b>
+      <b class="ic-g">🙂</b>
+      <b class="ic-g">🙂</b>
+      <b class="ic-t ic-ring">🎯</b>
+    </div>
+    <div class="ic-label no">🥷 слишком далеко от цели — перехват нельзя</div>
   </div>
-  <div class="ic-bars">
-    <span class="ic-bar ic-bar-s"></span><span class="ic-bar ic-bar-r"></span><span class="ic-bar ic-bar-s"></span>
-  </div>
+
+  <div class="ic-reason">Перехват работает только если перехватчик стоит рядом с выбранной целью.</div>
+
+  <div class="ic-legend-title">📖 Условные обозначения</div>
   <div class="ic-legend">
-    <div><b class="ic-s">*</b><span>игрок, у которого <u>можно</u> отобрать мяч</span></div>
-    <div><b class="ic-p">%</b><span>игрок, в которого бросает ведущий</span></div>
-    <div><b class="ic-r">₽</b><span>игрок, у которого <u>нельзя</u> отобрать мяч</span></div>
+    <div><b class="ic-l">👑</b><span><strong>Ведущий</strong> — бросает мяч</span></div>
+    <div><b class="ic-t ic-ring">🎯</b><span><strong>Цель</strong> — в него кидают</span></div>
+    <div><b class="ic-g">🙂</b><span><strong>Можно отнять</strong> — у этого игрока можно забрать мяч</span></div>
+    <div><b class="ic-x">🥷</b><span><strong>Перехватчик</strong> — хочет отнять мяч</span></div>
   </div>
 </div>
 <p>⚽ Способность позволяет перехватить роль ведущего ещё до начала «Вышибал»!</p>
 </div>
- <div class="card ability">  <h3>🌀 40 ПОБЕД — РИКОШЕТ</h3>  <p>Если ведущий использует Рикошет:</p>  <div class="flow">  
-🏐 Бросок мяча<br>  
-⬇️<br>  
-🔄 Мяч отскакивает от земли<br>  
-⬇️<br>  
-🎯 Если мяч попадает в игрока, попадание засчитывается.  
-</div>  <p>🌀 Рикошет можно использовать 1 раз за игру.</p>  <p>🩹 Если у игрока есть Аптечка, она срабатывает как обычно.</p>  </div>  <div class="card ability">  <h3>🎁 50 ПОБЕД — ЛИЧНАЯ СПОСОБНОСТЬ</h3>  <p>  
-Игрок может выбрать или придумать свою личную способность.  
-</p>  <p>  
-⚠️ Она должна быть сильной и интересной, но НЕ читерной.  
-</p>  <h3>✅ Примеры</h3>  <p>  
-🧊 Заморозка — заморозить игрока на 15 секунд.<br>  
-👐 Ловля мяча — поймать мяч руками, чтобы попадание не засчиталось.<br>  
-🩹 Аптечка для Русской рулетки — пережить одно попадание именно в финале.  
-</p>  <h3>❌ Запрещено</h3>  <p>  
-• Давать огромное количество побед.<br>  
-• Автоматически выбивать любого игрока.<br>  
-• Делать игрока полностью неуязвимым.<br>  
-• Гарантировать победу.<br>  
-• Полностью ломать правила Ball Games.  
-</p>  </div>  <div class="card">  <h3>🔒 Уникальность личных способностей</h3>  <p>  
-Одну личную способность одновременно может использовать  
-только ОДИН игрок.  
-</p>  <p>Например:</p>  <p>😎 Aves выбрал «Заморозку».</p>  <p>  
-Пока Aves её не сменит, другой игрок не может выбрать  
-или использовать «Заморозку».  
-</p>  <p>После смены способности она снова становится доступной.</p>  </div>  <div class="card">  <h3>🔄 Смена личной способности</h3>  <p>  
-Это правило относится ТОЛЬКО к личной способности за 50 побед.  
-</p>  <div class="flow">  
-🏆 50 побед<br>  
-⬇️<br>  
-➕ Набрал ещё 10 побед<br>  
-⬇️<br>  
-🔄 Можно сменить способность<br>  
-⬇️<br>  
-➕ Ещё 10 побед<br>  
-⬇️<br>  
-🔄 Следующая смена  
-</div>  <p>  
-Обычных способностей за 5, 10, 15, 20, 30, 40, 70,  
-100 и 1000 побед это не касается.  
-</p>  <p>👑 Прайм позволяет иметь 2 способности одновременно.</p>  </div>  <div class="card ability">  <h3>🔥 70 ПОБЕД — ДВОЙНОЙ БРОСОК</h3>  <p>Это УСИЛЕНИЕ, а не личная способность.</p>  <p>  
-Игрок получает возможность в ситуациях, где ему положен  
-один бросок, сделать два броска подряд.  
-</p>  <p>  
-🏐 Первый бросок выполняется обычно.<br>  
-🏐 Если первый бросок попал — второй бросок уже не нужен.  
-</p>  <p>  
-❌ В Русской рулетке не работает.<br>  
-⚠️ Усиление не гарантирует попадание.  
-</p>  </div>  <div class="card ability">  <h3>👑 100 ПОБЕД — ПРАЙМ</h3>  <p>  
-Прайм позволяет игроку иметь  
-<b>2 способности одновременно</b>.  
-</p>  </div>  <div class="card ability">  <h3>🌟 1000 ПОБЕД — ВСЕМОГУЩИЙ</h3>  <p>  
-Высший уровень системы способностей Ball Games —  
-ТЫ МОЖЕШЬ ИЗМЕНИТЬ ЛЮБОЕ ПРАВИЛО BALL GAMES.  
-</p>  </div>  </section>  <section id="titles">  <h2>🏅 Титулы</h2>  <p class="muted">  
+ <div class="card ability">
+  <h3>🌀 40 ПОБЕД — РИКОШЕТ</h3>
+  <p>Способность позволяет ведущему сделать <b>рикошетный бросок</b>: мяч сначала отскакивает от земли, а затем может выбить игрока.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🌀 Схема Рикошета</div>
+
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✅ Успешный рикошет</div>
+      <div class="ic-row">
+        <b class="ic-l">👑</b>
+        <span class="ic-arrow">🏐⬇</span>
+        <b class="ic-o">⚪</b>
+        <span class="ic-arrow">↗</span>
+        <b class="ic-t ic-ring">🎯</b>
+      </div>
+      <div class="ic-label">Мяч бьётся о землю и рикошетит в цель</div>
+    </div>
+
+    <div class="ic-case">
+      <div class="ic-case-title">🔄 Как это работает по шагам</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:8px 0;box-shadow:none;font-size:1.05em">
+        🏐 Ведущий бросает мяч<br>
+        ⬇️<br>
+        🔄 Мяч отскакивает от земли<br>
+        ⬇️<br>
+        🎯 Если после отскока мяч попадает в игрока — попадание засчитывается
+      </div>
+    </div>
+
+    <div class="ic-legend-title">📖 Условные обозначения</div>
+    <div class="ic-legend">
+      <div><b class="ic-l">👑</b><span><strong>Ведущий</strong> — использует Рикошет</span></div>
+      <div><b class="ic-o" style="border-style:dashed">⚪</b><span><strong>Точка отскока</strong> — мяч касается земли</span></div>
+      <div><b class="ic-t ic-ring">🎯</b><span><strong>Цель</strong> — игрок, в которого прилетает мяч после рикошета</span></div>
+    </div>
+  </div>
+
+  <p>🌀 Рикошет можно использовать <b>1 раз за игру</b>.</p>
+  <p>🩹 Если у игрока есть Аптечка, она срабатывает как обычно.</p>
+  <p>⚠️ Рикошет не гарантирует попадание — мяч всё равно может промахнуться.</p>
+</div>
+
+<div class="card ability">
+  <h3>🎁 50 ПОБЕД — ЛИЧНАЯ СПОСОБНОСТЬ</h3>
+  <p>Игрок может выбрать или придумать свою личную способность. Она должна быть сильной и интересной, но <b>НЕ читерной</b>.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🎁 Схема Личной способности</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✅ Примеры разрешённых</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none;text-align:left">
+        🧊 <b>Заморозка</b> — заморозить игрока на 15 секунд<br>
+        👐 <b>Ловля мяча</b> — поймать мяч руками, чтобы попадание не засчиталось<br>
+        🩹 <b>Аптечка для Русской рулетки</b> — пережить одно попадание в финале
+      </div>
+    </div>
+    <div class="ic-case ic-nope">
+      <div class="ic-case-title">❌ Запрещено</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none;text-align:left">
+        • Давать огромное количество побед<br>
+        • Автоматически выбивать любого игрока<br>
+        • Делать игрока полностью неуязвимым<br>
+        • Гарантировать победу<br>
+        • Полностью ломать правила Ball Games
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>🔒 Уникальность личных способностей</h3>
+  <p>Одну личную способность одновременно может использовать только <b>ОДИН</b> игрок.</p>
+  <div class="ic-scheme">
+    <div class="ic-title">🔒 Пример уникальности</div>
+    <div class="ic-case">
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        😎 Aves выбрал «Заморозку»<br>
+        ⬇️<br>
+        🚫 Пока Aves её не сменит — никто другой не может взять «Заморозку»<br>
+        ⬇️<br>
+        🔄 После смены способность снова становится доступной
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>🔄 Смена личной способности</h3>
+  <p>Это правило относится <b>ТОЛЬКО</b> к личной способности за 50 побед.</p>
+  <div class="ic-scheme">
+    <div class="ic-title">🔄 Когда можно сменить</div>
+    <div class="ic-case ic-yes">
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        🏆 50 побед — получил личную способность<br>
+        ⬇️<br>
+        ➕ Набрал ещё <b>10 побед</b><br>
+        ⬇️<br>
+        🔄 Можно сменить способность<br>
+        ⬇️<br>
+        ➕ Ещё 10 побед → следующая смена
+      </div>
+    </div>
+    <div class="ic-legend-title">📖 Важно</div>
+    <div class="ic-legend">
+      <div><b class="ic-o">ℹ️</b><span>Обычные способности (5–40, 70, 100, 1000) этим правилом <b>не затрагиваются</b></span></div>
+      <div><b class="ic-l">👑</b><span>Прайм позволяет иметь <b>2 способности</b> одновременно</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="card ability">
+  <h3>🔥 70 ПОБЕД — ДВОЙНОЙ БРОСОК</h3>
+  <p>Это <b>УСИЛЕНИЕ</b>, а не личная способность. В ситуациях, где положен один бросок, можно сделать два подряд.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🔥 Схема Двойного броска</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✅ Как работает</div>
+      <div class="ic-row">
+        <b class="ic-l">👑</b>
+        <span class="ic-arrow">🏐₁</span>
+        <b class="ic-t">🎯</b>
+        <span class="ic-arrow">или</span>
+        <span class="ic-arrow">🏐₂</span>
+        <b class="ic-t ic-ring">🎯</b>
+      </div>
+      <div class="ic-label">Два броска подряд, если первый не попал</div>
+    </div>
+    <div class="ic-case">
+      <div class="ic-case-title">🔄 По шагам</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:6px 0;box-shadow:none">
+        🏐 Первый бросок выполняется обычно<br>
+        ⬇️<br>
+        ✅ Если попал — второй бросок уже не нужен<br>
+        ⬇️<br>
+        ❌ Если промах — можно бросить ещё раз
+      </div>
+    </div>
+    <div class="ic-legend-title">📖 Ограничения</div>
+    <div class="ic-legend">
+      <div><b class="ic-x">❌</b><span>В Русской рулетке <b>не работает</b></span></div>
+      <div><b class="ic-o">⚠️</b><span>Усиление <b>не гарантирует</b> попадание</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="card ability">
+  <h3>👑 100 ПОБЕД — ПРАЙМ</h3>
+  <p>Прайм позволяет игроку иметь <b>2 способности одновременно</b>.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">👑 Схема Прайма</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✅ Две способности сразу</div>
+      <div class="ic-row">
+        <b class="ic-l">👑</b>
+        <span class="ic-arrow">+</span>
+        <b class="ic-g">⚡₁</b>
+        <b class="ic-g">⚡₂</b>
+      </div>
+      <div class="ic-label">Прайм + две выбранные способности</div>
+    </div>
+    <div class="ic-legend-title">📖 Что даёт</div>
+    <div class="ic-legend">
+      <div><b class="ic-l">👑</b><span>Можно держать <b>две способности</b> активными одновременно</span></div>
+      <div><b class="ic-g">⚡</b><span>Личная способность + любая другая (или две личные по правилам смены)</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="card ability">
+  <h3>🌟 1000 ПОБЕД — ВСЕМОГУЩИЙ</h3>
+  <p>Высший уровень системы способностей Ball Games.</p>
+
+  <div class="ic-scheme">
+    <div class="ic-title">🌟 Схема Всемогущего</div>
+    <div class="ic-case ic-yes">
+      <div class="ic-case-title">✨ Абсолютная власть</div>
+      <div class="flow" style="margin:0;background:transparent;border:0;padding:10px 0;box-shadow:none;font-size:1.15em">
+        🌟 ТЫ МОЖЕШЬ ИЗМЕНИТЬ<br>
+        <b>ЛЮБОЕ ПРАВИЛО</b><br>
+        BALL GAMES
+      </div>
+    </div>
+    <div class="ic-legend-title">📖 Статус</div>
+    <div class="ic-legend">
+      <div><b class="ic-l">🌟</b><span>Высший титул и способность в системе</span></div>
+      <div><b class="ic-g">📜</b><span>Право менять правила по согласованию с создателями</span></div>
+    </div>
+  </div>
+</div>
+</section>  <section id="titles">  <h2>🏅 Титулы</h2>  <p class="muted">  
 Чем больше побед — тем престижнее титул.  
 На каждом уровне игрок выбирает ОДИН из двух<span class="easter-letter">Л</span>.  
 </p>  <div class="grid">  <div class="card">  
@@ -1346,7 +1788,280 @@ html{scroll-padding-top:120px}
 <p>🌟 Всемогущий / 👑 Бог Ball Games</p>  
 </div>  </div>  <div class="card success">  
 <h3>🏅 Титулы сохраняются после вайпа.</h3>  
-</div>  </section>  <section id="achievements">  <h2>🏅 Достижения Ball Games</h2>  
+</div>  </section>
+
+<section id="clans">
+  <h2>⚔️ Правила кланов и союзов</h2>
+  <p class="muted">Официальные правила клановой системы Ball Games.</p>
+
+  <div class="card">
+    <h3>🏰 1. Создание кланов</h3>
+    <p>Для создания клана необходимо указать:</p>
+    <ul>
+      <li><b>Название клана</b> — уникальное или отличительное название.</li>
+      <li><b>Список игроков</b> — перечень всех участников клана.</li>
+      <li><b>Лидер клана</b> — игрок, ответственный за представительство клана.</li>
+      <li><b>Эмблема или символ</b> — отличительный знак клана.</li>
+    </ul>
+    <div class="flow">
+      👥 Максимальный размер клана — <b>3 человека</b><br>
+      🏰 Каждый клан — самостоятельная группа<br>
+      ⚔️ Кланы могут противостоять друг другу<br>
+      🔄 Игрок может покинуть клан и перейти в другой
+    </div>
+  </div>
+
+  <div class="card warning">
+    <h3>🚫 2. Правило своих</h3>
+    <p>Игрок <b>не может выбивать участника собственного клана</b>.</p>
+    <p>За нарушение этого правила игрок исключается из клана.</p>
+    <p>Запрет действует независимо от того, состоит ли клан в каком-либо союзе.</p>
+  </div>
+
+  <div class="card">
+    <h3>🤝 3. Создание союзов</h3>
+    <ul>
+      <li>Несколько кланов могут объединяться в союзы.</li>
+      <li>Союз может включать несколько самостоятельных кланов.</li>
+      <li>Кланы внутри союза сохраняют свою независимость.</li>
+      <li>Союз не считается единым кланом.</li>
+      <li>Участники разных кланов одного союза <b>могут выбивать друг друга</b>.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>⚔️ 4. Правила противостояний</h3>
+    <div class="grid">
+      <div class="card success">
+        <h3>🚫 Один клан</h3>
+        <p>Участники одного клана <b>не могут</b> выбивать друг друга.</p>
+      </div>
+      <div class="card">
+        <h3>⚔️ Разные кланы</h3>
+        <p>Участники разных кланов <b>могут</b> выбивать друг друга (даже в одном союзе).</p>
+      </div>
+      <div class="card">
+        <h3>🤝 Союзы</h3>
+        <p>Игроки противоположных союзов свободно противостоят друг другу.</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:14px">Основные правила Ball Games продолжают действовать независимо от клановой принадлежности.</p>
+  </div>
+
+  <div class="card">
+    <h3>🔄 5. Переходы между кланами</h3>
+    <p>При переходе игрока:</p>
+    <div class="flow">
+      🚪 Перестаёт быть участником предыдущего клана<br>
+      ⬇️<br>
+      🏰 Становится участником нового клана<br>
+      ⬇️<br>
+      📜 На него распространяются правила нового клана
+    </div>
+  </div>
+
+  <div class="card warning">
+    <h3>⚠️ 6. Особая ситуация: на площадке остался один клан</h3>
+    <p>Если все участники остальных кланов выбыли и на площадке остались только игроки одного клана, возникает особая ситуация.</p>
+    <p>Поскольку участники одного клана не могут выбивать друг друга, завершить игру обычным способом становится практически невозможно.</p>
+    <div class="flow">
+      ⚠️ Запрет на выбивание соклановцев <b>временно отменяется</b><br>
+      ⬇️<br>
+      ⚔️ Участники оставшегося клана могут выбивать друг друга<br>
+      ⬇️<br>
+      🏆 Это позволяет определить победителя
+    </div>
+    <p class="muted">Без этого исключения единственным вариантом было бы добровольное выбывание — на что практически никто не согласится.</p>
+  </div>
+
+  <div class="card ability">
+    <h3>🎁 7. Клановые способности</h3>
+    <p>Каждый клан может получить собственную <b>клановую способность</b> — особую возможность, доступную его участникам.</p>
+
+    <h4>💰 7.1. Стоимость получения</h4>
+    <p>Стоимость зависит от количества игроков в клане:</p>
+    <table>
+      <tr>
+        <th>Количество игроков</th>
+        <th>Взнос каждого игрока</th>
+      </tr>
+      <tr>
+        <td>👥 2 игрока</td>
+        <td>20 побед</td>
+      </tr>
+      <tr>
+        <td>👥 3 игрока</td>
+        <td>15 побед</td>
+      </tr>
+    </table>
+    <p><b>Примеры:</b></p>
+    <ul>
+      <li>Клан из 2 человек: 20 + 20 = <b>40 побед</b></li>
+      <li>Клан из 3 человек: 15 + 15 + 15 = <b>45 побед</b></li>
+    </ul>
+    <p>Все участники должны внести необходимое количество побед.</p>
+
+    <h4>⚡ 7.2. Правила использования</h4>
+    <ul>
+      <li>Способность может быть практически любой по своей задумке.</li>
+      <li>Она должна соответствовать ограничениям личных способностей за 50 побед.</li>
+      <li>Способность не должна быть читерной или полностью нарушать баланс игры.</li>
+      <li>Каждый участник клана может использовать основную клановую способность <b>1 раз за матч</b>.</li>
+      <li>Каждый участник использует свою возможность независимо от остальных соклановцев.</li>
+    </ul>
+
+    <h4>🏆 7.3. Примеры клановых способностей</h4>
+    <div class="grid">
+      <div class="card">
+        <h3>🧊 Заморозка игры</h3>
+        <p>На 5 секунд вся игра, кроме собственного клана, замораживается. Участники других кланов не могут двигаться, а собственный клан сохраняет возможность передвижения.</p>
+      </div>
+      <div class="card">
+        <h3>👐 Клановая ловля мяча</h3>
+        <p>Один из участников клана получает возможность поймать мяч руками, чтобы попадание не засчиталось.</p>
+      </div>
+      <div class="card">
+        <h3>🌀 Клановый телепорт</h3>
+        <p>Игрок может телепортировать участников собственного клана к себе, чтобы быстро собрать соклановцев в одном месте.</p>
+      </div>
+    </div>
+
+    <h4>❌ 7.4. Запрещённые способности</h4>
+    <ul>
+      <li>Давать огромное количество побед.</li>
+      <li>Автоматически выбивать любого игрока.</li>
+      <li>Делать игрока или весь клан полностью неуязвимыми.</li>
+      <li>Гарантировать победу.</li>
+      <li>Полностью ломать правила Ball Games.</li>
+    </ul>
+  </div>
+
+  <div class="card ability">
+    <h3>🩹 8. Клановая аптечка</h3>
+    <p>Клановая аптечка — отдельная клановая способность, которая позволяет участникам получить дополнительную защиту от выбивания.</p>
+
+    <h4>💰 8.1. Стоимость</h4>
+    <p>Для получения клановой аптечки каждый участник клана должен внести <b>5 побед</b>.</p>
+    <table>
+      <tr>
+        <th>Количество игроков</th>
+        <th>Взнос каждого</th>
+        <th>Общая стоимость</th>
+      </tr>
+      <tr>
+        <td>👥 2 игрока</td>
+        <td>5 побед</td>
+        <td>10 побед</td>
+      </tr>
+      <tr>
+        <td>👥 3 игрока</td>
+        <td>5 побед</td>
+        <td>15 побед</td>
+      </tr>
+    </table>
+
+    <h4>⚕️ 8.2. Как работает клановая аптечка?</h4>
+    <p>Клановая аптечка работает вместе с обычными личными аптечками игроков.</p>
+    <div class="flow">
+      🩹 В первый раз срабатывает личная аптечка — она расходуется<br>
+      ⬇️<br>
+      🩹 При следующем попадании срабатывает клановая аптечка<br>
+      ⬇️<br>
+      🛡️ Клановая аптечка позволяет пережить ещё одно попадание
+    </div>
+
+    <h4>⚠️ 8.3. Ограничения</h4>
+    <ul>
+      <li>Клановая аптечка существует в количестве <b>1 штуки на весь клан</b>.</li>
+      <li>Её можно использовать только <b>один раз за матч</b>.</li>
+      <li>Она общая для всех участников клана.</li>
+      <li>Если один участник уже использовал клановую аптечку, остальные не могут воспользоваться ею в этом матче.</li>
+      <li>Клановая аптечка не заменяет личные аптечки, а дополняет их.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>🔄 9. Изменение состава клана и способности</h3>
+    <p>Если клан из двух игроков уже получил основную клановую способность (по 20 побед) и к нему присоединяется третий участник, новый игрок <b>не получает доступ</b> к старой клановой способности.</p>
+    <p>В такой ситуации можно удалить действующую способность:</p>
+    <div class="flow">
+      🗑️ Первоначальные участники получают обратно свои 20 побед<br>
+      ⬇️<br>
+      ❌ Клан теряет прежнюю способность<br>
+      ⬇️<br>
+      💰 Для новой способности все три участника вносят по 15 побед
+    </div>
+    <p class="muted">Новый состав клана должен заново оплатить получение способности по правилам для трёх игроков.</p>
+  </div>
+
+  <div class="card success">
+    <h3>📜 10. Основные принципы системы</h3>
+    <table>
+      <tr>
+        <th>Правило</th>
+        <th>Условие</th>
+      </tr>
+      <tr>
+        <td>👥 Размер клана</td>
+        <td>Максимум 3 человека</td>
+      </tr>
+      <tr>
+        <td>🚫 Свои участники</td>
+        <td>Выбивать нельзя</td>
+      </tr>
+      <tr>
+        <td>⚔️ Другие кланы</td>
+        <td>Выбивать можно</td>
+      </tr>
+      <tr>
+        <td>🤝 Союзные кланы</td>
+        <td>Выбивать можно</td>
+      </tr>
+      <tr>
+        <td>🔄 Смена клана</td>
+        <td>Разрешена</td>
+      </tr>
+      <tr>
+        <td>🏰 Самостоятельность кланов</td>
+        <td>Сохраняется</td>
+      </tr>
+      <tr>
+        <td>⚠️ Остался один клан</td>
+        <td>Запрет временно отменяется</td>
+      </tr>
+      <tr>
+        <td>🎁 Основная клановая способность</td>
+        <td>По 20 или 15 побед</td>
+      </tr>
+      <tr>
+        <td>🩹 Клановая аптечка</td>
+        <td>По 5 побед</td>
+      </tr>
+      <tr>
+        <td>⚡ Использование основной способности</td>
+        <td>1 раз за матч каждым участником</td>
+      </tr>
+      <tr>
+        <td>🩹 Использование клановой аптечки</td>
+        <td>1 раз за матч на весь клан</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#f3f5ff,#fff);border:2px solid #536dfe44">
+    <h3>🏆 Главный принцип</h3>
+    <p><b>Клан</b> — это объединение игроков, внутри которого действует взаимная защита.</p>
+    <p><b>Союз</b> — это объединение нескольких самостоятельных кланов для совместного противостояния.</p>
+    <p><b>Клановые способности</b> — дополнительные возможности, которые участники получают совместным вложением побед. Они позволяют кланам использовать собственные командные преимущества.</p>
+    <div class="flow" style="margin-top:18px">
+      ⚔️ Ball Games остаётся игрой «Все против всех»<br>
+      ⬇️<br>
+      🏰 Кланы и союзы добавляют систему отношений, противостояний и командных возможностей
+    </div>
+  </div>
+</section>
+
+<section id="achievements">  <h2>🏅 Достижения Ball Games</h2>  
 <p class="muted">Все достижения разделены по сложности<span class="easter-letter">Л</span>.</p>  <h3>🟢 Лёгкие достижения</h3>  
 <div class="grid">  
   <div class="card"><h3>🎮 Новичок Ball Games</h3><p>Впервые сыграть в BG.</p></div>  
